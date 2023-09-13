@@ -5,15 +5,21 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.CountDownTimer;
+import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppScene;
+import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
 /** This keypad check the code (28) is correct */
-public class KeypadController {
+public class KeypadController extends ControllerMethods {
 
   @FXML private Label keypadTimerLabel;
 
   private int code = 0;
+
+  public void initialize() throws ApiProxyException {
+    // Bind the timer label to the display time
+    keypadTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+  }
 
   @FXML
   private void goBack(MouseEvent event) {
@@ -38,7 +44,7 @@ public class KeypadController {
     }
 
     // show success, change scene to game finished
-    CountDownTimer.pauseTimer();
+    GameState.isRoomEscaped = true;
     App.setScene(AppScene.GAMEFINISHED);
   }
 
@@ -96,16 +102,6 @@ public class KeypadController {
   @FXML
   private void onClickZero() {
     code += 1000000;
-  }
-
-  /**
-   * Updates the timer label with the current minutes and seconds.
-   *
-   * @param minutes The number of minutes remaining.
-   * @param seconds The number of seconds remaining.
-   */
-  public void updateTimerLabel(int minutes, int seconds) {
-    keypadTimerLabel.setText(String.format("%02d:%02d", minutes, seconds));
   }
 
   /**

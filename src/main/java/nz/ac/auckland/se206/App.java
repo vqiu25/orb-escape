@@ -6,11 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppScene;
-import nz.ac.auckland.se206.controllers.ChatController;
-import nz.ac.auckland.se206.controllers.HelpController;
-import nz.ac.auckland.se206.controllers.KeypadController;
 import nz.ac.auckland.se206.controllers.RoomController;
-import nz.ac.auckland.se206.controllers.TelevisionController;
 
 /**
  * This is the entry point of the JavaFX application, while you can change this class, it should
@@ -22,11 +18,6 @@ public class App extends Application {
 
   // Used to store a reference which can be passed:
   private static RoomController roomController;
-  private static ChatController chatController;
-  private static TelevisionController televisionController;
-  private static HelpController helpController;
-  private static KeypadController keypadController;
-  private static CountDownTimer timer;
   private static Stage stageTest;
 
   public static void main(final String[] args) {
@@ -65,15 +56,6 @@ public class App extends Application {
   }
 
   /**
-   * Used to fetch the timer object from other classes that need access to it.
-   *
-   * @return Timer object which have the references to controllers passed in.
-   */
-  public static CountDownTimer getTimer() {
-    return timer;
-  }
-
-  /**
    * Returns the room controller.
    *
    * @return
@@ -93,36 +75,19 @@ public class App extends Application {
     // Add scenes to hashmap.
     SceneManager.addScene(AppScene.START, loadLoader("start").load());
     SceneManager.addScene(AppScene.TUTORIAL, loadLoader("tutorial").load());
-    SceneManager.addScene(AppScene.PAUSE, loadLoader("pause").load());
+    SceneManager.addScene(AppScene.SETTINGS, loadLoader("settings").load());
     SceneManager.addScene(AppScene.GAMEOVER, loadLoader("gameover").load());
     SceneManager.addScene(AppScene.GAMEFINISHED, loadLoader("gamefinished").load());
     SceneManager.addScene(AppScene.STORY, loadLoader("story").load());
+    SceneManager.addScene(AppScene.HELP, loadLoader("help").load());
+    SceneManager.addScene(AppScene.CHAT, loadLoader("chat").load());
+    SceneManager.addScene(AppScene.TELEVISION, loadLoader("television").load());
+    SceneManager.addScene(AppScene.KEYPAD, loadLoader("keypad").load());
 
-    // // Store references to the room, chat, help and television controllers:
-    FXMLLoader help = loadLoader("help");
-    SceneManager.addScene(AppScene.HELP, help.load());
-    helpController = help.getController();
-
+    // Store references to the room controller
     FXMLLoader room = loadLoader("room");
     SceneManager.addScene(AppScene.ROOM, room.load());
     roomController = room.getController();
-
-    FXMLLoader chat = loadLoader("chat");
-    SceneManager.addScene(AppScene.CHAT, chat.load());
-    chatController = chat.getController();
-
-    FXMLLoader television = loadLoader("television");
-    SceneManager.addScene(AppScene.TELEVISION, television.load());
-    televisionController = television.getController();
-
-    FXMLLoader keypad = loadLoader("keypad");
-    SceneManager.addScene(AppScene.KEYPAD, keypad.load());
-    keypadController = keypad.getController();
-
-    // Create timer object and pass in controllers:
-    timer =
-        new CountDownTimer(
-            roomController, chatController, televisionController, helpController, keypadController);
 
     // Store stage reference:
     stageTest = stage;

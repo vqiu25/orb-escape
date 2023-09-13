@@ -10,7 +10,7 @@ public class SceneManager {
     ROOM,
     TUTORIAL,
     CHAT,
-    PAUSE,
+    SETTINGS,
     GAMEOVER,
     TELEVISION,
     GAMEFINISHED,

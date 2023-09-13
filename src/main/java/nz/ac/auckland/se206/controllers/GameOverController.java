@@ -3,7 +3,7 @@ package nz.ac.auckland.se206.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
-public class GameOverController {
+public class GameOverController extends ControllerMethods {
 
   /** Quits the game. */
   @FXML

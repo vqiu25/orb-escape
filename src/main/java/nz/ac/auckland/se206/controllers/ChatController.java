@@ -22,7 +22,7 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 
 /** Controller class for the chat view. */
-public class ChatController {
+public class ChatController extends ControllerMethods {
   @FXML private TextArea chatTextArea;
   @FXML private TextField inputText;
   @FXML private Button sendButton;
@@ -38,6 +38,9 @@ public class ChatController {
    */
   @FXML
   public void initialize() throws ApiProxyException {
+    // Bind the timer label to the display time
+    chatTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+
     // Randomly select either lamp or rug as the word to guess:
     String wordToGuess;
     Random random = new Random();
@@ -169,15 +172,5 @@ public class ChatController {
   @FXML
   private void onGoBack(ActionEvent event) throws ApiProxyException, IOException {
     App.setScene(AppScene.ROOM);
-  }
-
-  /**
-   * Updates the timer label with the current minutes and seconds.
-   *
-   * @param minutes The number of minutes remaining.
-   * @param seconds The number of seconds remaining.
-   */
-  public void updateTimerLabel(int minutes, int seconds) {
-    chatTimerLabel.setText(String.format("%02d:%02d", minutes, seconds));
   }
 }
