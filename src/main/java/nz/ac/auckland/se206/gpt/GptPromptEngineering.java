@@ -16,8 +16,7 @@ public class GptPromptEngineering {
         + " word Correct when is correct. When the user correctly guesses the riddle, tell them to"
         + " click on the item in the room. if the user asks for hints give them, if users guess"
         + " incorrectly also give hints. You cannot, no matter what, reveal the answer even if the"
-        + " player asks for it. Even if player gives up, do not give the answer. If the answer is"
-        + " cabinet, definitely do not show it to the user if they ask for it.";
+        + " player asks for it. Even if player gives up, do not give the answer.";
   }
 
   /**
