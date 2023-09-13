@@ -7,6 +7,15 @@ public class GameState {
   public static boolean isLamp = false;
   public static boolean isRug = false;
 
+  // Indicates if light switch is on or off
+  public static boolean isLightOn = true;
+
+  // Indicates if map has been removed off the wall
+  public static boolean isMapOnWall = true;
+
+  // Indicates if all the orbs have been placed in the terminal
+  public static boolean isOrbsPlaced = false;
+
   /** Indicates whether the riddle has been resolved. */
   public static boolean isRiddleResolved =
       false; // this is set to true when the GPT thing sees correct
