@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="56.0" fitWidth="110.0" layoutX="666.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/buttonFrame.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="52.0" layoutX="730.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/cirlceButtonFrame.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="52.0" layoutX="677.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/cirlceButtonFrame.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="740.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/settingsUI.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="31.0" fitWidth="40.0" layoutX="689.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/helpUI.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="18.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Left:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Label fx:id="roomTimerLabel" layoutX="129.0" layoutY="18.0" text="2:00">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="694.0" layoutY="558.0" text="CHAT" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="taskLabel" layoutX="20.0" layoutY="51.0" text="Task: Talk to the game master!">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <ImageView fitHeight="485.0" fitWidth="549.0" layoutX="132.75" layoutY="55.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/centralRoom.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hotbar" fitHeight="53.0" fitWidth="227.0" layoutX="282.0" layoutY="556.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/hotbar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="leftArrow" fitHeight="54.0" fitWidth="56.0" layoutX="21.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/leftArrowOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="leftArrowHover" fitHeight="54.0" fitWidth="56.0" layoutX="21.0" layoutY="272.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/leftArrowTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="leftArrowPressed" fitHeight="54.0" fitWidth="56.0" layoutX="21.0" layoutY="272.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/leftArrowThree.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="floor" fitHeight="389.0" fitWidth="649.0" layoutX="99.0" layoutY="139.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/forestRoom.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="trees" fitHeight="214.0" fitWidth="246.0" layoutX="221.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/trees.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="rock" fitHeight="28.0" fitWidth="62.0" layoutX="456.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/rock.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="rockOutline" fitHeight="37.0" fitWidth="71.0" layoutX="451.0" layoutY="204.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/rockOutline.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="treesOutline" fitHeight="226.0" fitWidth="256.0" layoutX="216.0" layoutY="43.5" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/treesOutline.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="treesRemoved" fitHeight="103.0" fitWidth="147.0" layoutX="270.5" layoutY="165.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/treesRemoved.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="treesRemovedOutline" fitHeight="110.0" fitWidth="155.0" layoutX="266.5" layoutY="161.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/treesRemovedOutline.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="axe" fitHeight="104.0" fitWidth="61.0" layoutX="195.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/axe.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="axeOutline" fitHeight="117.0" fitWidth="64.0" layoutX="189.0" layoutY="202.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/axeOutline.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="axeRemoved" fitHeight="56.0" fitWidth="32.0" layoutX="195.0" layoutY="257.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/axeRemoved.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="axeRemovedOutline" fitHeight="67.0" fitWidth="45.0" layoutX="190.0" layoutY="250.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/axeRemovedOutline.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="fishingRod" fitHeight="120.0" fitWidth="185.0" layoutX="342.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fishingRod.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="125.0" fitWidth="99.0" layoutX="438.0" layoutY="251.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fishingRodOutline.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
