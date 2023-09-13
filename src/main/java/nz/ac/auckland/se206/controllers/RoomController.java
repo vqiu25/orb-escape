@@ -202,9 +202,47 @@ public class RoomController extends ControllerMethods {
     App.setScene(AppScene.LAVA);
   }
 
-  // Cabinet
+  /**
+   * If the cabinet riddle is selected and solved, the user can interact with the cabinet to see
+   * clue.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
-  private void cabinetClick(MouseEvent event) {}
+  private void cabinetClick(MouseEvent event) {
+    // if the riddle has NOT been solved give help
+    if (!GameState.isRiddleResolved) {
+      spamCount++;
+
+      if (spamCount == 5) {
+        Notifications message2 =
+            NotificationBuilder.createNotification(
+                "Open the chat to talk to me and get your first clue!", 6);
+        message2.show();
+      }
+      return;
+    }
+
+    // If the item has already been clicked, dont let them click again.
+    if (GameState.itemClicked) {
+      return;
+    }
+
+    // if cabinet riddle is selected and solved solved:
+    if (GameState.isCabinet && GameState.isRiddleResolved) {
+      GameState.itemClicked = true;
+
+      showDialog(
+          "You've found a clue!",
+          "TV Remote Found!",
+          "You found the TV remote! Turn on the TV for your next clue!");
+
+      updateTaskLabel("[Insert Task]");
+
+      Notifications message = NotificationBuilder.createNotification(chatMessage.getContent(), 6);
+      message.show();
+    }
+  }
 
   @FXML
   private void cabinetHover(MouseEvent event) {
@@ -216,9 +254,46 @@ public class RoomController extends ControllerMethods {
     cabinetOutline.setOpacity(0);
   }
 
-  // Rug
+  /**
+   * If the rug riddle is selected and solved, the user can interact with the rug to see clue.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
-  private void carpetClick(MouseEvent event) {}
+  private void carpetClick(MouseEvent event) {
+    // if the riddle has NOT been solved give help
+    if (!GameState.isRiddleResolved) {
+      spamCount++;
+
+      if (spamCount == 5) {
+        Notifications message2 =
+            NotificationBuilder.createNotification(
+                "Open the chat to talk to me and get your first clue!", 6);
+        message2.show();
+      }
+      return;
+    }
+
+    // If the item has already been clicked, dont let them click again.
+    if (GameState.itemClicked) {
+      return;
+    }
+
+    // if rug riddle is selected and solved
+    if (GameState.isRug && GameState.isRiddleResolved) {
+      GameState.itemClicked = true;
+
+      showDialog(
+          "You've found a clue!",
+          "TV Remote Found!",
+          "You found the TV remote! Turn on the TV for your next clue!");
+
+      updateTaskLabel("[Insert Task]");
+
+      Notifications message = NotificationBuilder.createNotification(chatMessage.getContent(), 6);
+      message.show();
+    }
+  }
 
   @FXML
   private void carpetHover(MouseEvent event) {
@@ -442,90 +517,6 @@ public class RoomController extends ControllerMethods {
   }
 
   /**
-   * If the lamp riddle is selected and solved, the user can interact with the lamp to see clue.
-   *
-   * @param event Mouse click event.
-   */
-  @FXML
-  private void lampClick(MouseEvent event) {
-
-    // if the riddle has NOT been solved give help
-    if (!GameState.isRiddleResolved) {
-      spamCount++;
-
-      if (spamCount == 5) {
-        Notifications message2 =
-            NotificationBuilder.createNotification(
-                "Open the chat to talk to me and get your first clue!", 6);
-        message2.show();
-      }
-      return;
-    }
-
-    // If the item has already been clicked, dont let them click again.
-    if (GameState.itemClicked) {
-      return;
-    }
-
-    // if lamp riddle is selected and solved solved:
-    if (GameState.isLamp && GameState.isRiddleResolved) {
-      GameState.itemClicked = true;
-
-      showDialog(
-          "You've found a clue!",
-          "TV Remote Found!",
-          "You found the TV remote! Turn on the TV for your next clue!");
-
-      updateTaskLabel("Turn on the TV!");
-
-      Notifications message = NotificationBuilder.createNotification(chatMessage.getContent(), 6);
-      message.show();
-    }
-  }
-
-  /**
-   * If the rug riddle is selected and solved, the user can interact with the rug to see clue.
-   *
-   * @param event Mouse click event.
-   */
-  @FXML
-  private void rugClick(MouseEvent event) {
-
-    // if the riddle has NOT been solved give help
-    if (!GameState.isRiddleResolved) {
-      spamCount++;
-
-      if (spamCount == 5) {
-        Notifications message2 =
-            NotificationBuilder.createNotification(
-                "Open the chat to talk to me and get your first clue!", 6);
-        message2.show();
-      }
-      return;
-    }
-
-    // If the item has already been clicked, dont let them click again.
-    if (GameState.itemClicked) {
-      return;
-    }
-
-    // if rug riddle is selected and solved
-    if (GameState.isRug && GameState.isRiddleResolved) {
-      GameState.itemClicked = true;
-
-      showDialog(
-          "You've found a clue!",
-          "TV Remote Found!",
-          "You found the TV remote! Turn on the TV for your next clue!");
-
-      updateTaskLabel("Turn on the TV!");
-
-      Notifications message = NotificationBuilder.createNotification(chatMessage.getContent(), 6);
-      message.show();
-    }
-  }
-
-  /**
    * If the riddle has been solved, the user can interact with the TV to see clue.
    *
    * @param event Mouse click event.
@@ -622,7 +613,7 @@ public class RoomController extends ControllerMethods {
   }
 
   /**
-   * This method is called when the user clicks on the rug or lamp. It will call the game master
+   * This method is called when the user clicks on the rug or cabinet. It will call the game master
    * (powered by GPT) to generate a response.
    */
   private void gameMaster() {

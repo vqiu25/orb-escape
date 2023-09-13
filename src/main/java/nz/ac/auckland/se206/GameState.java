@@ -4,7 +4,7 @@ package nz.ac.auckland.se206;
 public class GameState {
 
   // Indicates which riddle has been selected:
-  public static boolean isLamp = false;
+  public static boolean isCabinet = false;
   public static boolean isRug = false;
 
   // Indicates if light switch is on or off
