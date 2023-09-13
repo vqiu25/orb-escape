@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -53,9 +54,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="47.0" layoutX="673.0" layoutY="548.0" onMouseClicked="#openChat" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="95.0" />
       <Rectangle fx:id="roomClock" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="31.0" layoutX="404.0" layoutY="161.0" onMouseClicked="#clockClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="32.0" />
       <Rectangle fx:id="roomDoor" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="113.0" layoutX="475.0" layoutY="185.0" onMouseClicked="#doorClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="61.0" />
-      <Rectangle fx:id="roomLamp" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="113.0" layoutX="112.0" layoutY="208.0" onMouseClicked="#lampClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="52.0" />
       <Rectangle fx:id="roomTelevision" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="77.0" layoutX="366.0" layoutY="315.0" onMouseClicked="#televisionClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="133.0" />
-      <Rectangle fx:id="roomRug" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="77.0" layoutX="222.0" layoutY="289.0" onMouseClicked="#rugClick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="146.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="58.0" layoutY="280.0" onMouseClicked="#helpUser" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="52.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="46.0" layoutX="735.0" layoutY="15.0" onMouseClicked="#openSettings" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="41.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="46.0" layoutX="683.0" layoutY="16.0" onMouseClicked="#openHelp" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="41.0" />
@@ -157,16 +156,6 @@
             <Image url="@../images/darkOverlay.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="portal" fitHeight="150.0" fitWidth="200.0" layoutX="564.0" layoutY="251.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/glowyPortal.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="portalOutline" fitHeight="167.0" fitWidth="68.0" layoutX="559.0" layoutY="245.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/glowyPortalOutline.gif" />
-         </image>
-      </ImageView>
       <ImageView fx:id="code" fitHeight="53.0" fitWidth="71.0" layoutX="190.0" layoutY="166.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/code.png" />
@@ -175,6 +164,16 @@
       <ImageView fx:id="codeOutline" fitHeight="62.0" fitWidth="76.0" layoutX="186.0" layoutY="162.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/codeOutline.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="portal" fitHeight="150.0" fitWidth="200.0" layoutX="564.0" layoutY="251.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/glowyPortal.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="portalOutline" fitHeight="167.0" fitWidth="68.0" layoutX="559.0" layoutY="245.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/glowyPortalOutline.gif" />
          </image>
       </ImageView>
       <ImageView fx:id="glowParticleTwo" fitHeight="25.0" fitWidth="18.0" layoutX="213.0" layoutY="173.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
@@ -224,5 +223,13 @@
       </ImageView>
       <Rectangle fx:id="leftRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="51.0" layoutX="22.0" layoutY="272.0" onMouseEntered="#leftButtonHovered" onMouseExited="#leftButtonUnhovered" onMousePressed="#leftButtonClicked" onMouseReleased="#leftButtonUnclick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="53.0" />
       <Rectangle fx:id="rightRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="51.0" layoutX="724.0" layoutY="272.0" onMouseEntered="#rightButtonHovered" onMouseExited="#rightButtonUnhovered" onMousePressed="#rightButtonClicked" onMouseReleased="#rightButtonUnclick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="53.0" />
+      <Polygon fx:id="cabinet" fill="DODGERBLUE" layoutX="236.0" layoutY="351.0" onMouseClicked="#cabinetClick" onMouseEntered="#cabinetHover" onMouseExited="#cabinetUnhover" opacity="0.0" points="73.21463012695312, 22.1519775390625, 73.21463012695312, -53.06842041015625, 43.12646484375, -69.61691284179688, -45.13212585449219, -27.994964599609375, -45.13212585449219, 48.7298583984375, -10.530746459960938, 65.27835083007812" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="carpet" fill="DODGERBLUE" layoutX="345.0" layoutY="396.0" onMouseClicked="#carpetClick" onMouseEntered="#carpetHover" onMouseExited="#carpetUnhover" opacity="0.0" points="69.021728515625, 52.37237548828125, 104.12460327148438, 32.8150634765625, 4.332183837890625, -18.836273193359375, -35.785369873046875, 0.219573974609375, -78.91171264648438, 22.1519775390625, 23.889495849609375, 74.43704223632812" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="pane" fill="DODGERBLUE" layoutX="345.0" layoutY="200.0" onMouseClicked="#paneClick" onMouseEntered="#paneHover" onMouseExited="#paneUnhover" opacity="0.0" points="70.02468872070312, 67.34194946289062, 55.9835205078125, -17.406387329101562, -9.207489013671875, -46.491607666015625, -13.720703125, 19.200881958007812, -30.770660400390625, 35.74937438964844, 55.9835205078125, 80.38015747070312" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="mapPoster" fill="DODGERBLUE" layoutX="216.0" layoutY="163.0" onMouseClicked="#mapClick" onMouseEntered="#mapHover" onMouseExited="#mapUnhover" opacity="0.0" points="29.654769897460938, 61.07695007324219, 69.02175903320312, 41.26780700683594, 69.02175903320312, -45.04346466064453, -24.112899780273438, 3.7719268798828125, -53.11915588378906, 20.043731689453125, -53.11915588378906, 98.57284545898438" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="terminal" fill="DODGERBLUE" layoutX="501.0" layoutY="361.0" onMouseClicked="#terminalClick" onMouseEntered="#terminalHover" onMouseExited="#terminalUnhover" opacity="0.0" points="58.4478759765625, 7.13726806640625, 3.286224365234375, -25.959686279296875, -25.29754638671875, -4.897979736328125, -6.24169921875, 11.6505126953125, -6.24169921875, 36.723968505859375, 14.31854248046875, 43.243072509765625" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="lightSwitch" fill="DODGERBLUE" layoutX="457.0" layoutY="191.0" onMouseClicked="#switchClick" onMouseEntered="#switchHover" onMouseExited="#switchUnhover" opacity="0.0" points="29.73480224609375, 38.73173522949219, 29.73480224609375, 4.6318206787109375, -0.353363037109375, 10.147979736328125, -0.353363037109375, 47.75819396972656, 8.673095703125, 51.26847839355469, 25.2215576171875, 51.26847839355469" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="portalAndBase" fill="DODGERBLUE" layoutX="613.0" layoutY="390.0" onMouseClicked="#portalClick" onMouseEntered="#portalHover" onMouseExited="#portalUnhover" opacity="0.0" points="8.321044921875, -96.59103393554688, -9.36566162109375, -129.1346435546875, -41.9093017578125, -129.1346435546875, -53.936279296875, 30.753448486328125, -24.2225341796875, 49.147674560546875, 8.321044921875, 37.828155517578125" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="codedText" disable="true" fill="DODGERBLUE" layoutX="236.0" layoutY="166.0" onMouseClicked="#codeClick" onMouseEntered="#codeHover" onMouseExited="#codeUnhover" opacity="0.0" points="-4.4946136474609375, 41.267822265625, 22.38922119140625, 29.778167724609375, 13.899581909179688, 3.771942138671875, -20.058944702148438, 13.506378173828125, -39.86808776855469, 29.778167724609375, -34.20832824707031, 55.95454406738281" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </Pane>

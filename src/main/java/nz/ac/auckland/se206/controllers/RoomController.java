@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Polygon;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameMaster;
 import nz.ac.auckland.se206.GameState;
@@ -29,6 +30,29 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView leftArrow;
   @FXML private ImageView leftArrowHover;
   @FXML private ImageView leftArrowPressed;
+  @FXML private ImageView cabinetOutline;
+  @FXML private ImageView rugOutline;
+  @FXML private ImageView windowOutline;
+  @FXML private ImageView mapOutline;
+  @FXML private ImageView terminalOutline;
+  @FXML private ImageView switchOn;
+  @FXML private ImageView switchOff;
+  @FXML private ImageView switchOnOutline;
+  @FXML private ImageView switchOffOutline;
+  @FXML private ImageView darkOverlay;
+  @FXML private ImageView hiddenCode;
+  @FXML private ImageView hiddenCodeOutline;
+  @FXML private ImageView code;
+  @FXML private ImageView codeOutline;
+  @FXML private ImageView glowParticleOne;
+  @FXML private ImageView glowParticleTwo;
+  @FXML private ImageView glowParticleThree;
+  @FXML private ImageView map;
+  @FXML private ImageView portalBaseOutline;
+  @FXML private ImageView portalFrameOutline;
+  @FXML private ImageView portal;
+  @FXML private ImageView portalOutline;
+  @FXML private Polygon codedText;
 
   private TextToSpeech textToSpeech;
   private GameMaster gameMaster;
@@ -179,6 +203,284 @@ public class RoomController extends ControllerMethods {
   }
 
   /**
+   * If the cabinet riddle is selected and solved, the user can interact with the cabinet to see
+   * clue.
+   *
+   * @param event Mouse click event.
+   */
+  @FXML
+  private void cabinetClick(MouseEvent event) {
+    // if the riddle has NOT been solved give help
+    if (!GameState.isRiddleResolved) {
+      spamCount++;
+
+      if (spamCount == 5) {
+        Notifications message2 =
+            NotificationBuilder.createNotification(
+                "Open the chat to talk to me and get your first clue!", 6);
+        message2.show();
+      }
+      return;
+    }
+
+    // If the item has already been clicked, dont let them click again.
+    if (GameState.itemClicked) {
+      return;
+    }
+
+    // if cabinet riddle is selected and solved solved:
+    if (GameState.isCabinet && GameState.isRiddleResolved) {
+      GameState.itemClicked = true;
+
+      showDialog(
+          "You've found a clue!",
+          "TV Remote Found!",
+          "You found the TV remote! Turn on the TV for your next clue!");
+
+      updateTaskLabel("[Insert Task]");
+
+      Notifications message = NotificationBuilder.createNotification(chatMessage.getContent(), 6);
+      message.show();
+    }
+  }
+
+  @FXML
+  private void cabinetHover(MouseEvent event) {
+    cabinetOutline.setOpacity(1);
+  }
+
+  @FXML
+  private void cabinetUnhover(MouseEvent event) {
+    cabinetOutline.setOpacity(0);
+  }
+
+  /**
+   * If the rug riddle is selected and solved, the user can interact with the rug to see clue.
+   *
+   * @param event Mouse click event.
+   */
+  @FXML
+  private void carpetClick(MouseEvent event) {
+    // if the riddle has NOT been solved give help
+    if (!GameState.isRiddleResolved) {
+      spamCount++;
+
+      if (spamCount == 5) {
+        Notifications message2 =
+            NotificationBuilder.createNotification(
+                "Open the chat to talk to me and get your first clue!", 6);
+        message2.show();
+      }
+      return;
+    }
+
+    // If the item has already been clicked, dont let them click again.
+    if (GameState.itemClicked) {
+      return;
+    }
+
+    // if rug riddle is selected and solved
+    if (GameState.isRug && GameState.isRiddleResolved) {
+      GameState.itemClicked = true;
+
+      showDialog(
+          "You've found a clue!",
+          "TV Remote Found!",
+          "You found the TV remote! Turn on the TV for your next clue!");
+
+      updateTaskLabel("[Insert Task]");
+
+      Notifications message = NotificationBuilder.createNotification(chatMessage.getContent(), 6);
+      message.show();
+    }
+  }
+
+  @FXML
+  private void carpetHover(MouseEvent event) {
+    rugOutline.setOpacity(1);
+  }
+
+  @FXML
+  private void carpetUnhover(MouseEvent event) {
+    rugOutline.setOpacity(0);
+  }
+
+  // Window
+  @FXML
+  private void paneClick(MouseEvent event) {}
+
+  @FXML
+  private void paneHover(MouseEvent event) {
+    windowOutline.setOpacity(1);
+  }
+
+  @FXML
+  private void paneUnhover(MouseEvent event) {
+    windowOutline.setOpacity(0);
+  }
+
+  // Map
+  @FXML
+  private void mapClick(MouseEvent event) {
+    map.setOpacity(0);
+    mapOutline.setOpacity(0);
+    GameState.isMapOnWall = false;
+    codedText.setDisable(false);
+    // Update Code
+    if (GameState.isLightOn) {
+      hiddenCode.setOpacity(1);
+    } else {
+      code.setOpacity(1);
+      glowParticleOne.setOpacity(1);
+      glowParticleTwo.setOpacity(1);
+      glowParticleThree.setOpacity(1);
+    }
+  }
+
+  @FXML
+  private void mapHover(MouseEvent event) {
+    if (GameState.isMapOnWall) {
+      mapOutline.setOpacity(1);
+    }
+  }
+
+  @FXML
+  private void mapUnhover(MouseEvent event) {
+    if (GameState.isMapOnWall) {
+      mapOutline.setOpacity(0);
+    }
+  }
+
+  // Terminal
+  @FXML
+  private void terminalClick(MouseEvent event) {}
+
+  @FXML
+  private void terminalHover(MouseEvent event) {
+    terminalOutline.setOpacity(1);
+  }
+
+  @FXML
+  private void terminalUnhover(MouseEvent event) {
+    terminalOutline.setOpacity(0);
+  }
+
+  // Light Switch
+  @FXML
+  private void switchClick(MouseEvent event) {
+    if (GameState.isLightOn) {
+      // Update Switch Images
+      switchOn.setOpacity(0);
+      switchOnOutline.setOpacity(0);
+      switchOff.setOpacity(1);
+      switchOffOutline.setOpacity(1);
+      // Update Overlay
+      darkOverlay.setOpacity(1);
+      // Update Code
+      if (!GameState.isMapOnWall) {
+        hiddenCode.setOpacity(0);
+        code.setOpacity(1);
+        glowParticleOne.setOpacity(1);
+        glowParticleTwo.setOpacity(1);
+        glowParticleThree.setOpacity(1);
+      }
+      // Update GameState
+      GameState.isLightOn = false;
+    } else {
+      // Update Switch Images
+      switchOn.setOpacity(1);
+      switchOnOutline.setOpacity(1);
+      switchOff.setOpacity(0);
+      switchOffOutline.setOpacity(0);
+      // Update Overlay
+      darkOverlay.setOpacity(0);
+      // Update Code
+      hiddenCode.setOpacity(1);
+      code.setOpacity(0);
+      glowParticleOne.setOpacity(0);
+      glowParticleTwo.setOpacity(0);
+      glowParticleThree.setOpacity(0);
+      // Update GameState
+      GameState.isLightOn = true;
+    }
+  }
+
+  @FXML
+  private void switchHover(MouseEvent event) {
+    if (GameState.isLightOn) {
+      switchOnOutline.setOpacity(1);
+    } else {
+      switchOffOutline.setOpacity(1);
+    }
+  }
+
+  @FXML
+  private void switchUnhover(MouseEvent event) {
+    if (GameState.isLightOn) {
+      switchOnOutline.setOpacity(0);
+    } else {
+      switchOffOutline.setOpacity(0);
+    }
+  }
+
+  // Portal
+  @FXML
+  private void portalClick(MouseEvent event) {}
+
+  @FXML
+  private void portalHover(MouseEvent event) {
+    portalBaseOutline.setOpacity(1);
+    if (GameState.isOrbsPlaced) {
+      portalOutline.setOpacity(1);
+    } else {
+      portalFrameOutline.setOpacity(1);
+    }
+  }
+
+  @FXML
+  private void portalUnhover(MouseEvent event) {
+    portalBaseOutline.setOpacity(0);
+    if (GameState.isOrbsPlaced) {
+      portalOutline.setOpacity(0);
+    } else {
+      portalFrameOutline.setOpacity(0);
+    }
+  }
+
+  private void turnPortalOn() {
+    GameState.isOrbsPlaced = true;
+    portal.setOpacity(1);
+  }
+
+  // Code
+  @FXML
+  private void codeClick(MouseEvent event) {
+    if (GameState.isLightOn) {
+
+    } else {
+
+    }
+  }
+
+  @FXML
+  private void codeHover(MouseEvent event) {
+    if (!GameState.isMapOnWall && !GameState.isLightOn) {
+      codeOutline.setOpacity(1);
+    } else {
+      hiddenCodeOutline.setOpacity(1);
+    }
+  }
+
+  @FXML
+  private void codeUnhover(MouseEvent event) {
+    if (!GameState.isMapOnWall && !GameState.isLightOn) {
+      codeOutline.setOpacity(0);
+    } else {
+      hiddenCodeOutline.setOpacity(0);
+    }
+  }
+
+  /**
    * Allows user to enter a pin to unlock the door
    *
    * @param event Mouse click event.
@@ -211,90 +513,6 @@ public class RoomController extends ControllerMethods {
       // Switch scene to the keypad:
       App.setScene(AppScene.KEYPAD);
       return;
-    }
-  }
-
-  /**
-   * If the lamp riddle is selected and solved, the user can interact with the lamp to see clue.
-   *
-   * @param event Mouse click event.
-   */
-  @FXML
-  private void lampClick(MouseEvent event) {
-
-    // if the riddle has NOT been solved give help
-    if (!GameState.isRiddleResolved) {
-      spamCount++;
-
-      if (spamCount == 5) {
-        Notifications message2 =
-            NotificationBuilder.createNotification(
-                "Open the chat to talk to me and get your first clue!", 6);
-        message2.show();
-      }
-      return;
-    }
-
-    // If the item has already been clicked, dont let them click again.
-    if (GameState.itemClicked) {
-      return;
-    }
-
-    // if lamp riddle is selected and solved solved:
-    if (GameState.isLamp && GameState.isRiddleResolved) {
-      GameState.itemClicked = true;
-
-      showDialog(
-          "You've found a clue!",
-          "TV Remote Found!",
-          "You found the TV remote! Turn on the TV for your next clue!");
-
-      updateTaskLabel("Turn on the TV!");
-
-      Notifications message = NotificationBuilder.createNotification(chatMessage.getContent(), 6);
-      message.show();
-    }
-  }
-
-  /**
-   * If the rug riddle is selected and solved, the user can interact with the rug to see clue.
-   *
-   * @param event Mouse click event.
-   */
-  @FXML
-  private void rugClick(MouseEvent event) {
-
-    // if the riddle has NOT been solved give help
-    if (!GameState.isRiddleResolved) {
-      spamCount++;
-
-      if (spamCount == 5) {
-        Notifications message2 =
-            NotificationBuilder.createNotification(
-                "Open the chat to talk to me and get your first clue!", 6);
-        message2.show();
-      }
-      return;
-    }
-
-    // If the item has already been clicked, dont let them click again.
-    if (GameState.itemClicked) {
-      return;
-    }
-
-    // if rug riddle is selected and solved
-    if (GameState.isRug && GameState.isRiddleResolved) {
-      GameState.itemClicked = true;
-
-      showDialog(
-          "You've found a clue!",
-          "TV Remote Found!",
-          "You found the TV remote! Turn on the TV for your next clue!");
-
-      updateTaskLabel("Turn on the TV!");
-
-      Notifications message = NotificationBuilder.createNotification(chatMessage.getContent(), 6);
-      message.show();
     }
   }
 
@@ -395,7 +613,7 @@ public class RoomController extends ControllerMethods {
   }
 
   /**
-   * This method is called when the user clicks on the rug or lamp. It will call the game master
+   * This method is called when the user clicks on the rug or cabinet. It will call the game master
    * (powered by GPT) to generate a response.
    */
   private void gameMaster() {

@@ -4,8 +4,17 @@ package nz.ac.auckland.se206;
 public class GameState {
 
   // Indicates which riddle has been selected:
-  public static boolean isLamp = false;
+  public static boolean isCabinet = false;
   public static boolean isRug = false;
+
+  // Indicates if light switch is on or off
+  public static boolean isLightOn = true;
+
+  // Indicates if map has been removed off the wall
+  public static boolean isMapOnWall = true;
+
+  // Indicates if all the orbs have been placed in the terminal
+  public static boolean isOrbsPlaced = false;
 
   /** Indicates whether the riddle has been resolved. */
   public static boolean isRiddleResolved =

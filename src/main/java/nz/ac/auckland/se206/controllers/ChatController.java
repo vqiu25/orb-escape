@@ -47,8 +47,8 @@ public class ChatController extends ControllerMethods {
     int randomInt = random.nextInt(20); // Picks a random number between 0 and 20
 
     if (randomInt <= 10) {
-      wordToGuess = "lamp"; // If number is less than or equal to 10, word to guess is lamp
-      GameState.isLamp = true;
+      wordToGuess = "cabinet"; // If number is less than or equal to 10, word to guess is cabinet
+      GameState.isCabinet = true;
     } else {
       wordToGuess = "rug";
       GameState.isRug = true;
