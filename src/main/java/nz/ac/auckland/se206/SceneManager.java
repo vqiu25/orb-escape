@@ -8,6 +8,8 @@ public class SceneManager {
   public enum AppScene {
     START,
     ROOM,
+    FOREST,
+    LAVA,
     TUTORIAL,
     CHAT,
     SETTINGS,
