@@ -14,7 +14,7 @@ import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 import org.controlsfx.control.Notifications;
 
-public class TelevisionController {
+public class TelevisionController extends ControllerMethods {
 
   @FXML private Label televisionTimerLabel;
 
@@ -22,6 +22,9 @@ public class TelevisionController {
   private ChatMessage chatMessage;
 
   public void initialize() throws ApiProxyException {
+    // Bind the timer label to the display time
+    televisionTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+
     gameMaster = new GameMaster();
     gameMaster.chatCompletionRequest();
 
@@ -31,16 +34,6 @@ public class TelevisionController {
             GptPromptEngineering.chatWithGameMaster(
                 "how dumb it is to see maths on the television"));
     chatMessage = gameMaster.runGameMaster(msg);
-  }
-
-  /**
-   * Updates the timer label with the current minutes and seconds.
-   *
-   * @param minutes Number of minutes remaining.
-   * @param seconds Number of seconds remaining.
-   */
-  public void updateTimerLabel(int minutes, int seconds) {
-    televisionTimerLabel.setText(String.format("%02d:%02d", minutes, seconds));
   }
 
   /**

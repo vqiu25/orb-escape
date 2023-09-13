@@ -13,4 +13,7 @@ public class GameState {
 
   // check if item as told by the riddle has been clicked - this will allow the TV to be accessed
   public static boolean itemClicked = false;
+
+  // Check if the player has escaped
+  public static boolean isRoomEscaped = false;
 }

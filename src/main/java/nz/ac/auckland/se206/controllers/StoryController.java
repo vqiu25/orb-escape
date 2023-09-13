@@ -5,7 +5,7 @@ import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 
-public class StoryController {
+public class StoryController extends ControllerMethods {
 
   @FXML
   private void onContinue(MouseEvent event) {

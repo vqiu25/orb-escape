@@ -8,7 +8,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.CountDownTimer;
 import nz.ac.auckland.se206.GameMaster;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
@@ -19,7 +18,7 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 import org.controlsfx.control.Notifications;
 
 /** Controller class for the room view. */
-public class RoomController {
+public class RoomController extends ControllerMethods {
 
   @FXML private Label taskLabel;
   @FXML private Label roomTimerLabel;
@@ -30,21 +29,13 @@ public class RoomController {
 
   /** Initializes the room view, it is called when the room loads. */
   public void initialize() {
+    // Bind the timer label to the display time
+    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+
     // Initialize game master object:
     gameMaster = new GameMaster();
     gameMaster.chatCompletionRequest();
     gameMaster();
-  }
-
-  /**
-   * Pauses the game, stopping the timer.
-   *
-   * @param event Mouse click event.
-   */
-  @FXML
-  private void pauseGame(MouseEvent event) {
-    CountDownTimer.pauseTimer();
-    App.setScene(AppScene.PAUSE);
   }
 
   /** Opens the chat window with the game master. */
@@ -54,7 +45,7 @@ public class RoomController {
   }
 
   /**
-   * Opens the help window GUI and pauses the time.
+   * Opens the help window GUI.
    *
    * @param event Mouse click event.
    */
@@ -64,13 +55,13 @@ public class RoomController {
   }
 
   /**
-   * Updates the timer label with the current minutes and seconds.
+   * Opens the settings scene.
    *
-   * @param minutes The number of minutes remaining.
-   * @param seconds The number of seconds remaining.
+   * @param event
    */
-  public void updateTimerLabel(int minutes, int seconds) {
-    roomTimerLabel.setText(String.format("%02d:%02d", minutes, seconds));
+  @FXML
+  private void openSettings(MouseEvent event) {
+    App.setScene(AppScene.SETTINGS);
   }
 
   /**

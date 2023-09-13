@@ -7,7 +7,7 @@ import javafx.geometry.Pos;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 
-public class StartScreenController {
+public class StartScreenController extends ControllerMethods {
   /** Switches the scene from the start GUI to tutorial GUI. */
   @FXML
   private void onLaunchGame() {
