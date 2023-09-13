@@ -6,6 +6,7 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameMaster;
@@ -22,6 +23,13 @@ public class RoomController extends ControllerMethods {
 
   @FXML private Label taskLabel;
   @FXML private Label roomTimerLabel;
+  @FXML private ImageView rightArrow;
+  @FXML private ImageView rightArrowHover;
+  @FXML private ImageView rightArrowPressed;
+  @FXML private ImageView leftArrow;
+  @FXML private ImageView leftArrowHover;
+  @FXML private ImageView leftArrowPressed;
+
   private TextToSpeech textToSpeech;
   private GameMaster gameMaster;
   private ChatMessage chatMessage;
@@ -86,6 +94,88 @@ public class RoomController extends ControllerMethods {
     alert.setHeaderText(headerText);
     alert.setContentText(message);
     alert.showAndWait();
+  }
+
+  /**
+   * When the right arrow is no longer hovered over.
+   *
+   * @param event Mouse click event.
+   */
+  @FXML
+  private void rightButtonUnhovered(MouseEvent event) {
+    rightArrowHover.setOpacity(0);
+  }
+
+  /**
+   * When the right arrow is hovered over.
+   *
+   * @param event Mouse click event.
+   */
+  @FXML
+  private void rightButtonHovered(MouseEvent event) {
+    rightArrowHover.setOpacity(1);
+  }
+
+  /**
+   * When the right arrow is pressed.
+   *
+   * @param event Mouse click event.
+   */
+  @FXML
+  private void rightButtonClicked(MouseEvent event) {
+    rightArrowPressed.setOpacity(1);
+  }
+
+  /**
+   * When the right arrow is no longer pressed.
+   *
+   * @param event Mouse click event.
+   */
+  @FXML
+  private void rightButtonUnclick(MouseEvent event) {
+    rightArrowPressed.setOpacity(0);
+    App.setScene(AppScene.FOREST);
+  }
+
+  /**
+   * When the left arrow is hovered over.
+   *
+   * @param event Mouse click event.
+   */
+  @FXML
+  private void leftButtonUnhovered(MouseEvent event) {
+    leftArrowHover.setOpacity(0);
+  }
+
+  /**
+   * When the left arrow is no longer hovered over.
+   *
+   * @param event Mouse click event.
+   */
+  @FXML
+  private void leftButtonHovered(MouseEvent event) {
+    leftArrowHover.setOpacity(1);
+  }
+
+  /**
+   * When the left arrow pressed.
+   *
+   * @param event Mouse click event.
+   */
+  @FXML
+  private void leftButtonClicked(MouseEvent event) {
+    leftArrowPressed.setOpacity(1);
+  }
+
+  /**
+   * When the left arrow is no longer pressed.
+   *
+   * @param event Mouse click event.
+   */
+  @FXML
+  private void leftButtonUnclick(MouseEvent event) {
+    leftArrowPressed.setOpacity(0);
+    App.setScene(AppScene.LAVA);
   }
 
   /**
