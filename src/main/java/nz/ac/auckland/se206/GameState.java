@@ -16,6 +16,12 @@ public class GameState {
   // Indicates if all the orbs have been placed in the terminal
   public static boolean isOrbsPlaced = false;
 
+  // Indicates if trees have been chopped down
+  public static boolean isChopped = false;
+
+  // Indicates if the axe has been taken
+  public static boolean isAxeTaken = false;
+
   /** Indicates whether the riddle has been resolved. */
   public static boolean isRiddleResolved =
       false; // this is set to true when the GPT thing sees correct
