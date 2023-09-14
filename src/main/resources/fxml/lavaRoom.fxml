@@ -94,7 +94,7 @@
             <Image url="@../images/door.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="bridgeOutline" fitHeight="139.0" fitWidth="244.0" layoutX="168.0" layoutY="279.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bridgeOutline" fitHeight="139.0" fitWidth="244.0" layoutX="168.0" layoutY="279.0" onMouseClicked="#bridgeClicked" onMouseEntered="#bridgeHovered" onMouseExited="#bridgeUnhovered" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/bridgeOutline.png" />
          </image>
@@ -104,7 +104,7 @@
             <Image url="@../images/brokenBridge.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="brokenBridgeOutline" fitHeight="139.0" fitWidth="244.0" layoutX="168.0" layoutY="279.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="brokenBridgeOutline" fitHeight="139.0" fitWidth="244.0" layoutX="168.0" layoutY="279.0" onMouseClicked="#brokenBridgeClicked" onMouseEntered="#brokenBridgeHovered" onMouseExited="#brokenBridgeUnhovered" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/brokenBridgeOutline.png" />
          </image>
@@ -114,7 +114,7 @@
             <Image url="@../images/fixedBridge.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="fixedBridgeOutline" fitHeight="139.0" fitWidth="244.0" layoutX="168.0" layoutY="279.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="fixedBridgeOutline" fitHeight="139.0" fitWidth="244.0" layoutX="168.0" layoutY="279.0" onMouseClicked="#fixedBridgeClicked" onMouseEntered="#fixedBridgeHovered" onMouseExited="#fixedBridgeUnhovered" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/fixedBridgeOutline.png" />
          </image>
@@ -134,7 +134,7 @@
             <Image url="@../images/lavaParticle.gif" />
          </image>
       </ImageView>
-      <ImageView fitHeight="91.0" fitWidth="57.0" layoutX="343.0" layoutY="226.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="doorOutline" fitHeight="91.0" fitWidth="57.0" layoutX="343.0" layoutY="226.0" onMouseClicked="#doorClicked" onMouseEntered="#doorHovered" onMouseExited="#doorUnhovered" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/doorOutline.png" />
          </image>
@@ -144,7 +144,7 @@
             <Image url="@../images/dragon.gif" />
          </image>
       </ImageView>
-      <ImageView fx:id="dragonOutline" fitHeight="77.0" fitWidth="78.0" layoutX="250.0" layoutY="278.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="dragonOutline" fitHeight="77.0" fitWidth="78.0" layoutX="250.0" layoutY="278.0" onMouseClicked="#dragonClicked" onMouseEntered="#dragonHovered" onMouseExited="#dragonUnhovered" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/dragonOutline.gif" />
          </image>
