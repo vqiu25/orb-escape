@@ -150,5 +150,8 @@
          </image>
       </ImageView>
       <Rectangle fx:id="rightRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="51.0" layoutX="724.0" layoutY="272.0" onMouseEntered="#rightButtonHovered" onMouseExited="#rightButtonUnhovered" onMousePressed="#rightButtonClicked" onMouseReleased="#rightButtonUnclick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="53.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="47.0" layoutX="670.0" layoutY="549.0" onMouseClicked="#openChat" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="47.0" layoutX="679.0" layoutY="16.0" onMouseClicked="#openHelp" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="44.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="47.0" layoutX="734.0" layoutY="15.0" onMouseClicked="#openSettings" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="44.0" />
    </children>
 </Pane>

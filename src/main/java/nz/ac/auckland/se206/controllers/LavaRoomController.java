@@ -18,6 +18,21 @@ public class LavaRoomController extends ControllerMethods {
     roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
   }
 
+  @FXML
+  private void openChat() {
+    App.setScene(AppScene.CHAT);
+  }
+
+  @FXML
+  private void openHelp() {
+    App.setScene(AppScene.HELP);
+  }
+
+  @FXML
+  private void openSettings() {
+    App.setScene(AppScene.SETTINGS);
+  }
+
   /**
    * When the right arrow is no longer hovered over.
    *
