@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.RoomController">
+   <children>
+      <ImageView fitHeight="56.0" fitWidth="110.0" layoutX="666.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/buttonFrame.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="52.0" layoutX="730.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/cirlceButtonFrame.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="47.0" fitWidth="52.0" layoutX="677.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/cirlceButtonFrame.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="740.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/settingsUI.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="31.0" fitWidth="40.0" layoutX="689.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/helpUI.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="18.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Left:">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Label fx:id="roomTimerLabel" layoutX="129.0" layoutY="18.0" text="2:00">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="694.0" layoutY="558.0" text="CHAT" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="taskLabel" layoutX="20.0" layoutY="51.0" text="Task: Talk to the game master!">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <ImageView fx:id="hotbar" fitHeight="53.0" fitWidth="227.0" layoutX="282.0" layoutY="556.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/hotbar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="625.0" fitWidth="800.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fishingLayout.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="286.0" fitWidth="58.0" layoutX="388.0" layoutY="-67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fishingLine.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="46.0" fitWidth="84.0" layoutX="532.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fish.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="625.0" fitWidth="800.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/waterLayer.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="625.0" fitWidth="800.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/frameLayer.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="53.0" layoutX="331.0" layoutY="464.0" stroke="BLACK" strokeType="INSIDE" width="137.0" />
+   </children>
+</Pane>
