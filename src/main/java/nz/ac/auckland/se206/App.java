@@ -112,7 +112,7 @@ public class App extends Application {
     stageTest = stage;
 
     // Fetch start scene from hashmap and set scene:
-    currentScene = new Scene(loadLoader("room").load(), 800, 625);
+    currentScene = new Scene(loadLoader("start").load(), 800, 625);
     stage.setScene(currentScene);
     stage.show();
 

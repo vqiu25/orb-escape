@@ -65,9 +65,9 @@ public class RoomController extends ControllerMethods {
     roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
 
     // Initialize game master object:
-    // gameMaster = new GameMaster();
-    // gameMaster.chatCompletionRequest();
-    // gameMaster();
+    gameMaster = new GameMaster();
+    gameMaster.chatCompletionRequest();
+    gameMaster();
   }
 
   /** Opens the chat window with the game master. */
