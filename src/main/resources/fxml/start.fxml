@@ -1,42 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.StartScreenController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" style="-fx-background-color: #e9ecef;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.StartScreenController">
    <children>
-      <ImageView fitHeight="500.0" fitWidth="600.0" opacity="0.7" pickOnBounds="true">
-         <image>
-            <Image url="@../images/roomNew.png" />
-         </image>
-         <effect>
-            <GaussianBlur radius="15.0" />
-         </effect>
-      </ImageView>
-      <Label alignment="CENTER" layoutX="116.0" layoutY="91.0" text="ESCAIPE!" textAlignment="CENTER" underline="true">
+      <Label alignment="CENTER" layoutX="312.0" layoutY="83.0" text="Name" textAlignment="CENTER" underline="true">
          <font>
-            <Font name="System Bold" size="90.0" />
+            <Font name="System Bold" size="70.0" />
          </font>
       </Label>
-      <Button fx:id="buttonQuit" layoutX="331.0" layoutY="323.0" mnemonicParsing="false" onAction="#onLeaveGame" text="QUIT">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-      </Button>
-      <Button fx:id="buttonPlay" layoutX="171.0" layoutY="323.0" mnemonicParsing="false" onAction="#onLaunchGame" text="PLAY">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-      </Button>
-      <Label alignment="CENTER" layoutX="178.0" layoutY="211.0" text="Unleash your inner detective!" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutX="279.0" layoutY="178.0" text="Unleash your inner detective!" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
+      <ImageView fitHeight="283.0" fitWidth="234.0" layoutX="283.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startPane.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="startOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="startTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="262.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="startThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="262.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startThree.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="optionsOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="optionsTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="333.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="optionsThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="333.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startThree.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="quitOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="quitTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="403.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="quitThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="403.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startThree.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="343.0" layoutY="262.0" onMouseEntered="#startHover" onMouseExited="#startUnhover" onMousePressed="#startPressed" onMouseReleased="#startReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="343.0" layoutY="333.0" onMouseEntered="#optionsHover" onMouseExited="#optionsUnhover" onMousePressed="#optionsPressed" onMouseReleased="#optionsReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="343.0" layoutY="403.0" onMouseEntered="#quitHover" onMouseExited="#quitUnhover" onMousePressed="#quitPressed" onMouseReleased="#quitReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
    </children>
 </Pane>
