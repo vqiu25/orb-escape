@@ -73,6 +73,20 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
+
+    // Set mini game states:
+    int randomInt = new Random().nextInt(2);
+
+    if (randomInt == 1) {
+      System.out.println("here");
+      GameState.isLavaBridge = true;
+      GameState.isForrestTreeChopping = true;
+    } else {
+      System.out.println("there");
+      GameState.isLavaDragon = true;
+      GameState.isForrestFishing = true;
+    }
+
     // Add scenes to hashmap.
     SceneManager.addScene(AppScene.START, loadLoader("start").load());
     SceneManager.addScene(AppScene.TUTORIAL, loadLoader("tutorial").load());
@@ -86,6 +100,8 @@ public class App extends Application {
     SceneManager.addScene(AppScene.KEYPAD, loadLoader("keypad").load());
     SceneManager.addScene(AppScene.FOREST, loadLoader("forestRoom").load());
     SceneManager.addScene(AppScene.LAVA, loadLoader("lavaRoom").load());
+    SceneManager.addScene(AppScene.BRIDGE_GAME, loadLoader("bridgeGame").load());
+    SceneManager.addScene(AppScene.CASTLE, loadLoader("castleRoom").load());
 
     // Store references to the room controller
     FXMLLoader room = loadLoader("room");
@@ -94,17 +110,6 @@ public class App extends Application {
 
     // Store stage reference:
     stageTest = stage;
-
-    // Set minigame game states:
-    int randomInt = new Random().nextInt(2);
-
-    if (randomInt == 1) {
-      GameState.isLavaBridge = true;
-      GameState.isForrestTreeChopping = true;
-    } else {
-      GameState.isLavaDragon = true;
-      GameState.isForrestFishing = true;
-    }
 
     // Fetch start scene from hashmap and set scene:
     currentScene = new Scene(loadLoader("room").load(), 800, 625);

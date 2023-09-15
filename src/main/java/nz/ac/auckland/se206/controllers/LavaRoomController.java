@@ -171,6 +171,7 @@ public class LavaRoomController extends ControllerMethods {
       // -> switch scene to minigame (inside mini game, there will be a check to see if all the
       // planks has been placed in the right place. if it has, we need to enabled the FIXED BROKEN
       // BRIDGE COMPONENTS INSIDE THERE )
+      App.setScene(AppScene.BRIDGE_GAME);
     } else {
       // Forrest game NOT COMPLETED, prompt user to get wood.
       Notifications message =
@@ -355,6 +356,7 @@ public class LavaRoomController extends ControllerMethods {
     if (GameState.isLavaGameCompleted) {
       // if lava game room is COMPLETED, allow user to enter the castle
       // TODO: switch scene to castle - create new FXML and controller
+      App.setScene(AppScene.CASTLE);
     } else {
       // lava game room is NOT COMPLETED
       if (GameState.isLavaBridge) {

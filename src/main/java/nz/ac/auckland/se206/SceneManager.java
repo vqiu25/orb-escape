@@ -10,6 +10,8 @@ public class SceneManager {
     ROOM,
     FOREST,
     LAVA,
+    BRIDGE_GAME,
+    CASTLE,
     TUTORIAL,
     CHAT,
     SETTINGS,
