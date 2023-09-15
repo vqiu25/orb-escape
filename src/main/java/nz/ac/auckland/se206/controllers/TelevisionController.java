@@ -44,7 +44,8 @@ public class TelevisionController extends ControllerMethods {
   @FXML
   private void goBack(MouseEvent event) {
     // Create game master notification:
-    Notifications message = NotificationBuilder.createNotification(chatMessage.getContent(), 6);
+    Notifications message =
+        NotificationBuilder.createNotification("Game Master:", chatMessage.getContent(), 6);
     message.show();
 
     App.setScene(AppScene.ROOM);

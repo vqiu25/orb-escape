@@ -7,6 +7,17 @@ public class GameState {
   public static boolean isCabinet = false;
   public static boolean isRug = false;
 
+  // Indicates which minigame has been selected:
+  public static boolean isLavaBridge = false;
+  public static boolean isForrestTreeChopping = false;
+
+  public static boolean isLavaDragon = false;
+  public static boolean isForrestFishing = false;
+
+  // Indicates if the minigame has been completed:
+  public static boolean isLavaGameCompleted = false;
+  public static boolean isForrestGameCompleted = false;
+
   // Indicates if light switch is on or off
   public static boolean isLightOn = true;
 

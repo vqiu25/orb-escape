@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import java.util.Random;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -72,6 +73,20 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
+
+    // Set mini game states:
+    int randomInt = new Random().nextInt(2);
+
+    if (randomInt == 1) {
+      System.out.println("here");
+      GameState.isLavaBridge = true;
+      GameState.isForrestTreeChopping = true;
+    } else {
+      System.out.println("there");
+      GameState.isLavaDragon = true;
+      GameState.isForrestFishing = true;
+    }
+
     // Add scenes to hashmap.
     SceneManager.addScene(AppScene.START, loadLoader("start").load());
     SceneManager.addScene(AppScene.TUTORIAL, loadLoader("tutorial").load());
@@ -86,6 +101,8 @@ public class App extends Application {
     SceneManager.addScene(AppScene.FOREST, loadLoader("forestRoom").load());
     SceneManager.addScene(AppScene.FISHING, loadLoader("fishingMiniGame").load());
     SceneManager.addScene(AppScene.LAVA, loadLoader("lavaRoom").load());
+    SceneManager.addScene(AppScene.BRIDGE_GAME, loadLoader("bridgeGame").load());
+    SceneManager.addScene(AppScene.CASTLE, loadLoader("castleRoom").load());
 
     // Store references to the room controller
     FXMLLoader room = loadLoader("room");

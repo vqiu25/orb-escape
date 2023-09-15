@@ -217,7 +217,7 @@ public class RoomController extends ControllerMethods {
       if (spamCount == 5) {
         Notifications message2 =
             NotificationBuilder.createNotification(
-                "Open the chat to talk to me and get your first clue!", 6);
+                "Game Master:", "Open the chat to talk to me and get your first clue!", 6);
         message2.show();
       }
       return;
@@ -239,7 +239,8 @@ public class RoomController extends ControllerMethods {
 
       updateTaskLabel("[Insert Task]");
 
-      Notifications message = NotificationBuilder.createNotification(chatMessage.getContent(), 6);
+      Notifications message =
+          NotificationBuilder.createNotification("Game Master:", chatMessage.getContent(), 6);
       message.show();
     }
   }
@@ -268,7 +269,7 @@ public class RoomController extends ControllerMethods {
       if (spamCount == 5) {
         Notifications message2 =
             NotificationBuilder.createNotification(
-                "Open the chat to talk to me and get your first clue!", 6);
+                "Game Master:", "Open the chat to talk to me and get your first clue!", 6);
         message2.show();
       }
       return;
@@ -290,7 +291,8 @@ public class RoomController extends ControllerMethods {
 
       updateTaskLabel("[Insert Task]");
 
-      Notifications message = NotificationBuilder.createNotification(chatMessage.getContent(), 6);
+      Notifications message =
+          NotificationBuilder.createNotification("Game Master:", chatMessage.getContent(), 6);
       message.show();
     }
   }
@@ -531,7 +533,7 @@ public class RoomController extends ControllerMethods {
       if (spamCount == 5) {
         Notifications message2 =
             NotificationBuilder.createNotification(
-                "Open the chat to talk to me and get your first clue!", 6);
+                "Game Master:", "Open the chat to talk to me and get your first clue!", 6);
         message2.show();
       }
       return;
@@ -577,7 +579,8 @@ public class RoomController extends ControllerMethods {
   @FXML
   private void bookClick(MouseEvent event) {
     Notifications message =
-        NotificationBuilder.createNotification("Who even reads books these days!", 3);
+        NotificationBuilder.createNotification(
+            "Game Master:", "Who even reads books these days!", 3);
     message.show();
   }
 
@@ -589,7 +592,7 @@ public class RoomController extends ControllerMethods {
   @FXML
   void windowClick(MouseEvent event) {
     Notifications message =
-        NotificationBuilder.createNotification("Ha ha ha... yeah.. good luck.", 3);
+        NotificationBuilder.createNotification("Game Master:", "Ha ha ha... yeah.. good luck.", 3);
     message.show();
   }
 
@@ -607,7 +610,7 @@ public class RoomController extends ControllerMethods {
     if (spamCount == 5) {
       Notifications message2 =
           NotificationBuilder.createNotification(
-              "Open the chat to talk to me and get your first clue!", 6);
+              "Game Master:", "Open the chat to talk to me and get your first clue!", 6);
       message2.show();
     }
   }

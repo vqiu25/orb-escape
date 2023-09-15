@@ -11,6 +11,8 @@ public class SceneManager {
     FOREST,
     FISHING,
     LAVA,
+    BRIDGE_GAME,
+    CASTLE,
     TUTORIAL,
     CHAT,
     SETTINGS,
