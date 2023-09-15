@@ -116,6 +116,7 @@ public class App extends Application {
     // Fetch start scene from hashmap and set scene:
     currentScene = new Scene(loadLoader("start").load(), 800, 625);
     stage.setScene(currentScene);
+    stage.setResizable(false);
     stage.show();
 
     stage.setOnCloseRequest(e -> System.exit(0));
