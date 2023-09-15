@@ -72,16 +72,19 @@ public class LavaRoomController extends ControllerMethods {
     }
   }
 
+  /** Opens chat with game master. */
   @FXML
   private void openChat() {
     App.setScene(AppScene.CHAT);
   }
 
+  /** Opens help menu. */
   @FXML
   private void openHelp() {
     App.setScene(AppScene.HELP);
   }
 
+  /** Opens settings menu. */
   @FXML
   private void openSettings() {
     App.setScene(AppScene.SETTINGS);
@@ -129,62 +132,111 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   // Methods for minigame 1: fix bridge
+  /**
+   * When the broken bridge is hovered over, an outline is shown.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
   private void brokenBridgeHovered(MouseEvent event) {
     brokenBridgeOutline.setOpacity(1);
   }
 
+  /**
+   * When the broken bridge is unhovered, the outline is removed.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
   private void brokenBridgeUnhovered(MouseEvent event) {
     brokenBridgeOutline.setOpacity(0);
   }
 
+  /**
+   * When the broken bridge is clicked, if the user has completed the forrest mini game, they are
+   * prompted to fix the bridge, else, they are prompted to get wood.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
   private void brokenBridgeClicked(MouseEvent event) {
 
     System.out.println("Clicked broken bridge");
 
-    if (GameState.isLavaGameCompleted) {
-      // if lava game room is COMPLETEd (bridge has been fixed), prompt user to cross the
-      // bridge/enter the castle
+    if (GameState.isForrestGameCompleted) {
+      // if forrest game room is COMPLETED (planks of wood collected), prompt user to fix the bridge
+      // -> switch scene to minigame (inside mini game, there will be a check to see if all the
+      // planks has been placed in the right place. if it has, we need to enabled the FIXED BROKEN
+      // BRIDGE COMPONENTS INSIDE THERE )
     } else {
-      // if lava game room is NOT COMPLETED (bridge has not been fixed), prompt user to fix the
-      // bridge and open the bridge mini game
+      // if forrest game room is NOT COMPLETED (bridge has not been fixed), prompt user to finish
+      // the forrest game/get wood
     }
-
-    // in the minigame, we will need to check if the bridge has been fixed, if it has, we need to
-    // disable the broken bridge components/images/outlines and then renable the FIXED BROKEN BRIDGE
-    // image/outline (this allows us to access fixedBridgeClicked method)
   }
 
+  /**
+   * When the fixed bridge is hovered over, an outline is shown.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
   private void fixedBridgeHovered(MouseEvent event) {
     fixedBridgeOutline.setOpacity(1);
   }
 
+  /**
+   * When the fixed bridge is unhovered, the outline is removed.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
   private void fixedBridgeUnhovered(MouseEvent event) {
     fixedBridgeOutline.setOpacity(0);
   }
 
+  /**
+   * When the fixed bridge is clicked, the user is told that they are able to enter the castle.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
   private void fixedBridgeClicked(MouseEvent event) {
     System.out.println("Clicked fixed bridge");
 
     // tell user they can now enter the castle
+
+    // this state (fixed bridge hovered/unhovered/clicked) needs to be enabled when the bridge has
+    // been fixed
   }
 
-  // Methods for mini-game 2: tame dragon
+  // Methods for mini-game 2: Tame dragon
+  /**
+   * When the dragon is hovered over, an outline is shown.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
   private void dragonHovered(MouseEvent event) {
     dragonOutline.setOpacity(1);
   }
 
+  /**
+   * When the dragon is unhovered, the outline is removed.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
   private void dragonUnhovered(MouseEvent event) {
     dragonOutline.setOpacity(0);
   }
 
+  /**
+   * When the dragon is clicked, if the user has completed the forrest mini game, they are prompted
+   * to feed the dragon, else they are told they need to feed the dragon so that it allows them to
+   * cross.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
   private void dragonClicked(MouseEvent event) {
     System.out.println("Dragon clicked");
@@ -203,16 +255,32 @@ public class LavaRoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * When the bridge is hovered over, an outline is shown.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
   private void bridgeHovered(MouseEvent event) {
     bridgeOutline.setOpacity(1);
   }
 
+  /**
+   * When the bridge is unhovered, the outline is removed.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
   private void bridgeUnhovered(MouseEvent event) {
     bridgeOutline.setOpacity(0);
   }
 
+  /**
+   * When the bridge is clicked, if the user has fed the dragon (lava game completed), they are told
+   * that they are able to enter the castle, else they are told they need to feed the dragon.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
   private void bridgeClicked(MouseEvent event) {
     System.out.println("Bridge clicked");
@@ -226,16 +294,32 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   // Door methods:
+  /**
+   * When the door is hovered over, an outline is shown.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
   private void doorHovered(MouseEvent event) {
     doorOutline.setOpacity(1);
   }
 
+  /**
+   * When the door is unhovered, the outline is removed.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
   private void doorUnhovered(MouseEvent event) {
     doorOutline.setOpacity(0);
   }
 
+  /**
+   * When the door is clicked, if the user has completed the lava mini game they enter the castle,
+   * else they are told that they are unable to cross.
+   *
+   * @param event Mouse click event.
+   */
   @FXML
   private void doorClicked(MouseEvent event) {
     System.out.println("Door clicked");
