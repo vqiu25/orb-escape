@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.RoomController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.FishingMiniGameController">
    <children>
       <ImageView fitHeight="56.0" fitWidth="110.0" layoutX="666.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -64,19 +64,20 @@
             <Image url="@../images/fishingLayout.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="286.0" fitWidth="58.0" layoutX="388.0" layoutY="-67.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/fishingLine.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="46.0" fitWidth="84.0" layoutX="532.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="animatedFish" fitHeight="46.0" fitWidth="84.0" layoutX="532.0" layoutY="322.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/fish.gif" />
          </image>
       </ImageView>
+      <ImageView fx:id="rodLine" fitHeight="286.0" fitWidth="58.0" layoutX="388.0" layoutY="-67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fishingLine.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="rodHitbox" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="27.0" layoutX="388.0" layoutY="192.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="25.0" />
       <ImageView fitHeight="625.0" fitWidth="800.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/waterLayer.png" />
+            <Image url="@../images/waterLayerTwo.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="625.0" fitWidth="800.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
@@ -84,6 +85,7 @@
             <Image url="@../images/frameLayer.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="53.0" layoutX="331.0" layoutY="464.0" stroke="BLACK" strokeType="INSIDE" width="137.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="53.0" layoutX="331.0" layoutY="464.0" onMouseClicked="#rodDrop" stroke="BLACK" strokeType="INSIDE" width="137.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="53.0" layoutX="643.0" layoutY="19.0" stroke="BLACK" strokeType="INSIDE" width="137.0" />
    </children>
 </Pane>

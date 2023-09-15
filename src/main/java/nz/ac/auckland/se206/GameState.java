@@ -22,6 +22,9 @@ public class GameState {
   // Indicates if the axe has been taken
   public static boolean isAxeTaken = false;
 
+  // Indicates if the fish has been caught
+  public static boolean isFishCaught = false;
+
   /** Indicates whether the riddle has been resolved. */
   public static boolean isRiddleResolved =
       false; // this is set to true when the GPT thing sees correct

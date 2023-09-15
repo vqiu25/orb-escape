@@ -93,7 +93,10 @@ public class ForestRoomController extends ControllerMethods {
 
   // Fishing Rod
   @FXML
-  private void fishingClick(MouseEvent event) {}
+  private void fishingClick(MouseEvent event) {
+    // Prompt user to go to fishing room
+    App.setScene(AppScene.FISHING);
+  }
 
   @FXML
   private void fishingHover(MouseEvent event) {
