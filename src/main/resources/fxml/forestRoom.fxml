@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -139,11 +140,17 @@
             <Image url="@../images/fishingRod.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="125.0" fitWidth="99.0" layoutX="438.0" layoutY="251.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="fishingRodOutline" fitHeight="125.0" fitWidth="99.0" layoutX="438.0" layoutY="251.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/fishingRodOutline.png" />
          </image>
       </ImageView>
       <Rectangle fx:id="leftRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="51.0" layoutX="22.0" layoutY="272.0" onMouseEntered="#leftButtonHovered" onMouseExited="#leftButtonUnhovered" onMousePressed="#leftButtonClicked" onMouseReleased="#leftButtonUnclick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="53.0" />
+      <Polygon fx:id="boulder" fill="DODGERBLUE" layoutX="489.0" layoutY="202.0" onMouseClicked="#rockClick" onMouseEntered="#rockHover" onMouseExited="#rockUnhover" opacity="0.0" points="24.9527587890625, 28.496353149414062, 16.40093994140625, 16.024993896484375, 2.5042724609375, 7.4731903076171875, -22.03631591796875, 11.66943359375, -32.415557861328125, 30.634307861328125, -6.403839111328125, 33.12858581542969" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="fishingMini" fill="DODGERBLUE" layoutX="458.0" layoutY="301.0" onMouseClicked="#fishingClick" onMouseEntered="#fishingHover" onMouseExited="#fishingUnhover" opacity="0.0" points="57.4609375, -31.9945068359375, 49.811492919921875, 67.92633056640625, 62.2418212890625, 48.802703857421875, 62.2418212890625, -46.8153076171875, -10.90594482421875, 11.989776611328125, -13.77447509765625, 33.12860107421875, 16.40093994140625, 38.28472900390625, 16.40093994140625, 11.989776611328125" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="treesMini" fill="DODGERBLUE" layoutX="302.0" layoutY="170.0" onMouseClicked="#treesClick" onMouseEntered="#treesHover" onMouseExited="#treesUnhover" opacity="0.0" points="170.0, -7.36956787109375, 104.93447875976562, -117.3302993774414, 40.870391845703125, -95.81624603271484, -20.32513427734375, -72.1507797241211, -83.91111755371094, 36.136627197265625, -26.062225341796875, 88.0093994140625, 22.224884033203125, 68.64675903320312, 54.256927490234375, 68.64675903320312, 80.5518798828125, 54.30406188964844, 92.504150390625, 46.17652893066406, 114.0181884765625, 46.17652893066406, 119.5, 19.881561279296875" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="axeGrab" fill="DODGERBLUE" layoutX="196.0" layoutY="264.0" onMouseClicked="#axeClick" onMouseEntered="#axeHover" onMouseExited="#axeUnhover" opacity="0.0" points="48.86192321777344, -15.79144287109375, 3.92144775390625, -56.42909240722656, -0.3813629150390625, -46.38920593261719, 30.694503784179688, -19.1380615234375, -0.381378173828125, -2.30828857421875, -0.381378173828125, 46.55804443359375, 32.7353515625, 46.55804443359375, 30.694503784179688, 11.989776611328125" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="emptyLog" disable="true" fill="DODGERBLUE" layoutX="191.0" layoutY="262.0" onMouseClicked="#emptyLogClick" onMouseEntered="#emptyLogHover" onMouseExited="#emptyLogUnhover" opacity="0.0" points="36.41163635253906, 11.069244384765625, 36.41163635253906, 0.94171142578125, 30.0, -2.0, 15.37567138671875, -6.141998291015625, 3.92144775390625, 0.94171142578125, 3.92144775390625, 45.8822021484375, 36.41163635253906, 45.8822021484375, 36.41163635253906, 16.3282470703125" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="choppedTrees" disable="true" fill="DODGERBLUE" layoutX="312.0" layoutY="180.0" onMouseClicked="#choppedClick" onMouseEntered="#choppedHover" onMouseExited="#choppedUnhover" opacity="0.0" points="104.73532104492188, -9.720123291015625, 92.7830810546875, -12.588668823242188, 35.412261962890625, 5.5787506103515625, -37.73553466796875, 38.08888244628906, -37.73553466796875, 77.29226684570312, -25.30517578125, 83.98553466796875, -11.440582275390625, 77.29226684570312, 16.766754150390625, 57.212493896484375, 35.412261962890625, 57.212493896484375, 77.006103515625, 38.08888244628906, 98.04205322265625, 38.08888244628906, 104.73532104492188, 25.658538818359375" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </Pane>

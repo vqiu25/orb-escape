@@ -84,6 +84,7 @@ public class App extends Application {
     SceneManager.addScene(AppScene.TELEVISION, loadLoader("television").load());
     SceneManager.addScene(AppScene.KEYPAD, loadLoader("keypad").load());
     SceneManager.addScene(AppScene.FOREST, loadLoader("forestRoom").load());
+    SceneManager.addScene(AppScene.FISHING, loadLoader("fishingMiniGame").load());
     SceneManager.addScene(AppScene.LAVA, loadLoader("lavaRoom").load());
 
     // Store references to the room controller

@@ -9,6 +9,7 @@ public class SceneManager {
     START,
     ROOM,
     FOREST,
+    FISHING,
     LAVA,
     TUTORIAL,
     CHAT,
