@@ -6,13 +6,13 @@ import org.controlsfx.control.Notifications;
 
 public class NotificationBuilder {
 
-  public static Notifications createNotification(String message, int duration) {
+  public static Notifications createNotification(String title, String message, int duration) {
 
     Notifications notification =
         Notifications.create()
-            .title("Game Master:")
+            .title(title)
             .text(message)
-            .position(Pos.BOTTOM_LEFT)
+            .position(Pos.TOP_CENTER)
             .hideAfter(Duration.seconds(duration))
             .owner(App.getStage());
 

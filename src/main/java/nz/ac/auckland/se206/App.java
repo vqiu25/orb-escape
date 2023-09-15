@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import java.util.Random;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -73,20 +74,20 @@ public class App extends Application {
   @Override
   public void start(final Stage stage) throws IOException {
     // Add scenes to hashmap.
-    // SceneManager.addScene(AppScene.START, loadLoader("start").load());
-    // SceneManager.addScene(AppScene.TUTORIAL, loadLoader("tutorial").load());
+    SceneManager.addScene(AppScene.START, loadLoader("start").load());
+    SceneManager.addScene(AppScene.TUTORIAL, loadLoader("tutorial").load());
     SceneManager.addScene(AppScene.SETTINGS, loadLoader("settings").load());
-    // SceneManager.addScene(AppScene.GAMEOVER, loadLoader("gameover").load());
-    // SceneManager.addScene(AppScene.GAMEFINISHED, loadLoader("gamefinished").load());
-    // SceneManager.addScene(AppScene.STORY, loadLoader("story").load());
+    SceneManager.addScene(AppScene.GAMEOVER, loadLoader("gameover").load());
+    SceneManager.addScene(AppScene.GAMEFINISHED, loadLoader("gamefinished").load());
+    SceneManager.addScene(AppScene.STORY, loadLoader("story").load());
     SceneManager.addScene(AppScene.HELP, loadLoader("help").load());
-    // SceneManager.addScene(AppScene.CHAT, loadLoader("chat").load());
-    // SceneManager.addScene(AppScene.TELEVISION, loadLoader("television").load());
-    // SceneManager.addScene(AppScene.KEYPAD, loadLoader("keypad").load());
-    // SceneManager.addScene(AppScene.FOREST, loadLoader("forestRoom").load());
+    SceneManager.addScene(AppScene.CHAT, loadLoader("chat").load());
+    SceneManager.addScene(AppScene.TELEVISION, loadLoader("television").load());
+    SceneManager.addScene(AppScene.KEYPAD, loadLoader("keypad").load());
+    SceneManager.addScene(AppScene.FOREST, loadLoader("forestRoom").load());
     SceneManager.addScene(AppScene.LAVA, loadLoader("lavaRoom").load());
 
-    // // Store references to the room controller
+    // Store references to the room controller
     FXMLLoader room = loadLoader("room");
     SceneManager.addScene(AppScene.ROOM, room.load());
     roomController = room.getController();
@@ -94,8 +95,18 @@ public class App extends Application {
     // Store stage reference:
     stageTest = stage;
 
+    // Set minigame game states:
+    int randomInt = new Random().nextInt(2);
+
+    if (randomInt == 1) {
+      GameState.isLavaBridge = true;
+      GameState.isForrestTreeChopping = true;
+    } else {
+      GameState.isLavaDragon = true;
+      GameState.isForrestFishing = true;
+    }
+
     // Fetch start scene from hashmap and set scene:
-    // currentScene = new Scene(loadLoader("start").load(), 800, 625);
     currentScene = new Scene(loadLoader("room").load(), 800, 625);
     stage.setScene(currentScene);
     stage.show();

@@ -6,7 +6,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager.AppScene;
+import org.controlsfx.control.Notifications;
 
 public class LavaRoomController extends ControllerMethods {
 
@@ -164,13 +166,17 @@ public class LavaRoomController extends ControllerMethods {
     System.out.println("Clicked broken bridge");
 
     if (GameState.isForrestGameCompleted) {
-      // if forrest game room is COMPLETED (planks of wood collected), prompt user to fix the bridge
+      // TODO: if forrest game room is COMPLETED (planks of wood collected), prompt user to fix the
+      // bridge
       // -> switch scene to minigame (inside mini game, there will be a check to see if all the
       // planks has been placed in the right place. if it has, we need to enabled the FIXED BROKEN
       // BRIDGE COMPONENTS INSIDE THERE )
     } else {
-      // if forrest game room is NOT COMPLETED (bridge has not been fixed), prompt user to finish
-      // the forrest game/get wood
+      // Forrest game NOT COMPLETED, prompt user to get wood.
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master:", "The bridge broken. Try fixing it with some wood!", 5);
+      message.show();
     }
   }
 
@@ -203,10 +209,13 @@ public class LavaRoomController extends ControllerMethods {
   private void fixedBridgeClicked(MouseEvent event) {
     System.out.println("Clicked fixed bridge");
 
-    // tell user they can now enter the castle
+    Notifications message =
+        NotificationBuilder.createNotification(
+            "Game Master:", "Bridge fixed! You may now enter the castle.", 5);
+    message.show();
 
-    // this state (fixed bridge hovered/unhovered/clicked) needs to be enabled when the bridge has
-    // been fixed
+    // TODO: this state (fixed bridge hovered/unhovered/clicked) needs to be enabled when the bridge
+    // has been fixed (other bridge building mini game scene)
   }
 
   // Methods for mini-game 2: Tame dragon
@@ -243,15 +252,27 @@ public class LavaRoomController extends ControllerMethods {
 
     if (GameState.isForrestGameCompleted) {
       // if user has collected the fish, prompt the user to feed the dragon
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Dragon:", "Mmmm, yummy! In return have this orb I found.", 5);
+      message.show();
 
-      // dragon drops orbs and dragon is removed from scene
+      // TODO: set orb drop game state to true
 
       // set lava game state to completed
+      GameState.isLavaGameCompleted = true;
 
       // disable dragon and dragonoutline
+      dragon.setDisable(true);
+      dragonOutline.setDisable(true);
+
+      dragon.setOpacity(0);
 
     } else {
       // if the user has not collected the fish, prompt the user to collect the fish
+      Notifications message =
+          NotificationBuilder.createNotification("Dragon:", "ROARRR! YOU SHALL NOT PASS!", 5);
+      message.show();
     }
   }
 
@@ -286,10 +307,17 @@ public class LavaRoomController extends ControllerMethods {
     System.out.println("Bridge clicked");
 
     if (GameState.isLavaGameCompleted) {
-      // if lava game room is COMPLETEd (dragon tamed), prompt user to cross the
-      // bridge/enter the castle
+      // if lava game room is COMPLETEd (dragon tamed), prompt user to enter the castle
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master:", "You may now enter the castle!", 5);
+      message.show();
     } else {
       // if lava game room is NOT COMPLETED (dragon has not been tamed), prompt user to catch fish
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master:", "A hungry dragon is blocking your path. Try feeding it fish!", 5);
+      message.show();
     }
   }
 
@@ -326,9 +354,23 @@ public class LavaRoomController extends ControllerMethods {
 
     if (GameState.isLavaGameCompleted) {
       // if lava game room is COMPLETED, allow user to enter the castle
+      // TODO: switch scene to castle - create new FXML and controller
     } else {
-      // if lava game room is NOT COMPLETED, check if it is minigame 1 or 2, then prompt them to
-      // finish that game
+      // lava game room is NOT COMPLETED
+      if (GameState.isLavaBridge) {
+        // if lava game room is minigame 1, prompt user to fix the bridge
+        Notifications message =
+            NotificationBuilder.createNotification(
+                "Game Master:", "Door inaccessible... The bridge is broken!", 5);
+        message.show();
+
+      } else {
+        // if lava game room is minigame 2, prompt user to feed the dragon
+        Notifications message =
+            NotificationBuilder.createNotification(
+                "Game Master:", "A hungry dragon is blocking your path. Try feeding it fish!", 5);
+        message.show();
+      }
     }
   }
 }
