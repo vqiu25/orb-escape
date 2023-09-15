@@ -12,7 +12,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.SceneManager.AppScene;
 
 public class FishingMiniGameController extends ControllerMethods {
 
@@ -22,8 +24,17 @@ public class FishingMiniGameController extends ControllerMethods {
   @FXML private ImageView fishBite;
   @FXML private Rectangle rodHitbox;
   @FXML private ImageView rodLine;
+  @FXML private ImageView blueButtonOne;
+  @FXML private ImageView blueButtonTwo;
+  @FXML private ImageView blueButtonThree;
+  @FXML private ImageView backButtonOne;
+  @FXML private ImageView backButtonTwo;
+  @FXML private ImageView backButtonThree;
+  @FXML private Rectangle rodRectangle;
 
   private boolean isFlipped = false;
+  private boolean isRunning = false;
+  private boolean isFishDelay = false;
 
   public void initialize() {
     // Bind the timer label to the display time
@@ -70,7 +81,6 @@ public class FishingMiniGameController extends ControllerMethods {
 
       // Coordinate of collision
       double collisionY = Math.max(rodBounds.getMinY(), fishBounds.getMinY());
-      System.out.println(collisionY);
 
       // Depending on the height of the collision, the fish will disappear at a different time
       if (collisionY > 310) {
@@ -82,6 +92,8 @@ public class FishingMiniGameController extends ControllerMethods {
         delay.setOnFinished(event -> fishBite.setOpacity(0));
         delay.play();
       }
+
+      isFishDelay = true;
     }
   }
 
@@ -105,6 +117,10 @@ public class FishingMiniGameController extends ControllerMethods {
     rodTransition.setCycleCount(2);
     rodTransition.setByY(155);
     rodTransition.setAutoReverse(true);
+    rodTransition.setOnFinished(
+        event -> {
+          isRunning = false;
+        });
     rodTransition.play();
   }
 
@@ -131,10 +147,60 @@ public class FishingMiniGameController extends ControllerMethods {
   }
 
   // Cast fishing rod button
-  @FXML
-  private void rodDrop(MouseEvent event) {
+  private void rodDrop() {
+    isRunning = true;
     moveFishingLine();
     moveFishingHitbox();
     moveFishBite();
+  }
+
+  @FXML
+  private void blueHover(MouseEvent event) {
+    blueButtonTwo.setOpacity(1);
+  }
+
+  @FXML
+  private void blueUnhover(MouseEvent event) {
+    blueButtonTwo.setOpacity(0);
+  }
+
+  @FXML
+  private void bluePressed(MouseEvent event) {
+    blueButtonThree.setOpacity(1);
+  }
+
+  @FXML
+  private void blueReleased(MouseEvent event) {
+    if (!isRunning && GameState.isFishCaught && isFishDelay) {
+      rodDrop();
+    } else if (!isRunning && !GameState.isFishCaught) {
+      rodDrop();
+    }
+    blueButtonThree.setOpacity(0);
+  }
+
+  @FXML
+  private void backHover(MouseEvent event) {
+    backButtonTwo.setOpacity(1);
+  }
+
+  @FXML
+  private void backUnhover(MouseEvent event) {
+    backButtonTwo.setOpacity(0);
+  }
+
+  @FXML
+  private void backPressed(MouseEvent event) {
+    if (!isRunning && GameState.isFishCaught && isFishDelay) {
+      App.setScene(AppScene.FOREST);
+    } else if (!isRunning && !GameState.isFishCaught) {
+      App.setScene(AppScene.FISHING);
+    }
+    backButtonThree.setOpacity(1);
+  }
+
+  @FXML
+  private void backReleased(MouseEvent event) {
+    backButtonThree.setOpacity(0);
   }
 }
