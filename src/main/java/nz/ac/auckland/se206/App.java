@@ -88,16 +88,16 @@ public class App extends Application {
     }
 
     // Add scenes to hashmap.
-    SceneManager.addScene(AppScene.START, loadLoader("start").load());
-    SceneManager.addScene(AppScene.TUTORIAL, loadLoader("tutorial").load());
-    SceneManager.addScene(AppScene.SETTINGS, loadLoader("settings").load());
-    SceneManager.addScene(AppScene.GAMEOVER, loadLoader("gameover").load());
-    SceneManager.addScene(AppScene.GAMEFINISHED, loadLoader("gamefinished").load());
-    SceneManager.addScene(AppScene.STORY, loadLoader("story").load());
-    SceneManager.addScene(AppScene.HELP, loadLoader("help").load());
-    SceneManager.addScene(AppScene.CHAT, loadLoader("chat").load());
-    SceneManager.addScene(AppScene.TELEVISION, loadLoader("television").load());
-    SceneManager.addScene(AppScene.KEYPAD, loadLoader("keypad").load());
+    // SceneManager.addScene(AppScene.START, loadLoader("start").load());
+    // SceneManager.addScene(AppScene.TUTORIAL, loadLoader("tutorial").load());
+    // SceneManager.addScene(AppScene.SETTINGS, loadLoader("settings").load());
+    // SceneManager.addScene(AppScene.GAMEOVER, loadLoader("gameover").load());
+    // SceneManager.addScene(AppScene.GAMEFINISHED, loadLoader("gamefinished").load());
+    // SceneManager.addScene(AppScene.STORY, loadLoader("story").load());
+    // SceneManager.addScene(AppScene.HELP, loadLoader("help").load());
+    // SceneManager.addScene(AppScene.CHAT, loadLoader("chat").load());
+    // SceneManager.addScene(AppScene.TELEVISION, loadLoader("television").load());
+    // SceneManager.addScene(AppScene.KEYPAD, loadLoader("keypad").load());
     SceneManager.addScene(AppScene.FOREST, loadLoader("forestRoom").load());
     SceneManager.addScene(AppScene.FISHING, loadLoader("fishingMiniGame").load());
     SceneManager.addScene(AppScene.LAVA, loadLoader("lavaRoom").load());
@@ -113,7 +113,7 @@ public class App extends Application {
     stageTest = stage;
 
     // Fetch start scene from hashmap and set scene:
-    currentScene = new Scene(loadLoader("start").load(), 800, 625);
+    currentScene = new Scene(loadLoader("room").load(), 800, 625);
     stage.setScene(currentScene);
     stage.show();
 
