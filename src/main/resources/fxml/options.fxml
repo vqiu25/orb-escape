@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" style="-fx-background-color: #e9ecef;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.OptionScreenController">
+   <children>
+      <Label alignment="CENTER" layoutX="302.0" layoutY="56.0" text="Options" textAlignment="CENTER" underline="true">
+         <font>
+            <Font name="System Bold" size="60.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="326.0" layoutY="144.0" text="Difficulty" textAlignment="CENTER" underline="true">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="358.0" layoutY="354.0" text="Time" textAlignment="CENTER" underline="true">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="142.0" fitWidth="535.0" layoutX="140.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="142.0" fitWidth="535.0" layoutX="140.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/bar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="easyOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="187.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="easyTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="187.0" layoutY="246.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="easyThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="187.0" layoutY="246.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startThree.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mediumOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="342.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mediumTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="342.0" layoutY="246.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mediumThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="342.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startThree.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hardOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="500.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hardTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="500.0" layoutY="246.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hardThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="500.0" layoutY="246.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startThree.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="shortOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="188.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="shortTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="188.0" layoutY="455.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="shortThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="188.0" layoutY="455.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startThree.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mediumTimeOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mediumTimeTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="455.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mediumTimeThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startThree.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="longOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="501.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="longTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="501.0" layoutY="455.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="longThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="501.0" layoutY="455.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startThree.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startThree.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="186.0" layoutY="245.0" onMouseClicked="#easyClicked" onMouseEntered="#easyHover" onMouseExited="#easyUnhover" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="341.0" layoutY="246.0" onMouseClicked="#mediumClicked" onMouseEntered="#mediumHover" onMouseExited="#mediumUnhover" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="499.0" layoutY="246.0" onMouseClicked="#hardClicked" onMouseEntered="#hardHover" onMouseExited="#hardUnhover" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="187.0" layoutY="453.0" onMouseClicked="#shortTimeClicked" onMouseEntered="#shortTimeHover" onMouseExited="#shortTimeUnhover" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="342.0" layoutY="454.0" onMouseClicked="#mediumTimeClicked" onMouseEntered="#mediumTimeHover" onMouseExited="#mediumTimeUnhover" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="500.0" layoutY="454.0" onMouseClicked="#longTimeClicked" onMouseEntered="#longTimeHover" onMouseExited="#longTimeUnhover" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="657.0" layoutY="27.0" onMouseEntered="#backHover" onMouseExited="#backUnhover" onMousePressed="#backPressed" onMouseReleased="#backReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
+   </children>
+</Pane>

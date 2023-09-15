@@ -34,6 +34,7 @@ public class StartScreenController extends ControllerMethods {
 
   @FXML
   private void startReleased(MouseEvent event) {
+    startThreeButton.setOpacity(0);
     App.setScene(AppScene.STORY);
   }
 
@@ -53,7 +54,10 @@ public class StartScreenController extends ControllerMethods {
   }
 
   @FXML
-  private void optionsReleased(MouseEvent event) {}
+  private void optionsReleased(MouseEvent event) {
+    optionsThreeButton.setOpacity(0);
+    App.setScene(AppScene.OPTIONS);
+  }
 
   @FXML
   private void quitHover(MouseEvent event) {

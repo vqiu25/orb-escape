@@ -45,4 +45,12 @@ public class GameState {
 
   // Check if the player has escaped
   public static boolean isRoomEscaped = false;
+
+  // Difficulty and Time Selection (Default)
+  public static boolean isEasySelected = false;
+  public static boolean isMediumSelected = true;
+  public static boolean isHardSelected = false;
+  public static boolean isShortTimeSelected = false;
+  public static boolean isMediumTimeSelected = true;
+  public static boolean isLongTimeSelected = false;
 }
