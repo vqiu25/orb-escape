@@ -72,7 +72,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
         choppedMiniTrees.setOpacity(1);
 
         // TODO: Update the trees image in the forest room to show the trees are chopped
-
+        App.getForestRoomController().chopTrees();
       }
     } else {
       // TODO: Make a notification say that the tress have already been chopped

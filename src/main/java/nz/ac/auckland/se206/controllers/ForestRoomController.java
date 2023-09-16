@@ -173,17 +173,6 @@ public class ForestRoomController extends ControllerMethods {
     } else {
       // Do something else if they are in the other version of the game
     }
-
-    // if (!GameState.isChopped) {
-    //   // Prompt user to chop trees, the following goes under an alert or notification, and likely
-    //   // after when the user chops the entire tree
-    //   trees.setOpacity(0);
-    //   treesOutline.setOpacity(0);
-    //   treesMini.setDisable(true);
-    //   choppedTrees.setDisable(false);
-    //   treesRemoved.setOpacity(1);
-    //   GameState.isChopped = true;
-    // }
   }
 
   @FXML
@@ -200,9 +189,22 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
+  // Method to swap from the normal trees to the chopped trees
+  public void chopTrees() {
+    trees.setOpacity(0);
+    treesOutline.setOpacity(0);
+    treesMini.setDisable(true);
+    choppedTrees.setDisable(false);
+    treesRemoved.setOpacity(1);
+  }
+
   // Trees Removed
   @FXML
-  private void choppedClick(MouseEvent event) {}
+  private void choppedClick(MouseEvent event) {
+    if (GameState.isForrestTreeChopping && GameState.isChopped) {
+      App.setScene(AppScene.TREES);
+    }
+  }
 
   @FXML
   private void choppedHover(MouseEvent event) {
