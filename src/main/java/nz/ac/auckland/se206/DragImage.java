@@ -53,4 +53,8 @@ public class DragImage {
           }
         });
   }
+
+  public boolean isCorrectPosition() {
+    return correctPosition;
+  }
 }

@@ -6,7 +6,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.DragImage;
+import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager.AppScene;
+import org.controlsfx.control.Notifications;
 
 public class BridgeGameController {
 
@@ -44,6 +47,24 @@ public class BridgeGameController {
 
   @FXML
   private void checkAnswer() {
-    System.out.println("Check answer");
+    if (imageSmall.isCorrectPosition()
+        && imageMedium.isCorrectPosition()
+        && imageLarge.isCorrectPosition()) {
+
+      // Update game state
+      GameState.isLavaGameCompleted = true;
+
+      // TODO: Get lava room controller and change bridge state
+
+      // Notify user that the bridge has been fixed:
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master:", "Well done! You have fixed the bridge!", 5);
+      message.show();
+    } else {
+      Notifications message =
+          NotificationBuilder.createNotification("Game Master:", "Try again!", 5);
+      message.show();
+    }
   }
 }
