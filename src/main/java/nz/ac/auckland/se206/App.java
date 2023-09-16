@@ -100,6 +100,7 @@ public class App extends Application {
     SceneManager.addScene(AppScene.KEYPAD, loadLoader("keypad").load());
     SceneManager.addScene(AppScene.FOREST, loadLoader("forestRoom").load());
     SceneManager.addScene(AppScene.FISHING, loadLoader("fishingMiniGame").load());
+    SceneManager.addScene(AppScene.TREES, loadLoader("treeChoppingMiniGame").load());
     SceneManager.addScene(AppScene.LAVA, loadLoader("lavaRoom").load());
     SceneManager.addScene(AppScene.BRIDGE_GAME, loadLoader("bridgeGame").load());
     SceneManager.addScene(AppScene.CASTLE, loadLoader("castleRoom").load());

@@ -162,16 +162,28 @@ public class ForestRoomController extends ControllerMethods {
   // Trees
   @FXML
   private void treesClick(MouseEvent event) {
-    if (!GameState.isChopped) {
-      // Prompt user to chop trees, the following goes under an alert or notification, and likely
-      // after when the user chops the entire tree
-      trees.setOpacity(0);
-      treesOutline.setOpacity(0);
-      treesMini.setDisable(true);
-      choppedTrees.setDisable(false);
-      treesRemoved.setOpacity(1);
-      GameState.isChopped = true;
+    if (GameState.isForrestTreeChopping) {
+      if (GameState.isAxeTaken) {
+        // If they are playing the tree chopping version and they have collected the axe, go to tree
+        // chopping minigame
+        App.setScene(AppScene.TREES);
+      } else {
+        // TODO: Make a notification to tell the user they need something to cut down the trees
+      }
+    } else {
+      // Do something else if they are in the other version of the game
     }
+
+    // if (!GameState.isChopped) {
+    //   // Prompt user to chop trees, the following goes under an alert or notification, and likely
+    //   // after when the user chops the entire tree
+    //   trees.setOpacity(0);
+    //   treesOutline.setOpacity(0);
+    //   treesMini.setDisable(true);
+    //   choppedTrees.setDisable(false);
+    //   treesRemoved.setOpacity(1);
+    //   GameState.isChopped = true;
+    // }
   }
 
   @FXML
@@ -216,6 +228,7 @@ public class ForestRoomController extends ControllerMethods {
       GameState.isAxeTaken = true;
       axeGrab.setDisable(true);
       emptyLog.setDisable(false);
+      // TODO: Make the axe appear in the inventory
     }
   }
 
