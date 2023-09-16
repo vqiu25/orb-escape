@@ -166,11 +166,6 @@ public class LavaRoomController extends ControllerMethods {
     System.out.println("Clicked broken bridge");
 
     if (GameState.isForrestGameCompleted) {
-      // TODO: if forrest game room is COMPLETED (planks of wood collected), prompt user to fix the
-      // bridge
-      // -> switch scene to minigame (inside mini game, there will be a check to see if all the
-      // planks has been placed in the right place. if it has, we need to enabled the FIXED BROKEN
-      // BRIDGE COMPONENTS INSIDE THERE )
       App.setScene(AppScene.BRIDGE_GAME);
     } else {
       // Forrest game NOT COMPLETED, prompt user to get wood.
@@ -214,9 +209,12 @@ public class LavaRoomController extends ControllerMethods {
         NotificationBuilder.createNotification(
             "Game Master:", "Bridge fixed! You may now enter the castle.", 5);
     message.show();
+  }
 
-    // TODO: this state (fixed bridge hovered/unhovered/clicked) needs to be enabled when the bridge
-    // has been fixed (other bridge building mini game scene)
+  public void setFixedBridge() {
+    fixedBridge.setDisable(false);
+    fixedBridge.setOpacity(1);
+    fixedBridgeOutline.setDisable(false);
   }
 
   // Methods for mini-game 2: Tame dragon
@@ -258,7 +256,7 @@ public class LavaRoomController extends ControllerMethods {
               "Dragon:", "Mmmm, yummy! In return have this orb I found.", 5);
       message.show();
 
-      // TODO: set orb drop game state to true
+      // TODO: set orb drop game state to true and put into inventory
 
       // set lava game state to completed
       GameState.isLavaGameCompleted = true;

@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppScene;
+import nz.ac.auckland.se206.controllers.LavaRoomController;
 import nz.ac.auckland.se206.controllers.RoomController;
 
 /**
@@ -19,6 +20,7 @@ public class App extends Application {
 
   // Used to store a reference which can be passed:
   private static RoomController roomController;
+  private static LavaRoomController lavaRoomController;
   private static Stage stageTest;
 
   public static void main(final String[] args) {
@@ -59,10 +61,19 @@ public class App extends Application {
   /**
    * Returns the room controller.
    *
-   * @return
+   * @return Reference to the lava room controller.
    */
   public static RoomController getRoomController() {
     return roomController;
+  }
+
+  /**
+   * Returns the lava room controller.
+   *
+   * @return Reference to the lava room controller.
+   */
+  public static LavaRoomController getLavaRoomController() {
+    return lavaRoomController;
   }
 
   /**
@@ -75,9 +86,10 @@ public class App extends Application {
   public void start(final Stage stage) throws IOException {
 
     // Set mini game states:
-    int randomInt = new Random().nextInt(2);
+    int randomInt = new Random().nextInt(10);
+    System.out.println(randomInt);
 
-    if (randomInt == 1) {
+    if (randomInt > 5) {
       GameState.isLavaBridge = true;
       GameState.isForrestTreeChopping = true;
     } else {
@@ -86,19 +98,18 @@ public class App extends Application {
     }
 
     // Add scenes to hashmap.
-    // SceneManager.addScene(AppScene.START, loadLoader("start").load());
-    // SceneManager.addScene(AppScene.TUTORIAL, loadLoader("tutorial").load());
-    // SceneManager.addScene(AppScene.SETTINGS, loadLoader("settings").load());
-    // SceneManager.addScene(AppScene.GAMEOVER, loadLoader("gameover").load());
-    // SceneManager.addScene(AppScene.GAMEFINISHED, loadLoader("gamefinished").load());
-    // SceneManager.addScene(AppScene.STORY, loadLoader("story").load());
-    // SceneManager.addScene(AppScene.HELP, loadLoader("help").load());
-    // SceneManager.addScene(AppScene.CHAT, loadLoader("chat").load());
-    // SceneManager.addScene(AppScene.TELEVISION, loadLoader("television").load());
-    // SceneManager.addScene(AppScene.KEYPAD, loadLoader("keypad").load());
+    SceneManager.addScene(AppScene.START, loadLoader("start").load());
+    SceneManager.addScene(AppScene.TUTORIAL, loadLoader("tutorial").load());
+    SceneManager.addScene(AppScene.SETTINGS, loadLoader("settings").load());
+    SceneManager.addScene(AppScene.GAMEOVER, loadLoader("gameover").load());
+    SceneManager.addScene(AppScene.GAMEFINISHED, loadLoader("gamefinished").load());
+    SceneManager.addScene(AppScene.STORY, loadLoader("story").load());
+    SceneManager.addScene(AppScene.HELP, loadLoader("help").load());
+    SceneManager.addScene(AppScene.CHAT, loadLoader("chat").load());
+    SceneManager.addScene(AppScene.TELEVISION, loadLoader("television").load());
+    SceneManager.addScene(AppScene.KEYPAD, loadLoader("keypad").load());
     SceneManager.addScene(AppScene.FOREST, loadLoader("forestRoom").load());
     SceneManager.addScene(AppScene.FISHING, loadLoader("fishingMiniGame").load());
-    SceneManager.addScene(AppScene.LAVA, loadLoader("lavaRoom").load());
     SceneManager.addScene(AppScene.BRIDGE_GAME, loadLoader("bridgeGame").load());
     SceneManager.addScene(AppScene.CASTLE, loadLoader("castleRoom").load());
 
@@ -107,11 +118,16 @@ public class App extends Application {
     SceneManager.addScene(AppScene.ROOM, room.load());
     roomController = room.getController();
 
+    // Store references to the lava room controller:
+    FXMLLoader lavaRoom = loadLoader("lavaRoom");
+    SceneManager.addScene(AppScene.LAVA, lavaRoom.load());
+    lavaRoomController = lavaRoom.getController();
+
     // Store stage reference:
     stageTest = stage;
 
     // Fetch start scene from hashmap and set scene:
-    currentScene = new Scene(loadLoader("room").load(), 800, 625);
+    currentScene = new Scene(loadLoader("start").load(), 800, 625);
     stage.setScene(currentScene);
     stage.show();
 

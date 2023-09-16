@@ -54,7 +54,9 @@ public class BridgeGameController {
       // Update game state
       GameState.isLavaGameCompleted = true;
 
-      // TODO: Get lava room controller and change bridge state
+      // Get lava room controller and change bridge state
+      LavaRoomController lavaRoomController = App.getLavaRoomController();
+      lavaRoomController.setFixedBridge();
 
       // Notify user that the bridge has been fixed:
       Notifications message =
