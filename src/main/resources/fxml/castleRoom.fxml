@@ -194,5 +194,20 @@
       <Rectangle fx:id="decrementOne" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="442.0" layoutY="304.0" onMouseEntered="#lockOneDecrementHover" onMouseExited="#lockOneDecrementUnhover" onMousePressed="#lockOneDecrementPressed" onMouseReleased="#lockOneDecrementReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="56.0" />
       <Rectangle fx:id="decrementTwo" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="515.0" layoutY="304.0" onMouseEntered="#lockTwoDecrementHover" onMouseExited="#lockTwoDecrementUnhover" onMousePressed="#lockTwoDecrementPressed" onMouseReleased="#lockTwoDecrementReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="56.0" />
       <Rectangle fx:id="decrementThree" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="589.0" layoutY="304.0" onMouseEntered="#lockThreeDecrementHover" onMouseExited="#lockThreeDecrementUnhover" onMousePressed="#lockThreeDecrementPressed" onMouseReleased="#lockThreeDecrementReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="56.0" />
+      <Label fx:id="lockOneNumber" layoutX="459.0" layoutY="248.0" text="0" textFill="WHITE">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Label fx:id="lockTwoNumber" layoutX="532.0" layoutY="248.0" text="0" textFill="WHITE">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Label fx:id="lockThreeNumber" layoutX="606.0" layoutY="248.0" text="0" textFill="WHITE">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

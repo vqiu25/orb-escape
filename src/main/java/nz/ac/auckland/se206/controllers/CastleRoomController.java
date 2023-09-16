@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
@@ -31,6 +32,9 @@ public class CastleRoomController {
   @FXML private ImageView lockOneDecrementHovered;
   @FXML private ImageView lockOneDecrementPressed;
 
+  @FXML private Label lockOneNumber;
+  private int lockOneValue = 0;
+
   // Lock 2:
   @FXML private ImageView lockTwoIncrement;
   @FXML private ImageView lockTwoIncrementHovered;
@@ -40,6 +44,9 @@ public class CastleRoomController {
   @FXML private ImageView lockTwoDecrementHovered;
   @FXML private ImageView lockTwoDecrementPressed;
 
+  @FXML private Label lockTwoNumber;
+  private int lockTwoValue = 0;
+
   // Lock 3:
   @FXML private ImageView lockThreeIncrement;
   @FXML private ImageView lockThreeIncrementHovered;
@@ -48,6 +55,9 @@ public class CastleRoomController {
   @FXML private ImageView lockThreeDecrement;
   @FXML private ImageView lockThreeDecrementHovered;
   @FXML private ImageView lockThreeDecrementPressed;
+
+  @FXML private Label lockThreeNumber;
+  private int lockThreeValue = 0;
 
   // Methods for back button animations:
   @FXML
@@ -90,7 +100,12 @@ public class CastleRoomController {
   private void checkPressed(MouseEvent event) {
     checkButtonPressed.setOpacity(1);
 
-    System.out.println("Check button pressed");
+    if (lockOneValue == 2 && lockTwoValue == 0 && lockThreeValue == 6) {
+      System.out.println("correct");
+
+    } else {
+      System.out.println("incorrect");
+    }
   }
 
   @FXML
@@ -121,9 +136,11 @@ public class CastleRoomController {
   private void lockOneIncrementReleased(MouseEvent event) {
     lockOneIncrementPressed.setOpacity(0);
 
-    System.out.println("Lock one increment pressed");
+    if (lockOneValue == 9) {
+      return;
+    }
 
-    // TODO: update label
+    lockOneNumber.setText(String.valueOf(++lockOneValue));
   }
 
   @FXML
@@ -145,9 +162,11 @@ public class CastleRoomController {
   private void lockOneDecrementReleased(MouseEvent event) {
     lockOneDecrementPressed.setOpacity(0);
 
-    System.out.println("Lock one decrement pressed");
+    if (lockOneValue == 0) {
+      return;
+    }
 
-    // TODO update label
+    lockOneNumber.setText(String.valueOf(--lockOneValue));
   }
 
   // Lock 2:
@@ -170,9 +189,11 @@ public class CastleRoomController {
   private void lockTwoIncrementReleased(MouseEvent event) {
     lockTwoIncrementPressed.setOpacity(0);
 
-    System.out.println("Lock two increment pressed");
+    if (lockTwoValue == 9) {
+      return;
+    }
 
-    // TODO update label
+    lockTwoNumber.setText(String.valueOf(++lockTwoValue));
   }
 
   @FXML
@@ -194,9 +215,11 @@ public class CastleRoomController {
   private void lockTwoDecrementReleased(MouseEvent event) {
     lockTwoDecrementPressed.setOpacity(0);
 
-    System.out.println("Lock two decrement pressed");
+    if (lockTwoValue == 0) {
+      return;
+    }
 
-    // TODO update label
+    lockTwoNumber.setText(String.valueOf(--lockTwoValue));
   }
 
   // Lock 3:
@@ -219,9 +242,11 @@ public class CastleRoomController {
   private void lockThreeIncrementReleased(MouseEvent event) {
     lockThreeIncrementPressed.setOpacity(0);
 
-    System.out.println("Lock three increment pressed");
+    if (lockThreeValue == 9) {
+      return;
+    }
 
-    // TODO update label
+    lockThreeNumber.setText(String.valueOf(++lockThreeValue));
   }
 
   @FXML
@@ -243,8 +268,10 @@ public class CastleRoomController {
   private void lockThreeDecrementReleased(MouseEvent event) {
     lockThreeDecrementPressed.setOpacity(0);
 
-    System.out.println("Lock three decrement pressed");
+    if (lockThreeValue == 0) {
+      return;
+    }
 
-    // TODO update label
+    lockThreeNumber.setText(String.valueOf(--lockThreeValue));
   }
 }
