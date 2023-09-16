@@ -64,10 +64,10 @@ public class RoomController extends ControllerMethods {
     // Bind the timer label to the display time
     roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
 
-    // Initialize game master object:
-    gameMaster = new GameMaster();
-    gameMaster.chatCompletionRequest();
-    gameMaster();
+    // // Initialize game master object:
+    // gameMaster = new GameMaster();
+    // gameMaster.chatCompletionRequest();
+    // gameMaster();
   }
 
   /** Opens the chat window with the game master. */

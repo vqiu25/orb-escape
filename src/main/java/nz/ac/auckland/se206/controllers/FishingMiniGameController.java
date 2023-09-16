@@ -76,6 +76,8 @@ public class FishingMiniGameController extends ControllerMethods {
     if (rod.getBoundsInParent().intersects(fish.getBoundsInParent()) && !GameState.isFishCaught) {
       // Collision detected
       GameState.isFishCaught = true;
+      GameState.isForrestGameCompleted = true;
+
       fishBite.setOpacity(1);
       animatedFish.setOpacity(0);
 
