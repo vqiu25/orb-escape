@@ -11,10 +11,10 @@ import nz.ac.auckland.se206.SceneManager.AppScene;
 
 public class ControllerMethods {
   // String property for the timer
-  protected static StringProperty displayTime = new SimpleStringProperty("2:00");
+  protected static StringProperty displayTime = new SimpleStringProperty(GameState.timerString);
 
   // Instance variables to be accessible to all controllers
-  protected int count = 120;
+  protected int count = GameState.timerCount;
   protected Timer timer = new Timer(true);
 
   /** Starts the timer. */

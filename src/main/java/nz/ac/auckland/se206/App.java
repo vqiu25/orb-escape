@@ -94,6 +94,7 @@ public class App extends Application {
     SceneManager.addScene(AppScene.GAMEOVER, loadLoader("gameover").load());
     SceneManager.addScene(AppScene.GAMEFINISHED, loadLoader("gamefinished").load());
     SceneManager.addScene(AppScene.STORY, loadLoader("story").load());
+    SceneManager.addScene(AppScene.OPTIONS, loadLoader("options").load());
     SceneManager.addScene(AppScene.HELP, loadLoader("help").load());
     SceneManager.addScene(AppScene.CHAT, loadLoader("chat").load());
     SceneManager.addScene(AppScene.TELEVISION, loadLoader("television").load());
@@ -115,6 +116,7 @@ public class App extends Application {
     // Fetch start scene from hashmap and set scene:
     currentScene = new Scene(loadLoader("start").load(), 800, 625);
     stage.setScene(currentScene);
+    stage.setResizable(false);
     stage.show();
 
     stage.setOnCloseRequest(e -> System.exit(0));
