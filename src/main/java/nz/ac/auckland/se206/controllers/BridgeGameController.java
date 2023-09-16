@@ -29,19 +29,16 @@ public class BridgeGameController {
 
   @FXML
   private void smallDragged(MouseEvent event) {
-    System.out.println("Small plank dragged");
     imageSmall.dragImage(smallPlankOutline, smallRectangle);
   }
 
   @FXML
   private void mediumDragged(MouseEvent event) {
-    System.out.println("Medium plank dragged");
     imageMedium.dragImage(mediumPlankOutline, mediumRectangle);
   }
 
   @FXML
   private void largeDragged(MouseEvent event) {
-    System.out.println("Large plank dragged");
     imageLarge.dragImage(largePlankOutline, largeRectangle);
   }
 

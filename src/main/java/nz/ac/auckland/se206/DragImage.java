@@ -21,8 +21,8 @@ public class DragImage {
     rectangleX = rectangle.getLayoutX();
     rectangleY = rectangle.getLayoutY();
 
-    width = rectangle.getWidth() / 2;
-    height = rectangle.getHeight() / 2;
+    width = rectangle.getWidth() / 4;
+    height = rectangle.getHeight() / 4;
 
     if (!plankMoved) {
       originalPlankX = image.getLayoutX();
