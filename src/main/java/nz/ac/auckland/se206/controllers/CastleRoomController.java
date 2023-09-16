@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import nz.ac.auckland.se206.NotificationBuilder;
+import org.controlsfx.control.Notifications;
 
 public class CastleRoomController {
 
@@ -101,10 +103,20 @@ public class CastleRoomController {
     checkButtonPressed.setOpacity(1);
 
     if (lockOneValue == 2 && lockTwoValue == 0 && lockThreeValue == 6) {
-      System.out.println("correct");
+      // Notify the user that the answer is correct:
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master:", "Ooooooh, I wonder whats inside!", 5);
+      message.show();
+
+      // Show the chest with the orb inside:
+      chestOpenedOrb.setOpacity(1);
 
     } else {
-      System.out.println("incorrect");
+      // Notify the user that the answer is incorrect:
+      Notifications message =
+          NotificationBuilder.createNotification("Game Master:", "Try again!", 5);
+      message.show();
     }
   }
 
@@ -273,5 +285,23 @@ public class CastleRoomController {
     }
 
     lockThreeNumber.setText(String.valueOf(--lockThreeValue));
+  }
+
+  // Methods for chest animations:
+  @FXML
+  private void orbHovered(MouseEvent event) {
+    chestOpenedOrbOutline.setOpacity(1);
+  }
+
+  @FXML
+  private void orbUnhovered(MouseEvent event) {
+    chestOpenedOrbOutline.setOpacity(0);
+  }
+
+  @FXML
+  private void orbPressed(MouseEvent event) {
+    chestEmpty.setOpacity(1);
+
+    // TODO: put the orb into inventory
   }
 }
