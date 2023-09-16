@@ -12,6 +12,7 @@ public class SceneManager {
     TERMINAL,
     FOREST,
     FISHING,
+    TREES,
     LAVA,
     BRIDGE_GAME,
     CASTLE,
