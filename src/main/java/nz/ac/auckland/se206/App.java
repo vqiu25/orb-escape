@@ -78,11 +78,9 @@ public class App extends Application {
     int randomInt = new Random().nextInt(2);
 
     if (randomInt == 1) {
-      System.out.println("here");
       GameState.isLavaBridge = true;
       GameState.isForrestTreeChopping = true;
     } else {
-      System.out.println("there");
       GameState.isLavaDragon = true;
       GameState.isForrestFishing = true;
     }
