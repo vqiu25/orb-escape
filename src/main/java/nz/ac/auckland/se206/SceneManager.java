@@ -9,6 +9,7 @@ public class SceneManager {
     START,
     OPTIONS,
     ROOM,
+    TERMINAL,
     FOREST,
     FISHING,
     LAVA,

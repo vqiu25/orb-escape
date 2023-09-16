@@ -97,6 +97,7 @@ public class App extends Application {
     SceneManager.addScene(AppScene.OPTIONS, loadLoader("options").load());
     SceneManager.addScene(AppScene.HELP, loadLoader("help").load());
     SceneManager.addScene(AppScene.CHAT, loadLoader("chat").load());
+    SceneManager.addScene(AppScene.TERMINAL, loadLoader("terminal").load());
     SceneManager.addScene(AppScene.TELEVISION, loadLoader("television").load());
     SceneManager.addScene(AppScene.KEYPAD, loadLoader("keypad").load());
     SceneManager.addScene(AppScene.FOREST, loadLoader("forestRoom").load());

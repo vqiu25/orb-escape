@@ -355,7 +355,9 @@ public class RoomController extends ControllerMethods {
 
   // Terminal
   @FXML
-  private void terminalClick(MouseEvent event) {}
+  private void terminalClick(MouseEvent event) {
+    App.setScene(AppScene.TERMINAL);
+  }
 
   @FXML
   private void terminalHover(MouseEvent event) {
