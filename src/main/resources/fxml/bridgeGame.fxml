@@ -9,31 +9,31 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" style="-fx-background-color: #D76163;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.BridgeGameController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" style="-fx-background-color: EBB7C7;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.BridgeGameController">
    <children>
       <ImageView fitHeight="625.0" fitWidth="800.0" pickOnBounds="true">
          <image>
             <Image url="@../images/bridgeLayout.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="smallPlankOutline" fitHeight="61.0" fitWidth="60.0" layoutX="508.0" layoutY="173.0" onDragDetected="#smallDragged" pickOnBounds="true">
+      <ImageView fx:id="smallPlankOutline" fitHeight="61.0" fitWidth="60.0" layoutX="508.0" layoutY="174.0" onDragDetected="#smallDragged" pickOnBounds="true">
          <image>
-            <Image url="@../images/smallPlank.png" />
+            <Image url="@../images/smallPlankOutlined.png" />
          </image>
       </ImageView>
       <ImageView fx:id="mediumPlankOutline" fitHeight="61.0" fitWidth="98.0" layoutX="489.0" layoutY="245.0" onDragDetected="#mediumDragged" pickOnBounds="true">
          <image>
-            <Image url="@../images/mediumPlank.png" />
+            <Image url="@../images/mediumPlankOutlined.png" />
          </image>
       </ImageView>
       <ImageView fx:id="largePlankOutline" fitHeight="64.0" fitWidth="174.0" layoutX="452.0" layoutY="314.0" onDragDetected="#largeDragged" pickOnBounds="true">
          <image>
-            <Image url="@../images/largePlank.png" />
+            <Image url="@../images/longPlankOutlined.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="smallRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="67.0" layoutX="305.0" layoutY="349.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
-      <Rectangle fx:id="mediumRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="61.0" layoutX="195.0" layoutY="174.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="98.0" />
-      <Rectangle fx:id="largeRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="64.0" layoutX="194.0" layoutY="265.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
+      <Rectangle fx:id="smallRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="67.0" layoutX="305.0" layoutY="353.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+      <Rectangle fx:id="mediumRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="61.0" layoutX="195.0" layoutY="171.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="98.0" />
+      <Rectangle fx:id="largeRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="64.0" layoutX="194.0" layoutY="260.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
       <Button layoutX="724.0" layoutY="23.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
       <Button layoutX="484.0" layoutY="422.0" mnemonicParsing="false" onAction="#checkAnswer" prefHeight="61.0" prefWidth="108.0" text="CHECK">
          <font>
