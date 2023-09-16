@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
@@ -11,7 +12,9 @@ import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
-public class BridgeGameController {
+public class BridgeGameController extends ControllerMethods {
+
+  @FXML private Label roomTimerLabel;
 
   @FXML private ImageView smallPlankOutline;
   @FXML private Rectangle smallRectangle;
@@ -24,6 +27,11 @@ public class BridgeGameController {
   @FXML private ImageView largePlankOutline;
   @FXML private Rectangle largeRectangle;
   DragImage imageLarge = new DragImage();
+
+  public void initialize() {
+    // Bind the timer label to the display time
+    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+  }
 
   @FXML
   private void onBack() {
