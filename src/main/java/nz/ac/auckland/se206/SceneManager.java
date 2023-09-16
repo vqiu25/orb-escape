@@ -7,9 +7,12 @@ public class SceneManager {
 
   public enum AppScene {
     START,
+    OPTIONS,
     ROOM,
+    TERMINAL,
     FOREST,
     FISHING,
+    TREES,
     LAVA,
     BRIDGE_GAME,
     CASTLE,

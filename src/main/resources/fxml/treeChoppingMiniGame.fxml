@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" style="-fx-background-color: CAE6F3;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.FishingMiniGameController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" style="-fx-background-color: C2F4B2;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.TreeChoppingMiniGameController">
    <children>
       <ImageView fitHeight="56.0" fitWidth="110.0" layoutX="666.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -61,33 +61,7 @@
       </ImageView>
       <ImageView fitHeight="625.0" fitWidth="800.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fishingLayout.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="animatedFish" fitHeight="46.0" fitWidth="84.0" layoutX="532.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/fish.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="rodLine" fitHeight="286.0" fitWidth="58.0" layoutX="388.0" layoutY="-67.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/fishingLine.png" />
-         </image>
-      </ImageView>
-      <Rectangle fx:id="rodHitbox" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="389.0" layoutY="202.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="21.0" />
-      <ImageView fx:id="fishBite" fitHeight="46.0" fitWidth="84.0" layoutX="387.0" layoutY="220.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" rotate="68.7">
-         <image>
-            <Image url="@../images/fish.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="625.0" fitWidth="800.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/waterLayerTwo.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="625.0" fitWidth="800.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/frameLayer.png" />
+            <Image url="@../images/treeLayout.png" />
          </image>
       </ImageView>
       <ImageView fx:id="blueButtonOne" fitHeight="55.0" fitWidth="137.0" layoutX="341.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
@@ -105,7 +79,6 @@
             <Image url="@../images/blueThree.png" />
          </image>
       </ImageView>
-      <Rectangle fx:id="rodRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="53.0" layoutX="339.0" layoutY="464.0" onMouseEntered="#blueHover" onMouseExited="#blueUnhover" onMousePressed="#bluePressed" onMouseReleased="#blueReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="118.0" />
       <ImageView fx:id="backButtonOne" fitHeight="55.0" fitWidth="137.0" layoutX="662.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/whiteOne.png" />
@@ -121,6 +94,27 @@
             <Image url="@../images/whiteThree.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cae6f3" height="133.0" layoutX="310.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <ImageView fx:id="miniTrees" fitHeight="625.0" fitWidth="800.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/miniTrees.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="miniTreesHit" fitHeight="625.0" fitWidth="800.0" layoutY="-25.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/miniTreesHit.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="choppedMiniTrees" fitHeight="625.0" fitWidth="800.0" layoutY="-25.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/choppedMiniTrees.png" />
+         </image>
+      </ImageView>
+      <Rectangle fx:id="chopRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="53.0" layoutX="339.0" layoutY="464.0" onMouseEntered="#blueHover" onMouseExited="#blueUnhover" onMousePressed="#bluePressed" onMouseReleased="#blueReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="118.0" />
+      <Rectangle fx:id="closeRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="53.0" layoutX="661.0" layoutY="20.0" onMouseEntered="#backHover" onMouseExited="#backUnhover" onMousePressed="#backPressed" onMouseReleased="#backReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="118.0" />
+      <Label fx:id="chopCountLabel" alignment="CENTER" layoutX="321.0" layoutY="415.0" prefHeight="25.0" prefWidth="150.0" text="Chops: 0/10">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
