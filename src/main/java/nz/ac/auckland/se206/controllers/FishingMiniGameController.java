@@ -87,11 +87,23 @@ public class FishingMiniGameController extends ControllerMethods {
       // Depending on the height of the collision, the fish will disappear at a different time
       if (collisionY > 310) {
         PauseTransition delay = new PauseTransition(Duration.millis(2800));
-        delay.setOnFinished(event -> fishBite.setOpacity(0));
+        delay.setOnFinished(
+            event -> {
+              // Make the fish disappear and appear in the inventory with the green orb
+              fishBite.setOpacity(0);
+              App.getRoomController().findFish();
+              App.getRoomController().findGreenOrb();
+            });
         delay.play();
       } else {
         PauseTransition delay = new PauseTransition(Duration.millis(4000));
-        delay.setOnFinished(event -> fishBite.setOpacity(0));
+        delay.setOnFinished(
+            event -> {
+              // Make the fish disappear and appear in the inventory with the green orb
+              fishBite.setOpacity(0);
+              App.getRoomController().findFish();
+              App.getRoomController().findGreenOrb();
+            });
         delay.play();
       }
 

@@ -7,8 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppScene;
-import nz.ac.auckland.se206.controllers.LavaRoomController;
 import nz.ac.auckland.se206.controllers.ForestRoomController;
+import nz.ac.auckland.se206.controllers.LavaRoomController;
 import nz.ac.auckland.se206.controllers.RoomController;
 
 /**
@@ -63,10 +63,19 @@ public class App extends Application {
   /**
    * Returns the room controller.
    *
-   * @return Reference to the lava room controller.
+   * @return Reference to the room controller.
    */
   public static RoomController getRoomController() {
     return roomController;
+  }
+
+  /**
+   * Returns the forest room controller.
+   *
+   * @return Reference to the forest room controller.
+   */
+  public static ForestRoomController getForestRoomController() {
+    return forestRoomController;
   }
 
   /**
@@ -76,9 +85,6 @@ public class App extends Application {
    */
   public static LavaRoomController getLavaRoomController() {
     return lavaRoomController;
-  }
-  public static ForestRoomController getForestRoomController() {
-    return forestRoomController;
   }
 
   /**
@@ -121,20 +127,18 @@ public class App extends Application {
     SceneManager.addScene(AppScene.BRIDGE_GAME, loadLoader("bridgeGame").load());
     SceneManager.addScene(AppScene.CASTLE, loadLoader("castleRoom").load());
 
-    // Store references to the room controller and forest room controller
+    // Store references to the room controller, forest room controller and lava room controller
     FXMLLoader room = loadLoader("room");
     SceneManager.addScene(AppScene.ROOM, room.load());
     roomController = room.getController();
 
-
-    // Store references to the lava room controller:
-    FXMLLoader lavaRoom = loadLoader("lavaRoom");
-    SceneManager.addScene(AppScene.LAVA, lavaRoom.load());
-    lavaRoomController = lavaRoom.getController();
-
     FXMLLoader forestRoom = loadLoader("forestRoom");
     SceneManager.addScene(AppScene.FOREST, forestRoom.load());
     forestRoomController = forestRoom.getController();
+
+    FXMLLoader lavaRoom = loadLoader("lavaRoom");
+    SceneManager.addScene(AppScene.LAVA, lavaRoom.load());
+    lavaRoomController = lavaRoom.getController();
 
     // Store stage reference:
     stageTest = stage;

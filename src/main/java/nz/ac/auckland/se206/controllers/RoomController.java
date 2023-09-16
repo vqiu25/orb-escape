@@ -52,6 +52,13 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView portalFrameOutline;
   @FXML private ImageView portal;
   @FXML private ImageView portalOutline;
+  @FXML private ImageView fishingRodIcon;
+  @FXML private ImageView axeIcon;
+  @FXML private ImageView fishIcon;
+  @FXML private ImageView planksIcon;
+  @FXML private ImageView blueOrb;
+  @FXML private ImageView greenOrb;
+  @FXML private ImageView redOrb;
   @FXML private Polygon codedText;
 
   private TextToSpeech textToSpeech;
@@ -640,5 +647,40 @@ public class RoomController extends ControllerMethods {
 
     Thread thread = new Thread(task);
     thread.start();
+  }
+
+  /** Method for adding the fishing rod to inventory */
+  public void findFishingRod() {
+    fishingRodIcon.setOpacity(1);
+  }
+
+  /** Method for adding the axe to inventory */
+  public void findAxe() {
+    axeIcon.setOpacity(1);
+  }
+
+  /** Method for adding the fish to inventory */
+  public void findFish() {
+    fishIcon.setOpacity(1);
+  }
+
+  /** Method for adding the fish to inventory */
+  public void findPlanks() {
+    planksIcon.setOpacity(1);
+  }
+
+  /** Method for adding the blue orb to inventory */
+  public void findBlueOrb() {
+    blueOrb.setOpacity(1);
+  }
+
+  /** Method for adding the green orb to inventory */
+  public void findGreenOrb() {
+    greenOrb.setOpacity(1);
+  }
+
+  /** Method for adding the red orb to inventory */
+  public void findRedOrb() {
+    redOrb.setOpacity(1);
   }
 }

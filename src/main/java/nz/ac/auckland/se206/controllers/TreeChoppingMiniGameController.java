@@ -57,21 +57,29 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
       if (chopCount == orbDropAfter) {
         // TODO: Make the orb fall from the tree
 
-        System.out.println("An orb fell from the tree!");
         // TODO: Make a notification to say an orb fell from the tree
+        System.out.println("An orb fell from the tree!");
+
+        // Make the green orb appear in the inventory
+        // NOTE: This should only be done once the orb is clicked by the user (implemented later)
+        App.getRoomController().findGreenOrb();
 
       } else if (chopCount == 10) {
         // Completed the mini game
         GameState.isChopped = true;
         GameState.isForrestGameCompleted = true;
-        System.out.println("You completed the mini game!");
+
+        // Make the planks appear in the inventory
+        App.getRoomController().findPlanks();
+
         // TODO: Make a notification to say you cut all the trees down
+        System.out.println("You completed the mini game!");
 
         // Update the trees image in the mini game
         miniTrees.setOpacity(0);
         choppedMiniTrees.setOpacity(1);
 
-        // TODO: Update the trees image in the forest room to show the trees are chopped
+        // Update the trees image in the forest room to show the trees are chopped
         App.getForestRoomController().chopTrees();
       }
     } else {

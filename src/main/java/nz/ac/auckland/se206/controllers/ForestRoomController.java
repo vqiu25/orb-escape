@@ -121,8 +121,15 @@ public class ForestRoomController extends ControllerMethods {
   // Fishing Rod
   @FXML
   private void fishingClick(MouseEvent event) {
-    // Prompt user to go to fishing room
+    // Add the fishing rod to inventory and take the user to the fishing mini game
     if (GameState.isForrestFishing) {
+      GameState.isFishingRodTaken = true;
+      fishingRod.setOpacity(0);
+      fishingRodOutline.setOpacity(0);
+      dock.setOpacity(1);
+      dockWithoutRod.setDisable(false);
+      fishingMini.setDisable(true);
+      App.getRoomController().findFishingRod();
       App.setScene(AppScene.FISHING);
     }
   }
@@ -143,18 +150,22 @@ public class ForestRoomController extends ControllerMethods {
 
   // Dock without fishing rod
   @FXML
-  private void dockClick(MouseEvent event) {}
+  private void dockClick(MouseEvent event) {
+    if (GameState.isForrestFishing && GameState.isFishingRodTaken) {
+      App.setScene(AppScene.FISHING);
+    }
+  }
 
   @FXML
   private void dockHover(MouseEvent event) {
-    if (!GameState.isForrestFishing) {
+    if (!GameState.isForrestFishing || GameState.isFishingRodTaken) {
       dockOutline.setOpacity(1);
     }
   }
 
   @FXML
   private void dockUnhover(MouseEvent event) {
-    if (!GameState.isForrestFishing) {
+    if (!GameState.isForrestFishing || GameState.isFishingRodTaken) {
       dockOutline.setOpacity(0);
     }
   }
@@ -224,13 +235,13 @@ public class ForestRoomController extends ControllerMethods {
   @FXML
   private void axeClick(MouseEvent event) {
     if (!GameState.isAxeTaken) {
+      App.getRoomController().findAxe();
       axe.setOpacity(0);
       axeOutline.setOpacity(0);
       axeRemoved.setOpacity(1);
       GameState.isAxeTaken = true;
       axeGrab.setDisable(true);
       emptyLog.setDisable(false);
-      // TODO: Make the axe appear in the inventory
     }
   }
 
