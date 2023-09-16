@@ -4,10 +4,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.NotificationBuilder;
+import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
 public class CastleRoomController {
+
+  // Orb state:
+  private boolean isOrbTaken = false;
 
   // Back buttons
   @FXML private ImageView backButton;
@@ -81,10 +86,7 @@ public class CastleRoomController {
   private void backReleased(MouseEvent event) {
     backButtonPressed.setOpacity(0);
 
-    System.out.println("Back button pressed");
-
-    // TODO REMOVE THIS Switch back to lava room scene
-    // App.setScene(AppScene.LAVA);
+    App.setScene(AppScene.LAVA);
   }
 
   // Methods for check button animations:
@@ -101,8 +103,21 @@ public class CastleRoomController {
   @FXML
   private void checkPressed(MouseEvent event) {
     checkButtonPressed.setOpacity(1);
+  }
+
+  @FXML
+  private void checkReleased(MouseEvent event) {
+    checkButtonPressed.setOpacity(0);
 
     if (lockOneValue == 2 && lockTwoValue == 0 && lockThreeValue == 6) {
+
+      // If the orb has already been taken, do not allow users to "take again"
+      if (isOrbTaken) {
+        return;
+      }
+
+      isOrbTaken = true;
+
       // Notify the user that the answer is correct:
       Notifications message =
           NotificationBuilder.createNotification(
@@ -118,13 +133,6 @@ public class CastleRoomController {
           NotificationBuilder.createNotification("Game Master:", "Try again!", 5);
       message.show();
     }
-  }
-
-  @FXML
-  private void checkReleased(MouseEvent event) {
-    checkButtonPressed.setOpacity(0);
-
-    // TODO: check if the answer is correct
   }
 
   // Methods for pad lock animations:
