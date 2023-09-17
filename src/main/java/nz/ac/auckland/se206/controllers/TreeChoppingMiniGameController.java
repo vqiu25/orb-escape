@@ -1,10 +1,14 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.util.Random;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppScene;
@@ -24,6 +28,11 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
   @FXML private ImageView backButtonOne;
   @FXML private ImageView backButtonTwo;
   @FXML private ImageView backButtonThree;
+  @FXML private ImageView greenOrbOnTree;
+  @FXML private ImageView greenOrbOnTreeOutline;
+  @FXML private ImageView treeHitOne;
+  @FXML private ImageView treeHitTwo;
+  @FXML private ImageView treeHitThree;
 
   // Inventory Items
   @FXML private ImageView fishingRodIcon;
@@ -35,7 +44,9 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
   @FXML private ImageView redOrb;
 
   private int chopCount = 0;
-  private int orbDropAfter = new Random().nextInt(9);
+  private int orbDropAfter = new Random().nextInt(5) + 1;
+  private boolean isOrbFallen = false;
+  private boolean isOrbCollected = false;
 
   public void initialize() {
     // Bind the timer label to the display time
@@ -68,21 +79,19 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
 
   @FXML
   private void blueReleased(MouseEvent event) {
-    if (chopCount < 10) {
+
+    if (chopCount < 8) {
+      treeHitAnimation();
       chopCount++;
-      chopCountLabel.setText("Chops: " + chopCount + "/10");
+      chopCountLabel.setText(chopCount + "/8");
 
       if (chopCount == orbDropAfter) {
-        // TODO: Make the orb fall from the tree
+        orbDrop();
 
         // TODO: Make a notification to say an orb fell from the tree
         System.out.println("An orb fell from the tree!");
 
-        // Make the green orb appear in the inventory
-        // NOTE: This should only be done once the orb is clicked by the user (implemented later)
-        findGreenOrb();
-
-      } else if (chopCount == 10) {
+      } else if (chopCount == 8) {
         // Completed the mini game
         GameState.isChopped = true;
         GameState.isForrestGameCompleted = true;
@@ -126,5 +135,95 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
   private void backReleased(MouseEvent event) {
     backButtonThree.setOpacity(0);
     App.setScene(AppScene.FOREST);
+  }
+
+  private void orbDrop() {
+    isOrbFallen = true;
+    TranslateTransition orbTransition = new TranslateTransition();
+    greenOrbOnTree.setOpacity(1);
+    orbTransition.setNode(greenOrbOnTree);
+    orbTransition.setDuration(Duration.millis(1000));
+    orbTransition.setByY(125);
+    orbTransition.play();
+
+    TranslateTransition orbOutlineTransition = new TranslateTransition();
+    orbOutlineTransition.setNode(greenOrbOnTreeOutline);
+    orbOutlineTransition.setDuration(Duration.millis(1000));
+    orbOutlineTransition.setByY(125);
+    orbOutlineTransition.play();
+  }
+
+  // Green Orb Logic
+  @FXML
+  private void greenOrbHover(MouseEvent event) {
+    if (isOrbFallen && !isOrbCollected) greenOrbOnTreeOutline.setOpacity(1);
+  }
+
+  @FXML
+  private void greenOrbUnhover(MouseEvent event) {
+    if (isOrbFallen && !isOrbCollected) greenOrbOnTreeOutline.setOpacity(0);
+  }
+
+  @FXML
+  private void greenOrbClick(MouseEvent event) {
+    // Make the green orb appear in the inventory
+    // NOTE: This should only be done once the orb is clicked by the user (implemented later)
+    findGreenOrb();
+    greenOrbOnTree.setOpacity(0);
+    greenOrbOnTreeOutline.setOpacity(0);
+    isOrbCollected = true;
+  }
+
+  private void treeHitAnimation() {
+    Timeline timeline = new Timeline();
+
+    KeyFrame keyFrameOne =
+        new KeyFrame(
+            Duration.millis(35),
+            event -> {
+              treeHitOne.setOpacity(1);
+              miniTrees.setOpacity(0);
+            });
+
+    KeyFrame keyFrameTwo =
+        new KeyFrame(
+            Duration.millis(70),
+            event -> {
+              treeHitTwo.setOpacity(1);
+              treeHitOne.setOpacity(0);
+            });
+
+    KeyFrame keyFrameThree =
+        new KeyFrame(
+            Duration.millis(105),
+            event -> {
+              treeHitThree.setOpacity(1);
+              treeHitTwo.setOpacity(0);
+            });
+
+    KeyFrame keyFrameFour =
+        new KeyFrame(
+            Duration.millis(140),
+            event -> {
+              treeHitTwo.setOpacity(1);
+              treeHitThree.setOpacity(0);
+            });
+
+    KeyFrame keyFrameFive =
+        new KeyFrame(
+            Duration.millis(175),
+            event -> {
+              treeHitTwo.setOpacity(0);
+              if (chopCount != 8) {
+                miniTrees.setOpacity(1);
+              } else {
+                miniTrees.setOpacity(0);
+              }
+            });
+
+    timeline
+        .getKeyFrames()
+        .addAll(keyFrameOne, keyFrameTwo, keyFrameThree, keyFrameFour, keyFrameFive);
+    timeline.play();
   }
 }
