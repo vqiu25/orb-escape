@@ -225,7 +225,7 @@ public class OptionScreenController extends ControllerMethods {
   @FXML
   private void backReleased(MouseEvent event) {
     backThreeButton.setOpacity(0);
-    App.setScene(AppScene.START);
+    App.setScene(AppScene.STORY);
   }
 
   private void unselectDifficultyButtons() {
