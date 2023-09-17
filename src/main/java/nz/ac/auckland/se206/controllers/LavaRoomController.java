@@ -188,9 +188,6 @@ public class LavaRoomController extends ControllerMethods {
    */
   @FXML
   private void brokenBridgeClicked(MouseEvent event) {
-
-    System.out.println("Clicked broken bridge");
-
     if (GameState.isForrestGameCompleted) {
       App.setScene(AppScene.BRIDGE_GAME);
     } else {
@@ -229,7 +226,6 @@ public class LavaRoomController extends ControllerMethods {
    */
   @FXML
   private void fixedBridgeClicked(MouseEvent event) {
-    System.out.println("Clicked fixed bridge");
 
     Notifications message =
         NotificationBuilder.createNotification(
@@ -273,16 +269,12 @@ public class LavaRoomController extends ControllerMethods {
    */
   @FXML
   private void dragonClicked(MouseEvent event) {
-    System.out.println("Dragon clicked");
 
     if (GameState.isForrestGameCompleted) {
       // if user has collected the fish, prompt the user to feed the dragon
       Notifications message =
-          NotificationBuilder.createNotification(
-              "Dragon:", "Mmmm, yummy! In return have this orb I found.", 5);
+          NotificationBuilder.createNotification("Dragon:", "Mmmm, yummy! You may pass now!.", 5);
       message.show();
-
-      // TODO: set orb drop game state to true and put into inventory
 
       // set lava game state to completed
       GameState.isLavaGameCompleted = true;
@@ -330,7 +322,6 @@ public class LavaRoomController extends ControllerMethods {
    */
   @FXML
   private void bridgeClicked(MouseEvent event) {
-    System.out.println("Bridge clicked");
 
     if (GameState.isLavaGameCompleted) {
       // if lava game room is COMPLETEd (dragon tamed), prompt user to enter the castle
@@ -376,11 +367,9 @@ public class LavaRoomController extends ControllerMethods {
    */
   @FXML
   private void doorClicked(MouseEvent event) {
-    System.out.println("Door clicked");
 
     if (GameState.isLavaGameCompleted) {
       // if lava game room is COMPLETED, allow user to enter the castle
-      // TODO: switch scene to castle - create new FXML and controller
       App.setScene(AppScene.CASTLE);
     } else {
       // lava game room is NOT COMPLETED

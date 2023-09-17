@@ -8,8 +8,8 @@ public class GameState {
   public static boolean isRug = false;
 
   // Indicates which minigame has been selected:
-  public static boolean isLavaBridge = false;
-  public static boolean isForrestTreeChopping = false;
+  public static boolean isLavaBridge = true;
+  public static boolean isForrestTreeChopping = true;
 
   public static boolean isLavaDragon = false;
   public static boolean isForrestFishing = false;
