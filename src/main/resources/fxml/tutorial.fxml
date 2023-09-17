@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -9,54 +8,47 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.TutorialController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.TutorialController">
    <children>
-      <ImageView fitHeight="500.0" fitWidth="600.0" opacity="0.7" pickOnBounds="true">
+      <ImageView fitHeight="625.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/gameRoom.png" />
+            <Image url="@../images/tutorialLayout.png" />
          </image>
-         <effect>
-            <GaussianBlur />
-         </effect>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="300.0" layoutX="100.0" layoutY="51.0" opacity="0.8" stroke="BLACK" strokeType="INSIDE" width="400.0" />
-      <Label alignment="CENTER" layoutX="209.0" layoutY="61.0" text="How to Play:" textAlignment="CENTER" underline="true">
+      <Text layoutX="338.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solve puzzles and find the elusive orbs" textAlignment="CENTER" wrappingWidth="235.94140625">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font size="18.0" />
+         </font></Text>
+      <ImageView fx:id="startOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="startTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="startThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/startThree.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="655.0" layoutY="26.0" onMouseEntered="#startHover" onMouseExited="#startUnhover" onMousePressed="#startPressed" onMouseReleased="#startReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
+      <Label alignment="CENTER" layoutX="337.0" layoutY="146.0" text="Tutorial" textAlignment="CENTER" underline="true">
+         <font>
+            <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <Text layoutX="138.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- The door is locked with a four digit numerical pin." textAlignment="CENTER" wrappingWidth="324.94140625">
-         <font>
-            <Font size="18.0" />
-         </font></Text>
-      <Text layoutX="181.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Find the pin, escape the room!" textAlignment="CENTER">
-         <font>
-            <Font size="18.0" />
-         </font></Text>
-      <Text layoutX="164.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-  Open the chat and talk to the Game Master!" textAlignment="CENTER" wrappingWidth="272.849609375">
-         <font>
-            <Font size="18.0" />
-         </font></Text>
-      <Text layoutX="171.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Solve the riddle and use the clue!" textAlignment="CENTER">
+      <Text layoutX="353.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click on me to ask for hints and respond to riddles" textAlignment="CENTER" wrappingWidth="207.40240478515625">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="183.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Be wary! You've only got two minutes!">
+      <Text layoutX="351.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return the orbs to the terminal to reactive the portal and escape!" textAlignment="CENTER" wrappingWidth="213.72601318359375">
          <font>
-            <Font size="15.0" />
+            <Font size="18.0" />
          </font>
       </Text>
-      <ImageView fitHeight="65.0" fitWidth="144.0" layoutX="237.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/buttonFrame.png" />
-         </image>
-      </ImageView>
-      <Text fill="WHITE" layoutX="258.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I'm Ready!">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Text>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="52.0" layoutX="245.0" layoutY="393.0" onMouseClicked="#onLaunchGame" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="113.0" />
    </children>
 </Pane>
