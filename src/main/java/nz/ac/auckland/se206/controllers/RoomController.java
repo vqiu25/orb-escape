@@ -63,6 +63,12 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView redOrb;
 
   @FXML private Polygon codedText;
+  @FXML private ImageView helpOne;
+  @FXML private ImageView helpTwo;
+  @FXML private ImageView helpThree;
+  @FXML private ImageView settingsOne;
+  @FXML private ImageView settingsTwo;
+  @FXML private ImageView settingsThree;
 
   private TextToSpeech textToSpeech;
   private GameMaster gameMaster;
@@ -95,14 +101,45 @@ public class RoomController extends ControllerMethods {
     App.setScene(AppScene.CHAT);
   }
 
+  @FXML
+  private void onHelpHover(MouseEvent event) {
+    helpTwo.setOpacity(1);
+  }
+
+  @FXML
+  private void onHelpUnhover(MouseEvent event) {
+    helpTwo.setOpacity(0);
+  }
+
+  @FXML
+  private void onHelpPressed(MouseEvent event) {
+    helpThree.setOpacity(1);
+  }
+
   /**
    * Opens the help window GUI.
    *
    * @param event Mouse click event.
    */
   @FXML
-  private void openHelp(MouseEvent event) {
+  private void onHelpReleased(MouseEvent event) {
+    helpThree.setOpacity(0);
     App.setScene(AppScene.HELP);
+  }
+
+  @FXML
+  private void onSettingsHover(MouseEvent event) {
+    settingsTwo.setOpacity(1);
+  }
+
+  @FXML
+  private void onSettingsUnhover(MouseEvent event) {
+    settingsTwo.setOpacity(0);
+  }
+
+  @FXML
+  private void onSettingsPressed(MouseEvent event) {
+    settingsThree.setOpacity(1);
   }
 
   /**
@@ -111,7 +148,8 @@ public class RoomController extends ControllerMethods {
    * @param event
    */
   @FXML
-  private void openSettings(MouseEvent event) {
+  private void onSettingsReleased(MouseEvent event) {
+    settingsThree.setOpacity(0);
     App.setScene(AppScene.SETTINGS);
   }
 

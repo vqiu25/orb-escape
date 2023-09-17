@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameMaster;
@@ -16,6 +17,9 @@ public class TutorialController extends ControllerMethods {
 
   private ChatMessage chatMessage;
   private GameMaster gameMaster;
+  @FXML private ImageView startOneButton;
+  @FXML private ImageView startTwoButton;
+  @FXML private ImageView startThreeButton;
 
   public void initialize() throws ApiProxyException {
     // Initialize game master object:
@@ -36,8 +40,7 @@ public class TutorialController extends ControllerMethods {
    *
    * @throws IOException
    */
-  @FXML
-  private void onLaunchGame(MouseEvent event) throws IOException {
+  private void onLaunchGame() throws IOException {
 
     // Start timer:
     startTimer();
@@ -47,5 +50,26 @@ public class TutorialController extends ControllerMethods {
         NotificationBuilder.createNotification("Game Master:", chatMessage.getContent(), 7);
     message.show();
     App.setScene(AppScene.ROOM);
+  }
+
+  @FXML
+  private void startHover(MouseEvent event) {
+    startTwoButton.setOpacity(1);
+  }
+
+  @FXML
+  private void startUnhover(MouseEvent event) {
+    startTwoButton.setOpacity(0);
+  }
+
+  @FXML
+  private void startPressed(MouseEvent event) {
+    startThreeButton.setOpacity(1);
+  }
+
+  @FXML
+  private void startReleased(MouseEvent event) throws IOException {
+    startThreeButton.setOpacity(0);
+    onLaunchGame();
   }
 }

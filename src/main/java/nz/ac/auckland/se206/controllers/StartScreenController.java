@@ -10,9 +10,6 @@ public class StartScreenController extends ControllerMethods {
   @FXML private ImageView startOneButton;
   @FXML private ImageView startTwoButton;
   @FXML private ImageView startThreeButton;
-  @FXML private ImageView optionsOneButton;
-  @FXML private ImageView optionsTwoButton;
-  @FXML private ImageView optionsThreeButton;
   @FXML private ImageView quitOneButton;
   @FXML private ImageView quitTwoButton;
   @FXML private ImageView quitThreeButton;
@@ -35,27 +32,6 @@ public class StartScreenController extends ControllerMethods {
   @FXML
   private void startReleased(MouseEvent event) {
     startThreeButton.setOpacity(0);
-    App.setScene(AppScene.STORY);
-  }
-
-  @FXML
-  private void optionsHover(MouseEvent event) {
-    optionsTwoButton.setOpacity(1);
-  }
-
-  @FXML
-  private void optionsUnhover(MouseEvent event) {
-    optionsTwoButton.setOpacity(0);
-  }
-
-  @FXML
-  private void optionsPressed(MouseEvent event) {
-    optionsThreeButton.setOpacity(1);
-  }
-
-  @FXML
-  private void optionsReleased(MouseEvent event) {
-    optionsThreeButton.setOpacity(0);
     App.setScene(AppScene.OPTIONS);
   }
 
