@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
@@ -142,7 +143,9 @@ public class CastleRoomController extends ControllerMethods {
         return;
       }
 
+      // Update state of the game:
       isOrbTaken = true;
+      GameState.isCastleOrbCollected = true;
 
       // Notify the user that the answer is correct:
       Notifications message =

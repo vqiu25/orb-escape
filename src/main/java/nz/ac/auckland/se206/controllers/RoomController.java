@@ -413,7 +413,17 @@ public class RoomController extends ControllerMethods {
   // Terminal
   @FXML
   private void terminalClick(MouseEvent event) {
-    App.setScene(AppScene.TERMINAL);
+    // If the orbs have NOT been found, prompt user to find the orbs:
+    if (GameState.isRoomOrbCollected
+        && GameState.isForrestOrbCollected
+        && GameState.isCastleOrbCollected) {
+      App.setScene(AppScene.TERMINAL);
+    } else {
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master: ", "Find the orbs to access the terminal!", 5);
+      message.show();
+    }
   }
 
   @FXML

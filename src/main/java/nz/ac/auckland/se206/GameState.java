@@ -24,6 +24,11 @@ public class GameState {
   // Indicates if map has been removed off the wall
   public static boolean isMapOnWall = true;
 
+  // Indicates if orbs have been collected:
+  public static boolean isForrestOrbCollected = false;
+  public static boolean isCastleOrbCollected = false;
+  public static boolean isRoomOrbCollected = true; // TODO: add this to room!
+
   // Indicates if all the orbs have been placed in the terminal
   public static boolean isOrbsPlaced = false;
 
