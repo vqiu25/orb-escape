@@ -22,8 +22,10 @@ public class SettingsController extends ControllerMethods {
   @FXML ImageView quitThreeButton;
 
   public void initialize() throws ApiProxyException {
-    // Bind the timer label to the display time
+    // Bind the labels to the display values
     lblTimer.textProperty().bind(ControllerMethods.displayTime);
+    lblTask.textProperty().bind(ControllerMethods.displayTask);
+    lblHints.textProperty().bind(ControllerMethods.displayHints);
   }
 
   // Back Button

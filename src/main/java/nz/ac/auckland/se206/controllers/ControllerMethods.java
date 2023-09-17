@@ -13,8 +13,10 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 
 public class ControllerMethods {
-  // String property for the timer
+  // String properties for the timer, task and hints
   protected static StringProperty displayTime = new SimpleStringProperty(GameState.timerString);
+  protected static StringProperty displayTask = new SimpleStringProperty("Task: ");
+  protected static StringProperty displayHints = new SimpleStringProperty(GameState.hintString);
 
   // Object properties for all the images in the inventory
   protected static ObjectProperty<javafx.scene.image.Image> fishingRodIconImageProperty =
@@ -71,6 +73,20 @@ public class ControllerMethods {
   /** Changes scene to game over scene. */
   protected void gameOver() {
     App.setScene(AppScene.GAMEOVER);
+  }
+
+  /** Updates the task label based on current game state */
+  protected void updateTask() {}
+
+  /** Updates the hints remaining */
+  protected void updateHintsRemaining() {
+    if (GameState.isEasySelected) {
+      displayHints.setValue("Hints: Infinite");
+    } else if (GameState.isMediumSelected) {
+      displayHints.setValue("Hints: " + GameState.hintCount);
+    } else if (GameState.isHardSelected) {
+      displayHints.setValue("Hints: None");
+    }
   }
 
   /** Method for adding the fishing rod to inventory */

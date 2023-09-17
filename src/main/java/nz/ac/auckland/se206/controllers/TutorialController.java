@@ -42,8 +42,10 @@ public class TutorialController extends ControllerMethods {
    */
   private void onLaunchGame() throws IOException {
 
-    // Start timer:
+    // Start timer, update task and update hints remaining
     startTimer();
+    updateTask();
+    updateHintsRemaining();
 
     // Fetch message from AI and show:
     Notifications message =

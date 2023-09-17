@@ -57,8 +57,10 @@ public class LavaRoomController extends ControllerMethods {
   @FXML private ImageView redOrb;
 
   public void initialize() {
-    // Bind the timer label to the display time
+    // Bind the labels to the display values
     lblTimer.textProperty().bind(ControllerMethods.displayTime);
+    lblTask.textProperty().bind(ControllerMethods.displayTask);
+    lblHints.textProperty().bind(ControllerMethods.displayHints);
 
     // Bind the inventory images to their image properties
     fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);

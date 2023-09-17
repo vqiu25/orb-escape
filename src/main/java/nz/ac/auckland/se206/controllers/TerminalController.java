@@ -21,8 +21,10 @@ public class TerminalController extends ControllerMethods {
   @FXML private ImageView redThreeButton;
 
   public void initialize() {
-    // Bind the timer label to the display time
+    // Bind the labels to the display values
     lblTimer.textProperty().bind(ControllerMethods.displayTime);
+    lblTask.textProperty().bind(ControllerMethods.displayTask);
+    lblHints.textProperty().bind(ControllerMethods.displayHints);
   }
 
   // Red Button

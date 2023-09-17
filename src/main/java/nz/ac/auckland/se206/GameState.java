@@ -59,8 +59,9 @@ public class GameState {
 
   // Hints (Default)
   public static int hintCount = 5;
+  public static String hintString = "Hints: 5";
 
   // Timer (Default)
   public static int timerCount = 240;
-  public static String timerString = "4:00";
+  public static String timerString = "Time Left: 4:00";
 }
