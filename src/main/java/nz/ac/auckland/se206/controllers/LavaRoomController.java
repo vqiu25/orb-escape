@@ -37,9 +37,35 @@ public class LavaRoomController extends ControllerMethods {
   @FXML private ImageView fixedBridge;
   @FXML private ImageView fixedBridgeOutline;
 
+  // Help and Settings Icons
+  @FXML private ImageView helpOne;
+  @FXML private ImageView helpTwo;
+  @FXML private ImageView helpThree;
+  @FXML private ImageView settingsOne;
+  @FXML private ImageView settingsTwo;
+  @FXML private ImageView settingsThree;
+
+  // Inventory Items
+  @FXML private ImageView fishingRodIcon;
+  @FXML private ImageView axeIcon;
+  @FXML private ImageView fishIcon;
+  @FXML private ImageView planksIcon;
+  @FXML private ImageView blueOrb;
+  @FXML private ImageView greenOrb;
+  @FXML private ImageView redOrb;
+
   public void initialize() {
     // Bind the timer label to the display time
     roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+
+    // Bind the inventory images to their image properties
+    fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
+    axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
+    fishIcon.imageProperty().bind(ControllerMethods.fishIconImageProperty);
+    planksIcon.imageProperty().bind(ControllerMethods.planksIconImageProperty);
+    blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
+    greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
+    redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
 
     // Based on minigame selected, either show dragon scenario or broken bridge scenario:
     if (GameState.isLavaBridge && GameState.isForrestTreeChopping) {
@@ -252,6 +278,7 @@ public class LavaRoomController extends ControllerMethods {
 
       // set lava game state to completed
       GameState.isLavaGameCompleted = true;
+      removeFish();
 
       // disable dragon and dragonoutline
       dragon.setDisable(true);
@@ -361,5 +388,57 @@ public class LavaRoomController extends ControllerMethods {
         message.show();
       }
     }
+  }
+
+  @FXML
+  private void onHelpHover(MouseEvent event) {
+    helpTwo.setOpacity(1);
+  }
+
+  @FXML
+  private void onHelpUnhover(MouseEvent event) {
+    helpTwo.setOpacity(0);
+  }
+
+  @FXML
+  private void onHelpPressed(MouseEvent event) {
+    helpThree.setOpacity(1);
+  }
+
+  /**
+   * Opens the help window GUI.
+   *
+   * @param event Mouse click event.
+   */
+  @FXML
+  private void onHelpReleased(MouseEvent event) {
+    helpThree.setOpacity(0);
+    App.setScene(AppScene.HELP);
+  }
+
+  @FXML
+  private void onSettingsHover(MouseEvent event) {
+    settingsTwo.setOpacity(1);
+  }
+
+  @FXML
+  private void onSettingsUnhover(MouseEvent event) {
+    settingsTwo.setOpacity(0);
+  }
+
+  @FXML
+  private void onSettingsPressed(MouseEvent event) {
+    settingsThree.setOpacity(1);
+  }
+
+  /**
+   * Opens the settings scene.
+   *
+   * @param event
+   */
+  @FXML
+  private void onSettingsReleased(MouseEvent event) {
+    settingsThree.setOpacity(0);
+    App.setScene(AppScene.SETTINGS);
   }
 }

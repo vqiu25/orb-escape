@@ -125,5 +125,40 @@
          </image>
       </ImageView>
       <Rectangle fx:id="closeRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="53.0" layoutX="661.0" layoutY="20.0" onMouseEntered="#backHovered" onMouseExited="#backUnhovered" onMousePressed="#backPressed" onMouseReleased="#backReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="118.0" />
+      <ImageView fx:id="fishingRodIcon" fitHeight="30.0" fitWidth="30.0" layoutX="292.0" layoutY="566.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fishingRodIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="axeIcon" fitHeight="30.0" fitWidth="30.0" layoutX="296.0" layoutY="566.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/axeIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="planksIcon" fitHeight="30.0" fitWidth="30.0" layoutX="330.0" layoutY="566.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/planksIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="fishIcon" fitHeight="30.0" fitWidth="30.0" layoutX="330.0" layoutY="566.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fishIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="blueOrb" fitHeight="21.0" fitWidth="21.0" layoutX="416.75" layoutY="570.75" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/blueOrb.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="greenOrb" fitHeight="21.0" fitWidth="21.0" layoutX="450.25" layoutY="570.75" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/greenOrb.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="redOrb" fitHeight="21.0" fitWidth="21.0" layoutX="482.75" layoutY="570.25" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/redOrb.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

@@ -33,6 +33,9 @@ public class GameState {
   // Indicates if the axe has been taken
   public static boolean isAxeTaken = false;
 
+  // Indicates if the fishing rod has been taken
+  public static boolean isFishingRodTaken = false;
+
   // Indicates if the fish has been caught
   public static boolean isFishCaught = false;
 
