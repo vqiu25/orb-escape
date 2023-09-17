@@ -7,8 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppScene;
-import nz.ac.auckland.se206.controllers.LavaRoomController;
 import nz.ac.auckland.se206.controllers.ForestRoomController;
+import nz.ac.auckland.se206.controllers.LavaRoomController;
 import nz.ac.auckland.se206.controllers.RoomController;
 
 /**
@@ -77,6 +77,7 @@ public class App extends Application {
   public static LavaRoomController getLavaRoomController() {
     return lavaRoomController;
   }
+
   public static ForestRoomController getForestRoomController() {
     return forestRoomController;
   }
@@ -125,7 +126,6 @@ public class App extends Application {
     FXMLLoader room = loadLoader("room");
     SceneManager.addScene(AppScene.ROOM, room.load());
     roomController = room.getController();
-
 
     // Store references to the lava room controller:
     FXMLLoader lavaRoom = loadLoader("lavaRoom");
