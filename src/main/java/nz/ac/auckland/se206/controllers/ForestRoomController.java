@@ -28,6 +28,13 @@ public class ForestRoomController extends ControllerMethods {
   @FXML private ImageView axeOutline;
   @FXML private ImageView axeRemoved;
   @FXML private ImageView axeRemovedOutline;
+  @FXML private ImageView fishingRodIcon;
+  @FXML private ImageView axeIcon;
+  @FXML private ImageView fishIcon;
+  @FXML private ImageView planksIcon;
+  @FXML private ImageView blueOrb;
+  @FXML private ImageView greenOrb;
+  @FXML private ImageView redOrb;
   @FXML private Polygon treesMini;
   @FXML private Polygon choppedTrees;
   @FXML private Polygon axeGrab;
@@ -38,6 +45,15 @@ public class ForestRoomController extends ControllerMethods {
   public void initialize() {
     // Bind the timer label to the display time
     roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+
+    // Bind the inventory images to their image properties
+    fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
+    axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
+    fishIcon.imageProperty().bind(ControllerMethods.fishIconImageProperty);
+    planksIcon.imageProperty().bind(ControllerMethods.planksIconImageProperty);
+    blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
+    greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
+    redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
 
     // Based on minigame selected, either show dragon scenario or broken bridge scenario:
     if (GameState.isForrestTreeChopping) {
@@ -129,7 +145,7 @@ public class ForestRoomController extends ControllerMethods {
       dock.setOpacity(1);
       dockWithoutRod.setDisable(false);
       fishingMini.setDisable(true);
-      App.getRoomController().findFishingRod();
+      findFishingRod();
       App.setScene(AppScene.FISHING);
     }
   }
@@ -235,7 +251,7 @@ public class ForestRoomController extends ControllerMethods {
   @FXML
   private void axeClick(MouseEvent event) {
     if (!GameState.isAxeTaken) {
-      App.getRoomController().findAxe();
+      findAxe();
       axe.setOpacity(0);
       axeOutline.setOpacity(0);
       axeRemoved.setOpacity(1);

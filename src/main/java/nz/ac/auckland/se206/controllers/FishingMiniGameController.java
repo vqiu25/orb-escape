@@ -91,8 +91,8 @@ public class FishingMiniGameController extends ControllerMethods {
             event -> {
               // Make the fish disappear and appear in the inventory with the green orb
               fishBite.setOpacity(0);
-              App.getRoomController().findFish();
-              App.getRoomController().findGreenOrb();
+              findFish();
+              findGreenOrb();
             });
         delay.play();
       } else {
@@ -101,8 +101,8 @@ public class FishingMiniGameController extends ControllerMethods {
             event -> {
               // Make the fish disappear and appear in the inventory with the green orb
               fishBite.setOpacity(0);
-              App.getRoomController().findFish();
-              App.getRoomController().findGreenOrb();
+              findFish();
+              findGreenOrb();
             });
         delay.play();
       }

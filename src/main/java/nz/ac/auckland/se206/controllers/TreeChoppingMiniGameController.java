@@ -62,7 +62,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
 
         // Make the green orb appear in the inventory
         // NOTE: This should only be done once the orb is clicked by the user (implemented later)
-        App.getRoomController().findGreenOrb();
+        findGreenOrb();
 
       } else if (chopCount == 10) {
         // Completed the mini game
@@ -70,7 +70,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
         GameState.isForrestGameCompleted = true;
 
         // Make the planks appear in the inventory
-        App.getRoomController().findPlanks();
+        findPlanks();
 
         // TODO: Make a notification to say you cut all the trees down
         System.out.println("You completed the mini game!");

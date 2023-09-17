@@ -221,6 +221,41 @@
             <Image url="@../images/rightArrowThree.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="fishingRodIcon" fitHeight="30.0" fitWidth="30.0" layoutX="292.0" layoutY="566.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fishingRodIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="axeIcon" fitHeight="30.0" fitWidth="30.0" layoutX="296.0" layoutY="566.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/axeIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="planksIcon" fitHeight="30.0" fitWidth="30.0" layoutX="330.0" layoutY="566.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/planksIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="fishIcon" fitHeight="30.0" fitWidth="30.0" layoutX="330.0" layoutY="566.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fishIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="blueOrb" fitHeight="21.0" fitWidth="21.0" layoutX="416.75" layoutY="570.75" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/blueOrb.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="greenOrb" fitHeight="21.0" fitWidth="21.0" layoutX="450.25" layoutY="570.75" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/greenOrb.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="redOrb" fitHeight="21.0" fitWidth="21.0" layoutX="482.75" layoutY="570.25" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/redOrb.png" />
+         </image>
+      </ImageView>
       <Rectangle fx:id="leftRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="51.0" layoutX="22.0" layoutY="272.0" onMouseEntered="#leftButtonHovered" onMouseExited="#leftButtonUnhovered" onMousePressed="#leftButtonClicked" onMouseReleased="#leftButtonUnclick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="53.0" />
       <Rectangle fx:id="rightRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="51.0" layoutX="724.0" layoutY="272.0" onMouseEntered="#rightButtonHovered" onMouseExited="#rightButtonUnhovered" onMousePressed="#rightButtonClicked" onMouseReleased="#rightButtonUnclick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="53.0" />
       <Polygon fx:id="cabinet" fill="DODGERBLUE" layoutX="236.0" layoutY="351.0" onMouseClicked="#cabinetClick" onMouseEntered="#cabinetHover" onMouseExited="#cabinetUnhover" opacity="0.0" points="73.21463012695312, 22.1519775390625, 73.21463012695312, -53.06842041015625, 43.12646484375, -69.61691284179688, -45.13212585449219, -27.994964599609375, -45.13212585449219, 48.7298583984375, -10.530746459960938, 65.27835083007812" stroke="BLACK" strokeType="INSIDE" />
@@ -231,40 +266,5 @@
       <Polygon fx:id="lightSwitch" fill="DODGERBLUE" layoutX="457.0" layoutY="191.0" onMouseClicked="#switchClick" onMouseEntered="#switchHover" onMouseExited="#switchUnhover" opacity="0.0" points="29.73480224609375, 38.73173522949219, 29.73480224609375, 4.6318206787109375, -0.353363037109375, 10.147979736328125, -0.353363037109375, 47.75819396972656, 8.673095703125, 51.26847839355469, 25.2215576171875, 51.26847839355469" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="portalAndBase" fill="DODGERBLUE" layoutX="613.0" layoutY="390.0" onMouseClicked="#portalClick" onMouseEntered="#portalHover" onMouseExited="#portalUnhover" opacity="0.0" points="8.321044921875, -96.59103393554688, -9.36566162109375, -129.1346435546875, -41.9093017578125, -129.1346435546875, -53.936279296875, 30.753448486328125, -24.2225341796875, 49.147674560546875, 8.321044921875, 37.828155517578125" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="codedText" disable="true" fill="DODGERBLUE" layoutX="236.0" layoutY="166.0" onMouseClicked="#codeClick" onMouseEntered="#codeHover" onMouseExited="#codeUnhover" opacity="0.0" points="-4.4946136474609375, 41.267822265625, 22.38922119140625, 29.778167724609375, 13.899581909179688, 3.771942138671875, -20.058944702148438, 13.506378173828125, -39.86808776855469, 29.778167724609375, -34.20832824707031, 55.95454406738281" stroke="BLACK" strokeType="INSIDE" />
-      <ImageView fx:id="fishingRodIcon" fitHeight="30.0" fitWidth="30.0" layoutX="292.0" layoutY="566.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/fishingRodIcon.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="axeIcon" fitHeight="30.0" fitWidth="30.0" layoutX="296.0" layoutY="566.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/axeIcon.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="planksIcon" fitHeight="30.0" fitWidth="30.0" layoutX="330.0" layoutY="566.0" opacity="0.0" pickOnBounds="true">
-         <image>
-            <Image url="@../images/planksIcon.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="fishIcon" fitHeight="30.0" fitWidth="30.0" layoutX="330.0" layoutY="566.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/fishIcon.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="blueOrb" fitHeight="21.0" fitWidth="21.0" layoutX="416.75" layoutY="570.75" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/blueOrb.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="greenOrb" fitHeight="21.0" fitWidth="21.0" layoutX="450.25" layoutY="570.75" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/greenOrb.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="redOrb" fitHeight="21.0" fitWidth="21.0" layoutX="482.75" layoutY="570.25" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/redOrb.png" />
-         </image>
-      </ImageView>
    </children>
 </Pane>

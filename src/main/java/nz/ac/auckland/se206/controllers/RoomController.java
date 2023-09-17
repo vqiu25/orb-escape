@@ -71,6 +71,15 @@ public class RoomController extends ControllerMethods {
     // Bind the timer label to the display time
     roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
 
+    // Bind the inventory images to their image properties
+    fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
+    axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
+    fishIcon.imageProperty().bind(ControllerMethods.fishIconImageProperty);
+    planksIcon.imageProperty().bind(ControllerMethods.planksIconImageProperty);
+    blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
+    greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
+    redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
+
     // // Initialize game master object:
     // gameMaster = new GameMaster();
     // gameMaster.chatCompletionRequest();
@@ -647,40 +656,5 @@ public class RoomController extends ControllerMethods {
 
     Thread thread = new Thread(task);
     thread.start();
-  }
-
-  /** Method for adding the fishing rod to inventory */
-  public void findFishingRod() {
-    fishingRodIcon.setOpacity(1);
-  }
-
-  /** Method for adding the axe to inventory */
-  public void findAxe() {
-    axeIcon.setOpacity(1);
-  }
-
-  /** Method for adding the fish to inventory */
-  public void findFish() {
-    fishIcon.setOpacity(1);
-  }
-
-  /** Method for adding the fish to inventory */
-  public void findPlanks() {
-    planksIcon.setOpacity(1);
-  }
-
-  /** Method for adding the blue orb to inventory */
-  public void findBlueOrb() {
-    blueOrb.setOpacity(1);
-  }
-
-  /** Method for adding the green orb to inventory */
-  public void findGreenOrb() {
-    greenOrb.setOpacity(1);
-  }
-
-  /** Method for adding the red orb to inventory */
-  public void findRedOrb() {
-    redOrb.setOpacity(1);
   }
 }
