@@ -9,10 +9,19 @@ import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
-public class CastleRoomController {
+public class CastleRoomController extends ControllerMethods {
 
   // Timer label
   @FXML private Label roomTimerLabel;
+
+  // Inventory Items
+  @FXML private ImageView fishingRodIcon;
+  @FXML private ImageView axeIcon;
+  @FXML private ImageView fishIcon;
+  @FXML private ImageView planksIcon;
+  @FXML private ImageView blueOrb;
+  @FXML private ImageView greenOrb;
+  @FXML private ImageView redOrb;
 
   // Orb state:
   private boolean isOrbTaken = false;
@@ -72,6 +81,15 @@ public class CastleRoomController {
   public void initialize() {
     // Bind the timer label to the display time
     roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+
+    // Bind the inventory images to their image properties
+    fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
+    axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
+    fishIcon.imageProperty().bind(ControllerMethods.fishIconImageProperty);
+    planksIcon.imageProperty().bind(ControllerMethods.planksIconImageProperty);
+    blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
+    greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
+    redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
   }
 
   // Methods for back button animations:
@@ -318,6 +336,7 @@ public class CastleRoomController {
   private void orbPressed(MouseEvent event) {
     chestEmpty.setOpacity(1);
 
-    // TODO: put the orb into inventory
+    // Put the orb into inventory
+    findRedOrb();
   }
 }

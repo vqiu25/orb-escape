@@ -37,9 +37,27 @@ public class LavaRoomController extends ControllerMethods {
   @FXML private ImageView fixedBridge;
   @FXML private ImageView fixedBridgeOutline;
 
+  // Inventory Items
+  @FXML private ImageView fishingRodIcon;
+  @FXML private ImageView axeIcon;
+  @FXML private ImageView fishIcon;
+  @FXML private ImageView planksIcon;
+  @FXML private ImageView blueOrb;
+  @FXML private ImageView greenOrb;
+  @FXML private ImageView redOrb;
+
   public void initialize() {
     // Bind the timer label to the display time
     roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+
+    // Bind the inventory images to their image properties
+    fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
+    axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
+    fishIcon.imageProperty().bind(ControllerMethods.fishIconImageProperty);
+    planksIcon.imageProperty().bind(ControllerMethods.planksIconImageProperty);
+    blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
+    greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
+    redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
 
     // Based on minigame selected, either show dragon scenario or broken bridge scenario:
     if (GameState.isLavaBridge && GameState.isForrestTreeChopping) {
@@ -260,6 +278,7 @@ public class LavaRoomController extends ControllerMethods {
 
       // set lava game state to completed
       GameState.isLavaGameCompleted = true;
+      removeFish();
 
       // disable dragon and dragonoutline
       dragon.setDisable(true);

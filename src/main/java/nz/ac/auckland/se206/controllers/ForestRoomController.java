@@ -28,6 +28,16 @@ public class ForestRoomController extends ControllerMethods {
   @FXML private ImageView axeOutline;
   @FXML private ImageView axeRemoved;
   @FXML private ImageView axeRemovedOutline;
+
+  // Inventory Items
+  @FXML private ImageView fishingRodIcon;
+  @FXML private ImageView axeIcon;
+  @FXML private ImageView fishIcon;
+  @FXML private ImageView planksIcon;
+  @FXML private ImageView blueOrb;
+  @FXML private ImageView greenOrb;
+  @FXML private ImageView redOrb;
+
   @FXML private Polygon treesMini;
   @FXML private Polygon choppedTrees;
   @FXML private Polygon axeGrab;
@@ -38,6 +48,15 @@ public class ForestRoomController extends ControllerMethods {
   public void initialize() {
     // Bind the timer label to the display time
     roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+
+    // Bind the inventory images to their image properties
+    fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
+    axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
+    fishIcon.imageProperty().bind(ControllerMethods.fishIconImageProperty);
+    planksIcon.imageProperty().bind(ControllerMethods.planksIconImageProperty);
+    blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
+    greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
+    redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
 
     // Based on minigame selected, either show dragon scenario or broken bridge scenario:
     if (GameState.isForrestTreeChopping) {
@@ -121,8 +140,15 @@ public class ForestRoomController extends ControllerMethods {
   // Fishing Rod
   @FXML
   private void fishingClick(MouseEvent event) {
-    // Prompt user to go to fishing room
+    // Add the fishing rod to inventory and take the user to the fishing mini game
     if (GameState.isForrestFishing) {
+      GameState.isFishingRodTaken = true;
+      fishingRod.setOpacity(0);
+      fishingRodOutline.setOpacity(0);
+      dock.setOpacity(1);
+      dockWithoutRod.setDisable(false);
+      fishingMini.setDisable(true);
+      findFishingRod();
       App.setScene(AppScene.FISHING);
     }
   }
@@ -143,18 +169,22 @@ public class ForestRoomController extends ControllerMethods {
 
   // Dock without fishing rod
   @FXML
-  private void dockClick(MouseEvent event) {}
+  private void dockClick(MouseEvent event) {
+    if (GameState.isForrestFishing && GameState.isFishingRodTaken) {
+      App.setScene(AppScene.FISHING);
+    }
+  }
 
   @FXML
   private void dockHover(MouseEvent event) {
-    if (!GameState.isForrestFishing) {
+    if (!GameState.isForrestFishing || GameState.isFishingRodTaken) {
       dockOutline.setOpacity(1);
     }
   }
 
   @FXML
   private void dockUnhover(MouseEvent event) {
-    if (!GameState.isForrestFishing) {
+    if (!GameState.isForrestFishing || GameState.isFishingRodTaken) {
       dockOutline.setOpacity(0);
     }
   }
@@ -224,13 +254,13 @@ public class ForestRoomController extends ControllerMethods {
   @FXML
   private void axeClick(MouseEvent event) {
     if (!GameState.isAxeTaken) {
+      findAxe();
       axe.setOpacity(0);
       axeOutline.setOpacity(0);
       axeRemoved.setOpacity(1);
       GameState.isAxeTaken = true;
       axeGrab.setDisable(true);
       emptyLog.setDisable(false);
-      // TODO: Make the axe appear in the inventory
     }
   }
 
