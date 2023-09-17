@@ -16,21 +16,31 @@ public class BridgeGameController extends ControllerMethods {
 
   @FXML private Label roomTimerLabel;
 
+  @FXML private ImageView smallPlank;
   @FXML private ImageView smallPlankOutline;
+  @FXML private ImageView smallFixed;
   @FXML private Rectangle smallRectangle;
-  DragImage imageSmall = new DragImage();
+  DragImage imageSmall;
 
+  @FXML private ImageView mediumPlank;
   @FXML private ImageView mediumPlankOutline;
+  @FXML private ImageView mediumFixed;
   @FXML private Rectangle mediumRectangle;
-  DragImage imageMedium = new DragImage();
+  DragImage imageMedium;
 
+  @FXML private ImageView largePlank;
   @FXML private ImageView largePlankOutline;
+  @FXML private ImageView largeFixed;
   @FXML private Rectangle largeRectangle;
-  DragImage imageLarge = new DragImage();
+  DragImage imageLarge;
 
   public void initialize() {
     // Bind the timer label to the display time
     roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+
+    imageSmall = new DragImage(smallPlankOutline, smallPlank, smallFixed, smallRectangle);
+    imageMedium = new DragImage(mediumPlankOutline, mediumPlank, mediumFixed, mediumRectangle);
+    imageLarge = new DragImage(largePlankOutline, largePlank, largeFixed, largeRectangle);
   }
 
   @FXML
@@ -38,21 +48,79 @@ public class BridgeGameController extends ControllerMethods {
     App.setScene(AppScene.LAVA);
   }
 
+  // Small Plank Logic:
+  @FXML
+  private void smallHovered() {
+    smallPlank.setOpacity(0);
+  }
+
+  @FXML
+  private void smallUnhovered() {
+    smallPlank.setOpacity(1);
+  }
+
   @FXML
   private void smallDragged(MouseEvent event) {
-    imageSmall.dragImage(smallPlankOutline, smallRectangle);
+    // Disable non outlined image
+    smallPlank.setOpacity(0);
+
+    imageSmall.drag(event);
+  }
+
+  @FXML
+  void smallReleased() {
+    imageSmall.released();
+  }
+
+  // Medium Plank Logic:
+  @FXML
+  private void mediumHovered() {
+    mediumPlank.setOpacity(0);
+  }
+
+  @FXML
+  private void mediumUnhovered() {
+    mediumPlank.setOpacity(1);
   }
 
   @FXML
   private void mediumDragged(MouseEvent event) {
-    imageMedium.dragImage(mediumPlankOutline, mediumRectangle);
+    // Disable non outlined image
+    mediumPlank.setOpacity(0);
+
+    imageMedium.drag(event);
+  }
+
+  @FXML
+  void mediumReleased() {
+    imageMedium.released();
+  }
+
+  // Large Plank Logic:
+  @FXML
+  private void largeHovered() {
+    largePlank.setOpacity(0);
+  }
+
+  @FXML
+  private void largeUnhovered() {
+    largePlank.setOpacity(1);
   }
 
   @FXML
   private void largeDragged(MouseEvent event) {
-    imageLarge.dragImage(largePlankOutline, largeRectangle);
+    // Disable non outlined image
+    largePlank.setOpacity(0);
+
+    imageLarge.drag(event);
   }
 
+  @FXML
+  void largeReleased() {
+    imageLarge.released();
+  }
+
+  // Checks to see if planks are in the right place:
   @FXML
   private void checkAnswer() {
     if (imageSmall.isCorrectPosition()
