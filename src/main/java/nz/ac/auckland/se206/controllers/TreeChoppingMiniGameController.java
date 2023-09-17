@@ -11,7 +11,9 @@ import nz.ac.auckland.se206.SceneManager.AppScene;
 
 public class TreeChoppingMiniGameController extends ControllerMethods {
 
-  @FXML private Label roomTimerLabel;
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
   @FXML private Label chopCountLabel;
 
   @FXML private ImageView miniTrees;
@@ -39,7 +41,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
 
   public void initialize() {
     // Bind the timer label to the display time
-    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
 
     // Bind the inventory images to their image properties
     fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);

@@ -12,7 +12,9 @@ import org.controlsfx.control.Notifications;
 
 public class LavaRoomController extends ControllerMethods {
 
-  @FXML private Label roomTimerLabel;
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
 
   @FXML private ImageView rightArrow;
   @FXML private ImageView rightArrowHover;
@@ -56,7 +58,7 @@ public class LavaRoomController extends ControllerMethods {
 
   public void initialize() {
     // Bind the timer label to the display time
-    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
 
     // Bind the inventory images to their image properties
     fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);

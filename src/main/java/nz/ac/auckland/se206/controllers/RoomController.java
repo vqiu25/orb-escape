@@ -22,8 +22,10 @@ import org.controlsfx.control.Notifications;
 /** Controller class for the room view. */
 public class RoomController extends ControllerMethods {
 
-  @FXML private Label taskLabel;
-  @FXML private Label roomTimerLabel;
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
+
   @FXML private ImageView rightArrow;
   @FXML private ImageView rightArrowHover;
   @FXML private ImageView rightArrowPressed;
@@ -78,7 +80,7 @@ public class RoomController extends ControllerMethods {
   /** Initializes the room view, it is called when the room loads. */
   public void initialize() {
     // Bind the timer label to the display time
-    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
 
     // Bind the inventory images to their image properties
     fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
@@ -159,7 +161,7 @@ public class RoomController extends ControllerMethods {
    * @param message The message to be displayed.
    */
   public void updateTaskLabel(String message) {
-    taskLabel.setText("Task: " + message);
+    lblTask.setText("Task: " + message);
   }
 
   /**

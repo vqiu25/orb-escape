@@ -11,8 +11,9 @@ import org.controlsfx.control.Notifications;
 
 public class CastleRoomController extends ControllerMethods {
 
-  // Timer label
-  @FXML private Label roomTimerLabel;
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
 
   // Inventory Items
   @FXML private ImageView fishingRodIcon;
@@ -80,7 +81,7 @@ public class CastleRoomController extends ControllerMethods {
 
   public void initialize() {
     // Bind the timer label to the display time
-    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
 
     // Bind the inventory images to their image properties
     fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);

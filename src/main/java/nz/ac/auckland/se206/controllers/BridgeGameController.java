@@ -14,7 +14,9 @@ import org.controlsfx.control.Notifications;
 
 public class BridgeGameController extends ControllerMethods {
 
-  @FXML private Label roomTimerLabel;
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
 
   @FXML private ImageView smallPlankOutline;
   @FXML private Rectangle smallRectangle;
@@ -39,7 +41,7 @@ public class BridgeGameController extends ControllerMethods {
 
   public void initialize() {
     // Bind the timer label to the display time
-    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
 
     // Bind the inventory images to their image properties
     fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);

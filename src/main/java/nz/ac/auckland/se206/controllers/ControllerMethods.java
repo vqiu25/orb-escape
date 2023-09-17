@@ -64,7 +64,7 @@ public class ControllerMethods {
     String time = (count / 60) + ":" + extra + (count % 60);
     Platform.runLater(
         () -> {
-          displayTime.setValue(time);
+          displayTime.setValue("Time Left: " + time);
         });
   }
 

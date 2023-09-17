@@ -8,7 +8,11 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 
 public class TerminalController extends ControllerMethods {
-  @FXML private Label roomTimerLabel;
+
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
+
   @FXML private ImageView backButtonOne;
   @FXML private ImageView backButtonTwo;
   @FXML private ImageView backButtonThree;
@@ -18,7 +22,7 @@ public class TerminalController extends ControllerMethods {
 
   public void initialize() {
     // Bind the timer label to the display time
-    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
   }
 
   // Red Button

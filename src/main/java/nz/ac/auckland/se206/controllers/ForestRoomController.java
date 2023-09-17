@@ -13,7 +13,9 @@ public class ForestRoomController extends ControllerMethods {
   @FXML private ImageView leftArrow;
   @FXML private ImageView leftArrowHover;
   @FXML private ImageView leftArrowPressed;
-  @FXML private Label roomTimerLabel;
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
   @FXML private ImageView rock;
   @FXML private ImageView rockOutline;
   @FXML private ImageView fishingRod;
@@ -53,7 +55,7 @@ public class ForestRoomController extends ControllerMethods {
 
   public void initialize() {
     // Bind the timer label to the display time
-    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
 
     // Bind the inventory images to their image properties
     fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
