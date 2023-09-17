@@ -27,7 +27,7 @@ public class GameState {
   // Indicates if orbs have been collected:
   public static boolean isForrestOrbCollected = false;
   public static boolean isCastleOrbCollected = false;
-  public static boolean isRoomOrbCollected = true; // TODO: add this to room!
+  public static boolean isRoomOrbCollected = false; // TODO: add this to room!
 
   // Indicates if all the orbs have been placed in the terminal
   public static boolean isOrbsPlaced = false;
