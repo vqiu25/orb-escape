@@ -11,11 +11,6 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" style="-fx-background-color: #e9ecef;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.RoomController">
    <children>
-      <ImageView fitHeight="56.0" fitWidth="110.0" layoutX="666.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/buttonFrame.png" />
-         </image>
-      </ImageView>
       <Text layoutX="18.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Left:">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -24,11 +19,6 @@
       <Label fx:id="roomTimerLabel" layoutX="129.0" layoutY="18.0" text="2:00">
          <font>
             <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="694.0" layoutY="558.0" text="CHAT" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="47.0" layoutX="673.0" layoutY="548.0" onMouseClicked="#openChat" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="95.0" />
@@ -276,5 +266,10 @@
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="48.0" layoutX="723.0" layoutY="18.0" onMouseEntered="#onSettingsHover" onMouseExited="#onSettingsUnhover" onMousePressed="#onSettingsPressed" onMouseReleased="#onSettingsReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="54.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="46.0" layoutX="655.0" layoutY="23.0" onMouseEntered="#onHelpHover" onMouseExited="#onHelpUnhover" onMousePressed="#onHelpPressed" onMouseReleased="#onHelpReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
+      <ImageView fitHeight="141.0" fitWidth="171.0" layoutX="606.0" layoutY="506.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/gameMaster.gif" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
