@@ -24,6 +24,18 @@ public class GameState {
   // Indicates if map has been removed off the wall
   public static boolean isMapOnWall = true;
 
+  // Indicates if the code has been found
+  public static boolean isCodeFound = false;
+
+  // Indicates if the blue orb has been found
+  public static boolean isBlueOrbFound = false;
+
+  // Indicates if the green orb has been found
+  public static boolean isGreenOrbFound = false;
+
+  // Indicates if the red orb has been found
+  public static boolean isRedOrbFound = false;
+
   // Indicates if all the orbs have been placed in the terminal
   public static boolean isOrbsPlaced = false;
 
@@ -38,6 +50,21 @@ public class GameState {
 
   // Indicates if the fish has been caught
   public static boolean isFishCaught = false;
+
+  // Indicates if the chest has been found
+  public static boolean isChestFound = false;
+
+  // Indicates if the chest has been unlocked
+  public static boolean isChestUnlocked = false;
+
+  // Indicates if the riddle has been found
+  public static boolean isRiddleFound = false;
+
+  // Indicates if the riddle is about the cabinet
+  public static boolean isRiddleCabinet = false;
+
+  // Indicates if the riddle is about the rug
+  public static boolean isRiddleRug = false;
 
   /** Indicates whether the riddle has been resolved. */
   public static boolean isRiddleResolved =

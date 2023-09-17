@@ -76,7 +76,44 @@ public class ControllerMethods {
   }
 
   /** Updates the task label based on current game state */
-  protected void updateTask() {}
+  protected void updateTask() {
+    if (!GameState.isRiddleFound) {
+      displayTask.setValue("Task: Talk to the Game Master");
+    } else if (!GameState.isRiddleResolved) {
+      displayTask.setValue("Task: Try to solve the riddle");
+    } else if (GameState.isRiddleRug && !GameState.isBlueOrbFound) {
+      displayTask.setValue("Task: Have a look under the rug");
+    } else if (GameState.isRiddleCabinet && !GameState.isBlueOrbFound) {
+      displayTask.setValue("Task: Check the cabinet");
+    } else if ((GameState.isForrestFishing && !GameState.isFishingRodTaken)
+        || (GameState.isForrestTreeChopping && !GameState.isAxeTaken)) {
+      displayTask.setValue("Task: Search for other items");
+    } else if ((GameState.isFishingRodTaken && !GameState.isForrestGameCompleted)
+        || (GameState.isAxeTaken && !GameState.isForrestGameCompleted)) {
+      displayTask.setValue("Task: Try using the item you found");
+    } else if (GameState.isForrestTreeChopping
+        && GameState.isForrestGameCompleted
+        && !GameState.isGreenOrbFound) {
+      displayTask.setValue("Task: Don't forget the green orb");
+    } else if (GameState.isLavaDragon && !GameState.isLavaGameCompleted) {
+      displayTask.setValue("Task: Distract the dragon with food");
+    } else if (GameState.isLavaBridge && !GameState.isLavaGameCompleted) {
+      displayTask.setValue("Task: Use the planks you made");
+    } else if (GameState.isLavaGameCompleted && !GameState.isChestFound) {
+      displayTask.setValue("Task: What's inside the castle?");
+    } else if (GameState.isLavaGameCompleted && !GameState.isCodeFound) {
+      displayTask.setValue("Task: Search for a code");
+    } else if (GameState.isLavaGameCompleted && !GameState.isChestUnlocked) {
+      displayTask.setValue("Task: Try opening the chest");
+    } else if (!GameState.isRedOrbFound) {
+      displayTask.setValue("Task: Don't forget the red orb");
+    } else if (GameState.isBlueOrbFound
+        && GameState.isGreenOrbFound
+        && GameState.isRedOrbFound
+        && !GameState.isRoomEscaped) {
+      displayTask.setValue("Task: Place the orbs in the terminal");
+    }
+  }
 
   /** Updates the hints remaining */
   protected void updateHintsRemaining() {
