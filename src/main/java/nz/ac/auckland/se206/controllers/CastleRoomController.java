@@ -339,6 +339,9 @@ public class CastleRoomController extends ControllerMethods {
   private void orbPressed(MouseEvent event) {
     chestEmpty.setOpacity(1);
 
+    // Update orb state:
+    GameState.isCastleOrbCollected = true;
+
     // Put the orb into inventory
     findRedOrb();
   }
