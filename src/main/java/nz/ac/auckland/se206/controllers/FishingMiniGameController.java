@@ -205,16 +205,16 @@ public class FishingMiniGameController extends ControllerMethods {
 
   @FXML
   private void backPressed(MouseEvent event) {
-    if (!isRunning && GameState.isFishCaught && isFishDelay) {
-      App.setScene(AppScene.FOREST);
-    } else if (!isRunning && !GameState.isFishCaught) {
-      App.setScene(AppScene.FISHING);
-    }
     backButtonThree.setOpacity(1);
   }
 
   @FXML
   private void backReleased(MouseEvent event) {
+    if (!isRunning && GameState.isFishCaught && isFishDelay) {
+      App.setScene(AppScene.FOREST);
+    } else if (!isRunning && !GameState.isFishCaught) {
+      App.setScene(AppScene.FOREST);
+    }
     backButtonThree.setOpacity(0);
   }
 }
