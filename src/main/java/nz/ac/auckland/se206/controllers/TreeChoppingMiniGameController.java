@@ -25,12 +25,30 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
   @FXML private ImageView backButtonTwo;
   @FXML private ImageView backButtonThree;
 
+  // Inventory Items
+  @FXML private ImageView fishingRodIcon;
+  @FXML private ImageView axeIcon;
+  @FXML private ImageView fishIcon;
+  @FXML private ImageView planksIcon;
+  @FXML private ImageView blueOrb;
+  @FXML private ImageView greenOrb;
+  @FXML private ImageView redOrb;
+
   private int chopCount = 0;
   private int orbDropAfter = new Random().nextInt(9);
 
   public void initialize() {
     // Bind the timer label to the display time
     roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+
+    // Bind the inventory images to their image properties
+    fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
+    axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
+    fishIcon.imageProperty().bind(ControllerMethods.fishIconImageProperty);
+    planksIcon.imageProperty().bind(ControllerMethods.planksIconImageProperty);
+    blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
+    greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
+    redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
   }
 
   @FXML
@@ -57,21 +75,29 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
       if (chopCount == orbDropAfter) {
         // TODO: Make the orb fall from the tree
 
-        System.out.println("An orb fell from the tree!");
         // TODO: Make a notification to say an orb fell from the tree
+        System.out.println("An orb fell from the tree!");
+
+        // Make the green orb appear in the inventory
+        // NOTE: This should only be done once the orb is clicked by the user (implemented later)
+        findGreenOrb();
 
       } else if (chopCount == 10) {
         // Completed the mini game
         GameState.isChopped = true;
         GameState.isForrestGameCompleted = true;
-        System.out.println("You completed the mini game!");
+
+        // Make the planks appear in the inventory
+        findPlanks();
+
         // TODO: Make a notification to say you cut all the trees down
+        System.out.println("You completed the mini game!");
 
         // Update the trees image in the mini game
         miniTrees.setOpacity(0);
         choppedMiniTrees.setOpacity(1);
 
-        // TODO: Update the trees image in the forest room to show the trees are chopped
+        // Update the trees image in the forest room to show the trees are chopped
         App.getForestRoomController().chopTrees();
       }
     } else {

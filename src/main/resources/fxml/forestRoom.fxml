@@ -135,6 +135,41 @@
             <Image url="@../images/fishingRodOutline.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="fishingRodIcon" fitHeight="30.0" fitWidth="30.0" layoutX="292.0" layoutY="566.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fishingRodIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="axeIcon" fitHeight="30.0" fitWidth="30.0" layoutX="296.0" layoutY="566.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/axeIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="planksIcon" fitHeight="30.0" fitWidth="30.0" layoutX="330.0" layoutY="566.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/planksIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="fishIcon" fitHeight="30.0" fitWidth="30.0" layoutX="330.0" layoutY="566.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/fishIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="blueOrb" fitHeight="21.0" fitWidth="21.0" layoutX="416.75" layoutY="570.75" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/blueOrb.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="greenOrb" fitHeight="21.0" fitWidth="21.0" layoutX="450.25" layoutY="570.75" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/greenOrb.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="redOrb" fitHeight="21.0" fitWidth="21.0" layoutX="482.75" layoutY="570.25" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/redOrb.png" />
+         </image>
+      </ImageView>
       <Rectangle fx:id="leftRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="51.0" layoutX="22.0" layoutY="272.0" onMouseEntered="#leftButtonHovered" onMouseExited="#leftButtonUnhovered" onMousePressed="#leftButtonClicked" onMouseReleased="#leftButtonUnclick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="53.0" />
       <Polygon fx:id="boulder" fill="DODGERBLUE" layoutX="489.0" layoutY="202.0" onMouseClicked="#rockClick" onMouseEntered="#rockHover" onMouseExited="#rockUnhover" opacity="0.0" points="24.9527587890625, 28.496353149414062, 16.40093994140625, 16.024993896484375, 2.5042724609375, 7.4731903076171875, -22.03631591796875, 11.66943359375, -32.415557861328125, 30.634307861328125, -6.403839111328125, 33.12858581542969" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="treesMini" fill="DODGERBLUE" layoutX="302.0" layoutY="170.0" onMouseClicked="#treesClick" onMouseEntered="#treesHover" onMouseExited="#treesUnhover" opacity="0.0" points="170.0, -7.36956787109375, 104.93447875976562, -117.3302993774414, 40.870391845703125, -95.81624603271484, -20.32513427734375, -72.1507797241211, -83.91111755371094, 36.136627197265625, -26.062225341796875, 88.0093994140625, 22.224884033203125, 68.64675903320312, 54.256927490234375, 68.64675903320312, 80.5518798828125, 54.30406188964844, 92.504150390625, 46.17652893066406, 114.0181884765625, 46.17652893066406, 119.5, 19.881561279296875" stroke="BLACK" strokeType="INSIDE" />
