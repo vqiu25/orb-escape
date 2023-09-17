@@ -11,6 +11,9 @@ import org.controlsfx.control.Notifications;
 
 public class CastleRoomController {
 
+  // Timer label
+  @FXML private Label roomTimerLabel;
+
   // Orb state:
   private boolean isOrbTaken = false;
 
@@ -65,6 +68,11 @@ public class CastleRoomController {
 
   @FXML private Label lockThreeNumber;
   private int lockThreeValue = 0;
+
+  public void initialize() {
+    // Bind the timer label to the display time
+    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+  }
 
   // Methods for back button animations:
   @FXML
