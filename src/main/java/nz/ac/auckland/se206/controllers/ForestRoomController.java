@@ -34,6 +34,12 @@ public class ForestRoomController extends ControllerMethods {
   @FXML private Polygon emptyLog;
   @FXML private Polygon fishingMini;
   @FXML private Polygon dockWithoutRod;
+  @FXML private ImageView helpOne;
+  @FXML private ImageView helpTwo;
+  @FXML private ImageView helpThree;
+  @FXML private ImageView settingsOne;
+  @FXML private ImageView settingsTwo;
+  @FXML private ImageView settingsThree;
 
   public void initialize() {
     // Bind the timer label to the display time
@@ -61,6 +67,58 @@ public class ForestRoomController extends ControllerMethods {
       axe.setOpacity(0);
       axeRemoved.setOpacity(1);
     }
+  }
+
+  @FXML
+  private void onHelpHover(MouseEvent event) {
+    helpTwo.setOpacity(1);
+  }
+
+  @FXML
+  private void onHelpUnhover(MouseEvent event) {
+    helpTwo.setOpacity(0);
+  }
+
+  @FXML
+  private void onHelpPressed(MouseEvent event) {
+    helpThree.setOpacity(1);
+  }
+
+  /**
+   * Opens the help window GUI.
+   *
+   * @param event Mouse click event.
+   */
+  @FXML
+  private void onHelpReleased(MouseEvent event) {
+    helpThree.setOpacity(0);
+    App.setScene(AppScene.HELP);
+  }
+
+  @FXML
+  private void onSettingsHover(MouseEvent event) {
+    settingsTwo.setOpacity(1);
+  }
+
+  @FXML
+  private void onSettingsUnhover(MouseEvent event) {
+    settingsTwo.setOpacity(0);
+  }
+
+  @FXML
+  private void onSettingsPressed(MouseEvent event) {
+    settingsThree.setOpacity(1);
+  }
+
+  /**
+   * Opens the settings scene.
+   *
+   * @param event
+   */
+  @FXML
+  private void onSettingsReleased(MouseEvent event) {
+    settingsThree.setOpacity(0);
+    App.setScene(AppScene.SETTINGS);
   }
 
   /**

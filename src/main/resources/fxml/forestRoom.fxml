@@ -16,26 +16,6 @@
             <Image url="@../images/buttonFrame.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="52.0" layoutX="730.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cirlceButtonFrame.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="52.0" layoutX="677.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cirlceButtonFrame.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="740.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/settingsUI.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="31.0" fitWidth="40.0" layoutX="689.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/helpUI.png" />
-         </image>
-      </ImageView>
       <Text layoutX="18.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Left:">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -163,5 +143,37 @@
       <Polygon fx:id="choppedTrees" disable="true" fill="DODGERBLUE" layoutX="312.0" layoutY="180.0" onMouseClicked="#choppedClick" onMouseEntered="#choppedHover" onMouseExited="#choppedUnhover" opacity="0.0" points="104.73532104492188, -9.720123291015625, 92.7830810546875, -12.588668823242188, 35.412261962890625, 5.5787506103515625, -37.73553466796875, 38.08888244628906, -37.73553466796875, 77.29226684570312, -25.30517578125, 83.98553466796875, -11.440582275390625, 77.29226684570312, 16.766754150390625, 57.212493896484375, 35.412261962890625, 57.212493896484375, 77.006103515625, 38.08888244628906, 98.04205322265625, 38.08888244628906, 104.73532104492188, 25.658538818359375" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="dockWithoutRod" disable="true" fill="DODGERBLUE" layoutX="486.0" layoutY="298.0" onMouseClicked="#dockClick" onMouseEntered="#dockHover" onMouseExited="#dockUnhover" opacity="0.0" points="-53.5, -49.0, -61.0, -25.0, -79.0, -32.0, -142.0, 7.0, -142.0, 26.0, -127.0, 54.0, -100.0, 46.176513671875, -31.0, 81.0, 43.7720947265625, 40.0, 43.7720947265625, 26.0, -22.0, -4.0, -22.0, -40.0" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="fishingMini" fill="DODGERBLUE" layoutX="458.0" layoutY="301.0" onMouseClicked="#fishingClick" onMouseEntered="#fishingHover" onMouseExited="#fishingUnhover" opacity="0.0" points="57.4609375, -31.9945068359375, 49.811492919921875, 67.92633056640625, 62.2418212890625, 48.802703857421875, 62.2418212890625, -46.8153076171875, -10.90594482421875, 11.989776611328125, -13.77447509765625, 33.12860107421875, 16.40093994140625, 38.28472900390625, 16.40093994140625, 11.989776611328125" stroke="BLACK" strokeType="INSIDE" />
+      <ImageView fx:id="helpOne" fitHeight="54.0" fitWidth="56.0" layoutX="652.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/infoOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="helpTwo" fitHeight="54.0" fitWidth="56.0" layoutX="652.0" layoutY="21.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/infoTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="helpThree" fitHeight="54.0" fitWidth="56.0" layoutX="652.0" layoutY="21.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/infoThree.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="settingsOne" fitHeight="54.0" fitWidth="56.0" layoutX="722.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/homeOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="settingsTwo" fitHeight="54.0" fitWidth="56.0" layoutX="722.0" layoutY="21.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/homeTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="settingsThree" fitHeight="54.0" fitWidth="56.0" layoutX="722.0" layoutY="21.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/homeThree.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="48.0" layoutX="723.0" layoutY="18.0" onMouseEntered="#onSettingsHover" onMouseExited="#onSettingsUnhover" onMousePressed="#onSettingsPressed" onMouseReleased="#onSettingsReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="54.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="46.0" layoutX="655.0" layoutY="22.0" onMouseEntered="#onHelpHover" onMouseExited="#onHelpUnhover" onMousePressed="#onHelpPressed" onMouseReleased="#onHelpReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
    </children>
 </Pane>
