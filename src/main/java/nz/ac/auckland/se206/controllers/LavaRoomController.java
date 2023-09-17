@@ -278,6 +278,7 @@ public class LavaRoomController extends ControllerMethods {
 
       // set lava game state to completed
       GameState.isLavaGameCompleted = true;
+      removeFish();
 
       // disable dragon and dragonoutline
       dragon.setDisable(true);

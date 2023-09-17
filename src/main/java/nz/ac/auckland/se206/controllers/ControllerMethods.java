@@ -86,32 +86,42 @@ public class ControllerMethods {
   }
 
   /** Method for adding the fish to inventory */
-  public void findFish() {
+  protected void findFish() {
     Image fishImage = new Image(getClass().getResourceAsStream("/images/fishIcon.png"));
     fishIconImageProperty.set(fishImage);
   }
 
   /** Method for adding the fish to inventory */
-  public void findPlanks() {
+  protected void findPlanks() {
     Image planksImage = new Image(getClass().getResourceAsStream("/images/planksIcon.png"));
     planksIconImageProperty.set(planksImage);
   }
 
   /** Method for adding the blue orb to inventory */
-  public void findBlueOrb() {
+  protected void findBlueOrb() {
     Image blueOrbImage = new Image(getClass().getResourceAsStream("/images/blueOrb.png"));
     blueOrbImageProperty.set(blueOrbImage);
   }
 
   /** Method for adding the green orb to inventory */
-  public void findGreenOrb() {
+  protected void findGreenOrb() {
     Image greenOrbImage = new Image(getClass().getResourceAsStream("/images/greenOrb.png"));
     greenOrbImageProperty.set(greenOrbImage);
   }
 
   /** Method for adding the red orb to inventory */
-  public void findRedOrb() {
+  protected void findRedOrb() {
     Image redOrbImage = new Image(getClass().getResourceAsStream("/images/redOrb.png"));
     redOrbImageProperty.set(redOrbImage);
+  }
+
+  /** Method for removing the fish from the inventory */
+  protected void removeFish() {
+    fishIconImageProperty.set(null);
+  }
+
+  /** Method for removing the planks from the inventory */
+  protected void removePlanks() {
+    planksIconImageProperty.set(null);
   }
 }

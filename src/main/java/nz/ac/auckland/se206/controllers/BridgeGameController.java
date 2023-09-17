@@ -79,6 +79,7 @@ public class BridgeGameController extends ControllerMethods {
 
       // Update game state
       GameState.isLavaGameCompleted = true;
+      removePlanks();
 
       // Get lava room controller and change bridge state
       LavaRoomController lavaRoomController = App.getLavaRoomController();
