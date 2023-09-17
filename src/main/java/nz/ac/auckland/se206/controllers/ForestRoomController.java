@@ -28,6 +28,8 @@ public class ForestRoomController extends ControllerMethods {
   @FXML private ImageView axeOutline;
   @FXML private ImageView axeRemoved;
   @FXML private ImageView axeRemovedOutline;
+
+  // Inventory Items
   @FXML private ImageView fishingRodIcon;
   @FXML private ImageView axeIcon;
   @FXML private ImageView fishIcon;
@@ -35,6 +37,7 @@ public class ForestRoomController extends ControllerMethods {
   @FXML private ImageView blueOrb;
   @FXML private ImageView greenOrb;
   @FXML private ImageView redOrb;
+
   @FXML private Polygon treesMini;
   @FXML private Polygon choppedTrees;
   @FXML private Polygon axeGrab;

@@ -52,6 +52,8 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView portalFrameOutline;
   @FXML private ImageView portal;
   @FXML private ImageView portalOutline;
+
+  // Inventory Items
   @FXML private ImageView fishingRodIcon;
   @FXML private ImageView axeIcon;
   @FXML private ImageView fishIcon;
@@ -59,6 +61,7 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView blueOrb;
   @FXML private ImageView greenOrb;
   @FXML private ImageView redOrb;
+
   @FXML private Polygon codedText;
 
   private TextToSpeech textToSpeech;
