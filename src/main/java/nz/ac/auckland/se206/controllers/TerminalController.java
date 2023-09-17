@@ -7,7 +7,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.DragImage;
+import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager.AppScene;
+import org.controlsfx.control.Notifications;
 
 public class TerminalController extends ControllerMethods {
 
@@ -74,8 +77,25 @@ public class TerminalController extends ControllerMethods {
   private void redButtonReleased(MouseEvent event) {
     redThreeButton.setOpacity(0);
 
-    // If all the orbs have been placed correctly, allow user to escape (update isOrbsPlaced), else
-    // tell user to try again
+    // Check if orbs have been placed:
+    if (blueOrbImage.isCorrectPosition()
+        && greenOrbImage.isCorrectPosition()
+        && redOrbImage.isCorrectPosition()) {
+
+      // Update game state:
+      GameState.isOrbsPlaced = true;
+
+      // Notify user they may escape:
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master: ", "At last I am free!! The portal has now been fixed.", 5);
+      message.show();
+    } else {
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master: ", "Not quite right... Try again!", 5);
+      message.show();
+    }
   }
 
   // Back Button
