@@ -44,7 +44,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
   @FXML private ImageView redOrb;
 
   private int chopCount = 0;
-  private int orbDropAfter = new Random().nextInt(5) + 1;
+  private int orbDropAfter = new Random().nextInt(8) + 1;
   private boolean isOrbFallen = false;
   private boolean isOrbCollected = false;
 
@@ -80,10 +80,10 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
   @FXML
   private void blueReleased(MouseEvent event) {
 
-    if (chopCount < 8) {
+    if (chopCount < 10) {
       treeHitAnimation();
       chopCount++;
-      chopCountLabel.setText(chopCount + "/8");
+      chopCountLabel.setText(chopCount + "/10");
 
       if (chopCount == orbDropAfter) {
         orbDrop();
@@ -91,7 +91,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
         // TODO: Make a notification to say an orb fell from the tree
         System.out.println("An orb fell from the tree!");
 
-      } else if (chopCount == 8) {
+      } else if (chopCount == 10) {
         // Completed the mini game
         GameState.isChopped = true;
         GameState.isForrestGameCompleted = true;
@@ -214,7 +214,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
             Duration.millis(175),
             event -> {
               treeHitTwo.setOpacity(0);
-              if (chopCount != 8) {
+              if (chopCount != 10) {
                 miniTrees.setOpacity(1);
               } else {
                 miniTrees.setOpacity(0);
