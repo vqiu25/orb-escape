@@ -16,18 +16,31 @@ public class BridgeGameController extends ControllerMethods {
 
   @FXML private Label roomTimerLabel;
 
+  // Back Button:
+  @FXML private ImageView backButton;
+  @FXML private ImageView backButtonHovered;
+  @FXML private ImageView backButtonPressed;
+
+  // Check Button:
+  @FXML private ImageView checkButton;
+  @FXML private ImageView checkButtonHovered;
+  @FXML private ImageView checkButtonPressed;
+
+  // Small Planks:
   @FXML private ImageView smallPlank;
   @FXML private ImageView smallPlankOutline;
   @FXML private ImageView smallFixed;
   @FXML private Rectangle smallRectangle;
   DragImage imageSmall;
 
+  // Medium Planks:
   @FXML private ImageView mediumPlank;
   @FXML private ImageView mediumPlankOutline;
   @FXML private ImageView mediumFixed;
   @FXML private Rectangle mediumRectangle;
   DragImage imageMedium;
 
+  // Large Planks:
   @FXML private ImageView largePlank;
   @FXML private ImageView largePlankOutline;
   @FXML private ImageView largeFixed;
@@ -43,9 +56,72 @@ public class BridgeGameController extends ControllerMethods {
     imageLarge = new DragImage(largePlankOutline, largePlank, largeFixed, largeRectangle);
   }
 
+  // Back buttong logic:
   @FXML
-  private void onBack() {
+  private void backHovered() {
+    backButtonHovered.setOpacity(1);
+  }
+
+  @FXML
+  private void backUnhovered() {
+    backButtonHovered.setOpacity(0);
+  }
+
+  @FXML
+  private void backPressed() {
+    backButtonPressed.setOpacity(1);
+  }
+
+  @FXML
+  private void backReleased() {
+    backButtonPressed.setOpacity(0);
+
+    // Change scene to lava room
     App.setScene(AppScene.LAVA);
+  }
+
+  // Check button logic:
+  @FXML
+  private void checkHovered() {
+    checkButtonHovered.setOpacity(1);
+  }
+
+  @FXML
+  private void checkUnhovered() {
+    checkButtonHovered.setOpacity(0);
+  }
+
+  @FXML
+  private void checkPressed() {
+    checkButtonPressed.setOpacity(1);
+  }
+
+  @FXML
+  private void checkReleased() {
+    checkButtonPressed.setOpacity(0);
+
+    // Check if planks are in the right place:
+    if (imageSmall.isCorrectPosition()
+        && imageMedium.isCorrectPosition()
+        && imageLarge.isCorrectPosition()) {
+
+      // Update game state
+      GameState.isLavaGameCompleted = true;
+
+      // Get lava room controller and change bridge state
+      LavaRoomController lavaRoomController = App.getLavaRoomController();
+      lavaRoomController.setFixedBridge();
+
+      // Notify user that the bridge has been fixed:
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master:", "Well done! You have fixed the bridge!", 5);
+      message.show();
+    } else {
+      Notifications message =
+          NotificationBuilder.createNotification("Game Master:", "Try again!", 5);
+      message.show();
+    }
   }
 
   // Small Plank Logic:
@@ -118,31 +194,5 @@ public class BridgeGameController extends ControllerMethods {
   @FXML
   void largeReleased() {
     imageLarge.released();
-  }
-
-  // Checks to see if planks are in the right place:
-  @FXML
-  private void checkAnswer() {
-    if (imageSmall.isCorrectPosition()
-        && imageMedium.isCorrectPosition()
-        && imageLarge.isCorrectPosition()) {
-
-      // Update game state
-      GameState.isLavaGameCompleted = true;
-
-      // Get lava room controller and change bridge state
-      LavaRoomController lavaRoomController = App.getLavaRoomController();
-      lavaRoomController.setFixedBridge();
-
-      // Notify user that the bridge has been fixed:
-      Notifications message =
-          NotificationBuilder.createNotification(
-              "Game Master:", "Well done! You have fixed the bridge!", 5);
-      message.show();
-    } else {
-      Notifications message =
-          NotificationBuilder.createNotification("Game Master:", "Try again!", 5);
-      message.show();
-    }
   }
 }

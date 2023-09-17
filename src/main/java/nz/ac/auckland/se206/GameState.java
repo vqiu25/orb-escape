@@ -16,7 +16,7 @@ public class GameState {
 
   // Indicates if the minigame has been completed:
   public static boolean isLavaGameCompleted = false;
-  public static boolean isForrestGameCompleted = true;
+  public static boolean isForrestGameCompleted = false;
 
   // Indicates if light switch is on or off
   public static boolean isLightOn = true;
