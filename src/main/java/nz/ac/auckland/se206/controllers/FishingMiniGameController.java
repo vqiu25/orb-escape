@@ -33,6 +33,10 @@ public class FishingMiniGameController extends ControllerMethods {
   @FXML private ImageView backButtonTwo;
   @FXML private ImageView backButtonThree;
 
+  // Game Master
+  @FXML private ImageView gameMasterDefault;
+  @FXML private ImageView gameMasterChat;
+
   // Inventory Items
   @FXML private ImageView fishingRodIcon;
   @FXML private ImageView axeIcon;
@@ -242,5 +246,23 @@ public class FishingMiniGameController extends ControllerMethods {
       App.setScene(AppScene.FOREST);
     }
     backButtonThree.setOpacity(0);
+  }
+
+  // Bottom Right Game Master Button
+  @FXML
+  private void gameMasterOnHover(MouseEvent event) {
+    gameMasterDefault.setOpacity(0);
+    gameMasterChat.setOpacity(1);
+  }
+
+  @FXML
+  private void gameMasterOnUnhover(MouseEvent event) {
+    gameMasterDefault.setOpacity(1);
+    gameMasterChat.setOpacity(0);
+  }
+
+  @FXML
+  private void gameMasterOnClick(MouseEvent event) {
+    App.setScene(AppScene.CHAT);
   }
 }

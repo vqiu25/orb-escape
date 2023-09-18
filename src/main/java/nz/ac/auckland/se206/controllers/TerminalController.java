@@ -54,6 +54,10 @@ public class TerminalController extends ControllerMethods {
   @FXML private Rectangle redOrbPlaced;
   DragImage redOrbImage;
 
+  // Game Master
+  @FXML private ImageView gameMasterDefault;
+  @FXML private ImageView gameMasterChat;
+
   public void initialize() {
     // Bind the labels to the display values
     lblTimer.textProperty().bind(ControllerMethods.displayTime);
@@ -205,5 +209,23 @@ public class TerminalController extends ControllerMethods {
   @FXML
   private void redReleased() {
     redOrbImage.released();
+  }
+
+  // Bottom Right Game Master Button
+  @FXML
+  private void gameMasterOnHover(MouseEvent event) {
+    gameMasterDefault.setOpacity(0);
+    gameMasterChat.setOpacity(1);
+  }
+
+  @FXML
+  private void gameMasterOnUnhover(MouseEvent event) {
+    gameMasterDefault.setOpacity(1);
+    gameMasterChat.setOpacity(0);
+  }
+
+  @FXML
+  private void gameMasterOnClick(MouseEvent event) {
+    App.setScene(AppScene.CHAT);
   }
 }

@@ -10,16 +10,6 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LavaRoomController">
    <children>
-      <ImageView fitHeight="56.0" fitWidth="110.0" layoutX="666.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/buttonFrame.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="694.0" layoutY="558.0" text="CHAT" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
       <VBox layoutX="15.0" layoutY="15.0" prefHeight="100.0" prefWidth="250.0">
          <children>
             <Label fx:id="lblTimer" text="Time Left: ">
@@ -201,6 +191,16 @@
       <ImageView fx:id="redOrb" fitHeight="21.0" fitWidth="21.0" layoutX="482.75" layoutY="570.25" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/redOrb.png" />
+         </image>
+      </ImageView>
+<ImageView fx:id="gameMasterDefault" fitHeight="141.0" fitWidth="171.0" layoutX="606.0" layoutY="506.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/gameMaster.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="gameMasterChat" fitHeight="141.0" fitWidth="171.0" layoutX="606.0" layoutY="490.0" onMouseClicked="#gameMasterOnClick" onMouseEntered="#gameMasterOnHover" onMouseExited="#gameMasterOnUnhover" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/gameMasterOnHover.gif" />
          </image>
       </ImageView>
    </children>

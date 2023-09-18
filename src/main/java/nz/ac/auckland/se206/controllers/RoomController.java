@@ -724,6 +724,7 @@ public class RoomController extends ControllerMethods {
     thread.start();
   }
 
+  // Bottom Right Game Master Button
   @FXML
   private void gameMasterOnHover(MouseEvent event) {
     gameMasterDefault.setOpacity(0);
