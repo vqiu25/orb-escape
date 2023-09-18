@@ -239,6 +239,7 @@ public class BridgeGameController extends ControllerMethods {
 
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
+    setBridgeMiniOpacity();
     App.setScene(AppScene.CHAT);
   }
 }

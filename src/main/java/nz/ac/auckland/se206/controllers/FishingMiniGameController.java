@@ -269,6 +269,7 @@ public class FishingMiniGameController extends ControllerMethods {
     // disabled?
     if (!isRunning && GameState.isFishCaught && isFishDelay
         || !isRunning && !GameState.isFishCaught) {
+      setFishingMiniOpacity();
       App.setScene(AppScene.CHAT);
     }
   }

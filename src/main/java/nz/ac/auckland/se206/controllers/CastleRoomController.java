@@ -379,6 +379,7 @@ public class CastleRoomController extends ControllerMethods {
 
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
+    setChestMiniOpacity();
     App.setScene(AppScene.CHAT);
   }
 }

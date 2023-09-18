@@ -379,6 +379,14 @@ public class ForestRoomController extends ControllerMethods {
 
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
+
+    if (GameState.isForestTreeChopping) {
+      setForestAxeOpacity();
+    } else {
+      setForestRodOpacity();
+    }
+    if (GameState.isChopped) setForestTreesRemovedOpacity();
+
     App.setScene(AppScene.CHAT);
   }
 }

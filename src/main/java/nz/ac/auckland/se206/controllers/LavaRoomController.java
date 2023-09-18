@@ -468,6 +468,11 @@ public class LavaRoomController extends ControllerMethods {
 
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
+    if (GameState.isLavaDragon) {
+      setLavaDragonOpacity();
+    } else {
+      setLavaNoDragonOpacity();
+    }
     App.setScene(AppScene.CHAT);
   }
 }

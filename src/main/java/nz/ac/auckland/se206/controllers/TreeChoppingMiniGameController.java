@@ -253,6 +253,11 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
 
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
+    if (GameState.isChopped) {
+      setForestMiniTreesRemovedOpacity();
+    } else {
+      setForestMiniOpacity();
+    }
     App.setScene(AppScene.CHAT);
   }
 }
