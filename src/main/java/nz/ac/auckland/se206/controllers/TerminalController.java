@@ -18,6 +18,12 @@ public class TerminalController extends ControllerMethods {
   @FXML private Label lblTask;
   @FXML private Label lblHints;
 
+  // Inventory Items
+  @FXML private ImageView fishingRodIcon;
+  @FXML private ImageView axeIcon;
+  @FXML private ImageView fishIcon;
+  @FXML private ImageView planksIcon;
+
   @FXML private ImageView backButtonOne;
   @FXML private ImageView backButtonTwo;
   @FXML private ImageView backButtonThree;
@@ -54,6 +60,12 @@ public class TerminalController extends ControllerMethods {
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
 
+    // Bind the inventory images to their image properties
+    fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
+    axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
+    fishIcon.imageProperty().bind(ControllerMethods.fishIconImageProperty);
+    planksIcon.imageProperty().bind(ControllerMethods.planksIconImageProperty);
+
     // Initialise the drag and drop helper:
     blueOrbImage = new DragImage(blueOrbOutline, blueOrb, blueOrbFixed, blueOrbPlaced);
     greenOrbImage = new DragImage(greenOrbOutline, greenOrb, greenOrbFixed, greenOrbPlaced);
@@ -88,6 +100,7 @@ public class TerminalController extends ControllerMethods {
       // Update game state:
       GameState.isOrbsPlaced = true;
       GameState.isPortalOpen = true;
+      removeOrbs();
       updateTask();
 
       // Notify user they may escape:

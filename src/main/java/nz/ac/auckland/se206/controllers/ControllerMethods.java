@@ -180,4 +180,11 @@ public class ControllerMethods {
   protected void removePlanks() {
     planksIconImageProperty.set(null);
   }
+
+  /** Method for removing the orbs from the inventory */
+  protected void removeOrbs() {
+    blueOrbImageProperty.set(null);
+    greenOrbImageProperty.set(null);
+    redOrbImageProperty.set(null);
+  }
 }
