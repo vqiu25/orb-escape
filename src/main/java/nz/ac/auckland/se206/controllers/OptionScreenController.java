@@ -151,7 +151,7 @@ public class OptionScreenController extends ControllerMethods {
     // Select the clicked button
     GameState.isShortTimeSelected = true;
     GameState.timerCount = 120;
-    GameState.timerString = "2:00";
+    GameState.timerString = "Time Left: 2:00";
     shortThreeButton.setOpacity(1);
   }
 
@@ -177,7 +177,7 @@ public class OptionScreenController extends ControllerMethods {
     // Select the clicked button
     GameState.isMediumTimeSelected = true;
     GameState.timerCount = 240;
-    GameState.timerString = "4:00";
+    GameState.timerString = "Time Left: 4:00";
     mediumTimeThreeButton.setOpacity(1);
   }
 
@@ -203,7 +203,7 @@ public class OptionScreenController extends ControllerMethods {
     // Select the clicked button
     GameState.isLongTimeSelected = true;
     GameState.timerCount = 360;
-    GameState.timerString = "6:00";
+    GameState.timerString = "Time Left: 6:00";
     longThreeButton.setOpacity(1);
   }
 

@@ -14,9 +14,16 @@ import org.controlsfx.control.Notifications;
 
 public class TerminalController extends ControllerMethods {
 
-  @FXML private Label roomTimerLabel;
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
 
-  // Back Button:
+  // Inventory Items
+  @FXML private ImageView fishingRodIcon;
+  @FXML private ImageView axeIcon;
+  @FXML private ImageView fishIcon;
+  @FXML private ImageView planksIcon;
+
   @FXML private ImageView backButtonOne;
   @FXML private ImageView backButtonTwo;
   @FXML private ImageView backButtonThree;
@@ -48,8 +55,16 @@ public class TerminalController extends ControllerMethods {
   DragImage redOrbImage;
 
   public void initialize() {
-    // Bind the timer label to the display time
-    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+    // Bind the labels to the display values
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
+    lblTask.textProperty().bind(ControllerMethods.displayTask);
+    lblHints.textProperty().bind(ControllerMethods.displayHints);
+
+    // Bind the inventory images to their image properties
+    fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
+    axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
+    fishIcon.imageProperty().bind(ControllerMethods.fishIconImageProperty);
+    planksIcon.imageProperty().bind(ControllerMethods.planksIconImageProperty);
 
     // Initialise the drag and drop helper:
     blueOrbImage = new DragImage(blueOrbOutline, blueOrb, blueOrbFixed, blueOrbPlaced);
@@ -84,6 +99,9 @@ public class TerminalController extends ControllerMethods {
 
       // Update game state:
       GameState.isOrbsPlaced = true;
+      GameState.isPortalOpen = true;
+      removeOrbs();
+      updateTask();
 
       // Notify user they may escape:
       Notifications message =

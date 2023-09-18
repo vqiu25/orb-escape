@@ -15,7 +15,9 @@ import nz.ac.auckland.se206.SceneManager.AppScene;
 
 public class TreeChoppingMiniGameController extends ControllerMethods {
 
-  @FXML private Label roomTimerLabel;
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
   @FXML private Label chopCountLabel;
 
   @FXML private ImageView miniTrees;
@@ -49,8 +51,10 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
   private boolean isOrbCollected = false;
 
   public void initialize() {
-    // Bind the timer label to the display time
-    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+    // Bind the labels to the display values
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
+    lblTask.textProperty().bind(ControllerMethods.displayTask);
+    lblHints.textProperty().bind(ControllerMethods.displayHints);
 
     // Bind the inventory images to their image properties
     fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
@@ -94,8 +98,8 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
       } else if (chopCount == 10) {
         // Completed the mini game
         GameState.isChopped = true;
-        GameState.isForrestGameCompleted = true;
-        GameState.isForrestOrbCollected = true;
+        GameState.isForestGameCompleted = true;
+        updateTask();
 
         // Make the planks appear in the inventory
         findPlanks();
@@ -173,6 +177,8 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
     greenOrbOnTree.setOpacity(0);
     greenOrbOnTreeOutline.setOpacity(0);
     isOrbCollected = true;
+    GameState.isForestOrbCollected = true;
+    updateTask();
   }
 
   private void treeHitAnimation() {

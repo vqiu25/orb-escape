@@ -13,8 +13,9 @@ import org.controlsfx.control.Notifications;
 
 public class CastleRoomController extends ControllerMethods {
 
-  // Timer label
-  @FXML private Label roomTimerLabel;
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
 
   // Inventory Items
   @FXML private ImageView fishingRodIcon;
@@ -25,12 +26,8 @@ public class CastleRoomController extends ControllerMethods {
   @FXML private ImageView greenOrb;
   @FXML private ImageView redOrb;
 
-  // Orb state:
-  private boolean isOrbTaken = false;
-
   // Chest rectangle:
   @FXML private Rectangle chestRectangle;
-  private boolean isChestOpened = false;
 
   // Back buttons
   @FXML private ImageView backButton;
@@ -85,8 +82,10 @@ public class CastleRoomController extends ControllerMethods {
   private int lockThreeValue = 0;
 
   public void initialize() {
-    // Bind the timer label to the display time
-    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+    // Bind the labels to the display values
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
+    lblTask.textProperty().bind(ControllerMethods.displayTask);
+    lblHints.textProperty().bind(ControllerMethods.displayHints);
 
     // Bind the inventory images to their image properties
     fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
@@ -144,7 +143,7 @@ public class CastleRoomController extends ControllerMethods {
   private void checkReleased(MouseEvent event) {
     checkButtonPressed.setOpacity(0);
 
-    if (isChestOpened) {
+    if (GameState.isChestUnlocked) {
       Notifications message =
           NotificationBuilder.createNotification(
               "Game Master: ", "Oi! Stop messing with the lock!", 5);
@@ -157,15 +156,9 @@ public class CastleRoomController extends ControllerMethods {
       // Enable chest rectangle
       chestRectangle.setDisable(false);
 
-      // If the orb has already been taken, do not allow users to "take again"
-      if (isOrbTaken) {
-        return;
-      }
-
       // Update state of the game:
-      isOrbTaken = true;
-      isChestOpened = true;
-      GameState.isCastleOrbCollected = true;
+      GameState.isChestUnlocked = true;
+      updateTask();
 
       // Notify the user that the answer is correct:
       Notifications message =
@@ -361,6 +354,7 @@ public class CastleRoomController extends ControllerMethods {
 
     // Update orb state:
     GameState.isCastleOrbCollected = true;
+    updateTask();
 
     // Put the orb into inventory
     findRedOrb();

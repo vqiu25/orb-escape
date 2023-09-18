@@ -18,7 +18,9 @@ import nz.ac.auckland.se206.SceneManager.AppScene;
 
 public class FishingMiniGameController extends ControllerMethods {
 
-  @FXML private Label roomTimerLabel;
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
 
   @FXML private ImageView animatedFish;
   @FXML private ImageView fishBite;
@@ -47,8 +49,10 @@ public class FishingMiniGameController extends ControllerMethods {
   private boolean isFishDelay = false;
 
   public void initialize() {
-    // Bind the timer label to the display time
-    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+    // Bind the labels to the display values
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
+    lblTask.textProperty().bind(ControllerMethods.displayTask);
+    lblHints.textProperty().bind(ControllerMethods.displayHints);
 
     // Bind the inventory images to their image properties
     fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
@@ -95,8 +99,8 @@ public class FishingMiniGameController extends ControllerMethods {
     if (rod.getBoundsInParent().intersects(fish.getBoundsInParent()) && !GameState.isFishCaught) {
       // Collision detected
       GameState.isFishCaught = true;
-      GameState.isForrestGameCompleted = true;
-      GameState.isForrestOrbCollected = true;
+      GameState.isForestGameCompleted = true;
+      GameState.isForestOrbCollected = true;
 
       fishBite.setOpacity(1);
       animatedFish.setOpacity(0);
@@ -113,6 +117,7 @@ public class FishingMiniGameController extends ControllerMethods {
               fishBite.setOpacity(0);
               findFish();
               findGreenOrb();
+              updateTask();
             });
         delay.play();
       } else {
@@ -123,6 +128,7 @@ public class FishingMiniGameController extends ControllerMethods {
               fishBite.setOpacity(0);
               findFish();
               findGreenOrb();
+              updateTask();
             });
         delay.play();
       }

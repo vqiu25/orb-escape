@@ -22,8 +22,10 @@ import org.controlsfx.control.Notifications;
 /** Controller class for the room view. */
 public class RoomController extends ControllerMethods {
 
-  @FXML private Label taskLabel;
-  @FXML private Label roomTimerLabel;
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
+
   @FXML private ImageView rightArrow;
   @FXML private ImageView rightArrowHover;
   @FXML private ImageView rightArrowPressed;
@@ -77,8 +79,10 @@ public class RoomController extends ControllerMethods {
 
   /** Initializes the room view, it is called when the room loads. */
   public void initialize() {
-    // Bind the timer label to the display time
-    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+    // Bind the labels to the display values
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
+    lblTask.textProperty().bind(ControllerMethods.displayTask);
+    lblHints.textProperty().bind(ControllerMethods.displayHints);
 
     // Bind the inventory images to their image properties
     fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
@@ -159,7 +163,7 @@ public class RoomController extends ControllerMethods {
    * @param message The message to be displayed.
    */
   public void updateTaskLabel(String message) {
-    taskLabel.setText("Task: " + message);
+    lblTask.setText("Task: " + message);
   }
 
   /**
@@ -415,7 +419,7 @@ public class RoomController extends ControllerMethods {
   private void terminalClick(MouseEvent event) {
     // If the orbs have NOT been found, prompt user to find the orbs:
     if (GameState.isRoomOrbCollected
-        && GameState.isForrestOrbCollected
+        && GameState.isForestOrbCollected
         && GameState.isCastleOrbCollected) {
       App.setScene(AppScene.TERMINAL);
     } else {
@@ -454,6 +458,8 @@ public class RoomController extends ControllerMethods {
         glowParticleOne.setOpacity(1);
         glowParticleTwo.setOpacity(1);
         glowParticleThree.setOpacity(1);
+        GameState.isCodeFound = true;
+        updateTask();
       }
       // Update GameState
       GameState.isLightOn = false;
@@ -496,7 +502,12 @@ public class RoomController extends ControllerMethods {
 
   // Portal
   @FXML
-  private void portalClick(MouseEvent event) {}
+  private void portalClick(MouseEvent event) {
+    if (GameState.isPortalOpen) {
+      GameState.isRoomEscaped = true;
+      App.setScene(AppScene.GAMEFINISHED);
+    }
+  }
 
   @FXML
   private void portalHover(MouseEvent event) {

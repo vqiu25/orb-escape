@@ -102,10 +102,10 @@ public class App extends Application {
 
     if (randomInt > 5) {
       GameState.isLavaBridge = true;
-      GameState.isForrestTreeChopping = true;
+      GameState.isForestTreeChopping = true;
     } else {
       GameState.isLavaDragon = true;
-      GameState.isForrestFishing = true;
+      GameState.isForestFishing = true;
     }
 
     // Add scenes to hashmap.
