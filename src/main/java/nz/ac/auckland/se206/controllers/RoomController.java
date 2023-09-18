@@ -758,6 +758,9 @@ public class RoomController extends ControllerMethods {
     if (!GameState.isLightOn) {
       setMainDarkOpacity();
     }
+
+    // Store current scene in scene stack
+    SceneManager.sceneStack.push(AppScene.ROOM);
     App.setScene(AppScene.CHAT);
   }
 }

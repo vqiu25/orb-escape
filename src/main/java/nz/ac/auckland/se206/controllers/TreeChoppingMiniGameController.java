@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 
 public class TreeChoppingMiniGameController extends ControllerMethods {
@@ -258,6 +259,8 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
     } else {
       setForestMiniOpacity();
     }
+    // Store the current scene in the scene stack:
+    SceneManager.sceneStack.push(AppScene.TREES);
     App.setScene(AppScene.CHAT);
   }
 }

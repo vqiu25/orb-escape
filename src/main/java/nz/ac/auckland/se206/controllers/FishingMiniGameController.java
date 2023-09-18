@@ -14,6 +14,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 
 public class FishingMiniGameController extends ControllerMethods {
@@ -270,6 +271,9 @@ public class FishingMiniGameController extends ControllerMethods {
     if (!isRunning && GameState.isFishCaught && isFishDelay
         || !isRunning && !GameState.isFishCaught) {
       setFishingMiniOpacity();
+
+      // store current scene in scene stack
+      SceneManager.sceneStack.push(AppScene.FISHING);
       App.setScene(AppScene.CHAT);
     }
   }

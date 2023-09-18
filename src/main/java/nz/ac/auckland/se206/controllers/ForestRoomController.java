@@ -396,6 +396,9 @@ public class ForestRoomController extends ControllerMethods {
     }
     if (GameState.isChopped) setForestTreesRemovedOpacity();
 
+    // Store forrest room scene in stack:
+    SceneManager.sceneStack.push(AppScene.FOREST);
+
     App.setScene(AppScene.CHAT);
   }
 }
