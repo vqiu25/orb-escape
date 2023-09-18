@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.util.Random;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppScene;
@@ -25,9 +25,16 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 public class ChatController extends ControllerMethods {
   @FXML private TextArea chatTextArea;
   @FXML private TextField inputText;
-  @FXML private Button sendButton;
   @FXML private Label chatTimerLabel;
-  @FXML private ProgressBar progressBar;
+  @FXML private ImageView gameMasterClose;
+  @FXML private ImageView gameMasterCloseHover;
+  @FXML private ImageView blueRectangle;
+  @FXML private ImageView pongAnimation;
+  @FXML private ImageView hourGlassAnimation;
+  @FXML private ImageView pacManAnimation;
+  @FXML private ImageView barAnimation;
+  @FXML private ImageView sendButtonHover;
+  @FXML private ImageView sendButtonPressed;
 
   private ChatCompletionRequest chatCompletionRequest;
 
@@ -97,19 +104,19 @@ public class ChatController extends ControllerMethods {
    * @throws ApiProxyException if there is an error communicating with the API proxy
    * @throws IOException if there is an I/O error
    */
-  @FXML
-  private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+  private void onSendMessage() throws ApiProxyException, IOException {
     String message = inputText.getText();
-
     // If the user has not entered a message, do nothing
     if (message.trim().isEmpty()) {
+      sendButtonPressed.setOpacity(0);
       return;
     }
+    blueRectangle.setOpacity(1);
+    selectRandomAniamtion();
 
     // If the user has entered a message:
     inputText.clear();
-    progressBar.setProgress(0);
-    sendButton.setDisable(true);
+    sendButtonPressed.setDisable(true);
 
     // Add the user's message to the chat text area
     ChatMessage msg = new ChatMessage("user", message);
@@ -121,11 +128,7 @@ public class ChatController extends ControllerMethods {
           @Override
           protected Void call() throws Exception {
 
-            updateProgress(0.5, 1);
             ChatMessage lastMsg = runGpt(msg);
-            updateProgress(1, 1);
-            // Reset the bar, indicating that the AI has finished responding
-            updateProgress(0, 1);
 
             Platform.runLater(
                 () -> {
@@ -142,24 +145,36 @@ public class ChatController extends ControllerMethods {
           }
         };
 
-    // Update the progress bar as the GPT model runs
-    progressBar.progressProperty().bind(gameMasterTask.progressProperty());
-
     // Unbind:
     gameMasterTask.setOnSucceeded(
         e -> {
-          sendButton.setDisable(false);
-          progressBar.progressProperty().unbind();
+          sendButtonPressed.setDisable(false);
+          hideAllAnimations();
+          sendButtonPressed.setOpacity(0);
         });
 
     gameMasterTask.setOnFailed(
         e -> {
-          sendButton.setDisable(false);
+          sendButtonPressed.setDisable(false);
+          hideAllAnimations();
+          sendButtonPressed.setOpacity(0);
         });
 
     // Start the thread
     Thread gameMasterThread = new Thread(gameMasterTask);
     gameMasterThread.start();
+  }
+
+  // Game Master Animations
+  @FXML
+  private void gameMasterCloseOnHover(MouseEvent event) {
+    gameMasterCloseHover.setOpacity(1);
+    requestFocus();
+  }
+
+  @FXML
+  private void gameMasterCloseOnUnhover(MouseEvent event) {
+    gameMasterCloseHover.setOpacity(0);
   }
 
   /**
@@ -170,7 +185,70 @@ public class ChatController extends ControllerMethods {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void onGoBack(ActionEvent event) throws ApiProxyException, IOException {
+  private void returnToRoom(MouseEvent event) throws ApiProxyException, IOException {
     App.setScene(AppScene.ROOM);
+    // TODO: Update so that it returns to prior room
+  }
+
+  // Send Button
+  @FXML
+  private void sendButtonOnHover(MouseEvent event) {
+    sendButtonHover.setOpacity(1);
+  }
+
+  @FXML
+  private void sendButtonOnUnhover(MouseEvent event) {
+    sendButtonHover.setOpacity(0);
+  }
+
+  @FXML
+  private void sendButtonPressed(MouseEvent event) {
+    sendButtonPressed.setOpacity(1);
+  }
+
+  @FXML
+  private void sendButtonReleased(MouseEvent event) throws ApiProxyException, IOException {
+    onSendMessage();
+  }
+
+  @FXML
+  private void keyPressed(KeyEvent event) {
+    // if user presses enter, run onSendMessage()
+    if (event.getCode().toString().equals("ENTER")) {
+      try {
+        onSendMessage();
+      } catch (ApiProxyException | IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  // Request focus on input text
+  private void requestFocus() {
+    Platform.runLater(() -> inputText.requestFocus());
+  }
+
+  // Select an animation for the loading screen
+  private void selectRandomAniamtion() {
+    Random random = new Random();
+    int randomInt = random.nextInt(4); // Picks a random number between 0 and 4
+
+    if (randomInt == 0) {
+      pongAnimation.setOpacity(1);
+    } else if (randomInt == 1) {
+      hourGlassAnimation.setOpacity(1);
+    } else if (randomInt == 2) {
+      pacManAnimation.setOpacity(1);
+    } else {
+      barAnimation.setOpacity(1);
+    }
+  }
+
+  private void hideAllAnimations() {
+    blueRectangle.setOpacity(0);
+    pongAnimation.setOpacity(0);
+    hourGlassAnimation.setOpacity(0);
+    pacManAnimation.setOpacity(0);
+    barAnimation.setOpacity(0);
   }
 }

@@ -33,11 +33,12 @@ public class ControllerMethods {
       new SimpleObjectProperty<>(null);
 
   // Instance variables to be accessible to all controllers
-  protected int count = GameState.timerCount;
+  protected int count;
   protected Timer timer = new Timer(true);
 
   /** Starts the timer. */
   protected void startTimer() {
+    count = GameState.timerCount;
     timer.scheduleAtFixedRate(
         new TimerTask() {
           @Override

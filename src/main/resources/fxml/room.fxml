@@ -266,9 +266,14 @@
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="48.0" layoutX="723.0" layoutY="18.0" onMouseEntered="#onSettingsHover" onMouseExited="#onSettingsUnhover" onMousePressed="#onSettingsPressed" onMouseReleased="#onSettingsReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="54.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="46.0" layoutX="655.0" layoutY="23.0" onMouseEntered="#onHelpHover" onMouseExited="#onHelpUnhover" onMousePressed="#onHelpPressed" onMouseReleased="#onHelpReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="48.0" />
-      <ImageView fitHeight="141.0" fitWidth="171.0" layoutX="606.0" layoutY="506.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="gameMasterDefault" fitHeight="141.0" fitWidth="171.0" layoutX="606.0" layoutY="506.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/gameMaster.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="gameMasterChat" fitHeight="141.0" fitWidth="171.0" layoutX="606.0" layoutY="490.0" onMouseClicked="#gameMasterOnClick" onMouseEntered="#gameMasterOnHover" onMouseExited="#gameMasterOnUnhover" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/gameMasterOnHover.gif" />
          </image>
       </ImageView>
    </children>
