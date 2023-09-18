@@ -739,7 +739,16 @@ public class RoomController extends ControllerMethods {
 
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
-    setMainMapOpacity();
+    // Logic for which background GPT should have
+    if (GameState.isMapOnWall) {
+      setMainMapOpacity();
+    } else if (!GameState.isMapOnWall) {
+      setMainMapRemovedOpacity();
+    }
+
+    if (!GameState.isLightOn) {
+      setMainDarkOpacity();
+    }
     App.setScene(AppScene.CHAT);
   }
 }
