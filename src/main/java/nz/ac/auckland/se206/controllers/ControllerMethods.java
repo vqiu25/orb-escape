@@ -34,6 +34,36 @@ public class ControllerMethods {
   protected static ObjectProperty<javafx.scene.image.Image> redOrbImageProperty =
       new SimpleObjectProperty<>(null);
 
+  // Object properties for all images in the background of chat
+  protected static ObjectProperty<javafx.scene.image.Image> forestAxeImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> forestRodImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> forestTreesRemovedImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> mainMapImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> mainMapRemovedImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> mainDarkImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> lavaDragonImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> lavaNoDragonImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> forestMiniImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> forestMiniTreesRemovedImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> fishingMiniImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> chestMiniImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> orbMiniImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> bridgeMiniImageProperty =
+      new SimpleObjectProperty<>(null);
+
   // Instance variables to be accessible to all controllers
   protected int count;
   protected Timer timer = new Timer(true);
@@ -186,5 +216,102 @@ public class ControllerMethods {
     blueOrbImageProperty.set(null);
     greenOrbImageProperty.set(null);
     redOrbImageProperty.set(null);
+  }
+
+  /** Methods for settimg opacities of backgrouds behind chat overlay */
+  protected void setForestAxeOpacity() {
+    removeBackgrounds();
+    forestAxeImageProperty.set(new Image(getClass().getResourceAsStream("/images/forestAxe.png")));
+  }
+
+  protected void setForestRodOpacity() {
+    removeBackgrounds();
+    forestRodImageProperty.set(new Image(getClass().getResourceAsStream("/images/forestRod.png")));
+  }
+
+  protected void setForestTreesRemovedOpacity() {
+    removeBackgrounds();
+    forestTreesRemovedImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/forestTreesRemoved.png")));
+  }
+
+  protected void setMainMapOpacity() {
+    removeBackgrounds();
+    mainMapImageProperty.set(new Image(getClass().getResourceAsStream("/images/mainMap.png")));
+  }
+
+  protected void setMainMapRemovedOpacity() {
+    removeBackgrounds();
+    mainMapRemovedImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/mainMapRemoved.png")));
+  }
+
+  protected void setMainDarkOpacity() {
+    removeBackgrounds();
+    mainDarkImageProperty.set(new Image(getClass().getResourceAsStream("/images/mainDark.png")));
+  }
+
+  protected void setLavaDragonOpacity() {
+    removeBackgrounds();
+    lavaDragonImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/lavaDragon.png")));
+  }
+
+  protected void setLavaNoDragonOpacity() {
+    removeBackgrounds();
+    lavaNoDragonImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/lavaNoDragon.png")));
+  }
+
+  protected void setForestMiniOpacity() {
+    removeBackgrounds();
+    forestMiniImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/forestMini.png")));
+  }
+
+  protected void setForestMiniTreesRemovedOpacity() {
+    removeBackgrounds();
+    forestMiniTreesRemovedImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/forestMiniTreesRemoved.png")));
+  }
+
+  protected void setFishingMiniOpacity() {
+    removeBackgrounds();
+    fishingMiniImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/fishingMini.png")));
+  }
+
+  protected void setChestMiniOpacity() {
+    removeBackgrounds();
+    chestMiniImageProperty.set(new Image(getClass().getResourceAsStream("/images/chestMini.png")));
+  }
+
+  protected void setOrbMiniOpacity() {
+    removeBackgrounds();
+    orbMiniImageProperty.set(new Image(getClass().getResourceAsStream("/images/orbMini.png")));
+  }
+
+  protected void setBridgeMiniOpacity() {
+    removeBackgrounds();
+    bridgeMiniImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/bridgeMini.png")));
+  }
+
+  /** Method for removing all backgrounds */
+  protected void removeBackgrounds() {
+    forestAxeImageProperty.set(null);
+    forestRodImageProperty.set(null);
+    forestTreesRemovedImageProperty.set(null);
+    mainMapImageProperty.set(null);
+    mainMapRemovedImageProperty.set(null);
+    mainDarkImageProperty.set(null);
+    lavaDragonImageProperty.set(null);
+    lavaNoDragonImageProperty.set(null);
+    forestMiniImageProperty.set(null);
+    forestMiniTreesRemovedImageProperty.set(null);
+    fishingMiniImageProperty.set(null);
+    chestMiniImageProperty.set(null);
+    orbMiniImageProperty.set(null);
+    bridgeMiniImageProperty.set(null);
   }
 }

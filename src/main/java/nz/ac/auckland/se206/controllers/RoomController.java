@@ -739,6 +739,7 @@ public class RoomController extends ControllerMethods {
 
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
+    setMainMapOpacity();
     App.setScene(AppScene.CHAT);
   }
 }

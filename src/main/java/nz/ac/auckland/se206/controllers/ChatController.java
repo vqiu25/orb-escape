@@ -39,6 +39,22 @@ public class ChatController extends ControllerMethods {
   @FXML private ImageView sendButtonHover;
   @FXML private ImageView sendButtonPressed;
 
+  // Backgrounds
+  @FXML private ImageView forestAxe;
+  @FXML private ImageView forestRod;
+  @FXML private ImageView forestTreesRemoved;
+  @FXML private ImageView mainMap;
+  @FXML private ImageView mainMapRemoved;
+  @FXML private ImageView mainDark;
+  @FXML private ImageView lavaDragon;
+  @FXML private ImageView lavaNoDragon;
+  @FXML private ImageView forestMini;
+  @FXML private ImageView forestMiniTreesRemoved;
+  @FXML private ImageView fishingMini;
+  @FXML private ImageView chestMini;
+  @FXML private ImageView orbMini;
+  @FXML private ImageView bridgeMini;
+
   // Inventory Items
   @FXML private ImageView fishingRodIcon;
   @FXML private ImageView axeIcon;
@@ -70,6 +86,24 @@ public class ChatController extends ControllerMethods {
     blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
     greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
     redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
+
+    // Bind the backgrounds to their respective image properties
+    forestAxe.imageProperty().bind(ControllerMethods.forestAxeImageProperty);
+    forestRod.imageProperty().bind(ControllerMethods.forestRodImageProperty);
+    forestTreesRemoved.imageProperty().bind(ControllerMethods.forestTreesRemovedImageProperty);
+    mainMap.imageProperty().bind(ControllerMethods.mainMapImageProperty);
+    mainMapRemoved.imageProperty().bind(ControllerMethods.mainMapRemovedImageProperty);
+    mainDark.imageProperty().bind(ControllerMethods.mainDarkImageProperty);
+    lavaDragon.imageProperty().bind(ControllerMethods.lavaDragonImageProperty);
+    lavaNoDragon.imageProperty().bind(ControllerMethods.lavaNoDragonImageProperty);
+    forestMini.imageProperty().bind(ControllerMethods.forestMiniImageProperty);
+    forestMiniTreesRemoved
+        .imageProperty()
+        .bind(ControllerMethods.forestMiniTreesRemovedImageProperty);
+    fishingMini.imageProperty().bind(ControllerMethods.fishingMiniImageProperty);
+    chestMini.imageProperty().bind(ControllerMethods.chestMiniImageProperty);
+    orbMini.imageProperty().bind(ControllerMethods.orbMiniImageProperty);
+    bridgeMini.imageProperty().bind(ControllerMethods.bridgeMiniImageProperty);
 
     // Randomly select either lamp or rug as the word to guess:
     String wordToGuess;
