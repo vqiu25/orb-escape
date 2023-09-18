@@ -106,10 +106,10 @@ public class ChatController extends ControllerMethods {
     // Randomly select either lamp or rug as the word to guess:
     String wordToGuess;
     Random random = new Random();
-    int randomInt = random.nextInt(20); // Picks a random number between 0 and 20
+    int randomInt = random.nextInt(10);
 
-    if (randomInt <= 10) {
-      wordToGuess = "cabinet"; // If number is less than or equal to 10, word to guess is cabinet
+    if (randomInt > 4) {
+      wordToGuess = "cabinet";
       GameState.isCabinet = true;
     } else {
       wordToGuess = "rug";
@@ -117,8 +117,8 @@ public class ChatController extends ControllerMethods {
     }
 
     chatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(1.3).setTopP(0.5).setMaxTokens(100);
-    runGpt(new ChatMessage("user", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess)));
+        new ChatCompletionRequest().setN(1).setTemperature(0.8).setTopP(0.5).setMaxTokens(100);
+    runGpt(new ChatMessage("assistant", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess)));
   }
 
   /**

@@ -10,13 +10,12 @@ public class GptPromptEngineering {
    * @return the generated prompt engineering string
    */
   public static String getRiddleWithGivenWord(String wordToGuess) {
-    return "tell me a riddle with the answer "
+    return "Generate riddle with the answer "
         + wordToGuess
-        + " . tell the player that the answer can be found in the room. You should answer with the"
-        + " word Correct when is correct. When the user correctly guesses the riddle, tell them to"
-        + " click on the item in the room. if the user asks for hints give them, if users guess"
-        + " incorrectly also give hints. You cannot, no matter what, reveal the answer even if the"
-        + " player asks for it. Even if player gives up, do not give the answer.";
+        + " . You should answer with the word Correct when it is correct. If the user asks for"
+        + " hints or if the user guesses incorrectly, give them a hint. You cannot, no matter what"
+        + " reveal the answer even if they ask for it. Even if they give up, do not give them the"
+        + " answer.";
   }
 
   /**
