@@ -72,7 +72,7 @@ public class LavaRoomController extends ControllerMethods {
     redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
 
     // Based on minigame selected, either show dragon scenario or broken bridge scenario:
-    if (GameState.isLavaBridge && GameState.isForrestTreeChopping) {
+    if (GameState.isLavaBridge && GameState.isForestTreeChopping) {
       // Minigame 1: Bridge is Broken - Disable dragon components and fixed bridge components
 
       // Disable bridge components
@@ -192,7 +192,7 @@ public class LavaRoomController extends ControllerMethods {
    */
   @FXML
   private void brokenBridgeClicked(MouseEvent event) {
-    if (GameState.isForrestGameCompleted) {
+    if (GameState.isForestGameCompleted) {
       App.setScene(AppScene.BRIDGE_GAME);
     } else {
       // Forrest game NOT COMPLETED, prompt user to get wood.
@@ -274,7 +274,7 @@ public class LavaRoomController extends ControllerMethods {
   @FXML
   private void dragonClicked(MouseEvent event) {
 
-    if (GameState.isForrestGameCompleted) {
+    if (GameState.isForestGameCompleted) {
       // if user has collected the fish, prompt the user to feed the dragon
       Notifications message =
           NotificationBuilder.createNotification("Dragon:", "Mmmm, yummy! You may pass now!.", 5);
@@ -283,6 +283,7 @@ public class LavaRoomController extends ControllerMethods {
       // set lava game state to completed
       GameState.isLavaGameCompleted = true;
       removeFish();
+      updateTask();
 
       // disable dragon and dragonoutline
       dragon.setDisable(true);
@@ -374,6 +375,8 @@ public class LavaRoomController extends ControllerMethods {
 
     if (GameState.isLavaGameCompleted) {
       // if lava game room is COMPLETED, allow user to enter the castle
+      GameState.isChestFound = true;
+      updateTask();
       App.setScene(AppScene.CASTLE);
     } else {
       // lava game room is NOT COMPLETED

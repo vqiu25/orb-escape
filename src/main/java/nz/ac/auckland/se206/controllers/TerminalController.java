@@ -87,6 +87,8 @@ public class TerminalController extends ControllerMethods {
 
       // Update game state:
       GameState.isOrbsPlaced = true;
+      GameState.isPortalOpen = true;
+      updateTask();
 
       // Notify user they may escape:
       Notifications message =

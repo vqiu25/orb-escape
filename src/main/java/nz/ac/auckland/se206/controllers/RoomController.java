@@ -419,7 +419,7 @@ public class RoomController extends ControllerMethods {
   private void terminalClick(MouseEvent event) {
     // If the orbs have NOT been found, prompt user to find the orbs:
     if (GameState.isRoomOrbCollected
-        && GameState.isForrestOrbCollected
+        && GameState.isForestOrbCollected
         && GameState.isCastleOrbCollected) {
       App.setScene(AppScene.TERMINAL);
     } else {
@@ -458,6 +458,8 @@ public class RoomController extends ControllerMethods {
         glowParticleOne.setOpacity(1);
         glowParticleTwo.setOpacity(1);
         glowParticleThree.setOpacity(1);
+        GameState.isCodeFound = true;
+        updateTask();
       }
       // Update GameState
       GameState.isLightOn = false;
@@ -500,7 +502,12 @@ public class RoomController extends ControllerMethods {
 
   // Portal
   @FXML
-  private void portalClick(MouseEvent event) {}
+  private void portalClick(MouseEvent event) {
+    if (GameState.isPortalOpen) {
+      GameState.isRoomEscaped = true;
+      App.setScene(AppScene.GAMEFINISHED);
+    }
+  }
 
   @FXML
   private void portalHover(MouseEvent event) {

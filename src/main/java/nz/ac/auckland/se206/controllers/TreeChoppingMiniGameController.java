@@ -98,8 +98,8 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
       } else if (chopCount == 10) {
         // Completed the mini game
         GameState.isChopped = true;
-        GameState.isForrestGameCompleted = true;
-        GameState.isForrestOrbCollected = true;
+        GameState.isForestGameCompleted = true;
+        updateTask();
 
         // Make the planks appear in the inventory
         findPlanks();
@@ -177,6 +177,8 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
     greenOrbOnTree.setOpacity(0);
     greenOrbOnTreeOutline.setOpacity(0);
     isOrbCollected = true;
+    GameState.isForestOrbCollected = true;
+    updateTask();
   }
 
   private void treeHitAnimation() {

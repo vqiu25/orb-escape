@@ -69,7 +69,7 @@ public class ForestRoomController extends ControllerMethods {
     redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
 
     // Based on minigame selected, either show dragon scenario or broken bridge scenario:
-    if (GameState.isForrestTreeChopping) {
+    if (GameState.isForestTreeChopping) {
       // Minigame 1: Trees need to be chopped - Disable and hide fishing rod components
 
       // Disable fishing rod polygon and enable empty dock polygon
@@ -203,8 +203,9 @@ public class ForestRoomController extends ControllerMethods {
   @FXML
   private void fishingClick(MouseEvent event) {
     // Add the fishing rod to inventory and take the user to the fishing mini game
-    if (GameState.isForrestFishing) {
+    if (GameState.isForestFishing) {
       GameState.isFishingRodTaken = true;
+      updateTask();
       fishingRod.setOpacity(0);
       fishingRodOutline.setOpacity(0);
       dock.setOpacity(1);
@@ -217,14 +218,14 @@ public class ForestRoomController extends ControllerMethods {
 
   @FXML
   private void fishingHover(MouseEvent event) {
-    if (GameState.isForrestFishing) {
+    if (GameState.isForestFishing) {
       fishingRodOutline.setOpacity(1);
     }
   }
 
   @FXML
   private void fishingUnhover(MouseEvent event) {
-    if (GameState.isForrestFishing) {
+    if (GameState.isForestFishing) {
       fishingRodOutline.setOpacity(0);
     }
   }
@@ -232,21 +233,21 @@ public class ForestRoomController extends ControllerMethods {
   // Dock without fishing rod
   @FXML
   private void dockClick(MouseEvent event) {
-    if (GameState.isForrestFishing && GameState.isFishingRodTaken) {
+    if (GameState.isForestFishing && GameState.isFishingRodTaken) {
       App.setScene(AppScene.FISHING);
     }
   }
 
   @FXML
   private void dockHover(MouseEvent event) {
-    if (!GameState.isForrestFishing || GameState.isFishingRodTaken) {
+    if (!GameState.isForestFishing || GameState.isFishingRodTaken) {
       dockOutline.setOpacity(1);
     }
   }
 
   @FXML
   private void dockUnhover(MouseEvent event) {
-    if (!GameState.isForrestFishing || GameState.isFishingRodTaken) {
+    if (!GameState.isForestFishing || GameState.isFishingRodTaken) {
       dockOutline.setOpacity(0);
     }
   }
@@ -254,7 +255,7 @@ public class ForestRoomController extends ControllerMethods {
   // Trees
   @FXML
   private void treesClick(MouseEvent event) {
-    if (GameState.isForrestTreeChopping) {
+    if (GameState.isForestTreeChopping) {
       if (GameState.isAxeTaken) {
         // If they are playing the tree chopping version and they have collected the axe, go to tree
         // chopping minigame
@@ -293,7 +294,7 @@ public class ForestRoomController extends ControllerMethods {
   // Trees Removed
   @FXML
   private void choppedClick(MouseEvent event) {
-    if (GameState.isForrestTreeChopping && GameState.isChopped) {
+    if (GameState.isForestTreeChopping && GameState.isChopped) {
       App.setScene(AppScene.TREES);
     }
   }
@@ -321,6 +322,7 @@ public class ForestRoomController extends ControllerMethods {
       axeOutline.setOpacity(0);
       axeRemoved.setOpacity(1);
       GameState.isAxeTaken = true;
+      updateTask();
       axeGrab.setDisable(true);
       emptyLog.setDisable(false);
     }
@@ -346,14 +348,14 @@ public class ForestRoomController extends ControllerMethods {
 
   @FXML
   private void emptyLogHover(MouseEvent event) {
-    if (GameState.isAxeTaken || !GameState.isForrestTreeChopping) {
+    if (GameState.isAxeTaken || !GameState.isForestTreeChopping) {
       axeRemovedOutline.setOpacity(1);
     }
   }
 
   @FXML
   private void emptyLogUnhover(MouseEvent event) {
-    if (GameState.isAxeTaken || !GameState.isForrestTreeChopping) {
+    if (GameState.isAxeTaken || !GameState.isForestTreeChopping) {
       axeRemovedOutline.setOpacity(0);
     }
   }

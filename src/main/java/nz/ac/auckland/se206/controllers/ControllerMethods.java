@@ -79,22 +79,22 @@ public class ControllerMethods {
   /** Updates the task label based on current game state */
   protected void updateTask() {
     if (!GameState.isRiddleFound) {
-      displayTask.setValue("Task: Talk to the Game Master");
+      displayTask.setValue("Task: Search for a riddle");
     } else if (!GameState.isRiddleResolved) {
       displayTask.setValue("Task: Try to solve the riddle");
-    } else if (GameState.isRiddleRug && !GameState.isRoomOrbCollected) {
+    } else if (GameState.isRug && !GameState.isRoomOrbCollected) {
       displayTask.setValue("Task: Have a look under the rug");
-    } else if (GameState.isRiddleCabinet && !GameState.isRoomOrbCollected) {
+    } else if (GameState.isCabinet && !GameState.isRoomOrbCollected) {
       displayTask.setValue("Task: Check the cabinet");
-    } else if ((GameState.isForrestFishing && !GameState.isFishingRodTaken)
-        || (GameState.isForrestTreeChopping && !GameState.isAxeTaken)) {
+    } else if ((GameState.isForestFishing && !GameState.isFishingRodTaken)
+        || (GameState.isForestTreeChopping && !GameState.isAxeTaken)) {
       displayTask.setValue("Task: Search for other items");
-    } else if ((GameState.isFishingRodTaken && !GameState.isForrestGameCompleted)
-        || (GameState.isAxeTaken && !GameState.isForrestGameCompleted)) {
+    } else if ((GameState.isFishingRodTaken && !GameState.isForestGameCompleted)
+        || (GameState.isAxeTaken && !GameState.isForestGameCompleted)) {
       displayTask.setValue("Task: Try using the item you found");
-    } else if (GameState.isForrestTreeChopping
-        && GameState.isForrestGameCompleted
-        && !GameState.isForrestOrbCollected) {
+    } else if (GameState.isForestTreeChopping
+        && GameState.isForestGameCompleted
+        && !GameState.isForestOrbCollected) {
       displayTask.setValue("Task: Don't forget the green orb");
     } else if (GameState.isLavaDragon && !GameState.isLavaGameCompleted) {
       displayTask.setValue("Task: Distract the dragon with food");
@@ -109,10 +109,12 @@ public class ControllerMethods {
     } else if (!GameState.isCastleOrbCollected) {
       displayTask.setValue("Task: Don't forget the red orb");
     } else if (GameState.isRoomOrbCollected
-        && GameState.isForrestOrbCollected
+        && GameState.isForestOrbCollected
         && GameState.isCastleOrbCollected
-        && !GameState.isRoomEscaped) {
+        && !GameState.isOrbsPlaced) {
       displayTask.setValue("Task: Place the orbs in the terminal");
+    } else if (GameState.isPortalOpen && !GameState.isRoomEscaped) {
+      displayTask.setValue("Task: Enter the portal!");
     }
   }
 

@@ -9,14 +9,14 @@ public class GameState {
 
   // Indicates which minigame has been selected:
   public static boolean isLavaBridge = false;
-  public static boolean isForrestTreeChopping = false;
+  public static boolean isForestTreeChopping = false;
 
   public static boolean isLavaDragon = false;
-  public static boolean isForrestFishing = false;
+  public static boolean isForestFishing = false;
 
   // Indicates if the minigame has been completed:
   public static boolean isLavaGameCompleted = false;
-  public static boolean isForrestGameCompleted = false;
+  public static boolean isForestGameCompleted = false;
 
   // Indicates if light switch is on or off
   public static boolean isLightOn = true;
@@ -28,7 +28,7 @@ public class GameState {
   public static boolean isCodeFound = false;
 
   // Indicates if orbs have been collected:
-  public static boolean isForrestOrbCollected = false;
+  public static boolean isForestOrbCollected = false;
   public static boolean isCastleOrbCollected = false;
   public static boolean isRoomOrbCollected = false; // TODO: add this to room!
 
@@ -56,18 +56,15 @@ public class GameState {
   // Indicates if the riddle has been found
   public static boolean isRiddleFound = false;
 
-  // Indicates if the riddle is about the cabinet
-  public static boolean isRiddleCabinet = false;
-
-  // Indicates if the riddle is about the rug
-  public static boolean isRiddleRug = false;
-
   /** Indicates whether the riddle has been resolved. */
   public static boolean isRiddleResolved =
       false; // this is set to true when the GPT thing sees correct
 
   // check if item as told by the riddle has been clicked - this will allow the TV to be accessed
   public static boolean itemClicked = false;
+
+  // Indicated if the portal is open
+  public static boolean isPortalOpen = false;
 
   // Check if the player has escaped
   public static boolean isRoomEscaped = false;

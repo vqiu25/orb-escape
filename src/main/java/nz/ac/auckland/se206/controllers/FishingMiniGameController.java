@@ -99,8 +99,8 @@ public class FishingMiniGameController extends ControllerMethods {
     if (rod.getBoundsInParent().intersects(fish.getBoundsInParent()) && !GameState.isFishCaught) {
       // Collision detected
       GameState.isFishCaught = true;
-      GameState.isForrestGameCompleted = true;
-      GameState.isForrestOrbCollected = true;
+      GameState.isForestGameCompleted = true;
+      GameState.isForestOrbCollected = true;
 
       fishBite.setOpacity(1);
       animatedFish.setOpacity(0);
@@ -117,6 +117,7 @@ public class FishingMiniGameController extends ControllerMethods {
               fishBite.setOpacity(0);
               findFish();
               findGreenOrb();
+              updateTask();
             });
         delay.play();
       } else {
@@ -127,6 +128,7 @@ public class FishingMiniGameController extends ControllerMethods {
               fishBite.setOpacity(0);
               findFish();
               findGreenOrb();
+              updateTask();
             });
         delay.play();
       }
