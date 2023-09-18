@@ -16,6 +16,9 @@ public class GptPromptEngineering {
         + " hints or if the user guesses incorrectly, give them a hint. You cannot, no matter what"
         + " reveal the answer even if they ask for it. Even if they give up, do not give them the"
         + " answer.";
+
+    // TODO: Update later to account for user asking for hints:
+    // need to pass in integer from GameState.hintCount();
   }
 
   /**

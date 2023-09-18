@@ -103,7 +103,7 @@ public class ChatController extends ControllerMethods {
     orbMini.imageProperty().bind(ControllerMethods.backgroundImageProperty);
     bridgeMini.imageProperty().bind(ControllerMethods.backgroundImageProperty);
 
-    // Randomly select either lamp or rug as the word to guess:
+    // Randomly select either cabinet or rug as the word to guess:
     String wordToGuess;
     Random random = new Random();
     int randomInt = random.nextInt(10);
@@ -153,7 +153,7 @@ public class ChatController extends ControllerMethods {
   }
 
   /**
-   * Sends a message to the GPT model.
+   * Sends the user's message inputted into the text to the GPT model.
    *
    * @param event the action event triggered by the send button
    * @throws ApiProxyException if there is an error communicating with the API proxy
@@ -191,6 +191,8 @@ public class ChatController extends ControllerMethods {
                   if (lastMsg.getRole().equals("assistant")
                       && lastMsg.getContent().startsWith("Correct")) {
                     GameState.isRiddleResolved = true;
+
+                    // TODO: update logic later to account for user asking for hints
                   }
                 });
 

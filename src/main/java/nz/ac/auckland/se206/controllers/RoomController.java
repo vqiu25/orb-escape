@@ -81,6 +81,7 @@ public class RoomController extends ControllerMethods {
   private GameMaster gameMaster;
   private ChatMessage chatMessage;
   private int spamCount = 0;
+  private Notifications orbMessage;
 
   /** Initializes the room view, it is called when the room loads. */
   public void initialize() {
@@ -97,6 +98,11 @@ public class RoomController extends ControllerMethods {
     blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
     greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
     redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
+
+    // Initialize orb notification message
+    orbMessage =
+        NotificationBuilder.createNotification(
+            "Game Master:", "Congratulation! You've found an orb!", 6);
 
     // // Initialize game master object:
     // gameMaster = new GameMaster();
@@ -284,18 +290,8 @@ public class RoomController extends ControllerMethods {
    */
   @FXML
   private void cabinetClick(MouseEvent event) {
-    // if the riddle has NOT been solved give help
-    if (!GameState.isRiddleResolved) {
-      spamCount++;
-
-      if (spamCount == 5) {
-        Notifications message2 =
-            NotificationBuilder.createNotification(
-                "Game Master:", "Open the chat to talk to me and get your first clue!", 6);
-        message2.show();
-      }
-      return;
-    }
+    // if the riddle has NOT been solved and the user is stuck, give help
+    giveRiddleHelp();
 
     // If the item has already been clicked, dont let them click again.
     if (GameState.itemClicked) {
@@ -306,16 +302,11 @@ public class RoomController extends ControllerMethods {
     if (GameState.isCabinet && GameState.isRiddleResolved) {
       GameState.itemClicked = true;
 
-      showDialog(
-          "You've found a clue!",
-          "TV Remote Found!",
-          "You found the TV remote! Turn on the TV for your next clue!");
+      // Show notification - alerting user that they have found an orb
+      orbMessage.show();
 
-      updateTaskLabel("[Insert Task]");
-
-      Notifications message =
-          NotificationBuilder.createNotification("Game Master:", chatMessage.getContent(), 6);
-      message.show();
+      // TODO: update orb image in inventory
+      // updateTaskLabel("[Insert Task]");
     }
   }
 
@@ -336,18 +327,9 @@ public class RoomController extends ControllerMethods {
    */
   @FXML
   private void carpetClick(MouseEvent event) {
-    // if the riddle has NOT been solved give help
-    if (!GameState.isRiddleResolved) {
-      spamCount++;
 
-      if (spamCount == 5) {
-        Notifications message2 =
-            NotificationBuilder.createNotification(
-                "Game Master:", "Open the chat to talk to me and get your first clue!", 6);
-        message2.show();
-      }
-      return;
-    }
+    // if the riddle has NOT been solved give help
+    giveRiddleHelp();
 
     // If the item has already been clicked, dont let them click again.
     if (GameState.itemClicked) {
@@ -358,16 +340,11 @@ public class RoomController extends ControllerMethods {
     if (GameState.isRug && GameState.isRiddleResolved) {
       GameState.itemClicked = true;
 
-      showDialog(
-          "You've found a clue!",
-          "TV Remote Found!",
-          "You found the TV remote! Turn on the TV for your next clue!");
+      // Show notification - alerting user that they have found an orb
+      orbMessage.show();
 
-      updateTaskLabel("[Insert Task]");
-
-      Notifications message =
-          NotificationBuilder.createNotification("Game Master:", chatMessage.getContent(), 6);
-      message.show();
+      // TODO: update orb image in inventory
+      // updateTaskLabel("[Insert Task]");
     }
   }
 
@@ -762,5 +739,19 @@ public class RoomController extends ControllerMethods {
     // Store current scene in scene stack
     SceneManager.sceneStack.push(AppScene.ROOM);
     App.setScene(AppScene.CHAT);
+  }
+
+  public void giveRiddleHelp() {
+    if (!GameState.isRiddleResolved) {
+      spamCount++;
+
+      if (spamCount == 5) {
+        Notifications message2 =
+            NotificationBuilder.createNotification(
+                "Game Master:", "In a book, you will find your first clue!", 6);
+        message2.show();
+      }
+      return;
+    }
   }
 }
