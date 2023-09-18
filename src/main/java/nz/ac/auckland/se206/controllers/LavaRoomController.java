@@ -7,6 +7,7 @@ import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
+import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
@@ -420,6 +421,10 @@ public class LavaRoomController extends ControllerMethods {
   @FXML
   private void onHelpReleased(MouseEvent event) {
     helpThree.setOpacity(0);
+
+    // Store lava room scene in stack:
+    SceneManager.sceneStack.push(AppScene.LAVA);
+
     App.setScene(AppScene.HELP);
   }
 
@@ -446,6 +451,10 @@ public class LavaRoomController extends ControllerMethods {
   @FXML
   private void onSettingsReleased(MouseEvent event) {
     settingsThree.setOpacity(0);
+
+    // Store lava room scene in stack:
+    SceneManager.sceneStack.push(AppScene.LAVA);
+
     App.setScene(AppScene.SETTINGS);
   }
 }

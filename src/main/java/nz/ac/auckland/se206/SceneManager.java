@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import java.util.HashMap;
+import java.util.Stack;
 import javafx.scene.Parent;
 
 public class SceneManager {
@@ -49,4 +50,7 @@ public class SceneManager {
   public static Parent getScene(AppScene scene) {
     return sceneMap.get(scene);
   }
+
+  // Stack data structure for storing previously accessed scenes
+  public static Stack<AppScene> sceneStack = new Stack<AppScene>();
 }

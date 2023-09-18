@@ -7,6 +7,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Polygon;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 
 public class ForestRoomController extends ControllerMethods {
@@ -115,6 +116,10 @@ public class ForestRoomController extends ControllerMethods {
   @FXML
   private void onHelpReleased(MouseEvent event) {
     helpThree.setOpacity(0);
+
+    // Store forrest room scene in stack:
+    SceneManager.sceneStack.push(AppScene.FOREST);
+
     App.setScene(AppScene.HELP);
   }
 
@@ -141,6 +146,10 @@ public class ForestRoomController extends ControllerMethods {
   @FXML
   private void onSettingsReleased(MouseEvent event) {
     settingsThree.setOpacity(0);
+
+    // Store forrest room scene in stack:
+    SceneManager.sceneStack.push(AppScene.FOREST);
+
     App.setScene(AppScene.SETTINGS);
   }
 

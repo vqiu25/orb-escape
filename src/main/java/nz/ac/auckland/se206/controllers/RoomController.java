@@ -13,6 +13,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameMaster;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
+import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import nz.ac.auckland.se206.gpt.ChatMessage;
 import nz.ac.auckland.se206.gpt.GptPromptEngineering;
@@ -128,6 +129,10 @@ public class RoomController extends ControllerMethods {
   @FXML
   private void onHelpReleased(MouseEvent event) {
     helpThree.setOpacity(0);
+
+    // Store scene to stack
+    SceneManager.sceneStack.push(AppScene.ROOM);
+
     App.setScene(AppScene.HELP);
   }
 
@@ -154,6 +159,10 @@ public class RoomController extends ControllerMethods {
   @FXML
   private void onSettingsReleased(MouseEvent event) {
     settingsThree.setOpacity(0);
+
+    // Store scene to stack
+    SceneManager.sceneStack.push(AppScene.ROOM);
+
     App.setScene(AppScene.SETTINGS);
   }
 
