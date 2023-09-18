@@ -482,6 +482,9 @@ public class LavaRoomController extends ControllerMethods {
     } else {
       setLavaNoDragonOpacity();
     }
+
+    // Store current scene in scene stack
+    SceneManager.sceneStack.push(AppScene.LAVA);
     App.setScene(AppScene.CHAT);
   }
 }

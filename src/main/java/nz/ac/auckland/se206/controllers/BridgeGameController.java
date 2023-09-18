@@ -9,6 +9,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.DragImage;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
+import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
@@ -240,6 +241,10 @@ public class BridgeGameController extends ControllerMethods {
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
     setBridgeMiniOpacity();
+
+    // Store current scene in scene stack
+    SceneManager.sceneStack.push(AppScene.BRIDGE_GAME);
+
     App.setScene(AppScene.CHAT);
   }
 }

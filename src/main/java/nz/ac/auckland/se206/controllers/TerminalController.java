@@ -9,6 +9,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.DragImage;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
+import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
@@ -227,6 +228,9 @@ public class TerminalController extends ControllerMethods {
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
     setOrbMiniOpacity();
+
+    // Store the current scene in the scene stack:
+    SceneManager.sceneStack.push(AppScene.TERMINAL);
     App.setScene(AppScene.CHAT);
   }
 }

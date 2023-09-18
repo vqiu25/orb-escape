@@ -13,7 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
-import nz.ac.auckland.se206.SceneManager.AppScene;
+import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.gpt.ChatMessage;
 import nz.ac.auckland.se206.gpt.GptPromptEngineering;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
@@ -239,8 +239,8 @@ public class ChatController extends ControllerMethods {
    */
   @FXML
   private void returnToRoom(MouseEvent event) throws ApiProxyException, IOException {
-    App.setScene(AppScene.ROOM);
-    // TODO: Update so that it returns to prior room
+    // Return to previous scene by popping stack:
+    App.setScene(SceneManager.sceneStack.pop());
   }
 
   // Send Button
