@@ -240,6 +240,8 @@ public class FishingMiniGameController extends ControllerMethods {
 
   @FXML
   private void backReleased(MouseEvent event) {
+    // TODO: Perhaps implement some kind of notification that lets the player the button has been
+    // disabled?
     if (!isRunning && GameState.isFishCaught && isFishDelay) {
       App.setScene(AppScene.FOREST);
     } else if (!isRunning && !GameState.isFishCaught) {
@@ -263,6 +265,11 @@ public class FishingMiniGameController extends ControllerMethods {
 
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
-    App.setScene(AppScene.CHAT);
+    // TODO: Perhaps implement some kind of notification that lets the player the button has been
+    // disabled?
+    if (!isRunning && GameState.isFishCaught && isFishDelay
+        || !isRunning && !GameState.isFishCaught) {
+      App.setScene(AppScene.CHAT);
+    }
   }
 }
