@@ -95,6 +95,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
         // Completed the mini game
         GameState.isChopped = true;
         GameState.isForrestGameCompleted = true;
+        GameState.isForrestOrbCollected = true;
 
         // Make the planks appear in the inventory
         findPlanks();

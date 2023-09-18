@@ -15,26 +15,6 @@
             <Image url="@../images/buttonFrame.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="52.0" layoutX="730.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cirlceButtonFrame.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="47.0" fitWidth="52.0" layoutX="677.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/cirlceButtonFrame.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="740.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/settingsUI.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="31.0" fitWidth="40.0" layoutX="689.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/helpUI.png" />
-         </image>
-      </ImageView>
       <Text layoutX="18.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time Left:">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -57,6 +37,21 @@
       <ImageView fitHeight="625.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/buttonLayout.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="blueOrbFixed" fitHeight="54.0" fitWidth="53.0" layoutX="135.0" layoutY="166.0" opacity="0.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/blueOrbDarkOutline.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="greenOrbFixed" fitHeight="54.0" fitWidth="53.0" layoutX="238.0" layoutY="166.0" opacity="0.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/greenOrbDarkOutline.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="redOrbFixed" fitHeight="54.0" fitWidth="53.0" layoutX="342.0" layoutY="166.0" opacity="0.0" pickOnBounds="true">
+         <image>
+            <Image url="@../images/redOrbDarkOutline.png" />
          </image>
       </ImageView>
       <ImageView fx:id="hotbar" fitHeight="53.0" fitWidth="227.0" layoutX="282.0" layoutY="556.0" pickOnBounds="true" preserveRatio="true">
@@ -94,21 +89,39 @@
             <Image url="@../images/whiteThree.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="292.5" layoutY="393.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="blueOrbOutline" fitHeight="56.0" fitWidth="60.0" layoutX="188.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/redOrbTwo.png" />
+            <Image url="@../images/blueOrbTwoOutline.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="194.5" layoutY="393.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="blueOrb" fitHeight="56.0" fitWidth="60.0" layoutX="188.0" layoutY="387.0" onMouseDragged="#blueDragged" onMouseEntered="#blueHovered" onMouseExited="#blueUnhovered" onMouseReleased="#blueReleased" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/blueOrbTwo.png" />
+            <Image url="@../images/blueOrbDarkOutline.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="44.0" fitWidth="43.0" layoutX="243.5" layoutY="425.5" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="greenOrbOutline" fitHeight="56.0" fitWidth="60.0" layoutX="237.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/greenOrbTerminal.png" />
+            <Image url="@../images/greenOrbTwoHover.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="greenOrb" fitHeight="56.0" fitWidth="60.0" layoutX="237.0" layoutY="419.0" onMouseDragged="#greenDragged" onMouseEntered="#greenHovered" onMouseExited="#greenUnhovered" onMouseReleased="#greenReleased" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/greenOrbDarkOutline.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="redOrbOutline" fitHeight="56.0" fitWidth="60.0" layoutX="286.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/redOrbTwoOutline.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="redOrb" fitHeight="56.0" fitWidth="60.0" layoutX="286.0" layoutY="387.0" onMouseDragged="#redDragged" onMouseEntered="#redHovered" onMouseExited="#redUnhovered" onMouseReleased="#redReleased" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/redOrbDarkOutline.png" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="172.0" layoutX="549.0" layoutY="234.0" onMouseEntered="#redButtonHover" onMouseExited="#redButtonUnhover" onMousePressed="#redButtonPressed" onMouseReleased="#redButtonReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="139.0" />
+      <Rectangle fx:id="blueOrbPlaced" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="133.0" layoutY="165.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="55.0" />
+      <Rectangle fx:id="greenOrbPlaced" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="237.0" layoutY="166.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="55.0" />
+      <Rectangle fx:id="redOrbPlaced" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="341.0" layoutY="165.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="55.0" />
    </children>
 </Pane>

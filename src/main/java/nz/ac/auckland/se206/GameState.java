@@ -8,8 +8,8 @@ public class GameState {
   public static boolean isRug = false;
 
   // Indicates which minigame has been selected:
-  public static boolean isLavaBridge = true;
-  public static boolean isForrestTreeChopping = true;
+  public static boolean isLavaBridge = false;
+  public static boolean isForrestTreeChopping = false;
 
   public static boolean isLavaDragon = false;
   public static boolean isForrestFishing = false;
@@ -23,6 +23,11 @@ public class GameState {
 
   // Indicates if map has been removed off the wall
   public static boolean isMapOnWall = true;
+
+  // Indicates if orbs have been collected:
+  public static boolean isForrestOrbCollected = false;
+  public static boolean isCastleOrbCollected = false;
+  public static boolean isRoomOrbCollected = false; // TODO: add this to room!
 
   // Indicates if all the orbs have been placed in the terminal
   public static boolean isOrbsPlaced = false;

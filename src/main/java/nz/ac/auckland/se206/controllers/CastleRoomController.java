@@ -6,6 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
@@ -161,9 +162,10 @@ public class CastleRoomController extends ControllerMethods {
         return;
       }
 
-      // Update states
+      // Update state of the game:
       isOrbTaken = true;
       isChestOpened = true;
+      GameState.isCastleOrbCollected = true;
 
       // Notify the user that the answer is correct:
       Notifications message =
@@ -356,6 +358,9 @@ public class CastleRoomController extends ControllerMethods {
   @FXML
   private void orbPressed(MouseEvent event) {
     chestEmpty.setOpacity(1);
+
+    // Update orb state:
+    GameState.isCastleOrbCollected = true;
 
     // Put the orb into inventory
     findRedOrb();
