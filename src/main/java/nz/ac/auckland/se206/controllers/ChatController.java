@@ -23,9 +23,12 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 
 /** Controller class for the chat view. */
 public class ChatController extends ControllerMethods {
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
+
   @FXML private TextArea chatTextArea;
   @FXML private TextField inputText;
-  @FXML private Label chatTimerLabel;
   @FXML private ImageView gameMasterClose;
   @FXML private ImageView gameMasterCloseHover;
   @FXML private ImageView blueRectangle;
@@ -35,6 +38,15 @@ public class ChatController extends ControllerMethods {
   @FXML private ImageView barAnimation;
   @FXML private ImageView sendButtonHover;
   @FXML private ImageView sendButtonPressed;
+
+  // Inventory Items
+  @FXML private ImageView fishingRodIcon;
+  @FXML private ImageView axeIcon;
+  @FXML private ImageView fishIcon;
+  @FXML private ImageView planksIcon;
+  @FXML private ImageView blueOrb;
+  @FXML private ImageView greenOrb;
+  @FXML private ImageView redOrb;
 
   private ChatCompletionRequest chatCompletionRequest;
 
@@ -46,7 +58,18 @@ public class ChatController extends ControllerMethods {
   @FXML
   public void initialize() throws ApiProxyException {
     // Bind the timer label to the display time
-    chatTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
+    lblTask.textProperty().bind(ControllerMethods.displayTask);
+    lblHints.textProperty().bind(ControllerMethods.displayHints);
+
+    // Bind the inventory images to their image properties
+    fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
+    axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
+    fishIcon.imageProperty().bind(ControllerMethods.fishIconImageProperty);
+    planksIcon.imageProperty().bind(ControllerMethods.planksIconImageProperty);
+    blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
+    greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
+    redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
 
     // Randomly select either lamp or rug as the word to guess:
     String wordToGuess;
@@ -136,8 +159,6 @@ public class ChatController extends ControllerMethods {
                   if (lastMsg.getRole().equals("assistant")
                       && lastMsg.getContent().startsWith("Correct")) {
                     GameState.isRiddleResolved = true;
-
-                    App.getRoomController().updateTaskLabel("Click on the riddle's answer!");
                   }
                 });
 
