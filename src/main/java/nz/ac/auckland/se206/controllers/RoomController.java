@@ -56,6 +56,10 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView portal;
   @FXML private ImageView portalOutline;
 
+  // Game Master
+  @FXML private ImageView gameMasterDefault;
+  @FXML private ImageView gameMasterChat;
+
   // Inventory Items
   @FXML private ImageView fishingRodIcon;
   @FXML private ImageView axeIcon;
@@ -727,5 +731,33 @@ public class RoomController extends ControllerMethods {
 
     Thread thread = new Thread(task);
     thread.start();
+  }
+
+  // Bottom Right Game Master Button
+  @FXML
+  private void gameMasterOnHover(MouseEvent event) {
+    gameMasterDefault.setOpacity(0);
+    gameMasterChat.setOpacity(1);
+  }
+
+  @FXML
+  private void gameMasterOnUnhover(MouseEvent event) {
+    gameMasterDefault.setOpacity(1);
+    gameMasterChat.setOpacity(0);
+  }
+
+  @FXML
+  private void gameMasterOnClick(MouseEvent event) {
+    // Logic for which background GPT should have
+    if (GameState.isMapOnWall) {
+      setMainMapOpacity();
+    } else if (!GameState.isMapOnWall) {
+      setMainMapRemovedOpacity();
+    }
+
+    if (!GameState.isLightOn) {
+      setMainDarkOpacity();
+    }
+    App.setScene(AppScene.CHAT);
   }
 }

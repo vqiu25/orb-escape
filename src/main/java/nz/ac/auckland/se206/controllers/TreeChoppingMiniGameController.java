@@ -36,6 +36,10 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
   @FXML private ImageView treeHitTwo;
   @FXML private ImageView treeHitThree;
 
+  // Game Master
+  @FXML private ImageView gameMasterDefault;
+  @FXML private ImageView gameMasterChat;
+
   // Inventory Items
   @FXML private ImageView fishingRodIcon;
   @FXML private ImageView axeIcon;
@@ -232,5 +236,28 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
         .getKeyFrames()
         .addAll(keyFrameOne, keyFrameTwo, keyFrameThree, keyFrameFour, keyFrameFive);
     timeline.play();
+  }
+
+  // Bottom Right Game Master Button
+  @FXML
+  private void gameMasterOnHover(MouseEvent event) {
+    gameMasterDefault.setOpacity(0);
+    gameMasterChat.setOpacity(1);
+  }
+
+  @FXML
+  private void gameMasterOnUnhover(MouseEvent event) {
+    gameMasterDefault.setOpacity(1);
+    gameMasterChat.setOpacity(0);
+  }
+
+  @FXML
+  private void gameMasterOnClick(MouseEvent event) {
+    if (GameState.isChopped) {
+      setForestMiniTreesRemovedOpacity();
+    } else {
+      setForestMiniOpacity();
+    }
+    App.setScene(AppScene.CHAT);
   }
 }

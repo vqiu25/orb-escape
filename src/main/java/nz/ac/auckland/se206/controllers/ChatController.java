@@ -4,13 +4,13 @@ import java.io.IOException;
 import java.util.Random;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppScene;
@@ -23,11 +23,46 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 
 /** Controller class for the chat view. */
 public class ChatController extends ControllerMethods {
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
+
   @FXML private TextArea chatTextArea;
   @FXML private TextField inputText;
-  @FXML private Button sendButton;
-  @FXML private Label chatTimerLabel;
-  @FXML private ProgressBar progressBar;
+  @FXML private ImageView gameMasterClose;
+  @FXML private ImageView gameMasterCloseHover;
+  @FXML private ImageView blueRectangle;
+  @FXML private ImageView pongAnimation;
+  @FXML private ImageView hourGlassAnimation;
+  @FXML private ImageView pacManAnimation;
+  @FXML private ImageView barAnimation;
+  @FXML private ImageView sendButtonHover;
+  @FXML private ImageView sendButtonPressed;
+
+  // Backgrounds
+  @FXML private ImageView forestAxe;
+  @FXML private ImageView forestRod;
+  @FXML private ImageView forestTreesRemoved;
+  @FXML private ImageView mainMap;
+  @FXML private ImageView mainMapRemoved;
+  @FXML private ImageView mainDark;
+  @FXML private ImageView lavaDragon;
+  @FXML private ImageView lavaNoDragon;
+  @FXML private ImageView forestMini;
+  @FXML private ImageView forestMiniTreesRemoved;
+  @FXML private ImageView fishingMini;
+  @FXML private ImageView chestMini;
+  @FXML private ImageView orbMini;
+  @FXML private ImageView bridgeMini;
+
+  // Inventory Items
+  @FXML private ImageView fishingRodIcon;
+  @FXML private ImageView axeIcon;
+  @FXML private ImageView fishIcon;
+  @FXML private ImageView planksIcon;
+  @FXML private ImageView blueOrb;
+  @FXML private ImageView greenOrb;
+  @FXML private ImageView redOrb;
 
   private ChatCompletionRequest chatCompletionRequest;
 
@@ -39,7 +74,34 @@ public class ChatController extends ControllerMethods {
   @FXML
   public void initialize() throws ApiProxyException {
     // Bind the timer label to the display time
-    chatTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
+    lblTask.textProperty().bind(ControllerMethods.displayTask);
+    lblHints.textProperty().bind(ControllerMethods.displayHints);
+
+    // Bind the inventory images to their image properties
+    fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
+    axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
+    fishIcon.imageProperty().bind(ControllerMethods.fishIconImageProperty);
+    planksIcon.imageProperty().bind(ControllerMethods.planksIconImageProperty);
+    blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
+    greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
+    redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
+
+    // Bind the backgrounds to their respective image properties
+    forestAxe.imageProperty().bind(ControllerMethods.backgroundImageProperty);
+    forestRod.imageProperty().bind(ControllerMethods.backgroundImageProperty);
+    forestTreesRemoved.imageProperty().bind(ControllerMethods.backgroundImageProperty);
+    mainMap.imageProperty().bind(ControllerMethods.backgroundImageProperty);
+    mainMapRemoved.imageProperty().bind(ControllerMethods.backgroundImageProperty);
+    mainDark.imageProperty().bind(ControllerMethods.backgroundImageProperty);
+    lavaDragon.imageProperty().bind(ControllerMethods.backgroundImageProperty);
+    lavaNoDragon.imageProperty().bind(ControllerMethods.backgroundImageProperty);
+    forestMini.imageProperty().bind(ControllerMethods.backgroundImageProperty);
+    forestMiniTreesRemoved.imageProperty().bind(ControllerMethods.backgroundImageProperty);
+    fishingMini.imageProperty().bind(ControllerMethods.backgroundImageProperty);
+    chestMini.imageProperty().bind(ControllerMethods.backgroundImageProperty);
+    orbMini.imageProperty().bind(ControllerMethods.backgroundImageProperty);
+    bridgeMini.imageProperty().bind(ControllerMethods.backgroundImageProperty);
 
     // Randomly select either lamp or rug as the word to guess:
     String wordToGuess;
@@ -97,19 +159,19 @@ public class ChatController extends ControllerMethods {
    * @throws ApiProxyException if there is an error communicating with the API proxy
    * @throws IOException if there is an I/O error
    */
-  @FXML
-  private void onSendMessage(ActionEvent event) throws ApiProxyException, IOException {
+  private void onSendMessage() throws ApiProxyException, IOException {
     String message = inputText.getText();
-
     // If the user has not entered a message, do nothing
     if (message.trim().isEmpty()) {
+      sendButtonPressed.setOpacity(0);
       return;
     }
+    blueRectangle.setOpacity(1);
+    selectRandomAniamtion();
 
     // If the user has entered a message:
     inputText.clear();
-    progressBar.setProgress(0);
-    sendButton.setDisable(true);
+    sendButtonPressed.setDisable(true);
 
     // Add the user's message to the chat text area
     ChatMessage msg = new ChatMessage("user", message);
@@ -121,11 +183,7 @@ public class ChatController extends ControllerMethods {
           @Override
           protected Void call() throws Exception {
 
-            updateProgress(0.5, 1);
             ChatMessage lastMsg = runGpt(msg);
-            updateProgress(1, 1);
-            // Reset the bar, indicating that the AI has finished responding
-            updateProgress(0, 1);
 
             Platform.runLater(
                 () -> {
@@ -133,8 +191,6 @@ public class ChatController extends ControllerMethods {
                   if (lastMsg.getRole().equals("assistant")
                       && lastMsg.getContent().startsWith("Correct")) {
                     GameState.isRiddleResolved = true;
-
-                    App.getRoomController().updateTaskLabel("Click on the riddle's answer!");
                   }
                 });
 
@@ -142,24 +198,36 @@ public class ChatController extends ControllerMethods {
           }
         };
 
-    // Update the progress bar as the GPT model runs
-    progressBar.progressProperty().bind(gameMasterTask.progressProperty());
-
     // Unbind:
     gameMasterTask.setOnSucceeded(
         e -> {
-          sendButton.setDisable(false);
-          progressBar.progressProperty().unbind();
+          sendButtonPressed.setDisable(false);
+          hideAllAnimations();
+          sendButtonPressed.setOpacity(0);
         });
 
     gameMasterTask.setOnFailed(
         e -> {
-          sendButton.setDisable(false);
+          sendButtonPressed.setDisable(false);
+          hideAllAnimations();
+          sendButtonPressed.setOpacity(0);
         });
 
     // Start the thread
     Thread gameMasterThread = new Thread(gameMasterTask);
     gameMasterThread.start();
+  }
+
+  // Game Master Animations
+  @FXML
+  private void gameMasterCloseOnHover(MouseEvent event) {
+    gameMasterCloseHover.setOpacity(1);
+    requestFocus();
+  }
+
+  @FXML
+  private void gameMasterCloseOnUnhover(MouseEvent event) {
+    gameMasterCloseHover.setOpacity(0);
   }
 
   /**
@@ -170,7 +238,70 @@ public class ChatController extends ControllerMethods {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void onGoBack(ActionEvent event) throws ApiProxyException, IOException {
+  private void returnToRoom(MouseEvent event) throws ApiProxyException, IOException {
     App.setScene(AppScene.ROOM);
+    // TODO: Update so that it returns to prior room
+  }
+
+  // Send Button
+  @FXML
+  private void sendButtonOnHover(MouseEvent event) {
+    sendButtonHover.setOpacity(1);
+  }
+
+  @FXML
+  private void sendButtonOnUnhover(MouseEvent event) {
+    sendButtonHover.setOpacity(0);
+  }
+
+  @FXML
+  private void sendButtonPressed(MouseEvent event) {
+    sendButtonPressed.setOpacity(1);
+  }
+
+  @FXML
+  private void sendButtonReleased(MouseEvent event) throws ApiProxyException, IOException {
+    onSendMessage();
+  }
+
+  @FXML
+  private void keyPressed(KeyEvent event) {
+    // if user presses enter, run onSendMessage()
+    if (event.getCode().toString().equals("ENTER")) {
+      try {
+        onSendMessage();
+      } catch (ApiProxyException | IOException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+  // Request focus on input text
+  private void requestFocus() {
+    Platform.runLater(() -> inputText.requestFocus());
+  }
+
+  // Select an animation for the loading screen
+  private void selectRandomAniamtion() {
+    Random random = new Random();
+    int randomInt = random.nextInt(4); // Picks a random number between 0 and 4
+
+    if (randomInt == 0) {
+      pongAnimation.setOpacity(1);
+    } else if (randomInt == 1) {
+      hourGlassAnimation.setOpacity(1);
+    } else if (randomInt == 2) {
+      pacManAnimation.setOpacity(1);
+    } else {
+      barAnimation.setOpacity(1);
+    }
+  }
+
+  private void hideAllAnimations() {
+    blueRectangle.setOpacity(0);
+    pongAnimation.setOpacity(0);
+    hourGlassAnimation.setOpacity(0);
+    pacManAnimation.setOpacity(0);
+    barAnimation.setOpacity(0);
   }
 }

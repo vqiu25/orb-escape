@@ -21,6 +21,10 @@ public class LavaRoomController extends ControllerMethods {
   @FXML private ImageView rightArrowHover;
   @FXML private ImageView rightArrowPressed;
 
+  // Game Master
+  @FXML private ImageView gameMasterDefault;
+  @FXML private ImageView gameMasterChat;
+
   // Door state
   @FXML private ImageView doorOutline;
 
@@ -456,5 +460,28 @@ public class LavaRoomController extends ControllerMethods {
     SceneManager.sceneStack.push(AppScene.LAVA);
 
     App.setScene(AppScene.SETTINGS);
+  }
+
+  // Bottom Right Game Master Button
+  @FXML
+  private void gameMasterOnHover(MouseEvent event) {
+    gameMasterDefault.setOpacity(0);
+    gameMasterChat.setOpacity(1);
+  }
+
+  @FXML
+  private void gameMasterOnUnhover(MouseEvent event) {
+    gameMasterDefault.setOpacity(1);
+    gameMasterChat.setOpacity(0);
+  }
+
+  @FXML
+  private void gameMasterOnClick(MouseEvent event) {
+    if (GameState.isLavaDragon) {
+      setLavaDragonOpacity();
+    } else {
+      setLavaNoDragonOpacity();
+    }
+    App.setScene(AppScene.CHAT);
   }
 }

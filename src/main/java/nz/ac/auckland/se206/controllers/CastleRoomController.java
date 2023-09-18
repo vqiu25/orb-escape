@@ -17,6 +17,10 @@ public class CastleRoomController extends ControllerMethods {
   @FXML private Label lblTask;
   @FXML private Label lblHints;
 
+  // Game Master
+  @FXML private ImageView gameMasterDefault;
+  @FXML private ImageView gameMasterChat;
+
   // Inventory Items
   @FXML private ImageView fishingRodIcon;
   @FXML private ImageView axeIcon;
@@ -358,5 +362,24 @@ public class CastleRoomController extends ControllerMethods {
 
     // Put the orb into inventory
     findRedOrb();
+  }
+
+  // Bottom Right Game Master Button
+  @FXML
+  private void gameMasterOnHover(MouseEvent event) {
+    gameMasterDefault.setOpacity(0);
+    gameMasterChat.setOpacity(1);
+  }
+
+  @FXML
+  private void gameMasterOnUnhover(MouseEvent event) {
+    gameMasterDefault.setOpacity(1);
+    gameMasterChat.setOpacity(0);
+  }
+
+  @FXML
+  private void gameMasterOnClick(MouseEvent event) {
+    setChestMiniOpacity();
+    App.setScene(AppScene.CHAT);
   }
 }
