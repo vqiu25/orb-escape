@@ -9,7 +9,11 @@ import nz.ac.auckland.se206.SceneManager.AppScene;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
 public class SettingsController extends ControllerMethods {
-  @FXML private Label menuTimerLabel;
+
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
+
   @FXML private ImageView backTwoButton;
   @FXML private ImageView backThreeButton;
   @FXML ImageView restartTwoButton;
@@ -18,8 +22,10 @@ public class SettingsController extends ControllerMethods {
   @FXML ImageView quitThreeButton;
 
   public void initialize() throws ApiProxyException {
-    // Bind the timer label to the display time
-    menuTimerLabel.textProperty().bind(ControllerMethods.displayTime);
+    // Bind the labels to the display values
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
+    lblTask.textProperty().bind(ControllerMethods.displayTask);
+    lblHints.textProperty().bind(ControllerMethods.displayHints);
   }
 
   // Back Button

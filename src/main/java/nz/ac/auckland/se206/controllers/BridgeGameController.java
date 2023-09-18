@@ -14,7 +14,9 @@ import org.controlsfx.control.Notifications;
 
 public class BridgeGameController extends ControllerMethods {
 
-  @FXML private Label roomTimerLabel;
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
 
   // Back Button:
   @FXML private ImageView backButton;
@@ -57,9 +59,11 @@ public class BridgeGameController extends ControllerMethods {
   @FXML private ImageView redOrb;
 
   public void initialize() {
-    // Bind the timer label to the display time
-    roomTimerLabel.textProperty().bind(ControllerMethods.displayTime);
-    
+    // Bind the labels to the display values
+    lblTimer.textProperty().bind(ControllerMethods.displayTime);
+    lblTask.textProperty().bind(ControllerMethods.displayTask);
+    lblHints.textProperty().bind(ControllerMethods.displayHints);
+
     // Bind the inventory images to their image properties
     fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
     axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
@@ -126,6 +130,7 @@ public class BridgeGameController extends ControllerMethods {
       // Update game state
       GameState.isLavaGameCompleted = true;
       removePlanks();
+      updateTask();
 
       // Get lava room controller and change bridge state
       LavaRoomController lavaRoomController = App.getLavaRoomController();
