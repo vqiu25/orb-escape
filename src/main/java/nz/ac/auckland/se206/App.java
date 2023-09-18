@@ -123,7 +123,6 @@ public class App extends Application {
     SceneManager.addScene(AppScene.KEYPAD, loadLoader("keypad").load());
     SceneManager.addScene(AppScene.FISHING, loadLoader("fishingMiniGame").load());
     SceneManager.addScene(AppScene.TREES, loadLoader("treeChoppingMiniGame").load());
-    SceneManager.addScene(AppScene.LAVA, loadLoader("lavaRoom").load());
     SceneManager.addScene(AppScene.BRIDGE_GAME, loadLoader("bridgeGame").load());
     SceneManager.addScene(AppScene.CASTLE, loadLoader("castleRoom").load());
 
@@ -132,6 +131,7 @@ public class App extends Application {
     SceneManager.addScene(AppScene.ROOM, room.load());
     roomController = room.getController();
 
+    // Store references to the lava room controller:
     FXMLLoader forestRoom = loadLoader("forestRoom");
     SceneManager.addScene(AppScene.FOREST, forestRoom.load());
     forestRoomController = forestRoom.getController();

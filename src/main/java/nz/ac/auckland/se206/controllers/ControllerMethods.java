@@ -82,9 +82,9 @@ public class ControllerMethods {
       displayTask.setValue("Task: Talk to the Game Master");
     } else if (!GameState.isRiddleResolved) {
       displayTask.setValue("Task: Try to solve the riddle");
-    } else if (GameState.isRiddleRug && !GameState.isBlueOrbFound) {
+    } else if (GameState.isRiddleRug && !GameState.isRoomOrbCollected) {
       displayTask.setValue("Task: Have a look under the rug");
-    } else if (GameState.isRiddleCabinet && !GameState.isBlueOrbFound) {
+    } else if (GameState.isRiddleCabinet && !GameState.isRoomOrbCollected) {
       displayTask.setValue("Task: Check the cabinet");
     } else if ((GameState.isForrestFishing && !GameState.isFishingRodTaken)
         || (GameState.isForrestTreeChopping && !GameState.isAxeTaken)) {
@@ -94,7 +94,7 @@ public class ControllerMethods {
       displayTask.setValue("Task: Try using the item you found");
     } else if (GameState.isForrestTreeChopping
         && GameState.isForrestGameCompleted
-        && !GameState.isGreenOrbFound) {
+        && !GameState.isForrestOrbCollected) {
       displayTask.setValue("Task: Don't forget the green orb");
     } else if (GameState.isLavaDragon && !GameState.isLavaGameCompleted) {
       displayTask.setValue("Task: Distract the dragon with food");
@@ -106,11 +106,11 @@ public class ControllerMethods {
       displayTask.setValue("Task: Search for a code");
     } else if (GameState.isLavaGameCompleted && !GameState.isChestUnlocked) {
       displayTask.setValue("Task: Try opening the chest");
-    } else if (!GameState.isRedOrbFound) {
+    } else if (!GameState.isCastleOrbCollected) {
       displayTask.setValue("Task: Don't forget the red orb");
-    } else if (GameState.isBlueOrbFound
-        && GameState.isGreenOrbFound
-        && GameState.isRedOrbFound
+    } else if (GameState.isRoomOrbCollected
+        && GameState.isForrestOrbCollected
+        && GameState.isCastleOrbCollected
         && !GameState.isRoomEscaped) {
       displayTask.setValue("Task: Place the orbs in the terminal");
     }

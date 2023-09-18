@@ -27,14 +27,10 @@ public class GameState {
   // Indicates if the code has been found
   public static boolean isCodeFound = false;
 
-  // Indicates if the blue orb has been found
-  public static boolean isBlueOrbFound = false;
-
-  // Indicates if the green orb has been found
-  public static boolean isGreenOrbFound = false;
-
-  // Indicates if the red orb has been found
-  public static boolean isRedOrbFound = false;
+  // Indicates if orbs have been collected:
+  public static boolean isForrestOrbCollected = false;
+  public static boolean isCastleOrbCollected = false;
+  public static boolean isRoomOrbCollected = false; // TODO: add this to room!
 
   // Indicates if all the orbs have been placed in the terminal
   public static boolean isOrbsPlaced = false;

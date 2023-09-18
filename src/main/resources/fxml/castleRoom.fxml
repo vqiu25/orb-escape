@@ -101,7 +101,7 @@
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="658.0" layoutY="21.0" onMouseEntered="#backHover" onMouseExited="#backUnhover" onMousePressed="#backPressed" onMouseReleased="#backReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="124.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="481.0" layoutY="397.0" onMouseEntered="#checkHover" onMouseExited="#checkUnhover" onMousePressed="#checkPressed" onMouseReleased="#checkReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="124.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="69.0" layoutX="248.0" layoutY="297.0" onMouseEntered="#orbHovered" onMouseExited="#orbUnhovered" onMouseReleased="#orbPressed" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="68.0" />
+      <Rectangle fx:id="chestRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="69.0" layoutX="248.0" layoutY="297.0" onMouseEntered="#orbHovered" onMouseExited="#orbUnhovered" onMouseReleased="#orbPressed" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="68.0" />
       <ImageView fx:id="lockOneIncrement" fitHeight="54.0" fitWidth="56.0" layoutX="442.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/leftArrowOne.png" />

@@ -100,6 +100,7 @@ public class FishingMiniGameController extends ControllerMethods {
       // Collision detected
       GameState.isFishCaught = true;
       GameState.isForrestGameCompleted = true;
+      GameState.isForrestOrbCollected = true;
 
       fishBite.setOpacity(1);
       animatedFish.setOpacity(0);
