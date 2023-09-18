@@ -64,9 +64,9 @@
             <Image url="@../images/fishingLayout.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="animatedFish" fitHeight="46.0" fitWidth="84.0" layoutX="532.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="animatedFish" fitHeight="75.0" fitWidth="85.0" layoutX="532.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/fish.gif" />
+            <Image url="@../images/greenOrbFish.gif" />
          </image>
       </ImageView>
       <ImageView fx:id="rodLine" fitHeight="286.0" fitWidth="58.0" layoutX="388.0" layoutY="-67.0" pickOnBounds="true" preserveRatio="true">
@@ -75,9 +75,9 @@
          </image>
       </ImageView>
       <Rectangle fx:id="rodHitbox" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="389.0" layoutY="202.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="21.0" />
-      <ImageView fx:id="fishBite" fitHeight="46.0" fitWidth="84.0" layoutX="387.0" layoutY="220.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" rotate="68.7">
+      <ImageView fx:id="fishBite" fitHeight="75.0" fitWidth="85.0" layoutX="380.0" layoutY="215.0" opacity="0.0" pickOnBounds="true" preserveRatio="true" rotate="68.7">
          <image>
-            <Image url="@../images/fish.gif" />
+            <Image url="@../images/greenOrbFish.gif" />
          </image>
       </ImageView>
       <ImageView fitHeight="625.0" fitWidth="800.0" layoutY="-25.0" pickOnBounds="true" preserveRatio="true">

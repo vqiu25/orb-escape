@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
@@ -26,6 +27,10 @@ public class CastleRoomController extends ControllerMethods {
 
   // Orb state:
   private boolean isOrbTaken = false;
+
+  // Chest rectangle:
+  @FXML private Rectangle chestRectangle;
+  private boolean isChestOpened = false;
 
   // Back buttons
   @FXML private ImageView backButton;
@@ -91,6 +96,9 @@ public class CastleRoomController extends ControllerMethods {
     blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
     greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
     redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
+
+    // Disabled chest rectangle
+    chestRectangle.setDisable(true);
   }
 
   // Methods for back button animations:
@@ -136,7 +144,18 @@ public class CastleRoomController extends ControllerMethods {
   private void checkReleased(MouseEvent event) {
     checkButtonPressed.setOpacity(0);
 
+    if (isChestOpened) {
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master: ", "Oi! Stop messing with the lock!", 5);
+      message.show();
+      return;
+    }
+
     if (lockOneValue == 2 && lockTwoValue == 0 && lockThreeValue == 6) {
+
+      // Enable chest rectangle
+      chestRectangle.setDisable(false);
 
       // If the orb has already been taken, do not allow users to "take again"
       if (isOrbTaken) {
@@ -145,6 +164,7 @@ public class CastleRoomController extends ControllerMethods {
 
       // Update state of the game:
       isOrbTaken = true;
+      isChestOpened = true;
       GameState.isCastleOrbCollected = true;
 
       // Notify the user that the answer is correct:
