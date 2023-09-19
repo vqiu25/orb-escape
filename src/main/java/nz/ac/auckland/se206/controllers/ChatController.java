@@ -125,13 +125,27 @@ public class ChatController extends ControllerMethods {
       GameState.isRug = true;
     }
 
+    // ! REMOVE
+    // Retrieve the number of hints remaining:
+    String numberOfHints = Integer.toString(GameState.hintCount);
+
+    if (numberOfHints.equals("9999")) {
+      numberOfHints = "unlimited";
+    } else if (numberOfHints.equals("5")) {
+      numberOfHints = "five";
+    } else {
+      numberOfHints = "zero";
+    }
+
     riddleChatCompletionRequest =
         new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(100);
-    runGpt(new ChatMessage("assistant", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess)));
+    runGpt(
+        new ChatMessage(
+            "assistant", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess, numberOfHints)));
 
     chatCompletionRequest =
         new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(100);
-    runGpt(new ChatMessage("assistant", GptPromptEngineering.getGameMaster()));
+    runGpt(new ChatMessage("assistant", GptPromptEngineering.getGameMaster(numberOfHints)));
   }
 
   /**
@@ -161,7 +175,7 @@ public class ChatController extends ControllerMethods {
       return gptHelper(riddleChatCompletionRequest, riddleTextArea);
     }
 
-    // Called when appending the message to chat area:
+    // Called when appending the message to riddle chat area:
     if (GameState.isRiddleBookOpen) {
       riddleChatCompletionRequest.addMessage(msg);
       return gptHelper(riddleChatCompletionRequest, riddleTextChatArea);
@@ -231,8 +245,15 @@ public class ChatController extends ControllerMethods {
                   if (lastMsg.getRole().equals("assistant")
                       && lastMsg.getContent().startsWith("Correct")) {
                     GameState.isRiddleResolved = true;
+                  }
 
-                    // TODO: update logic later to account for user asking for hints
+                  // Check if the user has asked for a hint:
+                  if (lastMsg.getRole().equals("assistant")
+                      && lastMsg.getContent().startsWith("Hint")
+                      && GameState.hintCount > 0) {
+                    // Update hint
+                    GameState.hintCount--;
+                    updateHintsRemaining();
                   }
                 });
 
@@ -357,8 +378,8 @@ public class ChatController extends ControllerMethods {
   }
 
   public void setRiddleBookOpacity() {
-    riddleBook.setOpacity(0.9);
-    riddleTextArea.setOpacity(0.9);
+    riddleBook.setOpacity(0.85);
+    riddleTextArea.setOpacity(0.85);
     riddleTextChatArea.setOpacity(0.7);
     chatTextArea.setOpacity(0);
   }
