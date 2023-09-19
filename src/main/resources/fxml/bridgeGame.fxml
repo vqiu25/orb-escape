@@ -89,33 +89,33 @@
       <Rectangle fx:id="largeRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="64.0" layoutX="194.0" layoutY="260.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
       <ImageView fx:id="checkButton" fitHeight="55.0" fitWidth="137.0" layoutX="481.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/redOne.png" />
+            <Image url="@../images/buildOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="checkButtonHovered" fitHeight="55.0" fitWidth="137.0" layoutX="481.0" layoutY="424.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/redTwo.png" />
+            <Image url="@../images/buildTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="checkButtonPressed" fitHeight="55.0" fitWidth="137.0" layoutX="481.0" layoutY="424.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/redThree.png" />
+            <Image url="@../images/buildThree.png" />
          </image>
       </ImageView>
       <Rectangle fx:id="chopRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="53.0" layoutX="479.0" layoutY="425.0" onMouseEntered="#checkHovered" onMouseExited="#checkUnhovered" onMousePressed="#checkPressed" onMouseReleased="#checkReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="118.0" />
       <ImageView fx:id="backButton" fitHeight="55.0" fitWidth="137.0" layoutX="662.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/whiteOne.png" />
+            <Image url="@../images/backOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backButtonHovered" fitHeight="55.0" fitWidth="137.0" layoutX="662.0" layoutY="19.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/whiteTwo.png" />
+            <Image url="@../images/backTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backButtonPressed" fitHeight="55.0" fitWidth="137.0" layoutX="662.0" layoutY="19.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/whiteThree.png" />
+            <Image url="@../images/backThree.png" />
          </image>
       </ImageView>
       <Rectangle fx:id="closeRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="53.0" layoutX="661.0" layoutY="20.0" onMouseEntered="#backHovered" onMouseExited="#backUnhovered" onMousePressed="#backPressed" onMouseReleased="#backReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="118.0" />

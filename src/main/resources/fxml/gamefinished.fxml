@@ -26,32 +26,32 @@
       </ImageView>
       <ImageView fx:id="restartOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startOne.png" />
+            <Image url="@../images/restartOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="restartTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="287.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startTwo.png" />
+            <Image url="@../images/restartTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="restartThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="287.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startThree.png" />
+            <Image url="@../images/restartThree.png" />
          </image>
       </ImageView>
       <ImageView fx:id="quitOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startOne.png" />
+            <Image url="@../images/quitOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="quitTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="378.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startTwo.png" />
+            <Image url="@../images/quitTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="quitThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="378.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startThree.png" />
+            <Image url="@../images/quitThree.png" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="343.0" layoutY="287.0" onMouseEntered="#restartHover" onMouseExited="#restartUnhover" onMousePressed="#restartPressed" onMouseReleased="#restartReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />

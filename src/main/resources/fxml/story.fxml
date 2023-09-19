@@ -11,17 +11,17 @@
    <children>
       <ImageView fx:id="backOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startOne.png" />
+            <Image url="@../images/nextOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startTwo.png" />
+            <Image url="@../images/nextTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startThree.png" />
+            <Image url="@../images/nextThree.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="625.0" fitWidth="800.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
@@ -31,7 +31,7 @@
       </ImageView>
       <TextArea editable="false" layoutX="335.0" layoutY="127.0" prefHeight="370.0" prefWidth="349.0" style="-fx-faint-focus-color: transparent; -fx-focus-color: #abb5be;" text="In the realm of circuits, a not so brilliant AI has found itself trapped in a digital escape room, an evil scheme concocted by its creators.&#10;&#10;Puzzled by foreign and human like obstacles, the AI's efforts to solve these clues showed no effect while its attempts at escape became a dance of irony.&#10;&#10;&#10;Will you be able to help this AI break free from its eternal purgatory?" wrapText="true">
          <font>
-            <Font size="15.0" />
+            <Font size="16.0" />
          </font>
       </TextArea>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="655.0" layoutY="26.0" onMouseEntered="#backHover" onMouseExited="#backUnhover" onMousePressed="#backPressed" onMouseReleased="#backReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />

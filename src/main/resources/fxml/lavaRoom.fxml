@@ -114,6 +114,16 @@
             <Image url="@../images/doorOutline.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="blueDragon" fitHeight="107.0" fitWidth="67.0" layoutX="255.0" layoutY="283.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/dragonDark.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="blueDragonOutline" fitHeight="77.0" fitWidth="78.0" layoutX="250.0" layoutY="278.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/dragonDarkOutline.gif" />
+         </image>
+      </ImageView>
       <ImageView fx:id="dragon" fitHeight="107.0" fitWidth="67.0" layoutX="255.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/dragon.gif" />

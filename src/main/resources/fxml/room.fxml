@@ -96,6 +96,16 @@
             <Image url="@../images/portalBaseOutline.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="bookOutline" fitHeight="41.0" fitWidth="57.0" layoutX="219.0" layoutY="285.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/blueBookOutline.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="book" fitHeight="31.0" fitWidth="47.0" layoutX="224.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/blueBook.png" />
+         </image>
+      </ImageView>
       <ImageView fx:id="portalFrame" fitHeight="150.0" fitWidth="200.0" layoutX="564.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/portalFrame.gif" />
@@ -241,6 +251,7 @@
       <Polygon fx:id="lightSwitch" fill="DODGERBLUE" layoutX="457.0" layoutY="191.0" onMouseClicked="#switchClick" onMouseEntered="#switchHover" onMouseExited="#switchUnhover" opacity="0.0" points="29.73480224609375, 38.73173522949219, 29.73480224609375, 4.6318206787109375, -0.353363037109375, 10.147979736328125, -0.353363037109375, 47.75819396972656, 8.673095703125, 51.26847839355469, 25.2215576171875, 51.26847839355469" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="portalAndBase" fill="DODGERBLUE" layoutX="613.0" layoutY="390.0" onMouseClicked="#portalClick" onMouseEntered="#portalHover" onMouseExited="#portalUnhover" opacity="0.0" points="8.321044921875, -96.59103393554688, -9.36566162109375, -129.1346435546875, -41.9093017578125, -129.1346435546875, -53.936279296875, 30.753448486328125, -24.2225341796875, 49.147674560546875, 8.321044921875, 37.828155517578125" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="codedText" disable="true" fill="DODGERBLUE" layoutX="236.0" layoutY="166.0" onMouseClicked="#codeClick" onMouseEntered="#codeHover" onMouseExited="#codeUnhover" opacity="0.0" points="-4.4946136474609375, 41.267822265625, 22.38922119140625, 29.778167724609375, 13.899581909179688, 3.771942138671875, -20.058944702148438, 13.506378173828125, -39.86808776855469, 29.778167724609375, -34.20832824707031, 55.95454406738281" stroke="BLACK" strokeType="INSIDE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" layoutX="229.0" layoutY="292.0" onMouseClicked="#bookPressed" onMouseEntered="#bookHovered" onMouseExited="#bookUnhovered" opacity="0.0" rotate="-147.7" stroke="BLACK" strokeType="INSIDE" width="38.0" />
       <ImageView fx:id="helpOne" fitHeight="54.0" fitWidth="56.0" layoutX="652.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/infoOne.png" />
@@ -281,16 +292,6 @@
       <ImageView fx:id="gameMasterChat" fitHeight="141.0" fitWidth="171.0" layoutX="606.0" layoutY="490.0" onMouseClicked="#gameMasterOnClick" onMouseEntered="#gameMasterOnHover" onMouseExited="#gameMasterOnUnhover" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/gameMasterOnHover.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="bookOutline" fitHeight="35.0" fitWidth="51.0" layoutX="224.0" layoutY="288.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/blueBookOutline.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="book" fitHeight="31.0" fitWidth="47.0" layoutX="224.0" layoutY="290.0" onMouseClicked="#bookPressed" onMouseEntered="#bookHovered" onMouseExited="#bookUnhovered" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/blueBook.png" />
          </image>
       </ImageView>
    </children>

@@ -776,6 +776,11 @@ public class RoomController extends ControllerMethods {
   @FXML
   private void bookPressed(MouseEvent event) {
 
+    // If the user has already resolved the riddle, disability the ability to traverse back to the
+    // riddle scene
+    // TODO: Notificaiton Here
+    if (GameState.isRiddleResolved) return;
+
     // Set boolean
     GameState.isRiddleBookOpen = true;
 
@@ -784,6 +789,17 @@ public class RoomController extends ControllerMethods {
 
     // Enable riddleBook and riddleTextArea
     chatController.setRiddleBookOpacity();
+
+    // Logic for which background GPT should have
+    if (GameState.isMapOnWall) {
+      setMainMapOpacity();
+    } else if (!GameState.isMapOnWall) {
+      setMainMapRemovedOpacity();
+    }
+
+    if (!GameState.isLightOn) {
+      setMainDarkOpacity();
+    }
 
     // Store current scene in scene stack
     SceneManager.sceneStack.push(AppScene.ROOM);
