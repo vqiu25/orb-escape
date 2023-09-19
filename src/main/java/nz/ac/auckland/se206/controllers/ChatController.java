@@ -380,9 +380,9 @@ public class ChatController extends ControllerMethods {
   }
 
   public void setRiddleBookOpacity() {
-    riddleBook.setOpacity(0.85);
-    riddleTextArea.setOpacity(0.85);
-    riddleTextChatArea.setOpacity(0.7);
+    riddleBook.setOpacity(0.9);
+    riddleTextArea.setOpacity(0.9);
+    riddleTextChatArea.setOpacity(0.9);
     chatTextArea.setOpacity(0);
   }
 

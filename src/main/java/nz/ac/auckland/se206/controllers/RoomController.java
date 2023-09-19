@@ -776,6 +776,11 @@ public class RoomController extends ControllerMethods {
   @FXML
   private void bookPressed(MouseEvent event) {
 
+    // If the user has already resolved the riddle, disability the ability to traverse back to the
+    // riddle scene
+    // TODO: Notificaiton Here
+    if (GameState.isRiddleResolved) return;
+
     // Set boolean
     GameState.isRiddleBookOpen = true;
 
