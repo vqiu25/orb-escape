@@ -7,6 +7,9 @@ public class GameState {
   public static boolean isCabinet = false;
   public static boolean isRug = false;
 
+  // Indicates if the riddle book is open:
+  public static boolean isRiddleBookOpen = false;
+
   // Indicates which minigame has been selected:
   public static boolean isLavaBridge = false;
   public static boolean isForestTreeChopping = false;

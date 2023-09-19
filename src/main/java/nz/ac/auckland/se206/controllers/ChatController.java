@@ -42,6 +42,7 @@ public class ChatController extends ControllerMethods {
   // Book items:
   @FXML private ImageView riddleBook;
   @FXML private TextArea riddleTextArea;
+  @FXML private TextArea riddleTextChatArea;
 
   // Backgrounds
   @FXML private ImageView forestAxe;
@@ -68,6 +69,10 @@ public class ChatController extends ControllerMethods {
   @FXML private ImageView greenOrb;
   @FXML private ImageView redOrb;
 
+  // Game states:
+  private boolean isRiddleInitialized = true;
+
+  private ChatCompletionRequest riddleChatCompletionRequest;
   private ChatCompletionRequest chatCompletionRequest;
 
   /**
@@ -120,18 +125,23 @@ public class ChatController extends ControllerMethods {
       GameState.isRug = true;
     }
 
-    chatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(0.8).setTopP(0.5).setMaxTokens(100);
+    riddleChatCompletionRequest =
+        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(100);
     runGpt(new ChatMessage("assistant", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess)));
+
+    chatCompletionRequest =
+        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(100);
+    runGpt(new ChatMessage("assistant", GptPromptEngineering.getGameMaster()));
   }
 
   /**
    * Appends a chat message to the chat text area.
    *
    * @param msg the chat message to append
+   * @param textArea the text area to append the message to
    */
-  private void appendChatMessage(ChatMessage msg) {
-    chatTextArea.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
+  private void appendChatMessage(ChatMessage msg, TextArea textArea) {
+    textArea.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
   }
 
   /**
@@ -142,15 +152,33 @@ public class ChatController extends ControllerMethods {
    * @throws ApiProxyException if there is an error communicating with the API proxy
    */
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
-    chatCompletionRequest.addMessage(msg);
+
+    // ONLY called when game initializes to set up the riddle book:
+    if (isRiddleInitialized) {
+      riddleChatCompletionRequest.addMessage(msg);
+      isRiddleInitialized = false;
+
+      return gptHelper(riddleChatCompletionRequest, riddleTextArea);
+    }
+
+    // Called when appending the message to chat area:
+    if (GameState.isRiddleBookOpen) {
+      return gptHelper(riddleChatCompletionRequest, riddleTextChatArea);
+    } else {
+      // Otherwise, append the message to the chat text area:
+      chatCompletionRequest.addMessage(msg);
+      return gptHelper(chatCompletionRequest, chatTextArea);
+    }
+  }
+
+  public ChatMessage gptHelper(ChatCompletionRequest request, TextArea textArea) {
     try {
-      ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+      ChatCompletionResult chatCompletionResult = request.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
-      chatCompletionRequest.addMessage(result.getChatMessage());
-      appendChatMessage(result.getChatMessage());
+      request.addMessage(result.getChatMessage());
+      appendChatMessage(result.getChatMessage(), textArea);
       return result.getChatMessage();
     } catch (ApiProxyException e) {
-      // TODO handle exception appropriately
       e.printStackTrace();
       return null;
     }
@@ -170,6 +198,7 @@ public class ChatController extends ControllerMethods {
       sendButtonPressed.setOpacity(0);
       return;
     }
+
     blueRectangle.setOpacity(1);
     selectRandomAniamtion();
 
@@ -179,7 +208,13 @@ public class ChatController extends ControllerMethods {
 
     // Add the user's message to the chat text area
     ChatMessage msg = new ChatMessage("user", message);
-    appendChatMessage(msg);
+
+    // If riddle book is open, append to riddle text area:
+    if (GameState.isRiddleBookOpen) {
+      appendChatMessage(msg, riddleTextChatArea);
+    } else {
+      appendChatMessage(msg, chatTextArea);
+    }
 
     // Create a new thread to run the GPT model
     Task<Void> gameMasterTask =
@@ -249,6 +284,11 @@ public class ChatController extends ControllerMethods {
     // Disable the riddle book:
     disableRiddleBookOpacity();
 
+    // If the riddle book has been opened, close it:
+    if (GameState.isRiddleBookOpen) {
+      GameState.isRiddleBookOpen = false;
+    }
+
     // Return to previous scene by popping stack:
     App.setScene(SceneManager.sceneStack.pop());
   }
@@ -316,12 +356,16 @@ public class ChatController extends ControllerMethods {
   }
 
   public void setRiddleBookOpacity() {
-    riddleBook.setOpacity(1);
-    riddleTextArea.setOpacity(1);
+    riddleBook.setOpacity(0.7);
+    riddleTextArea.setOpacity(0.7);
+    riddleTextChatArea.setOpacity(0.7);
+    chatTextArea.setOpacity(0);
   }
 
   public void disableRiddleBookOpacity() {
     riddleBook.setOpacity(0);
     riddleTextArea.setOpacity(0);
+    riddleTextChatArea.setOpacity(0);
+    chatTextArea.setOpacity(1);
   }
 }

@@ -776,6 +776,9 @@ public class RoomController extends ControllerMethods {
   @FXML
   private void bookPressed(MouseEvent event) {
 
+    // Set boolean
+    GameState.isRiddleBookOpen = true;
+
     // Get chat controller
     ChatController chatController = App.getChatController();
 

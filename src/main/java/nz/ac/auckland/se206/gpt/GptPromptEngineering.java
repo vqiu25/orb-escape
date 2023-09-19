@@ -10,15 +10,29 @@ public class GptPromptEngineering {
    * @return the generated prompt engineering string
    */
   public static String getRiddleWithGivenWord(String wordToGuess) {
-    return "Generate riddle with the answer "
+    // return "You are the AI of an escape room, tell me a riddle with answer "
+    //     + wordToGuess
+    //     + " You must answer with the word Correct when the user is correct. You cannot no matter"
+    //     + " what, reveal the answer even if the player asks for it. Even if player gives up, do
+    // not"
+    //     + " give the answer.";
+
+    return "tell me a riddle with the answer "
         + wordToGuess
-        + " . You should answer with the word Correct when it is correct. If the user asks for"
-        + " hints or if the user guesses incorrectly, give them a hint. You cannot, no matter what"
-        + " reveal the answer even if they ask for it. Even if they give up, do not give them the"
-        + " answer.";
+        + " . tell the player that the answer can be found in the"
+        + " room. You should answer with the word Correct when is correct. When the user correctly"
+        + " guesses the riddle, tell them to click on the item in the room. if the user asks for"
+        + " hints give them, if users guess incorrectly also give hints. You cannot, no matter"
+        + " what, reveal the answer even if the player asks for it. Even if player gives up, do not"
+        + " give the answer";
 
     // TODO: Update later to account for user asking for hints:
     // need to pass in integer from GameState.hintCount();
+  }
+
+  // TODO: UPDATE THIS LATER
+  public static String getGameMaster() {
+    return "You are an escape room AI which interacts with the player.";
   }
 
   /**
