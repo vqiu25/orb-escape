@@ -71,17 +71,17 @@
       </ImageView>
       <ImageView fx:id="backButtonOne" fitHeight="55.0" fitWidth="137.0" layoutX="662.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/whiteOne.png" />
+            <Image url="@../images/backOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backButtonTwo" fitHeight="55.0" fitWidth="137.0" layoutX="662.0" layoutY="19.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/whiteTwo.png" />
+            <Image url="@../images/backTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backButtonThree" fitHeight="55.0" fitWidth="137.0" layoutX="662.0" layoutY="19.0" onMouseEntered="#backHover" onMouseExited="#backUnhover" onMousePressed="#backPressed" onMouseReleased="#backReleased" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/whiteThree.png" />
+            <Image url="@../images/backThree.png" />
          </image>
       </ImageView>
       <ImageView fx:id="blueOrbOutline" fitHeight="56.0" fitWidth="60.0" layoutX="188.0" layoutY="387.0" pickOnBounds="true" preserveRatio="true">

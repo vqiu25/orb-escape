@@ -27,32 +27,32 @@
       </ImageView>
       <ImageView fx:id="restartOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startOne.png" />
+            <Image url="@../images/restartOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="restartTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="287.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startTwo.png" />
+            <Image url="@../images/restartTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="restartThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="287.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startThree.png" />
+            <Image url="@../images/restartThree.png" />
          </image>
       </ImageView>
       <ImageView fx:id="quitOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startOne.png" />
+            <Image url="@../images/quitOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="quitTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="378.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startTwo.png" />
+            <Image url="@../images/quitTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="quitThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="378.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startThree.png" />
+            <Image url="@../images/quitThree.png" />
          </image>
       </ImageView>
       <VBox layoutX="15.0" layoutY="15.0" prefHeight="100.0" prefWidth="250.0">
@@ -76,17 +76,17 @@
       </VBox>
       <ImageView fx:id="backOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startOne.png" />
+            <Image url="@../images/backOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startTwo.png" />
+            <Image url="@../images/backTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startThree.png" />
+            <Image url="@../images/backThree.png" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="656.0" layoutY="26.0" onMouseEntered="#backHover" onMouseExited="#backUnhover" onMousePressed="#backPressed" onMouseReleased="#backReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />

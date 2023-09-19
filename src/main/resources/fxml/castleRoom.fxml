@@ -61,32 +61,32 @@
       </ImageView>
       <ImageView fx:id="backButton" fitHeight="55.0" fitWidth="137.0" layoutX="662.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/whiteOne.png" />
+            <Image url="@../images/backOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backButtonHovered" fitHeight="55.0" fitWidth="137.0" layoutX="662.0" layoutY="19.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/whiteTwo.png" />
+            <Image url="@../images/backTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backButtonPressed" fitHeight="55.0" fitWidth="137.0" layoutX="662.0" layoutY="19.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/whiteThree.png" />
+            <Image url="@../images/backThree.png" />
          </image>
       </ImageView>
       <ImageView fx:id="checkButton" fitHeight="55.0" fitWidth="137.0" layoutX="485.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/whiteOne.png" />
+            <Image url="@../images/unlockOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="checkButtonHovered" fitHeight="55.0" fitWidth="137.0" layoutX="485.0" layoutY="397.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/whiteTwo.png" />
+            <Image url="@../images/unlockTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="checkButtonPressed" fitHeight="55.0" fitWidth="137.0" layoutX="485.0" layoutY="397.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/whiteThree.png" />
+            <Image url="@../images/unlockThree.png" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="658.0" layoutY="21.0" onMouseEntered="#backHover" onMouseExited="#backUnhover" onMousePressed="#backPressed" onMouseReleased="#backReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="124.0" />
@@ -94,92 +94,92 @@
       <Rectangle fx:id="chestRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="69.0" layoutX="248.0" layoutY="297.0" onMouseEntered="#orbHovered" onMouseExited="#orbUnhovered" onMouseReleased="#orbPressed" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="68.0" />
       <ImageView fx:id="lockOneIncrement" fitHeight="54.0" fitWidth="56.0" layoutX="442.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/leftArrowOne.png" />
+            <Image url="@../images/upOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockOneIncrementHovered" fitHeight="54.0" fitWidth="56.0" layoutX="442.0" layoutY="183.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/leftArrowTwo.png" />
+            <Image url="@../images/upTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockOneIncrementPressed" fitHeight="54.0" fitWidth="56.0" layoutX="442.0" layoutY="183.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/leftArrowThree.png" />
+            <Image url="@../images/upThree.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockTwoIncrement" fitHeight="54.0" fitWidth="56.0" layoutX="515.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/leftArrowOne.png" />
+            <Image url="@../images/upOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockTwoIncrementHovered" fitHeight="54.0" fitWidth="56.0" layoutX="515.0" layoutY="183.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/leftArrowTwo.png" />
+            <Image url="@../images/upTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockTwoIncrementPressed" fitHeight="54.0" fitWidth="56.0" layoutX="515.0" layoutY="183.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/leftArrowThree.png" />
+            <Image url="@../images/upThree.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockThreeIncrement" fitHeight="54.0" fitWidth="56.0" layoutX="589.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/leftArrowOne.png" />
+            <Image url="@../images/upOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockThreeIncrementHovered" fitHeight="54.0" fitWidth="56.0" layoutX="589.0" layoutY="183.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/leftArrowTwo.png" />
+            <Image url="@../images/upTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockThreeIncrementPressed" fitHeight="54.0" fitWidth="56.0" layoutX="589.0" layoutY="183.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/leftArrowThree.png" />
+            <Image url="@../images/upThree.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockOneDecrement" fitHeight="54.0" fitWidth="56.0" layoutX="442.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/rightArrowOne.png" />
+            <Image url="@../images/downOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockOneDecrementHovered" fitHeight="54.0" fitWidth="56.0" layoutX="442.0" layoutY="306.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/rightArrowTwo.png" />
+            <Image url="@../images/downTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockOneDecrementPressed" fitHeight="54.0" fitWidth="56.0" layoutX="442.0" layoutY="306.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/rightArrowThree.png" />
+            <Image url="@../images/downThree.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockTwoDecrement" fitHeight="54.0" fitWidth="56.0" layoutX="515.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/rightArrowOne.png" />
+            <Image url="@../images/downOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockTwoDecrementHovered" fitHeight="54.0" fitWidth="56.0" layoutX="515.0" layoutY="306.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/rightArrowTwo.png" />
+            <Image url="@../images/downTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockTwoDecrementPressed" fitHeight="54.0" fitWidth="56.0" layoutX="515.0" layoutY="306.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/rightArrowThree.png" />
+            <Image url="@../images/downThree.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockThreeDecrement" fitHeight="54.0" fitWidth="56.0" layoutX="589.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/rightArrowOne.png" />
+            <Image url="@../images/downOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockThreeDecrementHovered" fitHeight="54.0" fitWidth="56.0" layoutX="589.0" layoutY="306.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/rightArrowTwo.png" />
+            <Image url="@../images/downTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="lockThreeDecrementPressed" fitHeight="54.0" fitWidth="56.0" layoutX="589.0" layoutY="306.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/rightArrowThree.png" />
+            <Image url="@../images/downThree.png" />
          </image>
       </ImageView>
       <Rectangle fx:id="incrementOne" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="442.0" layoutY="181.0" onMouseEntered="#lockOneIncrementHover" onMouseExited="#lockOneIncrementUnhover" onMousePressed="#lockOneIncrementPressed" onMouseReleased="#lockOneIncrementReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="56.0" />
@@ -188,6 +188,11 @@
       <Rectangle fx:id="decrementOne" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="442.0" layoutY="304.0" onMouseEntered="#lockOneDecrementHover" onMouseExited="#lockOneDecrementUnhover" onMousePressed="#lockOneDecrementPressed" onMouseReleased="#lockOneDecrementReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="56.0" />
       <Rectangle fx:id="decrementTwo" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="515.0" layoutY="304.0" onMouseEntered="#lockTwoDecrementHover" onMouseExited="#lockTwoDecrementUnhover" onMousePressed="#lockTwoDecrementPressed" onMouseReleased="#lockTwoDecrementReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="56.0" />
       <Rectangle fx:id="decrementThree" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="589.0" layoutY="304.0" onMouseEntered="#lockThreeDecrementHover" onMouseExited="#lockThreeDecrementUnhover" onMousePressed="#lockThreeDecrementPressed" onMouseReleased="#lockThreeDecrementReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="56.0" />
+      <ImageView fitHeight="55.0" fitWidth="209.0" layoutX="443.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/codePlatformSmall.png" />
+         </image>
+      </ImageView>
       <Label fx:id="lockOneNumber" layoutX="459.0" layoutY="248.0" text="0" textFill="WHITE">
          <font>
             <Font size="35.0" />

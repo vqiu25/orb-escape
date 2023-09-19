@@ -21,17 +21,17 @@
          </font></Text>
       <ImageView fx:id="startOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startOne.png" />
+            <Image url="@../images/backOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="startTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startTwo.png" />
+            <Image url="@../images/backTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="startThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startThree.png" />
+            <Image url="@../images/backThree.png" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="655.0" layoutY="26.0" onMouseEntered="#startHover" onMouseExited="#startUnhover" onMousePressed="#startPressed" onMouseReleased="#startReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />

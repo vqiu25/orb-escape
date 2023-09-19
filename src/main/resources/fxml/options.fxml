@@ -36,107 +36,107 @@
       </ImageView>
       <ImageView fx:id="easyOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="187.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startOne.png" />
+            <Image url="@../images/easyOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="easyTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="187.0" layoutY="246.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startTwo.png" />
+            <Image url="@../images/easyTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="easyThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="187.0" layoutY="246.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startThree.png" />
+            <Image url="@../images/easyThree.png" />
          </image>
       </ImageView>
       <ImageView fx:id="mediumOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="342.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startOne.png" />
+            <Image url="@../images/mediumOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="mediumTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="342.0" layoutY="246.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startTwo.png" />
+            <Image url="@../images/mediumTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="mediumThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="342.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startThree.png" />
+            <Image url="@../images/mediumThree.png" />
          </image>
       </ImageView>
       <ImageView fx:id="hardOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="500.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startOne.png" />
+            <Image url="@../images/hardOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="hardTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="500.0" layoutY="246.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startTwo.png" />
+            <Image url="@../images/hardTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="hardThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="500.0" layoutY="246.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startThree.png" />
+            <Image url="@../images/hardThree.png" />
          </image>
       </ImageView>
       <ImageView fx:id="shortOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="188.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startOne.png" />
+            <Image url="@../images/twoMinOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="shortTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="188.0" layoutY="455.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startTwo.png" />
+            <Image url="@../images/twoMinTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="shortThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="188.0" layoutY="455.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startThree.png" />
+            <Image url="@../images/twoMinThree.png" />
          </image>
       </ImageView>
       <ImageView fx:id="mediumTimeOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startOne.png" />
+            <Image url="@../images/fourMinOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="mediumTimeTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="455.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startTwo.png" />
+            <Image url="@../images/fourMinTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="mediumTimeThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="343.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startThree.png" />
+            <Image url="@../images/fourMinThree.png" />
          </image>
       </ImageView>
       <ImageView fx:id="longOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="501.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startOne.png" />
+            <Image url="@../images/sixMinOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="longTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="501.0" layoutY="455.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startTwo.png" />
+            <Image url="@../images/sixMinTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="longThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="501.0" layoutY="455.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startThree.png" />
+            <Image url="@../images/sixMinThree.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startOne.png" />
+            <Image url="@../images/backOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startTwo.png" />
+            <Image url="@../images/backTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/startThree.png" />
+            <Image url="@../images/backThree.png" />
          </image>
       </ImageView>
       <Rectangle fx:id="easyButtonBox" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="186.0" layoutY="245.0" onMouseClicked="#easyClicked" onMouseEntered="#easyHover" onMouseExited="#easyUnhover" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
