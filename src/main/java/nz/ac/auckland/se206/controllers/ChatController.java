@@ -163,6 +163,7 @@ public class ChatController extends ControllerMethods {
 
     // Called when appending the message to chat area:
     if (GameState.isRiddleBookOpen) {
+      riddleChatCompletionRequest.addMessage(msg);
       return gptHelper(riddleChatCompletionRequest, riddleTextChatArea);
     } else {
       // Otherwise, append the message to the chat text area:
@@ -356,8 +357,8 @@ public class ChatController extends ControllerMethods {
   }
 
   public void setRiddleBookOpacity() {
-    riddleBook.setOpacity(0.7);
-    riddleTextArea.setOpacity(0.7);
+    riddleBook.setOpacity(0.9);
+    riddleTextArea.setOpacity(0.9);
     riddleTextChatArea.setOpacity(0.7);
     chatTextArea.setOpacity(0);
   }
