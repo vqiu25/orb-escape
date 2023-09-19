@@ -106,14 +106,6 @@ public class RoomController extends ControllerMethods {
     // gameMaster = new GameMaster();
     // gameMaster.chatCompletionRequest();
     // gameMaster();
-
-    // Enable either cabinet or rug objects
-    if (GameState.isCabinet) {
-      // Disable rug object:
-      carpet.setDisable(true);
-    } else {
-      cabinet.setDisable(true);
-    }
   }
 
   /** Opens the chat window with the game master. */
@@ -296,6 +288,12 @@ public class RoomController extends ControllerMethods {
    */
   @FXML
   private void cabinetClick(MouseEvent event) {
+
+    // If it is NOT the cabinet riddle
+    if (!GameState.isCabinet) {
+      return;
+    }
+
     // if the riddle has NOT been solved and the user is stuck, give help
     giveRiddleHelp();
 
@@ -333,6 +331,11 @@ public class RoomController extends ControllerMethods {
    */
   @FXML
   private void carpetClick(MouseEvent event) {
+
+    // If it is NOT the carpet riddle
+    if (!GameState.isRug) {
+      return;
+    }
 
     // if the riddle has NOT been solved give help
     giveRiddleHelp();
