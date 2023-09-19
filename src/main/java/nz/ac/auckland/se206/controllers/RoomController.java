@@ -790,6 +790,17 @@ public class RoomController extends ControllerMethods {
     // Enable riddleBook and riddleTextArea
     chatController.setRiddleBookOpacity();
 
+    // Logic for which background GPT should have
+    if (GameState.isMapOnWall) {
+      setMainMapOpacity();
+    } else if (!GameState.isMapOnWall) {
+      setMainMapRemovedOpacity();
+    }
+
+    if (!GameState.isLightOn) {
+      setMainDarkOpacity();
+    }
+
     // Store current scene in scene stack
     SceneManager.sceneStack.push(AppScene.ROOM);
 
