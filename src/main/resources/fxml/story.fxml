@@ -11,17 +11,17 @@
    <children>
       <ImageView fx:id="backOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/backOne.png" />
+            <Image url="@../images/nextOne.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backTwoButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/backTwo.png" />
+            <Image url="@../images/nextTwo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="backThreeButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/backThree.png" />
+            <Image url="@../images/nextThree.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="625.0" fitWidth="800.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
