@@ -116,6 +116,9 @@ public class ChatController extends ControllerMethods {
       GameState.isRug = true;
     }
 
+    // ! REMOVE
+    System.out.println(wordToGuess);
+
     chatCompletionRequest =
         new ChatCompletionRequest().setN(1).setTemperature(0.8).setTopP(0.5).setMaxTokens(100);
     runGpt(new ChatMessage("assistant", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess)));

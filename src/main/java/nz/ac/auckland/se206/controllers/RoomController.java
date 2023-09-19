@@ -56,6 +56,10 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView portal;
   @FXML private ImageView portalOutline;
 
+  // Riddle items
+  @FXML private Polygon cabinet;
+  @FXML private Polygon carpet;
+
   // Game Master
   @FXML private ImageView gameMasterDefault;
   @FXML private ImageView gameMasterChat;
@@ -81,7 +85,6 @@ public class RoomController extends ControllerMethods {
   private GameMaster gameMaster;
   private ChatMessage chatMessage;
   private int spamCount = 0;
-  private Notifications orbMessage;
 
   /** Initializes the room view, it is called when the room loads. */
   public void initialize() {
@@ -99,15 +102,18 @@ public class RoomController extends ControllerMethods {
     greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
     redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
 
-    // Initialize orb notification message
-    orbMessage =
-        NotificationBuilder.createNotification(
-            "Game Master:", "Congratulation! You've found an orb!", 6);
-
     // // Initialize game master object:
     // gameMaster = new GameMaster();
     // gameMaster.chatCompletionRequest();
     // gameMaster();
+
+    // Enable either cabinet or rug objects
+    if (GameState.isCabinet) {
+      // Disable rug object:
+      carpet.setDisable(true);
+    } else {
+      cabinet.setDisable(true);
+    }
   }
 
   /** Opens the chat window with the game master. */
@@ -303,7 +309,7 @@ public class RoomController extends ControllerMethods {
       GameState.itemClicked = true;
 
       // Show notification - alerting user that they have found an orb
-      orbMessage.show();
+      orbFoundNotification();
 
       // TODO: update orb image in inventory
       // updateTaskLabel("[Insert Task]");
@@ -341,7 +347,7 @@ public class RoomController extends ControllerMethods {
       GameState.itemClicked = true;
 
       // Show notification - alerting user that they have found an orb
-      orbMessage.show();
+      orbFoundNotification();
 
       // TODO: update orb image in inventory
       // updateTaskLabel("[Insert Task]");
@@ -753,5 +759,13 @@ public class RoomController extends ControllerMethods {
       }
       return;
     }
+  }
+
+  public void orbFoundNotification() {
+    // Initialize orb notification message
+    Notifications orbMessage =
+        NotificationBuilder.createNotification(
+            "Game Master:", "Congratulation! You've found an orb!", 6);
+    orbMessage.show();
   }
 }
