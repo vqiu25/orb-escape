@@ -56,6 +56,10 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView portal;
   @FXML private ImageView portalOutline;
 
+  // Book Images:
+  @FXML private ImageView book;
+  @FXML private ImageView bookOutline;
+
   // Riddle items
   @FXML private Polygon cabinet;
   @FXML private Polygon carpet;
@@ -748,6 +752,24 @@ public class RoomController extends ControllerMethods {
     // Store current scene in scene stack
     SceneManager.sceneStack.push(AppScene.ROOM);
     App.setScene(AppScene.CHAT);
+  }
+
+  // Book methods:
+  @FXML
+  private void bookHovered() {
+    book.setOpacity(0);
+    bookOutline.setOpacity(1);
+  }
+
+  @FXML
+  private void bookUnhovered() {
+    book.setOpacity(1);
+    bookOutline.setOpacity(0);
+  }
+
+  @FXML
+  private void bookPressed(MouseEvent event) {
+    System.out.println("book clicked");
   }
 
   public void giveRiddleHelp() {
