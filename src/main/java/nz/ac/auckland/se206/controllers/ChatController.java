@@ -39,6 +39,10 @@ public class ChatController extends ControllerMethods {
   @FXML private ImageView sendButtonHover;
   @FXML private ImageView sendButtonPressed;
 
+  // Book items:
+  @FXML private ImageView riddleBook;
+  @FXML private TextArea riddleTextArea;
+
   // Backgrounds
   @FXML private ImageView forestAxe;
   @FXML private ImageView forestRod;
@@ -241,6 +245,10 @@ public class ChatController extends ControllerMethods {
    */
   @FXML
   private void returnToRoom(MouseEvent event) throws ApiProxyException, IOException {
+
+    // Disable the riddle book:
+    disableRiddleBookOpacity();
+
     // Return to previous scene by popping stack:
     App.setScene(SceneManager.sceneStack.pop());
   }
@@ -305,5 +313,15 @@ public class ChatController extends ControllerMethods {
     hourGlassAnimation.setOpacity(0);
     pacManAnimation.setOpacity(0);
     barAnimation.setOpacity(0);
+  }
+
+  public void setRiddleBookOpacity() {
+    riddleBook.setOpacity(1);
+    riddleTextArea.setOpacity(1);
+  }
+
+  public void disableRiddleBookOpacity() {
+    riddleBook.setOpacity(0);
+    riddleTextArea.setOpacity(0);
   }
 }

@@ -249,5 +249,11 @@
             <Image url="@../images/redOrb.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="riddleBook" fitHeight="297.0" fitWidth="227.0" layoutX="44.0" layoutY="91.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/riddleBookUi.png" />
+         </image>
+      </ImageView>
+      <TextArea fx:id="riddleTextArea" editable="false" layoutX="82.0" layoutY="101.0" opacity="0.0" prefHeight="243.0" prefWidth="174.0" />
   </children>
 </AnchorPane>

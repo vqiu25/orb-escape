@@ -56,7 +56,7 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView portal;
   @FXML private ImageView portalOutline;
 
-  // Book Images:
+  // Book Items:
   @FXML private ImageView book;
   @FXML private ImageView bookOutline;
 
@@ -313,6 +313,9 @@ public class RoomController extends ControllerMethods {
       // Show notification - alerting user that they have found an orb
       orbFoundNotification();
 
+      // Update game state
+      GameState.isRoomOrbCollected = true;
+
       // TODO: update orb image in inventory
       // updateTaskLabel("[Insert Task]");
     }
@@ -355,6 +358,9 @@ public class RoomController extends ControllerMethods {
 
       // Show notification - alerting user that they have found an orb
       orbFoundNotification();
+
+      // Set game state:
+      GameState.isRoomOrbCollected = true;
 
       // TODO: update orb image in inventory
       // updateTaskLabel("[Insert Task]");
@@ -769,10 +775,21 @@ public class RoomController extends ControllerMethods {
 
   @FXML
   private void bookPressed(MouseEvent event) {
-    System.out.println("book clicked");
+
+    // Get chat controller
+    ChatController chatController = App.getChatController();
+
+    // Enable riddleBook and riddleTextArea
+    chatController.setRiddleBookOpacity();
+
+    // Store current scene in scene stack
+    SceneManager.sceneStack.push(AppScene.ROOM);
+
+    // Switch scenes
+    App.setScene(AppScene.CHAT);
   }
 
-  public void giveRiddleHelp() {
+  private void giveRiddleHelp() {
     if (!GameState.isRiddleResolved) {
       spamCount++;
 
@@ -786,7 +803,7 @@ public class RoomController extends ControllerMethods {
     }
   }
 
-  public void orbFoundNotification() {
+  private void orbFoundNotification() {
     // Initialize orb notification message
     Notifications orbMessage =
         NotificationBuilder.createNotification(

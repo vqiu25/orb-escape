@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppScene;
+import nz.ac.auckland.se206.controllers.ChatController;
 import nz.ac.auckland.se206.controllers.ForestRoomController;
 import nz.ac.auckland.se206.controllers.LavaRoomController;
 import nz.ac.auckland.se206.controllers.RoomController;
@@ -23,6 +24,7 @@ public class App extends Application {
   private static RoomController roomController;
   private static LavaRoomController lavaRoomController;
   private static ForestRoomController forestRoomController;
+  private static ChatController chatController;
   private static Stage stageTest;
 
   public static void main(final String[] args) {
@@ -88,6 +90,15 @@ public class App extends Application {
   }
 
   /**
+   * Returns the chat controller.
+   *
+   * @return Reference to the chat controller.
+   */
+  public static ChatController getChatController() {
+    return chatController;
+  }
+
+  /**
    * This method is invoked when the application starts. It loads and shows the "Start" scene.
    *
    * @param stage The primary stage of the application.
@@ -98,7 +109,6 @@ public class App extends Application {
 
     // Set mini game states:
     int randomInt = new Random().nextInt(10);
-    System.out.println(randomInt);
 
     if (randomInt > 5) {
       GameState.isLavaBridge = true;
@@ -117,7 +127,6 @@ public class App extends Application {
     SceneManager.addScene(AppScene.STORY, loadLoader("story").load());
     SceneManager.addScene(AppScene.OPTIONS, loadLoader("options").load());
     SceneManager.addScene(AppScene.HELP, loadLoader("help").load());
-    SceneManager.addScene(AppScene.CHAT, loadLoader("chat").load());
     SceneManager.addScene(AppScene.TERMINAL, loadLoader("terminal").load());
     SceneManager.addScene(AppScene.TELEVISION, loadLoader("television").load());
     SceneManager.addScene(AppScene.KEYPAD, loadLoader("keypad").load());
@@ -125,6 +134,11 @@ public class App extends Application {
     SceneManager.addScene(AppScene.TREES, loadLoader("treeChoppingMiniGame").load());
     SceneManager.addScene(AppScene.BRIDGE_GAME, loadLoader("bridgeGame").load());
     SceneManager.addScene(AppScene.CASTLE, loadLoader("castleRoom").load());
+
+    // Store reference to chat controller
+    FXMLLoader chat = loadLoader("chat");
+    SceneManager.addScene(AppScene.CHAT, chat.load());
+    chatController = chat.getController();
 
     // Store references to the room controller, forest room controller and lava room controller
     FXMLLoader room = loadLoader("room");
