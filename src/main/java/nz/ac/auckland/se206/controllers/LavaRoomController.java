@@ -31,6 +31,8 @@ public class LavaRoomController extends ControllerMethods {
   // Dragon state
   @FXML private ImageView dragon;
   @FXML private ImageView dragonOutline;
+  @FXML private ImageView blueDragon;
+  @FXML private ImageView blueDragonOutline;
 
   // Normal bridge state
   @FXML private ImageView bridge;
@@ -61,6 +63,9 @@ public class LavaRoomController extends ControllerMethods {
   @FXML private ImageView greenOrb;
   @FXML private ImageView redOrb;
 
+  // Random booleans
+  private boolean isblueDragon;
+
   public void initialize() {
     // Bind the labels to the display values
     lblTimer.textProperty().bind(ControllerMethods.displayTime);
@@ -76,6 +81,18 @@ public class LavaRoomController extends ControllerMethods {
     greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
     redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
 
+    // Random number 0 or 1, if 0, show red dragon otherwise show blue dragon
+    int random = (int) (Math.random() * 2);
+    if (random == 0) {
+      blueDragon.setOpacity(1);
+      dragon.setOpacity(0);
+      isblueDragon = true;
+    } else {
+      dragon.setOpacity(1);
+      blueDragon.setOpacity(0);
+      isblueDragon = false;
+    }
+
     // Based on minigame selected, either show dragon scenario or broken bridge scenario:
     if (GameState.isLavaBridge && GameState.isForestTreeChopping) {
       // Minigame 1: Bridge is Broken - Disable dragon components and fixed bridge components
@@ -87,8 +104,11 @@ public class LavaRoomController extends ControllerMethods {
 
       // Disable dragon components
       dragon.setOpacity(0);
+      blueDragon.setOpacity(0);
       dragon.setDisable(true);
+      blueDragon.setDisable(true);
       dragonOutline.setDisable(true);
+      blueDragonOutline.setDisable(true);
 
       // Disable fixed bridge components - these need to be re-enabled when the bridge is fixed
       // (mini-game completed)
@@ -256,7 +276,11 @@ public class LavaRoomController extends ControllerMethods {
    */
   @FXML
   private void dragonHovered(MouseEvent event) {
-    dragonOutline.setOpacity(1);
+    if (isblueDragon) {
+      blueDragonOutline.setOpacity(1);
+    } else {
+      dragonOutline.setOpacity(1);
+    }
   }
 
   /**
@@ -267,6 +291,7 @@ public class LavaRoomController extends ControllerMethods {
   @FXML
   private void dragonUnhovered(MouseEvent event) {
     dragonOutline.setOpacity(0);
+    blueDragonOutline.setOpacity(0);
   }
 
   /**
