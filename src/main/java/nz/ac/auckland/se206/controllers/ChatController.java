@@ -247,6 +247,7 @@ public class ChatController extends ControllerMethods {
                   if (lastMsg.getRole().equals("assistant")
                       && lastMsg.getContent().startsWith("Correct")) {
                     GameState.isRiddleResolved = true;
+                    updateTask();
                   }
 
                   // Check if the user has asked for a hint:
