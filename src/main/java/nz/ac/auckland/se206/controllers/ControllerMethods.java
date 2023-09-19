@@ -35,7 +35,33 @@ public class ControllerMethods {
       new SimpleObjectProperty<>(null);
 
   // Object properties for all images in the background of chat
-  protected static ObjectProperty<javafx.scene.image.Image> backgroundImageProperty =
+  protected static ObjectProperty<javafx.scene.image.Image> forestAxeImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> forestRodImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> forestTreesRemovedImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> mainMapImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> mainMapRemovedImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> mainDarkImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> lavaDragonImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> lavaNoDragonImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> forestMiniImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> forestMiniTreesRemovedImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> fishingMiniImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> chestMiniImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> orbMiniImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> bridgeMiniImageProperty =
       new SimpleObjectProperty<>(null);
 
   // Instance variables to be accessible to all controllers
@@ -194,66 +220,98 @@ public class ControllerMethods {
 
   /** Methods for settimg opacities of backgrouds behind chat overlay */
   protected void setForestAxeOpacity() {
-    backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/forestAxe.png")));
+    removeBackgrounds();
+    forestAxeImageProperty.set(new Image(getClass().getResourceAsStream("/images/forestAxe.png")));
   }
 
   protected void setForestRodOpacity() {
-    backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/forestRod.png")));
+    removeBackgrounds();
+    forestRodImageProperty.set(new Image(getClass().getResourceAsStream("/images/forestRod.png")));
   }
 
   protected void setForestTreesRemovedOpacity() {
-    backgroundImageProperty.set(
+    removeBackgrounds();
+    forestTreesRemovedImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/forestTreesRemoved.png")));
   }
 
   protected void setMainMapOpacity() {
-    backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/mainMap.png")));
+    removeBackgrounds();
+    mainMapImageProperty.set(new Image(getClass().getResourceAsStream("/images/mainMap.png")));
   }
 
   protected void setMainMapRemovedOpacity() {
-    backgroundImageProperty.set(
+    removeBackgrounds();
+    mainMapRemovedImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/mainMapRemoved.png")));
   }
 
   protected void setMainDarkOpacity() {
-    backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/mainDark.png")));
+    removeBackgrounds();
+    mainDarkImageProperty.set(new Image(getClass().getResourceAsStream("/images/mainDark.png")));
   }
 
   protected void setLavaDragonOpacity() {
-    backgroundImageProperty.set(
+    removeBackgrounds();
+    lavaDragonImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/lavaDragon.png")));
   }
 
   protected void setLavaNoDragonOpacity() {
-    backgroundImageProperty.set(
+    removeBackgrounds();
+    lavaNoDragonImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/lavaNoDragon.png")));
   }
 
   protected void setForestMiniOpacity() {
-    backgroundImageProperty.set(
+    removeBackgrounds();
+    forestMiniImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/forestMini.png")));
   }
 
   protected void setForestMiniTreesRemovedOpacity() {
-    backgroundImageProperty.set(
+    removeBackgrounds();
+    forestMiniTreesRemovedImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/forestMiniTreesRemoved.png")));
   }
 
   protected void setFishingMiniOpacity() {
-    backgroundImageProperty.set(
+    removeBackgrounds();
+    fishingMiniImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/fishingMini.png")));
   }
 
   protected void setChestMiniOpacity() {
-    backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/chestMini.png")));
+    removeBackgrounds();
+    chestMiniImageProperty.set(new Image(getClass().getResourceAsStream("/images/chestMini.png")));
   }
 
   protected void setOrbMiniOpacity() {
-    backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/orbMini.png")));
+    removeBackgrounds();
+    orbMiniImageProperty.set(new Image(getClass().getResourceAsStream("/images/orbMini.png")));
   }
 
   protected void setBridgeMiniOpacity() {
-    backgroundImageProperty.set(
+    removeBackgrounds();
+    bridgeMiniImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/bridgeMini.png")));
+  }
+
+  /** Method for removing all backgrounds */
+  protected void removeBackgrounds() {
+    forestAxeImageProperty.set(null);
+    forestRodImageProperty.set(null);
+    forestTreesRemovedImageProperty.set(null);
+    mainMapImageProperty.set(null);
+    mainMapRemovedImageProperty.set(null);
+    mainDarkImageProperty.set(null);
+    lavaDragonImageProperty.set(null);
+    lavaNoDragonImageProperty.set(null);
+    forestMiniImageProperty.set(null);
+    forestMiniTreesRemovedImageProperty.set(null);
+    fishingMiniImageProperty.set(null);
+    chestMiniImageProperty.set(null);
+    orbMiniImageProperty.set(null);
+    bridgeMiniImageProperty.set(null);
   }
 }
