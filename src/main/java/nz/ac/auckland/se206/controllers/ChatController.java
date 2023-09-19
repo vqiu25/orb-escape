@@ -39,6 +39,11 @@ public class ChatController extends ControllerMethods {
   @FXML private ImageView sendButtonHover;
   @FXML private ImageView sendButtonPressed;
 
+  // Book items:
+  @FXML private ImageView riddleBook;
+  @FXML private TextArea riddleTextArea;
+  @FXML private TextArea riddleTextChatArea;
+
   // Backgrounds
   @FXML private ImageView forestAxe;
   @FXML private ImageView forestRod;
@@ -64,6 +69,10 @@ public class ChatController extends ControllerMethods {
   @FXML private ImageView greenOrb;
   @FXML private ImageView redOrb;
 
+  // Game states:
+  private boolean isRiddleInitialized = true;
+
+  private ChatCompletionRequest riddleChatCompletionRequest;
   private ChatCompletionRequest chatCompletionRequest;
 
   /**
@@ -105,31 +114,50 @@ public class ChatController extends ControllerMethods {
     orbMini.imageProperty().bind(ControllerMethods.orbMiniImageProperty);
     bridgeMini.imageProperty().bind(ControllerMethods.bridgeMiniImageProperty);
 
-    // Randomly select either lamp or rug as the word to guess:
+    // Randomly select either cabinet or rug as the word to guess:
     String wordToGuess;
     Random random = new Random();
-    int randomInt = random.nextInt(20); // Picks a random number between 0 and 20
+    int randomInt = random.nextInt(10);
 
-    if (randomInt <= 10) {
-      wordToGuess = "cabinet"; // If number is less than or equal to 10, word to guess is cabinet
+    if (randomInt > 4) {
+      wordToGuess = "cabinet";
       GameState.isCabinet = true;
     } else {
       wordToGuess = "rug";
       GameState.isRug = true;
     }
 
+    // ! REMOVE
+    // Retrieve the number of hints remaining:
+    String numberOfHints = Integer.toString(GameState.hintCount);
+
+    if (numberOfHints.equals("9999")) {
+      numberOfHints = "unlimited";
+    } else if (numberOfHints.equals("5")) {
+      numberOfHints = "five";
+    } else {
+      numberOfHints = "zero";
+    }
+
+    riddleChatCompletionRequest =
+        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(100);
+    runGpt(
+        new ChatMessage(
+            "assistant", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess, numberOfHints)));
+
     chatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(1.3).setTopP(0.5).setMaxTokens(100);
-    runGpt(new ChatMessage("user", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess)));
+        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(100);
+    runGpt(new ChatMessage("assistant", GptPromptEngineering.getGameMaster(numberOfHints)));
   }
 
   /**
    * Appends a chat message to the chat text area.
    *
    * @param msg the chat message to append
+   * @param textArea the text area to append the message to
    */
-  private void appendChatMessage(ChatMessage msg) {
-    chatTextArea.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
+  private void appendChatMessage(ChatMessage msg, TextArea textArea) {
+    textArea.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
   }
 
   /**
@@ -140,22 +168,41 @@ public class ChatController extends ControllerMethods {
    * @throws ApiProxyException if there is an error communicating with the API proxy
    */
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
-    chatCompletionRequest.addMessage(msg);
+
+    // ONLY called when game initializes to set up the riddle book:
+    if (isRiddleInitialized) {
+      riddleChatCompletionRequest.addMessage(msg);
+      isRiddleInitialized = false;
+
+      return gptHelper(riddleChatCompletionRequest, riddleTextArea);
+    }
+
+    // Called when appending the message to riddle chat area:
+    if (GameState.isRiddleBookOpen) {
+      riddleChatCompletionRequest.addMessage(msg);
+      return gptHelper(riddleChatCompletionRequest, riddleTextChatArea);
+    } else {
+      // Otherwise, append the message to the chat text area:
+      chatCompletionRequest.addMessage(msg);
+      return gptHelper(chatCompletionRequest, chatTextArea);
+    }
+  }
+
+  public ChatMessage gptHelper(ChatCompletionRequest request, TextArea textArea) {
     try {
-      ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+      ChatCompletionResult chatCompletionResult = request.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
-      chatCompletionRequest.addMessage(result.getChatMessage());
-      appendChatMessage(result.getChatMessage());
+      request.addMessage(result.getChatMessage());
+      appendChatMessage(result.getChatMessage(), textArea);
       return result.getChatMessage();
     } catch (ApiProxyException e) {
-      // TODO handle exception appropriately
       e.printStackTrace();
       return null;
     }
   }
 
   /**
-   * Sends a message to the GPT model.
+   * Sends the user's message inputted into the text to the GPT model.
    *
    * @param event the action event triggered by the send button
    * @throws ApiProxyException if there is an error communicating with the API proxy
@@ -168,6 +215,7 @@ public class ChatController extends ControllerMethods {
       sendButtonPressed.setOpacity(0);
       return;
     }
+
     blueRectangle.setOpacity(1);
     selectRandomAniamtion();
 
@@ -177,7 +225,13 @@ public class ChatController extends ControllerMethods {
 
     // Add the user's message to the chat text area
     ChatMessage msg = new ChatMessage("user", message);
-    appendChatMessage(msg);
+
+    // If riddle book is open, append to riddle text area:
+    if (GameState.isRiddleBookOpen) {
+      appendChatMessage(msg, riddleTextChatArea);
+    } else {
+      appendChatMessage(msg, chatTextArea);
+    }
 
     // Create a new thread to run the GPT model
     Task<Void> gameMasterTask =
@@ -193,6 +247,15 @@ public class ChatController extends ControllerMethods {
                   if (lastMsg.getRole().equals("assistant")
                       && lastMsg.getContent().startsWith("Correct")) {
                     GameState.isRiddleResolved = true;
+                  }
+
+                  // Check if the user has asked for a hint:
+                  if (lastMsg.getRole().equals("assistant")
+                      && lastMsg.getContent().startsWith("Hint")
+                      && GameState.hintCount > 0) {
+                    // Update hint
+                    GameState.hintCount--;
+                    updateHintsRemaining();
                   }
                 });
 
@@ -241,6 +304,15 @@ public class ChatController extends ControllerMethods {
    */
   @FXML
   private void returnToRoom(MouseEvent event) throws ApiProxyException, IOException {
+
+    // Disable the riddle book:
+    disableRiddleBookOpacity();
+
+    // If the riddle book has been opened, close it:
+    if (GameState.isRiddleBookOpen) {
+      GameState.isRiddleBookOpen = false;
+    }
+
     // Return to previous scene by popping stack:
     App.setScene(SceneManager.sceneStack.pop());
   }
@@ -305,5 +377,19 @@ public class ChatController extends ControllerMethods {
     hourGlassAnimation.setOpacity(0);
     pacManAnimation.setOpacity(0);
     barAnimation.setOpacity(0);
+  }
+
+  public void setRiddleBookOpacity() {
+    riddleBook.setOpacity(0.85);
+    riddleTextArea.setOpacity(0.85);
+    riddleTextChatArea.setOpacity(0.7);
+    chatTextArea.setOpacity(0);
+  }
+
+  public void disableRiddleBookOpacity() {
+    riddleBook.setOpacity(0);
+    riddleTextArea.setOpacity(0);
+    riddleTextChatArea.setOpacity(0);
+    chatTextArea.setOpacity(1);
   }
 }

@@ -7,6 +7,9 @@ public class GameState {
   public static boolean isCabinet = false;
   public static boolean isRug = false;
 
+  // Indicates if the riddle book is open:
+  public static boolean isRiddleBookOpen = false;
+
   // Indicates which minigame has been selected:
   public static boolean isLavaBridge = false;
   public static boolean isForestTreeChopping = false;
@@ -30,7 +33,7 @@ public class GameState {
   // Indicates if orbs have been collected:
   public static boolean isForestOrbCollected = false;
   public static boolean isCastleOrbCollected = false;
-  public static boolean isRoomOrbCollected = true; // TODO: add this to room!
+  public static boolean isRoomOrbCollected = false; // TODO: add this to room!
 
   // Indicates if all the orbs have been placed in the terminal
   public static boolean isOrbsPlaced = false;

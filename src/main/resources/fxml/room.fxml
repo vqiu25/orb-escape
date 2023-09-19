@@ -283,5 +283,15 @@
             <Image url="@../images/gameMasterOnHover.gif" />
          </image>
       </ImageView>
+      <ImageView fx:id="bookOutline" fitHeight="35.0" fitWidth="51.0" layoutX="224.0" layoutY="288.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/blueBookOutline.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="book" fitHeight="31.0" fitWidth="47.0" layoutX="224.0" layoutY="290.0" onMouseClicked="#bookPressed" onMouseEntered="#bookHovered" onMouseExited="#bookUnhovered" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/blueBook.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

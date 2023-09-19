@@ -56,6 +56,14 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView portal;
   @FXML private ImageView portalOutline;
 
+  // Book Items:
+  @FXML private ImageView book;
+  @FXML private ImageView bookOutline;
+
+  // Riddle items
+  @FXML private Polygon cabinet;
+  @FXML private Polygon carpet;
+
   // Game Master
   @FXML private ImageView gameMasterDefault;
   @FXML private ImageView gameMasterChat;
@@ -284,18 +292,14 @@ public class RoomController extends ControllerMethods {
    */
   @FXML
   private void cabinetClick(MouseEvent event) {
-    // if the riddle has NOT been solved give help
-    if (!GameState.isRiddleResolved) {
-      spamCount++;
 
-      if (spamCount == 5) {
-        Notifications message2 =
-            NotificationBuilder.createNotification(
-                "Game Master:", "Open the chat to talk to me and get your first clue!", 6);
-        message2.show();
-      }
+    // If it is NOT the cabinet riddle
+    if (!GameState.isCabinet) {
       return;
     }
+
+    // if the riddle has NOT been solved and the user is stuck, give help
+    giveRiddleHelp();
 
     // If the item has already been clicked, dont let them click again.
     if (GameState.itemClicked) {
@@ -306,16 +310,14 @@ public class RoomController extends ControllerMethods {
     if (GameState.isCabinet && GameState.isRiddleResolved) {
       GameState.itemClicked = true;
 
-      showDialog(
-          "You've found a clue!",
-          "TV Remote Found!",
-          "You found the TV remote! Turn on the TV for your next clue!");
+      // Show notification - alerting user that they have found an orb
+      orbFoundNotification();
 
-      updateTaskLabel("[Insert Task]");
+      // Update game state
+      GameState.isRoomOrbCollected = true;
 
-      Notifications message =
-          NotificationBuilder.createNotification("Game Master:", chatMessage.getContent(), 6);
-      message.show();
+      // TODO: update orb image in inventory
+      // updateTaskLabel("[Insert Task]");
     }
   }
 
@@ -336,18 +338,14 @@ public class RoomController extends ControllerMethods {
    */
   @FXML
   private void carpetClick(MouseEvent event) {
-    // if the riddle has NOT been solved give help
-    if (!GameState.isRiddleResolved) {
-      spamCount++;
 
-      if (spamCount == 5) {
-        Notifications message2 =
-            NotificationBuilder.createNotification(
-                "Game Master:", "Open the chat to talk to me and get your first clue!", 6);
-        message2.show();
-      }
+    // If it is NOT the carpet riddle
+    if (!GameState.isRug) {
       return;
     }
+
+    // if the riddle has NOT been solved give help
+    giveRiddleHelp();
 
     // If the item has already been clicked, dont let them click again.
     if (GameState.itemClicked) {
@@ -358,16 +356,14 @@ public class RoomController extends ControllerMethods {
     if (GameState.isRug && GameState.isRiddleResolved) {
       GameState.itemClicked = true;
 
-      showDialog(
-          "You've found a clue!",
-          "TV Remote Found!",
-          "You found the TV remote! Turn on the TV for your next clue!");
+      // Show notification - alerting user that they have found an orb
+      orbFoundNotification();
 
-      updateTaskLabel("[Insert Task]");
+      // Set game state:
+      GameState.isRoomOrbCollected = true;
 
-      Notifications message =
-          NotificationBuilder.createNotification("Game Master:", chatMessage.getContent(), 6);
-      message.show();
+      // TODO: update orb image in inventory
+      // updateTaskLabel("[Insert Task]");
     }
   }
 
@@ -762,5 +758,59 @@ public class RoomController extends ControllerMethods {
     // Store current scene in scene stack
     SceneManager.sceneStack.push(AppScene.ROOM);
     App.setScene(AppScene.CHAT);
+  }
+
+  // Book methods:
+  @FXML
+  private void bookHovered() {
+    book.setOpacity(0);
+    bookOutline.setOpacity(1);
+  }
+
+  @FXML
+  private void bookUnhovered() {
+    book.setOpacity(1);
+    bookOutline.setOpacity(0);
+  }
+
+  @FXML
+  private void bookPressed(MouseEvent event) {
+
+    // Set boolean
+    GameState.isRiddleBookOpen = true;
+
+    // Get chat controller
+    ChatController chatController = App.getChatController();
+
+    // Enable riddleBook and riddleTextArea
+    chatController.setRiddleBookOpacity();
+
+    // Store current scene in scene stack
+    SceneManager.sceneStack.push(AppScene.ROOM);
+
+    // Switch scenes
+    App.setScene(AppScene.CHAT);
+  }
+
+  private void giveRiddleHelp() {
+    if (!GameState.isRiddleResolved) {
+      spamCount++;
+
+      if (spamCount == 5) {
+        Notifications message2 =
+            NotificationBuilder.createNotification(
+                "Game Master:", "In a book, you will find your first clue!", 6);
+        message2.show();
+      }
+      return;
+    }
+  }
+
+  private void orbFoundNotification() {
+    // Initialize orb notification message
+    Notifications orbMessage =
+        NotificationBuilder.createNotification(
+            "Game Master:", "Congratulation! You've found an orb!", 6);
+    orbMessage.show();
   }
 }

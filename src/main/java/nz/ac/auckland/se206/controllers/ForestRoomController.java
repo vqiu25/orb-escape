@@ -7,8 +7,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Polygon;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
+import org.controlsfx.control.Notifications;
 
 public class ForestRoomController extends ControllerMethods {
   @FXML private ImageView leftArrow;
@@ -215,6 +217,13 @@ public class ForestRoomController extends ControllerMethods {
   // Fishing Rod
   @FXML
   private void fishingClick(MouseEvent event) {
+
+    // If user has NOT solved the riddle, tell them to solve the riddle first:
+    if (!GameState.isRiddleResolved && GameState.isForestFishing) {
+      solveRiddle();
+      return;
+    }
+
     // Add the fishing rod to inventory and take the user to the fishing mini game
     if (GameState.isForestFishing) {
       GameState.isFishingRodTaken = true;
@@ -268,6 +277,13 @@ public class ForestRoomController extends ControllerMethods {
   // Trees
   @FXML
   private void treesClick(MouseEvent event) {
+
+    // If user has NOT solved the riddle, tell them to solve the riddle first:
+    if (!GameState.isRiddleResolved && GameState.isForestTreeChopping) {
+      solveRiddle();
+      return;
+    }
+
     if (GameState.isForestTreeChopping) {
       if (GameState.isAxeTaken) {
         // If they are playing the tree chopping version and they have collected the axe, go to tree
@@ -329,6 +345,13 @@ public class ForestRoomController extends ControllerMethods {
   // Axe
   @FXML
   private void axeClick(MouseEvent event) {
+
+    // If user has NOT solved the riddle, tell them to solve the riddle first:
+    if (!GameState.isRiddleResolved) {
+      solveRiddle();
+      return;
+    }
+
     if (!GameState.isAxeTaken) {
       findAxe();
       axe.setOpacity(0);
@@ -400,5 +423,13 @@ public class ForestRoomController extends ControllerMethods {
     SceneManager.sceneStack.push(AppScene.FOREST);
 
     App.setScene(AppScene.CHAT);
+  }
+
+  public void solveRiddle() {
+    // Initialize orb notification message
+    Notifications orbMessage =
+        NotificationBuilder.createNotification(
+            "Game Master:", "Hmm... Try solving the riddle first!", 6);
+    orbMessage.show();
   }
 }
