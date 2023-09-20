@@ -516,9 +516,19 @@ public class RoomController extends ControllerMethods {
   @FXML
   private void codeClick(MouseEvent event) {
     if (GameState.isLightOn) {
-
+      // If light has been turned on, prompt user to turn off the light
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master: ",
+              "That looks like fluorescent text... Try turning off the lights!",
+              5);
+      message.show();
     } else {
-
+      // If the light has been turned off, tell user the code
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master: ", "206... I wonder what that means.", 5);
+      message.show();
     }
   }
 
@@ -628,10 +638,14 @@ public class RoomController extends ControllerMethods {
   }
 
   private void giveRiddleHelp() {
+    // If the riddle has not been resolved, give help to the user
     if (!GameState.isRiddleResolved) {
       spamCount++;
 
+      // If the user has clicked on the cabinet or rug 5 times:
       if (spamCount == 5) {
+
+        // Prompt user to find the book
         Notifications message2 =
             NotificationBuilder.createNotification(
                 "Game Master:", "In a book, you will find your first clue!", 6);

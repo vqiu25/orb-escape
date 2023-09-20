@@ -247,15 +247,23 @@ public class ForestRoomController extends ControllerMethods {
   // Dock without fishing rod
   @FXML
   private void dockClick(MouseEvent event) {
+
+    // If the game selected is the fishing game:
     if (GameState.isForestFishing) {
+      // If the riddle has not been found prompt user to find the riddle:
       if (!GameState.isRiddleFound) {
         findRiddle();
+
         return;
       } else if (!GameState.isRiddleResolved) {
+        // If the riddle has been found but not solved, prompt user to solve the riddle:
         solveRiddle();
+
         return;
       } else if (!GameState.isRoomOrbCollected) {
+        // If the riddle has been solved but the orb has not been collected, prompt user to find
         findRoomOrb();
+
         return;
       } else if (GameState.isFishingRodTaken) {
         App.setScene(AppScene.FISHING);
@@ -345,16 +353,23 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
-  // Axe
+  // Axe logic
   @FXML
   private void axeClick(MouseEvent event) {
+    // If the axe has not been taken:
     if (!GameState.isAxeTaken) {
+      // Remove the axe from inventory
       findAxe();
+
+      // Remove axe image from the scene
       axe.setOpacity(0);
       axeOutline.setOpacity(0);
       axeRemoved.setOpacity(1);
+
       GameState.isAxeTaken = true;
       updateTask();
+
+      // Disable the axe and enable the empty log
       axeGrab.setDisable(true);
       emptyLog.setDisable(false);
     }
@@ -413,7 +428,9 @@ public class ForestRoomController extends ControllerMethods {
     } else {
       setForestRodOpacity();
     }
-    if (GameState.isChopped) setForestTreesRemovedOpacity();
+    if (GameState.isChopped) {
+      setForestTreesRemovedOpacity();
+    }
 
     // Store forrest room scene in stack:
     SceneManager.sceneStack.push(AppScene.FOREST);
