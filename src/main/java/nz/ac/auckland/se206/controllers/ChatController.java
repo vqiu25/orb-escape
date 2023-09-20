@@ -44,21 +44,8 @@ public class ChatController extends ControllerMethods {
   @FXML private TextArea riddleTextArea;
   @FXML private TextArea riddleTextChatArea;
 
-  // Backgrounds
-  @FXML private ImageView forestAxe;
-  @FXML private ImageView forestRod;
-  @FXML private ImageView forestTreesRemoved;
-  @FXML private ImageView mainMap;
-  @FXML private ImageView mainMapRemoved;
-  @FXML private ImageView mainDark;
-  @FXML private ImageView lavaDragon;
-  @FXML private ImageView lavaNoDragon;
-  @FXML private ImageView forestMini;
-  @FXML private ImageView forestMiniTreesRemoved;
-  @FXML private ImageView fishingMini;
-  @FXML private ImageView chestMini;
-  @FXML private ImageView orbMini;
-  @FXML private ImageView bridgeMini;
+  // Background
+  @FXML private ImageView background;
 
   // Inventory Items
   @FXML private ImageView fishingRodIcon;
@@ -87,32 +74,20 @@ public class ChatController extends ControllerMethods {
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
 
-    // Bind the inventory images to their image properties
-    fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
-    axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
-    fishIcon.imageProperty().bind(ControllerMethods.fishIconImageProperty);
-    planksIcon.imageProperty().bind(ControllerMethods.planksIconImageProperty);
-    blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
-    greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
-    redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
+    // Initialise the inventory items
+    fishingRodIcon = getFishingRodIcon();
+    axeIcon = getAxeIcon();
+    fishIcon = getFishIcon();
+    planksIcon = getPlanksIcon();
+    blueOrb = getBlueOrb();
+    greenOrb = getGreenOrb();
+    redOrb = getRedOrb();
 
-    // Bind the backgrounds to their respective image properties
-    forestAxe.imageProperty().bind(ControllerMethods.forestAxeImageProperty);
-    forestRod.imageProperty().bind(ControllerMethods.forestRodImageProperty);
-    forestTreesRemoved.imageProperty().bind(ControllerMethods.forestTreesRemovedImageProperty);
-    mainMap.imageProperty().bind(ControllerMethods.mainMapImageProperty);
-    mainMapRemoved.imageProperty().bind(ControllerMethods.mainMapRemovedImageProperty);
-    mainDark.imageProperty().bind(ControllerMethods.mainDarkImageProperty);
-    lavaDragon.imageProperty().bind(ControllerMethods.lavaDragonImageProperty);
-    lavaNoDragon.imageProperty().bind(ControllerMethods.lavaNoDragonImageProperty);
-    forestMini.imageProperty().bind(ControllerMethods.forestMiniImageProperty);
-    forestMiniTreesRemoved
-        .imageProperty()
-        .bind(ControllerMethods.forestMiniTreesRemovedImageProperty);
-    fishingMini.imageProperty().bind(ControllerMethods.fishingMiniImageProperty);
-    chestMini.imageProperty().bind(ControllerMethods.chestMiniImageProperty);
-    orbMini.imageProperty().bind(ControllerMethods.orbMiniImageProperty);
-    bridgeMini.imageProperty().bind(ControllerMethods.bridgeMiniImageProperty);
+    // Bind the inventory images to their image properties
+    bindInventory();
+
+    // Bind the background to its image properties
+    background.imageProperty().bind(ControllerMethods.backgroundImageProperty);
 
     // Randomly select either cabinet or rug as the word to guess:
     String wordToGuess;
@@ -127,27 +102,13 @@ public class ChatController extends ControllerMethods {
       GameState.isRug = true;
     }
 
-    // ! REMOVE
-    // Retrieve the number of hints remaining:
-    String numberOfHints = Integer.toString(GameState.hintCount);
-
-    if (numberOfHints.equals("9999")) {
-      numberOfHints = "unlimited";
-    } else if (numberOfHints.equals("5")) {
-      numberOfHints = "five";
-    } else {
-      numberOfHints = "zero";
-    }
-
     riddleChatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(100);
-    runGpt(
-        new ChatMessage(
-            "assistant", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess, numberOfHints)));
+        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.4).setMaxTokens(100);
+    runGpt(new ChatMessage("assistant", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess)));
 
     chatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(100);
-    runGpt(new ChatMessage("assistant", GptPromptEngineering.getGameMaster(numberOfHints)));
+        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.4).setMaxTokens(100);
+    runGpt(new ChatMessage("assistant", GptPromptEngineering.getGameMaster()));
   }
 
   /**
@@ -209,13 +170,26 @@ public class ChatController extends ControllerMethods {
    * @throws IOException if there is an I/O error
    */
   private void onSendMessage() throws ApiProxyException, IOException {
+    // Get the user's message
     String message = inputText.getText();
+
     // If the user has not entered a message, do nothing
     if (message.trim().isEmpty()) {
       sendButtonPressed.setOpacity(0);
       return;
     }
 
+    // Add the user's message to the chat text area
+    ChatMessage userMessage = new ChatMessage("user", message);
+
+    // If riddle book is open, append to riddle text area:
+    if (GameState.isRiddleBookOpen) {
+      appendChatMessage(userMessage, riddleTextChatArea);
+    } else {
+      appendChatMessage(userMessage, chatTextArea);
+    }
+
+    // Animate GPT loading screen:
     blueRectangle.setOpacity(1);
     selectRandomAniamtion();
 
@@ -223,17 +197,42 @@ public class ChatController extends ControllerMethods {
     inputText.clear();
     sendButtonPressed.setDisable(true);
 
-    // Add the user's message to the chat text area
-    ChatMessage msg = new ChatMessage("user", message);
+    // Prepend their message with a prompt depending on how many hints they have
+    ChatMessage msg;
 
-    // If riddle book is open, append to riddle text area:
-    if (GameState.isRiddleBookOpen) {
-      appendChatMessage(msg, riddleTextChatArea);
+    // If the user has hints available, prepend the message with a hint prompt:
+    if (GameState.hintCount > 0) {
+
+      String hint = "";
+
+      // Get game context for hints:
+      if (!GameState.isRiddleFound) {
+        hint = "looking for a book.";
+      } else if (!GameState.isRiddleResolved) {
+        hint = "";
+      } else if (!GameState.isRoomOrbCollected) {
+        hint = "the location to the orb being the answer to the riddle";
+      } else if (GameState.isForestTreeChopping && !GameState.isForestGameCompleted) {
+        hint = "the green orb being stuck on the tree";
+      } else if (GameState.isForestFishing && !GameState.isForestGameCompleted) {
+        hint = "the green orb being stuck to the fish";
+      } else if (GameState.isLavaBridge && !GameState.isLavaGameCompleted) {
+        hint = "fixing the bridge with some wood";
+      } else if (GameState.isLavaDragon && !GameState.isLavaGameCompleted) {
+        hint = "distracting the dragon with fish";
+      } else if (!GameState.isCodeFound) {
+        hint = "searching behind a map";
+      } else if (!GameState.isOrbsPlaced) {
+        hint = "activating the portal to escape";
+      }
+
+      msg = new ChatMessage("user", GptPromptEngineering.hintAvailablePrompt(message, hint));
     } else {
-      appendChatMessage(msg, chatTextArea);
+      // Otherwise, prepend the message with a no hints prompt:
+      msg = new ChatMessage("user", GptPromptEngineering.noHintsAvailablePrompt(message));
     }
 
-    // Create a new thread to run the GPT model
+    // Create a new thread to run the GPT model based on what the user inputted:
     Task<Void> gameMasterTask =
         new Task<Void>() {
           @Override
@@ -381,6 +380,7 @@ public class ChatController extends ControllerMethods {
   }
 
   public void setRiddleBookOpacity() {
+    riddleTextChatArea.setDisable(false);
     riddleBook.setOpacity(0.9);
     riddleTextArea.setOpacity(0.9);
     riddleTextChatArea.setOpacity(0.9);
@@ -388,6 +388,7 @@ public class ChatController extends ControllerMethods {
   }
 
   public void disableRiddleBookOpacity() {
+    riddleTextChatArea.setDisable(true);
     riddleBook.setOpacity(0);
     riddleTextArea.setOpacity(0);
     riddleTextChatArea.setOpacity(0);

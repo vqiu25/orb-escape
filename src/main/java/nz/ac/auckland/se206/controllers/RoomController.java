@@ -44,7 +44,6 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView glowParticleThree;
   @FXML private ImageView map;
   @FXML private ImageView portalBaseOutline;
-  @FXML private ImageView portalFrameOutline;
   @FXML private ImageView portal;
   @FXML private ImageView portalOutline;
 
@@ -86,14 +85,33 @@ public class RoomController extends ControllerMethods {
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
 
+    // Initialise the inventory items
+    fishingRodIcon = getFishingRodIcon();
+    axeIcon = getAxeIcon();
+    fishIcon = getFishIcon();
+    planksIcon = getPlanksIcon();
+    blueOrb = getBlueOrb();
+    greenOrb = getGreenOrb();
+    redOrb = getRedOrb();
+
     // Bind the inventory images to their image properties
-    fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
-    axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
-    fishIcon.imageProperty().bind(ControllerMethods.fishIconImageProperty);
-    planksIcon.imageProperty().bind(ControllerMethods.planksIconImageProperty);
-    blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
-    greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
-    redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
+    bindInventory();
+
+    // Bind the portal images to their image properties
+    portal.imageProperty().bind(ControllerMethods.portalImageProperty);
+    portalOutline.imageProperty().bind(ControllerMethods.portalOutlineImageProperty);
+    initialisePortal();
+
+    // // Initialize game master object:
+    // gameMaster = new GameMaster();
+    // gameMaster.chatCompletionRequest();
+    // gameMaster();
+  }
+
+  /** Opens the chat window with the game master. */
+  @FXML
+  private void openChat(MouseEvent event) {
+    App.setScene(AppScene.CHAT);
   }
 
   @FXML
@@ -490,26 +508,13 @@ public class RoomController extends ControllerMethods {
   @FXML
   private void portalHover(MouseEvent event) {
     portalBaseOutline.setOpacity(1);
-    if (GameState.isOrbsPlaced) {
-      portalOutline.setOpacity(1);
-    } else {
-      portalFrameOutline.setOpacity(1);
-    }
+    portalOutline.setOpacity(1);
   }
 
   @FXML
   private void portalUnhover(MouseEvent event) {
     portalBaseOutline.setOpacity(0);
-    if (GameState.isOrbsPlaced) {
-      portalOutline.setOpacity(0);
-    } else {
-      portalFrameOutline.setOpacity(0);
-    }
-  }
-
-  private void turnPortalOn() {
-    GameState.isOrbsPlaced = true;
-    portal.setOpacity(1);
+    portalOutline.setOpacity(0);
   }
 
   // Code

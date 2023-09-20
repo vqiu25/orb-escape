@@ -72,14 +72,17 @@ public class LavaRoomController extends ControllerMethods {
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
 
+    // Initialise the inventory items
+    fishingRodIcon = getFishingRodIcon();
+    axeIcon = getAxeIcon();
+    fishIcon = getFishIcon();
+    planksIcon = getPlanksIcon();
+    blueOrb = getBlueOrb();
+    greenOrb = getGreenOrb();
+    redOrb = getRedOrb();
+
     // Bind the inventory images to their image properties
-    fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
-    axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
-    fishIcon.imageProperty().bind(ControllerMethods.fishIconImageProperty);
-    planksIcon.imageProperty().bind(ControllerMethods.planksIconImageProperty);
-    blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
-    greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
-    redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
+    bindInventory();
 
     // Random number 0 or 1, if 0, show red dragon otherwise show blue dragon
     int random = (int) (Math.random() * 2);

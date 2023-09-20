@@ -96,11 +96,6 @@
             <Image url="@../images/blueBook.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="portalFrame" fitHeight="150.0" fitWidth="200.0" layoutX="564.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/portalFrame.gif" />
-         </image>
-      </ImageView>
       <ImageView fx:id="hiddenCode" fitHeight="25.0" fitWidth="77.0" layoutX="201.0" layoutY="180.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/unknownCode.gif" />
@@ -121,11 +116,6 @@
             <Image url="@../images/mapOutline.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="portalFrameOutline" fitHeight="167.0" fitWidth="68.0" layoutX="559.0" layoutY="245.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/portalFrameOutline.gif" />
-         </image>
-      </ImageView>
       <ImageView fx:id="darkOverlay" fitHeight="485.0" fitWidth="549.0" layoutX="132.75" layoutY="55.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/darkOverlay.png" />
@@ -141,7 +131,7 @@
             <Image url="@../images/codeOutline.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="portal" fitHeight="150.0" fitWidth="200.0" layoutX="564.0" layoutY="251.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="portal" fitHeight="150.0" fitWidth="200.0" layoutX="564.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/glowyPortal.gif" />
          </image>
