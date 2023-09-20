@@ -116,41 +116,70 @@ public class ControllerMethods {
   /** Updates the task label based on current game state */
   protected void updateTask() {
     if (!GameState.isRiddleFound) {
+      // If the riddle has not been found by clicking on the book
       displayTask.setValue("Task: Search for a riddle");
+
     } else if (!GameState.isRiddleResolved) {
+      // If the riddle has not been solved
       displayTask.setValue("Task: Try to solve the riddle");
+
     } else if (GameState.isRug && !GameState.isRoomOrbCollected) {
+      // If the room orb has not been collected under the rug
       displayTask.setValue("Task: Have a look under the rug");
+
     } else if (GameState.isCabinet && !GameState.isRoomOrbCollected) {
+      // If the room orb has not been collected in the cabinet
       displayTask.setValue("Task: Check the cabinet");
+
     } else if ((GameState.isForestFishing && !GameState.isFishingRodTaken)
         || (GameState.isForestTreeChopping && !GameState.isAxeTaken)) {
+      // If the fishing rod or axe has not been taken
       displayTask.setValue("Task: Search for other items");
+
     } else if ((GameState.isFishingRodTaken && !GameState.isForestGameCompleted)
         || (GameState.isAxeTaken && !GameState.isForestGameCompleted)) {
+      // If the fishing rod or axe has been taken but the forrest game has not been completed
       displayTask.setValue("Task: Try using the item you found");
+
     } else if (GameState.isForestTreeChopping
         && GameState.isForestGameCompleted
         && !GameState.isForestOrbCollected) {
+      // If the forest orb has not been collected
       displayTask.setValue("Task: Don't forget the green orb");
+
     } else if (GameState.isLavaDragon && !GameState.isLavaGameCompleted) {
+      // If the lava game has not been completed - dragon has not been distracted
       displayTask.setValue("Task: Distract the dragon with food");
+
     } else if (GameState.isLavaBridge && !GameState.isLavaGameCompleted) {
+      // If the lava game has not been completed - bridge has not been built
       displayTask.setValue("Task: Use the planks you made");
+
     } else if (GameState.isLavaGameCompleted && !GameState.isChestFound) {
+      // If the chest has not been found
       displayTask.setValue("Task: What's inside the castle?");
+
     } else if (GameState.isLavaGameCompleted && !GameState.isCodeFound) {
+      // If the code has not been found
       displayTask.setValue("Task: Search for a code");
+
     } else if (GameState.isLavaGameCompleted && !GameState.isChestUnlocked) {
+      // If the chest has not been unlocked
       displayTask.setValue("Task: Try opening the chest");
+
     } else if (!GameState.isCastleOrbCollected) {
+      // If the castle orb has not been collected
       displayTask.setValue("Task: Don't forget the red orb");
+
     } else if (GameState.isRoomOrbCollected
         && GameState.isForestOrbCollected
         && GameState.isCastleOrbCollected
         && !GameState.isOrbsPlaced) {
+      // If the orbs have not been placed in the terminal
       displayTask.setValue("Task: Place the orbs in the terminal");
+
     } else if (GameState.isPortalOpen && !GameState.isRoomEscaped) {
+      // If the portal has not been entered
       displayTask.setValue("Task: Enter the portal!");
     }
   }
@@ -304,7 +333,7 @@ public class ControllerMethods {
         new Image(getClass().getResourceAsStream("/images/bridgeMini.png")));
   }
 
-  /** Method for removing all backgrounds */
+  /** Method for removing all backgrounds for chat overlay by setting images to null */
   protected void removeBackgrounds() {
     forestAxeImageProperty.set(null);
     forestRodImageProperty.set(null);
