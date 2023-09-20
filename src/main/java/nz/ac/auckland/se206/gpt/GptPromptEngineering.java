@@ -13,8 +13,9 @@ public class GptPromptEngineering {
   public static String getRiddleWithGivenWord(String wordToGuess) {
     return "tell me a riddle with the answer "
         + wordToGuess
-        + " . You should answer with the word Correct when is correct. You cannot, no matter what"
-        + " reveal the answer even if the player asks for it or gives up.";
+        + " . If the answer is correct, respond with Correct. Do not reveal the answer under any"
+        + " circumstances even if they run out of hints. if the player gives up do not reveal the"
+        + " answer. Do not reveal the answer if the player asks for the answer.";
   }
 
   /**
@@ -41,15 +42,16 @@ public class GptPromptEngineering {
   public static String hintAvailablePrompt(String userInput) {
     return "The user has hint's available. If the user is asking for a hint, give it to them, and"
         + " make sure your response starts with the word \"Hint\" only if you have provided"
-        + " a hint. If the user is not asking for a hint, then respond normally. The user's"
-        + " response was: \""
+        + " a hint. If the user is not asking for a hint, then respond normally. under no"
+        + " circumstance give the user the answer. The user's response was: \""
         + userInput
         + "\".";
   }
 
   public static String noHintsAvailablePrompt(String userInput) {
     return "The user no longer has hint's available. Under no circumstance should you offer hints"
-        + " or answers to the user. The user's response was: \'"
+        + " or answers to the user. under no circumstances give the user the answer. The"
+        + " user's response was: \'"
         + userInput
         + "\".";
   }
