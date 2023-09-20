@@ -26,7 +26,7 @@ public class ControllerMethods {
 
   // String properties for the timer, task and hints
   protected static StringProperty displayTime = new SimpleStringProperty(GameState.timerString);
-  protected static StringProperty displayTask = new SimpleStringProperty("Task: ");
+  protected static StringProperty displayTask = new SimpleStringProperty(GameState.taskString);
   protected static StringProperty displayHints = new SimpleStringProperty(GameState.hintString);
 
   // Object properties for all the images in the inventory
@@ -100,43 +100,46 @@ public class ControllerMethods {
   /** Updates the task label based on current game state */
   protected void updateTask() {
     if (!GameState.isRiddleFound) {
-      displayTask.setValue("Task: Search for a riddle");
+      GameState.taskString = "Task: Search for a riddle";
     } else if (!GameState.isRiddleResolved) {
-      displayTask.setValue("Task: Try to solve the riddle");
+      GameState.taskString = "Task: Try to solve the riddle";
     } else if (GameState.isRug && !GameState.isRoomOrbCollected) {
-      displayTask.setValue("Task: Have a look under the rug");
+      GameState.taskString = "Task: Have a look under the rug";
     } else if (GameState.isCabinet && !GameState.isRoomOrbCollected) {
-      displayTask.setValue("Task: Check the cabinet");
+      GameState.taskString = "Task: Check the cabinet";
     } else if ((GameState.isForestFishing && !GameState.isFishingRodTaken)
         || (GameState.isForestTreeChopping && !GameState.isAxeTaken)) {
-      displayTask.setValue("Task: Search for other items");
+      GameState.taskString = "Task: Search for other items";
     } else if ((GameState.isFishingRodTaken && !GameState.isForestGameCompleted)
         || (GameState.isAxeTaken && !GameState.isForestGameCompleted)) {
-      displayTask.setValue("Task: Try using the item you found");
+      GameState.taskString = "Task: Try using the item you found";
     } else if (GameState.isForestTreeChopping
         && GameState.isForestGameCompleted
         && !GameState.isForestOrbCollected) {
-      displayTask.setValue("Task: Don't forget the green orb");
+      GameState.taskString = "Task: Don't forget the green orb";
     } else if (GameState.isLavaDragon && !GameState.isLavaGameCompleted) {
-      displayTask.setValue("Task: Distract the dragon with food");
+      GameState.taskString = "Task: Distract the dragon with food";
     } else if (GameState.isLavaBridge && !GameState.isLavaGameCompleted) {
-      displayTask.setValue("Task: Use the planks you made");
+      GameState.taskString = "Task: Use the planks you made";
     } else if (GameState.isLavaGameCompleted && !GameState.isChestFound) {
-      displayTask.setValue("Task: What's inside the castle?");
+      GameState.taskString = "Task: What's inside the castle?";
     } else if (GameState.isLavaGameCompleted && !GameState.isCodeFound) {
-      displayTask.setValue("Task: Search for a code");
+      GameState.taskString = "Task: Search for a code";
     } else if (GameState.isLavaGameCompleted && !GameState.isChestUnlocked) {
-      displayTask.setValue("Task: Try opening the chest");
+      GameState.taskString = "Task: Try opening the chest";
     } else if (!GameState.isCastleOrbCollected) {
-      displayTask.setValue("Task: Don't forget the red orb");
+      GameState.taskString = "Task: Don't forget the red orb";
     } else if (GameState.isRoomOrbCollected
         && GameState.isForestOrbCollected
         && GameState.isCastleOrbCollected
         && !GameState.isOrbsPlaced) {
-      displayTask.setValue("Task: Place the orbs in the terminal");
+      GameState.taskString = "Task: Place the orbs in the terminal";
     } else if (GameState.isPortalOpen && !GameState.isRoomEscaped) {
-      displayTask.setValue("Task: Enter the portal!");
+      GameState.taskString = "Task: Enter the portal!";
     }
+
+    // Set the task to the current task
+    displayTask.setValue(GameState.taskString);
   }
 
   /** Updates the hints remaining */
