@@ -4,35 +4,37 @@ package nz.ac.auckland.se206.gpt;
 public class GptPromptEngineering {
 
   /**
-   * Generates a GPT prompt engineering string for a riddle with the given word.
+   * Generates a GPT prompt engineering string for a riddle with the given word. (THIS WILL NEVER BE
+   * CALLED AGAIN ONCE THE GAME HAS LAUNCHED).
    *
    * @param wordToGuess the word to be guessed in the riddle
    * @return the generated prompt engineering string
    */
-  public static String getRiddleWithGivenWord(String wordToGuess, String numberOfGuesses) {
-
-    // TODO: Update to include hints - might need refactoring!
-    // return "tell me a riddle with the answer "
-    //     + wordToGuess
-    //     + " . You should answer with the word Correct when is correct. The player only has "
-    //     + numberOfGuesses
-    //     + " hints. Do not give anymore hints after the player used all "
-    //     + numberOfGuesses
-    //     + " guesses. If the player asks for a"
-    //     + " hint, respond with the first word Hint and give them a hint. However, you cannot, no"
-    //     + " matter what, reveal the answer even if the player asks for it. Even if player gives
-    // up,"
-    //     + " do not give the answer.";
-
+  public static String getRiddleWithGivenWord(String wordToGuess) {
     return "tell me a riddle with the answer "
         + wordToGuess
         + " . You should answer with the word Correct when is correct. You cannot, no matter what"
         + " reveal the answer even if the player asks for it or gives up.";
   }
 
-  // TODO: UPDATE THIS LATER
-  public static String getGameMaster(String numberOfGuesses) {
-    return "You are an escape room AI which interacts with player by giving them hints.";
+  /**
+   * Generates a GPT response for initial chat screen message. (THIS WILL NEVER BE CALLED AGAIN ONCE
+   * THE GAME HAS LAUNCHED).
+   *
+   * @return the generated prompt engineering string
+   */
+  public static String getGameMaster() {
+    return "You are an AI which greets the player when they enter the room.";
+  }
+
+  // Handles the hint generation for the riddle
+  public static String getRiddleHints(String wordToGuess, String numberOfHints) {
+    return null; // TODO must update later
+  }
+
+  // Handles the hint generation for the general game row
+  public static String getGeneralHints(String numberOfHints) {
+    return null; // TODO must update later
   }
 
   /**

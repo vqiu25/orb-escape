@@ -127,27 +127,13 @@ public class ChatController extends ControllerMethods {
       GameState.isRug = true;
     }
 
-    // ! REMOVE
-    // Retrieve the number of hints remaining:
-    String numberOfHints = Integer.toString(GameState.hintCount);
-
-    if (numberOfHints.equals("9999")) {
-      numberOfHints = "unlimited";
-    } else if (numberOfHints.equals("5")) {
-      numberOfHints = "five";
-    } else {
-      numberOfHints = "zero";
-    }
-
     riddleChatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(100);
-    runGpt(
-        new ChatMessage(
-            "assistant", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess, numberOfHints)));
+        new ChatCompletionRequest().setN(1).setTemperature(0.8).setTopP(0.5).setMaxTokens(100);
+    runGpt(new ChatMessage("assistant", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess)));
 
     chatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.5).setMaxTokens(100);
-    runGpt(new ChatMessage("assistant", GptPromptEngineering.getGameMaster(numberOfHints)));
+        new ChatCompletionRequest().setN(1).setTemperature(1.3).setTopP(0.5).setMaxTokens(100);
+    runGpt(new ChatMessage("assistant", GptPromptEngineering.getGameMaster()));
   }
 
   /**
