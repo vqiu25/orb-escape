@@ -161,6 +161,14 @@ public class ControllerMethods {
     redOrb.imageProperty().bind(redOrbImageProperty);
   }
 
+  protected void bindInventoryWithoutOrbs() {
+    // Bind the inventory images to their image properties
+    fishingRodIcon.imageProperty().bind(fishingRodIconImageProperty);
+    axeIcon.imageProperty().bind(axeIconImageProperty);
+    fishIcon.imageProperty().bind(fishIconImageProperty);
+    planksIcon.imageProperty().bind(planksIconImageProperty);
+  }
+
   protected ImageView getFishingRodIcon() {
     return fishingRodIcon;
   }
