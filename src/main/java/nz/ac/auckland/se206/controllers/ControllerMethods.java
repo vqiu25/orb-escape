@@ -7,12 +7,23 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.fxml.FXML;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 
 public class ControllerMethods {
+  // Inventory Items
+  @FXML private ImageView fishingRodIcon = new ImageView();
+  @FXML private ImageView axeIcon = new ImageView();
+  @FXML private ImageView fishIcon = new ImageView();
+  @FXML private ImageView planksIcon = new ImageView();
+  @FXML private ImageView blueOrb = new ImageView();
+  @FXML private ImageView greenOrb = new ImageView();
+  @FXML private ImageView redOrb = new ImageView();
+
   // String properties for the timer, task and hints
   protected static StringProperty displayTime = new SimpleStringProperty(GameState.timerString);
   protected static StringProperty displayTask = new SimpleStringProperty("Task: ");
@@ -34,34 +45,14 @@ public class ControllerMethods {
   protected static ObjectProperty<javafx.scene.image.Image> redOrbImageProperty =
       new SimpleObjectProperty<>(null);
 
-  // Object properties for all images in the background of chat
-  protected static ObjectProperty<javafx.scene.image.Image> forestAxeImageProperty =
+  // Object properties for background image behind the chat
+  protected static ObjectProperty<javafx.scene.image.Image> backgroundImageProperty =
       new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> forestRodImageProperty =
+
+  // Object properties for portal images
+  protected static ObjectProperty<javafx.scene.image.Image> portalImageProperty =
       new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> forestTreesRemovedImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> mainMapImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> mainMapRemovedImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> mainDarkImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> lavaDragonImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> lavaNoDragonImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> forestMiniImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> forestMiniTreesRemovedImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> fishingMiniImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> chestMiniImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> orbMiniImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> bridgeMiniImageProperty =
+  protected static ObjectProperty<javafx.scene.image.Image> portalOutlineImageProperty =
       new SimpleObjectProperty<>(null);
 
   // Instance variables to be accessible to all controllers
@@ -159,44 +150,111 @@ public class ControllerMethods {
     }
   }
 
+  protected void bindInventory() {
+    // Bind the inventory images to their image properties
+    fishingRodIcon.imageProperty().bind(fishingRodIconImageProperty);
+    axeIcon.imageProperty().bind(axeIconImageProperty);
+    fishIcon.imageProperty().bind(fishIconImageProperty);
+    planksIcon.imageProperty().bind(planksIconImageProperty);
+    blueOrb.imageProperty().bind(blueOrbImageProperty);
+    greenOrb.imageProperty().bind(greenOrbImageProperty);
+    redOrb.imageProperty().bind(redOrbImageProperty);
+  }
+
+  protected ImageView getFishingRodIcon() {
+    return fishingRodIcon;
+  }
+
+  protected ImageView getAxeIcon() {
+    return axeIcon;
+  }
+
+  protected ImageView getFishIcon() {
+    return fishIcon;
+  }
+
+  protected ImageView getPlanksIcon() {
+    return planksIcon;
+  }
+
+  protected ImageView getBlueOrb() {
+    return blueOrb;
+  }
+
+  protected ImageView getGreenOrb() {
+    return greenOrb;
+  }
+
+  protected ImageView getRedOrb() {
+    return redOrb;
+  }
+
   /** Method for adding the fishing rod to inventory */
   protected void findFishingRod() {
+    fishingRodIcon.setLayoutX(292);
+    fishingRodIcon.setLayoutY(566);
+    fishingRodIcon.setFitHeight(30);
+    fishingRodIcon.setFitWidth(30);
     Image fishingRodImage = new Image(getClass().getResourceAsStream("/images/fishingRodIcon.png"));
     fishingRodIconImageProperty.set(fishingRodImage);
   }
 
   /** Method for adding the axe to inventory */
   protected void findAxe() {
+    axeIcon.setLayoutX(296);
+    axeIcon.setLayoutY(566);
+    axeIcon.setFitHeight(30);
+    axeIcon.setFitWidth(30);
     Image axeImage = new Image(getClass().getResourceAsStream("/images/axeIcon.png"));
     axeIconImageProperty.set(axeImage);
   }
 
   /** Method for adding the fish to inventory */
   protected void findFish() {
+    fishIcon.setLayoutX(330);
+    fishIcon.setLayoutY(566);
+    fishIcon.setFitHeight(30);
+    fishIcon.setFitWidth(30);
     Image fishImage = new Image(getClass().getResourceAsStream("/images/fishIcon.png"));
     fishIconImageProperty.set(fishImage);
   }
 
   /** Method for adding the fish to inventory */
   protected void findPlanks() {
+    planksIcon.setLayoutX(330);
+    planksIcon.setLayoutY(566);
+    planksIcon.setFitHeight(30);
+    planksIcon.setFitWidth(30);
     Image planksImage = new Image(getClass().getResourceAsStream("/images/planksIcon.png"));
     planksIconImageProperty.set(planksImage);
   }
 
   /** Method for adding the blue orb to inventory */
   protected void findBlueOrb() {
+    blueOrb.setLayoutX(416.75);
+    blueOrb.setLayoutY(570.75);
+    blueOrb.setFitHeight(21);
+    blueOrb.setFitWidth(21);
     Image blueOrbImage = new Image(getClass().getResourceAsStream("/images/blueOrb.png"));
     blueOrbImageProperty.set(blueOrbImage);
   }
 
   /** Method for adding the green orb to inventory */
   protected void findGreenOrb() {
+    greenOrb.setLayoutX(450.25);
+    greenOrb.setLayoutY(570.75);
+    greenOrb.setFitHeight(21);
+    greenOrb.setFitWidth(21);
     Image greenOrbImage = new Image(getClass().getResourceAsStream("/images/greenOrb.png"));
     greenOrbImageProperty.set(greenOrbImage);
   }
 
   /** Method for adding the red orb to inventory */
   protected void findRedOrb() {
+    redOrb.setLayoutX(482.75);
+    redOrb.setLayoutY(570.25);
+    redOrb.setFitHeight(21);
+    redOrb.setFitWidth(21);
     Image redOrbImage = new Image(getClass().getResourceAsStream("/images/redOrb.png"));
     redOrbImageProperty.set(redOrbImage);
   }
@@ -220,98 +278,78 @@ public class ControllerMethods {
 
   /** Methods for settimg opacities of backgrouds behind chat overlay */
   protected void setForestAxeOpacity() {
-    removeBackgrounds();
-    forestAxeImageProperty.set(new Image(getClass().getResourceAsStream("/images/forestAxe.png")));
+    backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/forestAxe.png")));
   }
 
   protected void setForestRodOpacity() {
-    removeBackgrounds();
-    forestRodImageProperty.set(new Image(getClass().getResourceAsStream("/images/forestRod.png")));
+    backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/forestRod.png")));
   }
 
   protected void setForestTreesRemovedOpacity() {
-    removeBackgrounds();
-    forestTreesRemovedImageProperty.set(
+    backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/forestTreesRemoved.png")));
   }
 
   protected void setMainMapOpacity() {
-    removeBackgrounds();
-    mainMapImageProperty.set(new Image(getClass().getResourceAsStream("/images/mainMap.png")));
+    backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/mainMap.png")));
   }
 
   protected void setMainMapRemovedOpacity() {
-    removeBackgrounds();
-    mainMapRemovedImageProperty.set(
+    backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/mainMapRemoved.png")));
   }
 
   protected void setMainDarkOpacity() {
-    removeBackgrounds();
-    mainDarkImageProperty.set(new Image(getClass().getResourceAsStream("/images/mainDark.png")));
+    backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/mainDark.png")));
   }
 
   protected void setLavaDragonOpacity() {
-    removeBackgrounds();
-    lavaDragonImageProperty.set(
+    backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/lavaDragon.png")));
   }
 
   protected void setLavaNoDragonOpacity() {
-    removeBackgrounds();
-    lavaNoDragonImageProperty.set(
+    backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/lavaNoDragon.png")));
   }
 
   protected void setForestMiniOpacity() {
-    removeBackgrounds();
-    forestMiniImageProperty.set(
+    backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/forestMini.png")));
   }
 
   protected void setForestMiniTreesRemovedOpacity() {
-    removeBackgrounds();
-    forestMiniTreesRemovedImageProperty.set(
+    backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/forestMiniTreesRemoved.png")));
   }
 
   protected void setFishingMiniOpacity() {
-    removeBackgrounds();
-    fishingMiniImageProperty.set(
+    backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/fishingMini.png")));
   }
 
   protected void setChestMiniOpacity() {
-    removeBackgrounds();
-    chestMiniImageProperty.set(new Image(getClass().getResourceAsStream("/images/chestMini.png")));
+    backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/chestMini.png")));
   }
 
   protected void setOrbMiniOpacity() {
-    removeBackgrounds();
-    orbMiniImageProperty.set(new Image(getClass().getResourceAsStream("/images/orbMini.png")));
+    backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/orbMini.png")));
   }
 
   protected void setBridgeMiniOpacity() {
-    removeBackgrounds();
-    bridgeMiniImageProperty.set(
+    backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/bridgeMini.png")));
   }
 
-  /** Method for removing all backgrounds */
-  protected void removeBackgrounds() {
-    forestAxeImageProperty.set(null);
-    forestRodImageProperty.set(null);
-    forestTreesRemovedImageProperty.set(null);
-    mainMapImageProperty.set(null);
-    mainMapRemovedImageProperty.set(null);
-    mainDarkImageProperty.set(null);
-    lavaDragonImageProperty.set(null);
-    lavaNoDragonImageProperty.set(null);
-    forestMiniImageProperty.set(null);
-    forestMiniTreesRemovedImageProperty.set(null);
-    fishingMiniImageProperty.set(null);
-    chestMiniImageProperty.set(null);
-    orbMiniImageProperty.set(null);
-    bridgeMiniImageProperty.set(null);
+  protected void initialisePortal() {
+    portalImageProperty.set(new Image(getClass().getResourceAsStream("/images/portalFrame.gif")));
+    portalOutlineImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/portalFrameOutline.gif")));
+  }
+
+  protected void openPortal() {
+    portalImageProperty.set(new Image(getClass().getResourceAsStream("/images/glowyPortal.gif")));
+    portalOutlineImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/glowyPortalOutline.gif")));
   }
 }
