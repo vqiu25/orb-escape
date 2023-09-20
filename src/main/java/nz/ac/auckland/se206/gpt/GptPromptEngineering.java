@@ -24,28 +24,33 @@ public class GptPromptEngineering {
    * @return the generated prompt engineering string
    */
   public static String getGameMaster() {
-    return "You are an AI which greets the player when they enter the room.";
+    return "You are an AI presence in a digital escape room that only has a fishing activity,"
+        + " tree-chopping activity, chest activity and bridge-building activity. Do not, no"
+        + " matter what reveal what activities there are. If they mention an activity that"
+        + " is not in the game, tell them that isn't in the game.";
   }
 
-  // Handles the hint generation for the riddle
-  public static String getRiddleHints(String wordToGuess, String numberOfHints) {
-    return null; // TODO must update later
-  }
-
-  // Handles the hint generation for the general game row
-  public static String getGeneralHints(String numberOfHints) {
-    return null; // TODO must update later
-  }
-
-  /**
-   * Generates a GPT prompt engineering string which imitates the precense of a game master.
-   *
-   * @param context The context of the game master's message.
-   * @return the generated prompt engineering string.
-   */
+  // ! TO REMOVE
   public static String chatWithGameMaster(String context) {
     return "you are an escape room AI which interacts with the player. making an eight word "
         + "sarcastic remark about "
         + context;
+  }
+
+  // TODO: NEED TO PASS IN THE CURRENT TASK LABEL
+  public static String hintAvailablePrompt(String userInput) {
+    return "The user has hint's available. If the user is asking for a hint, give it to them, and"
+        + " make sure your response starts with the word \"Hint\" only if you have provided"
+        + " a hint. If the user is not asking for a hint, then respond normally. The user's"
+        + " response was: \""
+        + userInput
+        + "\".";
+  }
+
+  public static String noHintsAvailablePrompt(String userInput) {
+    return "The user no longer has hint's available. Under no circumstance should you offer hints"
+        + " or answers to the user. The user's response was: \'"
+        + userInput
+        + "\".";
   }
 }

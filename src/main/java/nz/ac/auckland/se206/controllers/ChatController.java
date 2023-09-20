@@ -128,11 +128,11 @@ public class ChatController extends ControllerMethods {
     }
 
     riddleChatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(0.8).setTopP(0.5).setMaxTokens(100);
+        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.4).setMaxTokens(100);
     runGpt(new ChatMessage("assistant", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess)));
 
     chatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(1.3).setTopP(0.5).setMaxTokens(100);
+        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.4).setMaxTokens(100);
     runGpt(new ChatMessage("assistant", GptPromptEngineering.getGameMaster()));
   }
 
@@ -195,13 +195,26 @@ public class ChatController extends ControllerMethods {
    * @throws IOException if there is an I/O error
    */
   private void onSendMessage() throws ApiProxyException, IOException {
+    // Get the user's message
     String message = inputText.getText();
+
     // If the user has not entered a message, do nothing
     if (message.trim().isEmpty()) {
       sendButtonPressed.setOpacity(0);
       return;
     }
 
+    // Add the user's message to the chat text area
+    ChatMessage userMessage = new ChatMessage("user", message);
+
+    // If riddle book is open, append to riddle text area:
+    if (GameState.isRiddleBookOpen) {
+      appendChatMessage(userMessage, riddleTextChatArea);
+    } else {
+      appendChatMessage(userMessage, chatTextArea);
+    }
+
+    // Animate GPT loading screen:
     blueRectangle.setOpacity(1);
     selectRandomAniamtion();
 
@@ -209,17 +222,16 @@ public class ChatController extends ControllerMethods {
     inputText.clear();
     sendButtonPressed.setDisable(true);
 
-    // Add the user's message to the chat text area
-    ChatMessage msg = new ChatMessage("user", message);
+    // Prepend their message with a prompt depending on how many hints they have
+    ChatMessage msg;
 
-    // If riddle book is open, append to riddle text area:
-    if (GameState.isRiddleBookOpen) {
-      appendChatMessage(msg, riddleTextChatArea);
+    if (GameState.hintCount > 0) {
+      msg = new ChatMessage("user", GptPromptEngineering.hintAvailablePrompt(message));
     } else {
-      appendChatMessage(msg, chatTextArea);
+      msg = new ChatMessage("user", GptPromptEngineering.noHintsAvailablePrompt(message));
     }
 
-    // Create a new thread to run the GPT model
+    // Create a new thread to run the GPT model based on what the user inputted:
     Task<Void> gameMasterTask =
         new Task<Void>() {
           @Override
@@ -367,6 +379,7 @@ public class ChatController extends ControllerMethods {
   }
 
   public void setRiddleBookOpacity() {
+    riddleTextChatArea.setDisable(false);
     riddleBook.setOpacity(0.9);
     riddleTextArea.setOpacity(0.9);
     riddleTextChatArea.setOpacity(0.9);
@@ -374,6 +387,7 @@ public class ChatController extends ControllerMethods {
   }
 
   public void disableRiddleBookOpacity() {
+    riddleTextChatArea.setDisable(true);
     riddleBook.setOpacity(0);
     riddleTextArea.setOpacity(0);
     riddleTextChatArea.setOpacity(0);
