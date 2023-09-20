@@ -21,11 +21,9 @@ public class SceneManager {
     CHAT,
     SETTINGS,
     GAMEOVER,
-    TELEVISION,
     GAMEFINISHED,
     HELP,
-    STORY,
-    KEYPAD
+    STORY
   }
 
   // Hashmap which stores the states of scenes
