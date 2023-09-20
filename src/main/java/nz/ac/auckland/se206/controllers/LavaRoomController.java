@@ -318,8 +318,11 @@ public class LavaRoomController extends ControllerMethods {
       // disable dragon and dragonoutline
       dragon.setDisable(true);
       dragonOutline.setDisable(true);
-
       dragon.setOpacity(0);
+
+      blueDragon.setDisable(true);
+      blueDragonOutline.setDisable(true);
+      blueDragon.setOpacity(0);
 
     } else {
       // if the user has not collected the fish, prompt the user to collect the fish
