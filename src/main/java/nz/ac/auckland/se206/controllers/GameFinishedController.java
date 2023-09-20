@@ -5,10 +5,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class GameFinishedController extends ControllerMethods {
-  @FXML ImageView restartTwoButton;
-  @FXML ImageView restartThreeButton;
-  @FXML ImageView quitTwoButton;
-  @FXML ImageView quitThreeButton;
+  @FXML private ImageView restartTwoButton;
+  @FXML private ImageView restartThreeButton;
+  @FXML private ImageView quitTwoButton;
+  @FXML private ImageView quitThreeButton;
 
   @FXML
   private void restartHover(MouseEvent event) {

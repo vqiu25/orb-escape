@@ -34,21 +34,21 @@ public class BridgeGameController extends ControllerMethods {
   @FXML private ImageView smallPlankOutline;
   @FXML private ImageView smallFixed;
   @FXML private Rectangle smallRectangle;
-  DragImage imageSmall;
+  private DragImage imageSmall;
 
   // Medium Planks:
   @FXML private ImageView mediumPlank;
   @FXML private ImageView mediumPlankOutline;
   @FXML private ImageView mediumFixed;
   @FXML private Rectangle mediumRectangle;
-  DragImage imageMedium;
+  private DragImage imageMedium;
 
   // Large Planks:
   @FXML private ImageView largePlank;
   @FXML private ImageView largePlankOutline;
   @FXML private ImageView largeFixed;
   @FXML private Rectangle largeRectangle;
-  DragImage imageLarge;
+  private DragImage imageLarge;
 
   // Game Master
   @FXML private ImageView gameMasterDefault;

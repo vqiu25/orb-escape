@@ -6,20 +6,20 @@ import javafx.scene.shape.Rectangle;
 
 public class DragImage {
 
-  boolean correctPosition = false;
+  private boolean correctPosition = false;
 
-  double originalPlankX;
-  double originalPlankY;
+  private double originalPlankX;
+  private double originalPlankY;
 
-  double rectangleX;
-  double rectangleY;
+  private double rectangleX;
+  private double rectangleY;
 
-  double width;
-  double height;
+  private double width;
+  private double height;
 
-  ImageView plankOutline;
-  ImageView plank;
-  ImageView plankFixed;
+  private ImageView plankOutline;
+  private ImageView plank;
+  private ImageView plankFixed;
 
   // constructor
   public DragImage(

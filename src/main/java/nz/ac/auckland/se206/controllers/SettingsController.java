@@ -16,10 +16,10 @@ public class SettingsController extends ControllerMethods {
 
   @FXML private ImageView backTwoButton;
   @FXML private ImageView backThreeButton;
-  @FXML ImageView restartTwoButton;
-  @FXML ImageView restartThreeButton;
-  @FXML ImageView quitTwoButton;
-  @FXML ImageView quitThreeButton;
+  @FXML private ImageView restartTwoButton;
+  @FXML private ImageView restartThreeButton;
+  @FXML private ImageView quitTwoButton;
+  @FXML private ImageView quitThreeButton;
 
   public void initialize() throws ApiProxyException {
     // Bind the labels to the display values

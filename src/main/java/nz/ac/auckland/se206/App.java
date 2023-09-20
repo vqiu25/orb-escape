@@ -10,7 +10,6 @@ import nz.ac.auckland.se206.SceneManager.AppScene;
 import nz.ac.auckland.se206.controllers.ChatController;
 import nz.ac.auckland.se206.controllers.ForestRoomController;
 import nz.ac.auckland.se206.controllers.LavaRoomController;
-import nz.ac.auckland.se206.controllers.RoomController;
 
 /**
  * This is the entry point of the JavaFX application, while you can change this class, it should
@@ -21,11 +20,10 @@ public class App extends Application {
   private static Scene currentScene;
 
   // Used to store a reference which can be passed:
-  private static RoomController roomController;
   private static LavaRoomController lavaRoomController;
   private static ForestRoomController forestRoomController;
   private static ChatController chatController;
-  private static Stage stageTest;
+  private static Stage currentStage;
 
   public static void main(final String[] args) {
     launch();
@@ -37,7 +35,7 @@ public class App extends Application {
    * @return Stage reference.
    */
   public static Stage getStage() {
-    return stageTest;
+    return currentStage;
   }
 
   /**
@@ -60,15 +58,6 @@ public class App extends Application {
    */
   public static void setScene(AppScene scene) {
     currentScene.setRoot(SceneManager.getScene(scene));
-  }
-
-  /**
-   * Returns the room controller.
-   *
-   * @return Reference to the room controller.
-   */
-  public static RoomController getRoomController() {
-    return roomController;
   }
 
   /**
@@ -110,7 +99,7 @@ public class App extends Application {
     // Set mini game states:
     int randomInt = new Random().nextInt(10);
 
-    if (randomInt > 5) {
+    if (randomInt > 4) {
       GameState.isLavaBridge = true;
       GameState.isForestTreeChopping = true;
     } else {
@@ -128,22 +117,16 @@ public class App extends Application {
     SceneManager.addScene(AppScene.OPTIONS, loadLoader("options").load());
     SceneManager.addScene(AppScene.HELP, loadLoader("help").load());
     SceneManager.addScene(AppScene.TERMINAL, loadLoader("terminal").load());
-    SceneManager.addScene(AppScene.TELEVISION, loadLoader("television").load());
-    SceneManager.addScene(AppScene.KEYPAD, loadLoader("keypad").load());
     SceneManager.addScene(AppScene.FISHING, loadLoader("fishingMiniGame").load());
     SceneManager.addScene(AppScene.TREES, loadLoader("treeChoppingMiniGame").load());
     SceneManager.addScene(AppScene.BRIDGE_GAME, loadLoader("bridgeGame").load());
     SceneManager.addScene(AppScene.CASTLE, loadLoader("castleRoom").load());
+    SceneManager.addScene(AppScene.ROOM, loadLoader("room").load());
 
     // Store reference to chat controller
     FXMLLoader chat = loadLoader("chat");
     SceneManager.addScene(AppScene.CHAT, chat.load());
     chatController = chat.getController();
-
-    // Store references to the room controller, forest room controller and lava room controller
-    FXMLLoader room = loadLoader("room");
-    SceneManager.addScene(AppScene.ROOM, room.load());
-    roomController = room.getController();
 
     // Store references to the lava room controller:
     FXMLLoader forestRoom = loadLoader("forestRoom");
@@ -155,7 +138,7 @@ public class App extends Application {
     lavaRoomController = lavaRoom.getController();
 
     // Store stage reference:
-    stageTest = stage;
+    currentStage = stage;
 
     // Fetch start scene from hashmap and set scene:
     currentScene = new Scene(loadLoader("start").load(), 800, 625);

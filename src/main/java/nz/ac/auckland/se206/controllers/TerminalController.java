@@ -39,21 +39,21 @@ public class TerminalController extends ControllerMethods {
   @FXML private ImageView blueOrbOutline;
   @FXML private ImageView blueOrbFixed;
   @FXML private Rectangle blueOrbPlaced;
-  DragImage blueOrbImage;
+  private DragImage blueOrbImage;
 
   // Green Orb:
   @FXML private ImageView greenOrb;
   @FXML private ImageView greenOrbOutline;
   @FXML private ImageView greenOrbFixed;
   @FXML private Rectangle greenOrbPlaced;
-  DragImage greenOrbImage;
+  private DragImage greenOrbImage;
 
   // Red Orb:
   @FXML private ImageView redOrb;
   @FXML private ImageView redOrbOutline;
   @FXML private ImageView redOrbFixed;
   @FXML private Rectangle redOrbPlaced;
-  DragImage redOrbImage;
+  private DragImage redOrbImage;
 
   // Game Master
   @FXML private ImageView gameMasterDefault;

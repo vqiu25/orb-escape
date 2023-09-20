@@ -1,23 +1,15 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Polygon;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.GameMaster;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
-import nz.ac.auckland.se206.gpt.ChatMessage;
-import nz.ac.auckland.se206.gpt.GptPromptEngineering;
-import nz.ac.auckland.se206.speech.TextToSpeech;
 import org.controlsfx.control.Notifications;
 
 /** Controller class for the room view. */
@@ -84,9 +76,6 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView settingsTwo;
   @FXML private ImageView settingsThree;
 
-  private TextToSpeech textToSpeech;
-  private GameMaster gameMaster;
-  private ChatMessage chatMessage;
   private int spamCount = 0;
 
   /** Initializes the room view, it is called when the room loads. */
@@ -192,21 +181,6 @@ public class RoomController extends ControllerMethods {
    */
   public void updateTaskLabel(String message) {
     lblTask.setText("Task: " + message);
-  }
-
-  /**
-   * Displays a dialog box with the given title, header text, and message.
-   *
-   * @param title the title of the dialog box
-   * @param headerText the header text of the dialog box
-   * @param message the message content of the dialog box
-   */
-  private void showDialog(String title, String headerText, String message) {
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle(title);
-    alert.setHeaderText(headerText);
-    alert.setContentText(message);
-    alert.showAndWait();
   }
 
   /**
@@ -326,9 +300,6 @@ public class RoomController extends ControllerMethods {
       // Update game state
       GameState.isRoomOrbCollected = true;
       updateTask();
-
-      // TODO: update orb image in inventory
-      // updateTaskLabel("[Insert Task]");
     }
   }
 
@@ -370,15 +341,12 @@ public class RoomController extends ControllerMethods {
       // Show notification - alerting user that they have found an orb
       orbFoundNotification();
 
-      // Make the blur orb appear in the inventory
+      // Make the blue orb appear in the inventory
       findBlueOrb();
 
       // Set game state:
       GameState.isRoomOrbCollected = true;
       updateTask();
-
-      // TODO: update orb image in inventory
-      // updateTaskLabel("[Insert Task]");
     }
   }
 
@@ -394,7 +362,11 @@ public class RoomController extends ControllerMethods {
 
   // Window
   @FXML
-  private void paneClick(MouseEvent event) {}
+  private void paneClick(MouseEvent event) {
+    Notifications message =
+        NotificationBuilder.createNotification("Game Master: ", "Ha ha ha... yeah no.", 5);
+    message.show();
+  }
 
   @FXML
   private void paneHover(MouseEvent event) {
@@ -549,9 +521,19 @@ public class RoomController extends ControllerMethods {
   @FXML
   private void codeClick(MouseEvent event) {
     if (GameState.isLightOn) {
-
+      // If light has been turned on, prompt user to turn off the light
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master: ",
+              "That looks like fluorescent text... Try turning off the lights!",
+              5);
+      message.show();
     } else {
-
+      // If the light has been turned off, tell user the code
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master: ", "206... I wonder what that means.", 5);
+      message.show();
     }
   }
 
@@ -571,164 +553,6 @@ public class RoomController extends ControllerMethods {
     } else {
       hiddenCodeOutline.setOpacity(0);
     }
-  }
-
-  /**
-   * Allows user to enter a pin to unlock the door
-   *
-   * @param event Mouse click event.
-   */
-  @FXML
-  private void doorClick(MouseEvent event) {
-    // If riddle has not been resolved, prompt user to solve the riddle:
-    if (!GameState.isRiddleResolved) {
-      showDialog(
-          "Info",
-          "Door Locked! Seems like we need a pin...",
-          "Solve the riddle to recieve a clue!");
-
-      // Take user to chat window to solve riddle:
-      App.setScene(AppScene.CHAT);
-      return;
-    }
-
-    // If riddle has been solved but the item has not been clicked:
-    if (GameState.isRiddleResolved && !GameState.itemClicked) {
-      showDialog(
-          "Info",
-          "Door Locked! Seems like we need a pin...",
-          "Use your answer from the riddle to recieve the next clue!");
-      return;
-    }
-
-    // If riddle has been solved and item has been clicked, prompt user to escape
-    if (GameState.isRiddleResolved && GameState.itemClicked) {
-      // Switch scene to the keypad:
-      App.setScene(AppScene.KEYPAD);
-      return;
-    }
-  }
-
-  /**
-   * If the riddle has been solved, the user can interact with the TV to see clue.
-   *
-   * @param event Mouse click event.
-   */
-  @FXML
-  private void televisionClick(MouseEvent event) {
-
-    // If the riddle has not been solved, give user help
-    if (!GameState.isRiddleResolved) {
-      spamCount++;
-
-      if (spamCount == 5) {
-        Notifications message2 =
-            NotificationBuilder.createNotification(
-                "Game Master:", "Open the chat to talk to me and get your first clue!", 6);
-        message2.show();
-      }
-      return;
-    }
-
-    // if the item has been clicked, then change GUI to show the math problem on the screen
-    if (GameState.itemClicked) {
-      // Switch GUI to TV screen:
-      App.setScene(AppScene.TELEVISION);
-      updateTaskLabel("Enter the pin to the door!");
-    }
-  }
-
-  /**
-   * When the clock is clicked, the current local time is spoken.
-   *
-   * @param event Mouse click event.
-   */
-  @FXML
-  private void clockClick(MouseEvent event) {
-    Task<Void> clockSpeakTask =
-        new Task<Void>() {
-          @Override
-          protected Void call() throws Exception {
-            textToSpeech = new TextToSpeech();
-            textToSpeech.speak(
-                "The current time is: "
-                    + new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime()));
-
-            return null;
-          }
-        };
-
-    Thread clockSpeakThread = new Thread(clockSpeakTask);
-    clockSpeakThread.start();
-  }
-
-  /**
-   * This method is called when the user clicks on the bookshelf:
-   *
-   * @param event Mouse click event.
-   */
-  @FXML
-  private void bookClick(MouseEvent event) {
-    Notifications message =
-        NotificationBuilder.createNotification(
-            "Game Master:", "Who even reads books these days!", 3);
-    message.show();
-  }
-
-  /**
-   * This method is called when the user clicks on the bookshelf:
-   *
-   * @param event Mouse click event.
-   */
-  @FXML
-  void windowClick(MouseEvent event) {
-    Notifications message =
-        NotificationBuilder.createNotification("Game Master:", "Ha ha ha... yeah.. good luck.", 3);
-    message.show();
-  }
-
-  /**
-   * This method is called when the user does not talk to the game master to answer the riddle.
-   *
-   * @param event Mouse click event.
-   */
-  @FXML
-  private void helpUser(MouseEvent event) {
-
-    spamCount++;
-
-    // If the user clicks any part of the screen 6 times, help will be shown:
-    if (spamCount == 5) {
-      Notifications message2 =
-          NotificationBuilder.createNotification(
-              "Game Master:", "Open the chat to talk to me and get your first clue!", 6);
-      message2.show();
-    }
-  }
-
-  /**
-   * This method is called when the user clicks on the rug or cabinet. It will call the game master
-   * (powered by GPT) to generate a response.
-   */
-  private void gameMaster() {
-    Task<Void> task =
-        new Task<Void>() {
-          @Override
-          protected Void call() throws Exception {
-            // Get game master response:
-            ChatMessage msg =
-                new ChatMessage(
-                    "user",
-                    GptPromptEngineering.chatWithGameMaster(
-                        "about finally finding a television remote"));
-            chatMessage = gameMaster.runGameMaster(msg);
-
-            return null;
-          }
-        };
-
-    Thread thread = new Thread(task);
-    thread.start();
   }
 
   // Bottom Right Game Master Button
@@ -783,8 +607,13 @@ public class RoomController extends ControllerMethods {
 
     // If the user has already resolved the riddle, disability the ability to traverse back to the
     // riddle scene
-    // TODO: Notificaiton Here
-    if (GameState.isRiddleResolved) return;
+    if (GameState.isRiddleResolved) {
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master:", "You've already solved the riddle!", 5);
+      message.show();
+      return;
+    }
 
     // Set boolean
     GameState.isRiddleBookOpen = true;
@@ -814,10 +643,14 @@ public class RoomController extends ControllerMethods {
   }
 
   private void giveRiddleHelp() {
+    // If the riddle has not been resolved, give help to the user
     if (!GameState.isRiddleResolved) {
       spamCount++;
 
+      // If the user has clicked on the cabinet or rug 5 times:
       if (spamCount == 5) {
+
+        // Prompt user to find the book
         Notifications message2 =
             NotificationBuilder.createNotification(
                 "Game Master:", "In a book, you will find your first clue!", 6);
