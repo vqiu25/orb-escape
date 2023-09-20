@@ -68,17 +68,24 @@ public class ControllerMethods {
   protected int count;
   protected Timer timer = new Timer(true);
 
-  /** Starts the timer. */
+  /** Starts the count down timer for game. */
   protected void startTimer() {
+    // Retrieve the duration of the game
     count = GameState.timerCount;
+
     timer.scheduleAtFixedRate(
         new TimerTask() {
           @Override
           public void run() {
+
+            // If the user has escaped from the room, cancel timer
             if (GameState.isRoomEscaped) {
               timer.cancel();
             } else {
+              // Decrement the count and update the timer.
               count--;
+
+              // If the timer reaches 0, cancel the timer and switch scene to game over.
               if (count == 0) {
                 timer.cancel();
                 gameOver();

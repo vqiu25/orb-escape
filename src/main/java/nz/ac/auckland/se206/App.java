@@ -99,7 +99,7 @@ public class App extends Application {
     // Set mini game states:
     int randomInt = new Random().nextInt(10);
 
-    if (randomInt > 5) {
+    if (randomInt > 4) {
       GameState.isLavaBridge = true;
       GameState.isForestTreeChopping = true;
     } else {
