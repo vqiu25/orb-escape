@@ -44,21 +44,8 @@ public class ChatController extends ControllerMethods {
   @FXML private TextArea riddleTextArea;
   @FXML private TextArea riddleTextChatArea;
 
-  // Backgrounds
-  @FXML private ImageView forestAxe;
-  @FXML private ImageView forestRod;
-  @FXML private ImageView forestTreesRemoved;
-  @FXML private ImageView mainMap;
-  @FXML private ImageView mainMapRemoved;
-  @FXML private ImageView mainDark;
-  @FXML private ImageView lavaDragon;
-  @FXML private ImageView lavaNoDragon;
-  @FXML private ImageView forestMini;
-  @FXML private ImageView forestMiniTreesRemoved;
-  @FXML private ImageView fishingMini;
-  @FXML private ImageView chestMini;
-  @FXML private ImageView orbMini;
-  @FXML private ImageView bridgeMini;
+  // Background
+  @FXML private ImageView background;
 
   // Inventory Items
   @FXML private ImageView fishingRodIcon = getFishingRodIcon();
@@ -90,23 +77,8 @@ public class ChatController extends ControllerMethods {
     // Bind the inventory images to their image properties
     bindInventory();
 
-    // Bind the backgrounds to their respective image properties
-    forestAxe.imageProperty().bind(ControllerMethods.forestAxeImageProperty);
-    forestRod.imageProperty().bind(ControllerMethods.forestRodImageProperty);
-    forestTreesRemoved.imageProperty().bind(ControllerMethods.forestTreesRemovedImageProperty);
-    mainMap.imageProperty().bind(ControllerMethods.mainMapImageProperty);
-    mainMapRemoved.imageProperty().bind(ControllerMethods.mainMapRemovedImageProperty);
-    mainDark.imageProperty().bind(ControllerMethods.mainDarkImageProperty);
-    lavaDragon.imageProperty().bind(ControllerMethods.lavaDragonImageProperty);
-    lavaNoDragon.imageProperty().bind(ControllerMethods.lavaNoDragonImageProperty);
-    forestMini.imageProperty().bind(ControllerMethods.forestMiniImageProperty);
-    forestMiniTreesRemoved
-        .imageProperty()
-        .bind(ControllerMethods.forestMiniTreesRemovedImageProperty);
-    fishingMini.imageProperty().bind(ControllerMethods.fishingMiniImageProperty);
-    chestMini.imageProperty().bind(ControllerMethods.chestMiniImageProperty);
-    orbMini.imageProperty().bind(ControllerMethods.orbMiniImageProperty);
-    bridgeMini.imageProperty().bind(ControllerMethods.bridgeMiniImageProperty);
+    // Bind the background to its image properties
+    background.imageProperty().bind(ControllerMethods.backgroundImageProperty);
 
     // Randomly select either cabinet or rug as the word to guess:
     String wordToGuess;
