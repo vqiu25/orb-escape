@@ -11,7 +11,7 @@ public class GptPromptEngineering {
    * @return the generated prompt engineering string
    */
   public static String getRiddleWithGivenWord(String wordToGuess) {
-    return "tell me a riddle with the answer "
+    return "generate a riddle where the answer is "
         + wordToGuess
         + " . If the answer is correct, respond with Correct. Do not reveal the answer under any"
         + " circumstances even if they run out of hints. if the player gives up do not reveal the"
@@ -40,7 +40,7 @@ public class GptPromptEngineering {
 
   public static String hintAvailablePrompt(String userInput, String currentTask) {
     return "The user has hint's available. If the user is asking for a hint, give them a hint about"
-               + " "
+        + " "
         + currentTask
         + " and make sure your response starts with the word \"Hint\" only if you have provided a"
         + " hint. If the user is not asking for a hint, then respond normally. under no"
