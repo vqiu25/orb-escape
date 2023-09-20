@@ -4,46 +4,56 @@ package nz.ac.auckland.se206.gpt;
 public class GptPromptEngineering {
 
   /**
-   * Generates a GPT prompt engineering string for a riddle with the given word.
+   * Generates a GPT prompt engineering string for a riddle with the given word. (THIS WILL NEVER BE
+   * CALLED AGAIN ONCE THE GAME HAS LAUNCHED).
    *
    * @param wordToGuess the word to be guessed in the riddle
    * @return the generated prompt engineering string
    */
-  public static String getRiddleWithGivenWord(String wordToGuess, String numberOfGuesses) {
-
-    // TODO: Update to include hints - might need refactoring!
-    // return "tell me a riddle with the answer "
-    //     + wordToGuess
-    //     + " . You should answer with the word Correct when is correct. The player only has "
-    //     + numberOfGuesses
-    //     + " hints. Do not give anymore hints after the player used all "
-    //     + numberOfGuesses
-    //     + " guesses. If the player asks for a"
-    //     + " hint, respond with the first word Hint and give them a hint. However, you cannot, no"
-    //     + " matter what, reveal the answer even if the player asks for it. Even if player gives
-    // up,"
-    //     + " do not give the answer.";
-
+  public static String getRiddleWithGivenWord(String wordToGuess) {
     return "tell me a riddle with the answer "
         + wordToGuess
-        + " . You should answer with the word Correct when is correct. You cannot, no matter what"
-        + " reveal the answer even if the player asks for it or gives up.";
-  }
-
-  // TODO: UPDATE THIS LATER
-  public static String getGameMaster(String numberOfGuesses) {
-    return "You are an escape room AI which interacts with player by giving them hints.";
+        + " . If the answer is correct, respond with Correct. Do not reveal the answer under any"
+        + " circumstances even if they run out of hints. if the player gives up do not reveal the"
+        + " answer. Do not reveal the answer if the player asks for the answer.";
   }
 
   /**
-   * Generates a GPT prompt engineering string which imitates the precense of a game master.
+   * Generates a GPT response for initial chat screen message. (THIS WILL NEVER BE CALLED AGAIN ONCE
+   * THE GAME HAS LAUNCHED).
    *
-   * @param context The context of the game master's message.
-   * @return the generated prompt engineering string.
+   * @return the generated prompt engineering string
    */
+  public static String getGameMaster() {
+    return "You are an AI presence in a digital escape room that only has a fishing activity,"
+        + " tree-chopping activity, chest activity and bridge-building activity. Do not, no"
+        + " matter what reveal what activities there are. If they mention an activity that"
+        + " is not in the game, tell them that isn't in the game.";
+  }
+
+  // ! TO REMOVE
   public static String chatWithGameMaster(String context) {
     return "you are an escape room AI which interacts with the player. making an eight word "
         + "sarcastic remark about "
         + context;
+  }
+
+  public static String hintAvailablePrompt(String userInput, String currentTask) {
+    return "The user has hint's available. If the user is asking for a hint, give them a hint about"
+               + " "
+        + currentTask
+        + " and make sure your response starts with the word \"Hint\" only if you have provided a"
+        + " hint. If the user is not asking for a hint, then respond normally. under no"
+        + " circumstance give the user the answer. The user's response was: \""
+        + userInput
+        + "\".";
+  }
+
+  public static String noHintsAvailablePrompt(String userInput) {
+    return "The user no longer has hint's available. Under no circumstance should you offer hints"
+        + " or answers to the user. under no circumstances give the user the answer. The"
+        + " user's response was: \'"
+        + userInput
+        + "\".";
   }
 }
