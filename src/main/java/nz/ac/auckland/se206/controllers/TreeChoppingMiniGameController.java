@@ -42,13 +42,13 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
   @FXML private ImageView gameMasterChat;
 
   // Inventory Items
-  @FXML private ImageView fishingRodIcon = getFishingRodIcon();
-  @FXML private ImageView axeIcon = getAxeIcon();
-  @FXML private ImageView fishIcon = getFishIcon();
-  @FXML private ImageView planksIcon = getPlanksIcon();
-  @FXML private ImageView blueOrb = getBlueOrb();
-  @FXML private ImageView greenOrb = getGreenOrb();
-  @FXML private ImageView redOrb = getRedOrb();
+  @FXML private ImageView fishingRodIcon;
+  @FXML private ImageView axeIcon;
+  @FXML private ImageView fishIcon;
+  @FXML private ImageView planksIcon;
+  @FXML private ImageView blueOrb;
+  @FXML private ImageView greenOrb;
+  @FXML private ImageView redOrb;
 
   private int chopCount = 0;
   private int orbDropAfter = new Random().nextInt(8) + 1;
@@ -60,6 +60,15 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
     lblTimer.textProperty().bind(ControllerMethods.displayTime);
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
+
+    // Initialise the inventory items
+    fishingRodIcon = getFishingRodIcon();
+    axeIcon = getAxeIcon();
+    fishIcon = getFishIcon();
+    planksIcon = getPlanksIcon();
+    blueOrb = getBlueOrb();
+    greenOrb = getGreenOrb();
+    redOrb = getRedOrb();
 
     // Bind the inventory images to their image properties
     bindInventory();
