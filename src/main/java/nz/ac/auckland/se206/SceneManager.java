@@ -29,6 +29,9 @@ public class SceneManager {
   // Hashmap which stores the states of scenes
   public static HashMap<AppScene, Parent> sceneMap = new HashMap<AppScene, Parent>();
 
+  // Stack data structure for storing previously accessed scenes
+  public static Stack<AppScene> sceneStack = new Stack<AppScene>();
+
   /**
    * Adds the inputted scene to the hashmap.
    *
@@ -48,7 +51,4 @@ public class SceneManager {
   public static Parent getScene(AppScene scene) {
     return sceneMap.get(scene);
   }
-
-  // Stack data structure for storing previously accessed scenes
-  public static Stack<AppScene> sceneStack = new Stack<AppScene>();
 }
