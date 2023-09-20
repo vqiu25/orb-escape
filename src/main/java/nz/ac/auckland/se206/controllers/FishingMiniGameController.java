@@ -39,13 +39,13 @@ public class FishingMiniGameController extends ControllerMethods {
   @FXML private ImageView gameMasterChat;
 
   // Inventory Items
-  @FXML private ImageView fishingRodIcon;
-  @FXML private ImageView axeIcon;
-  @FXML private ImageView fishIcon;
-  @FXML private ImageView planksIcon;
-  @FXML private ImageView blueOrb;
-  @FXML private ImageView greenOrb;
-  @FXML private ImageView redOrb;
+  @FXML private ImageView fishingRodIcon = getFishingRodIcon();
+  @FXML private ImageView axeIcon = getAxeIcon();
+  @FXML private ImageView fishIcon = getFishIcon();
+  @FXML private ImageView planksIcon = getPlanksIcon();
+  @FXML private ImageView blueOrb = getBlueOrb();
+  @FXML private ImageView greenOrb = getGreenOrb();
+  @FXML private ImageView redOrb = getRedOrb();
 
   @FXML private Rectangle rodRectangle;
 
@@ -60,13 +60,7 @@ public class FishingMiniGameController extends ControllerMethods {
     lblHints.textProperty().bind(ControllerMethods.displayHints);
 
     // Bind the inventory images to their image properties
-    fishingRodIcon.imageProperty().bind(ControllerMethods.fishingRodIconImageProperty);
-    axeIcon.imageProperty().bind(ControllerMethods.axeIconImageProperty);
-    fishIcon.imageProperty().bind(ControllerMethods.fishIconImageProperty);
-    planksIcon.imageProperty().bind(ControllerMethods.planksIconImageProperty);
-    blueOrb.imageProperty().bind(ControllerMethods.blueOrbImageProperty);
-    greenOrb.imageProperty().bind(ControllerMethods.greenOrbImageProperty);
-    redOrb.imageProperty().bind(ControllerMethods.redOrbImageProperty);
+    bindInventory();
 
     // X axis animation for the fish
     TranslateTransition transition = new TranslateTransition();
