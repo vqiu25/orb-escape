@@ -66,7 +66,7 @@ public class TerminalController extends ControllerMethods {
     lblHints.textProperty().bind(ControllerMethods.displayHints);
 
     // Bind the inventory images to their image properties
-    bindInventory();
+    bindInventoryWithoutOrbs();
 
     // Initialise the drag and drop helper:
     blueOrbImage = new DragImage(blueOrbOutline, blueOrb, blueOrbFixed, blueOrbPlaced);
