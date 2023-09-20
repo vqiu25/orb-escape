@@ -225,9 +225,35 @@ public class ChatController extends ControllerMethods {
     // Prepend their message with a prompt depending on how many hints they have
     ChatMessage msg;
 
+    // If the user has hints available, prepend the message with a hint prompt:
     if (GameState.hintCount > 0) {
-      msg = new ChatMessage("user", GptPromptEngineering.hintAvailablePrompt(message));
+
+      String hint = "";
+
+      // Get game context for hints:
+      if (!GameState.isRiddleFound) {
+        hint = "looking for a book.";
+      } else if (!GameState.isRiddleResolved) {
+        hint = "";
+      } else if (!GameState.isRoomOrbCollected) {
+        hint = "the location to the orb being the answer to the riddle";
+      } else if (GameState.isForestTreeChopping && !GameState.isForestGameCompleted) {
+        hint = "the green orb being stuck on the tree";
+      } else if (GameState.isForestFishing && !GameState.isForestGameCompleted) {
+        hint = "the green orb being stuck to the fish";
+      } else if (GameState.isLavaBridge && !GameState.isLavaGameCompleted) {
+        hint = "fixing the bridge with some wood";
+      } else if (GameState.isLavaDragon && !GameState.isLavaGameCompleted) {
+        hint = "distracting the dragon with fish";
+      } else if (!GameState.isCodeFound) {
+        hint = "searching behind a map";
+      } else if (!GameState.isOrbsPlaced) {
+        hint = "activating the portal to escape";
+      }
+
+      msg = new ChatMessage("user", GptPromptEngineering.hintAvailablePrompt(message, hint));
     } else {
+      // Otherwise, prepend the message with a no hints prompt:
       msg = new ChatMessage("user", GptPromptEngineering.noHintsAvailablePrompt(message));
     }
 

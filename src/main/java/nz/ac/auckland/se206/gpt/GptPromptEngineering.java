@@ -38,11 +38,12 @@ public class GptPromptEngineering {
         + context;
   }
 
-  // TODO: NEED TO PASS IN THE CURRENT TASK LABEL
-  public static String hintAvailablePrompt(String userInput) {
-    return "The user has hint's available. If the user is asking for a hint, give it to them, and"
-        + " make sure your response starts with the word \"Hint\" only if you have provided"
-        + " a hint. If the user is not asking for a hint, then respond normally. under no"
+  public static String hintAvailablePrompt(String userInput, String currentTask) {
+    return "The user has hint's available. If the user is asking for a hint, give them a hint about"
+               + " "
+        + currentTask
+        + " and make sure your response starts with the word \"Hint\" only if you have provided a"
+        + " hint. If the user is not asking for a hint, then respond normally. under no"
         + " circumstance give the user the answer. The user's response was: \""
         + userInput
         + "\".";
