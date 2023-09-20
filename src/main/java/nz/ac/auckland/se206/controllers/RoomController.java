@@ -52,7 +52,6 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView glowParticleThree;
   @FXML private ImageView map;
   @FXML private ImageView portalBaseOutline;
-  @FXML private ImageView portalFrameOutline;
   @FXML private ImageView portal;
   @FXML private ImageView portalOutline;
 
@@ -99,6 +98,11 @@ public class RoomController extends ControllerMethods {
 
     // Bind the inventory images to their image properties
     bindInventory();
+
+    // Bind the portal images to their image properties
+    portal.imageProperty().bind(ControllerMethods.portalImageProperty);
+    portalOutline.imageProperty().bind(ControllerMethods.portalOutlineImageProperty);
+    initialisePortal();
 
     // // Initialize game master object:
     // gameMaster = new GameMaster();
@@ -523,26 +527,13 @@ public class RoomController extends ControllerMethods {
   @FXML
   private void portalHover(MouseEvent event) {
     portalBaseOutline.setOpacity(1);
-    if (GameState.isOrbsPlaced) {
-      portalOutline.setOpacity(1);
-    } else {
-      portalFrameOutline.setOpacity(1);
-    }
+    portalOutline.setOpacity(1);
   }
 
   @FXML
   private void portalUnhover(MouseEvent event) {
     portalBaseOutline.setOpacity(0);
-    if (GameState.isOrbsPlaced) {
-      portalOutline.setOpacity(0);
-    } else {
-      portalFrameOutline.setOpacity(0);
-    }
-  }
-
-  private void turnPortalOn() {
-    GameState.isOrbsPlaced = true;
-    portal.setOpacity(1);
+    portalOutline.setOpacity(0);
   }
 
   // Code

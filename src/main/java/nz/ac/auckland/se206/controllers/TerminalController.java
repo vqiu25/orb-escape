@@ -102,6 +102,7 @@ public class TerminalController extends ControllerMethods {
       // Update game state:
       GameState.isOrbsPlaced = true;
       GameState.isPortalOpen = true;
+      openPortal();
       removeOrbs();
       updateTask();
 

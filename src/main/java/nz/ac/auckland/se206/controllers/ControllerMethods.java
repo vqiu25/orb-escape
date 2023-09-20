@@ -49,6 +49,12 @@ public class ControllerMethods {
   protected static ObjectProperty<javafx.scene.image.Image> backgroundImageProperty =
       new SimpleObjectProperty<>(null);
 
+  // Object properties for portal images
+  protected static ObjectProperty<javafx.scene.image.Image> portalImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<javafx.scene.image.Image> portalOutlineImageProperty =
+      new SimpleObjectProperty<>(null);
+
   // Instance variables to be accessible to all controllers
   protected int count;
   protected Timer timer = new Timer(true);
@@ -333,5 +339,17 @@ public class ControllerMethods {
   protected void setBridgeMiniOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/bridgeMini.png")));
+  }
+
+  protected void initialisePortal() {
+    portalImageProperty.set(new Image(getClass().getResourceAsStream("/images/portalFrame.gif")));
+    portalOutlineImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/portalFrameOutline.gif")));
+  }
+
+  protected void openPortal() {
+    portalImageProperty.set(new Image(getClass().getResourceAsStream("/images/glowyPortal.gif")));
+    portalOutlineImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/glowyPortalOutline.gif")));
   }
 }
