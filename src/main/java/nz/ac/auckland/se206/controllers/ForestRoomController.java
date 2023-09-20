@@ -217,14 +217,7 @@ public class ForestRoomController extends ControllerMethods {
   // Fishing Rod
   @FXML
   private void fishingClick(MouseEvent event) {
-
-    // If user has NOT solved the riddle, tell them to solve the riddle first:
-    if (!GameState.isRiddleResolved && GameState.isForestFishing) {
-      solveRiddle();
-      return;
-    }
-
-    // Add the fishing rod to inventory and take the user to the fishing mini game
+    // Add the fishing rod to inventory
     if (GameState.isForestFishing) {
       GameState.isFishingRodTaken = true;
       updateTask();
@@ -234,7 +227,6 @@ public class ForestRoomController extends ControllerMethods {
       dockWithoutRod.setDisable(false);
       fishingMini.setDisable(true);
       findFishingRod();
-      App.setScene(AppScene.FISHING);
     }
   }
 
@@ -255,8 +247,19 @@ public class ForestRoomController extends ControllerMethods {
   // Dock without fishing rod
   @FXML
   private void dockClick(MouseEvent event) {
-    if (GameState.isForestFishing && GameState.isFishingRodTaken) {
-      App.setScene(AppScene.FISHING);
+    if (GameState.isForestFishing) {
+      if (!GameState.isRiddleFound) {
+        findRiddle();
+        return;
+      } else if (!GameState.isRiddleResolved) {
+        solveRiddle();
+        return;
+      } else if (!GameState.isRoomOrbCollected) {
+        findRoomOrb();
+        return;
+      } else if (GameState.isFishingRodTaken) {
+        App.setScene(AppScene.FISHING);
+      }
     }
   }
 
@@ -277,17 +280,17 @@ public class ForestRoomController extends ControllerMethods {
   // Trees
   @FXML
   private void treesClick(MouseEvent event) {
-
-    // If user has NOT solved the riddle, tell them to solve the riddle first:
-    if (!GameState.isRiddleResolved && GameState.isForestTreeChopping) {
-      solveRiddle();
-      return;
-    }
-
     if (GameState.isForestTreeChopping) {
-      if (GameState.isAxeTaken) {
-        // If they are playing the tree chopping version and they have collected the axe, go to tree
-        // chopping minigame
+      if (!GameState.isRiddleFound) {
+        findRiddle();
+        return;
+      } else if (!GameState.isRiddleResolved) {
+        solveRiddle();
+        return;
+      } else if (!GameState.isRoomOrbCollected) {
+        findRoomOrb();
+        return;
+      } else if (GameState.isAxeTaken) {
         App.setScene(AppScene.TREES);
       } else {
         // TODO: Make a notification to tell the user they need something to cut down the trees
@@ -345,13 +348,6 @@ public class ForestRoomController extends ControllerMethods {
   // Axe
   @FXML
   private void axeClick(MouseEvent event) {
-
-    // If user has NOT solved the riddle, tell them to solve the riddle first:
-    if (!GameState.isRiddleResolved) {
-      solveRiddle();
-      return;
-    }
-
     if (!GameState.isAxeTaken) {
       findAxe();
       axe.setOpacity(0);
@@ -425,11 +421,27 @@ public class ForestRoomController extends ControllerMethods {
     App.setScene(AppScene.CHAT);
   }
 
+  public void findRiddle() {
+    // Initialize orb notification message
+    Notifications orbMessage =
+        NotificationBuilder.createNotification(
+            "Game Master:", "See if you can find a riddle first!", 6);
+    orbMessage.show();
+  }
+
   public void solveRiddle() {
     // Initialize orb notification message
     Notifications orbMessage =
         NotificationBuilder.createNotification(
             "Game Master:", "Hmm... Try solving the riddle first!", 6);
+    orbMessage.show();
+  }
+
+  public void findRoomOrb() {
+    // Initialize orb notification message
+    Notifications orbMessage =
+        NotificationBuilder.createNotification(
+            "Game Master:", "Try searching for an orb first!", 6);
     orbMessage.show();
   }
 }

@@ -166,7 +166,7 @@
             </ImageView>
             <Label fx:id="chopCountLabel" alignment="CENTER" prefHeight="29.0" prefWidth="59.0" text="0/10" textFill="#dddddd">
                <font>
-                  <Font size="24.0" />
+                  <Font size="22.0" />
                </font>
             </Label>
          </children>

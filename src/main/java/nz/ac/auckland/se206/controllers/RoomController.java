@@ -313,8 +313,12 @@ public class RoomController extends ControllerMethods {
       // Show notification - alerting user that they have found an orb
       orbFoundNotification();
 
+      // Make the blue orb appear in the inventory
+      findBlueOrb();
+
       // Update game state
       GameState.isRoomOrbCollected = true;
+      updateTask();
 
       // TODO: update orb image in inventory
       // updateTaskLabel("[Insert Task]");
@@ -359,8 +363,12 @@ public class RoomController extends ControllerMethods {
       // Show notification - alerting user that they have found an orb
       orbFoundNotification();
 
+      // Make the blur orb appear in the inventory
+      findBlueOrb();
+
       // Set game state:
       GameState.isRoomOrbCollected = true;
+      updateTask();
 
       // TODO: update orb image in inventory
       // updateTaskLabel("[Insert Task]");
@@ -775,6 +783,9 @@ public class RoomController extends ControllerMethods {
 
   @FXML
   private void bookPressed(MouseEvent event) {
+    // Update game state
+    GameState.isRiddleFound = true;
+    updateTask();
 
     // If the user has already resolved the riddle, disability the ability to traverse back to the
     // riddle scene
