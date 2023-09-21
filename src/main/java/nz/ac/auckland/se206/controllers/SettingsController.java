@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager;
@@ -23,8 +24,8 @@ public class SettingsController extends ControllerMethods {
   @FXML private ImageView restartThreeButton;
   @FXML private ImageView quitTwoButton;
   @FXML private ImageView quitThreeButton;
-
-  private boolean isRestarting = false;
+  @FXML private Rectangle backButton;
+  @FXML private Rectangle backButtonDisabled;
 
   public void initialize() throws ApiProxyException {
     // Bind the labels to the display values
@@ -58,12 +59,8 @@ public class SettingsController extends ControllerMethods {
   private void backReleased(MouseEvent event) {
     backThreeButton.setOpacity(0);
 
-    if (isRestarting) {
-      showRestartNotification();
-    } else {
-      // Return to previous scene by popping stack:
-      App.setScene(SceneManager.sceneStack.pop());
-    }
+    // Return to previous scene by popping stack:
+    App.setScene(SceneManager.sceneStack.pop());
   }
 
   private void showRestartNotification() {
@@ -90,8 +87,9 @@ public class SettingsController extends ControllerMethods {
 
   @FXML
   private void restartReleased(MouseEvent event) throws IOException {
-    // Set flag to true:
-    isRestarting = true;
+
+    // Disable back button:
+    backButton.setDisable(true);
 
     showRestartNotification();
 

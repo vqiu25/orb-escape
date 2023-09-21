@@ -400,6 +400,7 @@ public class ControllerMethods {
 
   // Called when the restart button is pressed
   public static void restartGame() throws IOException {
+
     Task<Void> restartTask =
         new Task<Void>() {
           @Override
@@ -410,12 +411,15 @@ public class ControllerMethods {
             // Re-initialize game scenes and reset game states
             App.initializeGame();
 
-            // Switch to options scene
-            App.setScene(AppScene.OPTIONS);
-
             return null;
           }
         };
+
+    // On succeeded, set the scene to the start scene
+    restartTask.setOnSucceeded(
+        (event) -> {
+          App.setScene(AppScene.OPTIONS);
+        });
 
     // Run the task in a new thread
     Thread restartThread = new Thread(restartTask);
