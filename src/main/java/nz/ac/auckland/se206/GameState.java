@@ -100,7 +100,11 @@ public class GameState {
     if (randomInt > 4) {
       isLavaBridge = true;
       isForestTreeChopping = true;
+      isLavaDragon = false;
+      isForestFishing = false;
     } else {
+      isLavaBridge = false;
+      isForestTreeChopping = false;
       isLavaDragon = true;
       isForestFishing = true;
     }

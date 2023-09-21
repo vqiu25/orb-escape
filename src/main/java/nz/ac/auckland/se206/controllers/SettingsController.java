@@ -8,10 +8,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
-import org.controlsfx.control.Notifications;
 
 public class SettingsController extends ControllerMethods {
 
@@ -67,12 +65,6 @@ public class SettingsController extends ControllerMethods {
     App.setScene(SceneManager.sceneStack.pop());
   }
 
-  private void showRestartNotification() {
-    Notifications notification =
-        NotificationBuilder.createNotification("Game Master: ", "Game restarting!", 10);
-    notification.show();
-  }
-
   @FXML
   private void restartHover(MouseEvent event) {
     restartTwoButton.setOpacity(1);
@@ -96,8 +88,6 @@ public class SettingsController extends ControllerMethods {
     restartAnimation.setDisable(false);
     restartBackground.setOpacity(1);
     restartAnimation.setOpacity(1);
-
-    showRestartNotification();
 
     restartThreeButton.setOpacity(0);
     System.out.println("Restarting game...");

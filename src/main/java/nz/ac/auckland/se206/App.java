@@ -113,7 +113,6 @@ public class App extends Application {
     // Add scenes to hashmap - These will not be cleared:
     SceneManager.addScene(AppScene.START, loadLoader("start").load());
     SceneManager.addScene(AppScene.TUTORIAL, loadLoader("tutorial").load());
-    SceneManager.addScene(AppScene.OPTIONS, loadLoader("options").load());
     SceneManager.addScene(AppScene.HELP, loadLoader("help").load());
 
     // Store reference to game finished controller:
@@ -150,6 +149,7 @@ public class App extends Application {
     SceneManager.addScene(AppScene.TERMINAL, loadLoader("terminal").load());
     SceneManager.addScene(AppScene.TREES, loadLoader("treeChoppingMiniGame").load());
     SceneManager.addScene(AppScene.STORY, loadLoader("story").load());
+    SceneManager.addScene(AppScene.OPTIONS, loadLoader("options").load());
 
     // Store reference to chat controller
     FXMLLoader chat = loadLoader("chat");

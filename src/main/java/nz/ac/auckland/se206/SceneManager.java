@@ -64,5 +64,6 @@ public class SceneManager {
     sceneMap.remove(AppScene.TERMINAL);
     sceneMap.remove(AppScene.TREES);
     sceneMap.remove(AppScene.STORY);
+    sceneMap.remove(AppScene.OPTIONS);
   }
 }
