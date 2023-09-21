@@ -107,7 +107,6 @@ public class App extends Application {
   @Override
   public void start(final Stage stage) throws IOException {
 
-    // Initialize scenes:
     initializeGame();
 
     // Add scenes to hashmap - These will not be cleared:

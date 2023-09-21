@@ -49,6 +49,59 @@ public class ControllerMethods {
   // Instance variables to be accessible to all controllers
   protected static Timer timer = new Timer(true);
 
+  // Called when the restart button is pressed
+  public static void restartGame() throws IOException {
+
+    // Reset inventory items:
+    fishingRodIconImageProperty.set(null);
+    axeIconImageProperty.set(null);
+    fishIconImageProperty.set(null);
+    planksIconImageProperty.set(null);
+    blueOrbImageProperty.set(null);
+    greenOrbImageProperty.set(null);
+    redOrbImageProperty.set(null);
+
+    Task<Void> restartTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            // Remove current scenes from the hashmap
+            SceneManager.clearHashMap();
+
+            // Re-initialize game scenes and reset game states
+            App.initializeGame();
+
+            return null;
+          }
+        };
+
+    // On succeeded, set the scene to the start scene
+    restartTask.setOnSucceeded(
+        (event) -> {
+          // Cancel timer and make new timer object
+          timer.cancel();
+          timer = new Timer(true);
+
+          // Remove background images from both setting and game finished scenes
+          restartImages();
+
+          App.setScene(AppScene.OPTIONS);
+        });
+
+    // Run the task in a new thread
+    Thread restartThread = new Thread(restartTask);
+    restartThread.start();
+  }
+
+  // Removes and disables the background images from the settings and game finished scenes when
+  // restarting
+  private static void restartImages() {
+    // get the settings controller
+    App.getSettingsController().disableRestartImages();
+    App.getGameFinishedController().disableRestartingImages();
+  }
+
+  // The duration of the game in seconds
   protected int count;
 
   // Inventory Items
@@ -405,57 +458,5 @@ public class ControllerMethods {
     portalImageProperty.set(new Image(getClass().getResourceAsStream("/images/glowyPortal.gif")));
     portalOutlineImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/glowyPortalOutline.gif")));
-  }
-
-  // Called when the restart button is pressed
-  public static void restartGame() throws IOException {
-
-    // Reset inventory items:
-    fishingRodIconImageProperty.set(null);
-    axeIconImageProperty.set(null);
-    fishIconImageProperty.set(null);
-    planksIconImageProperty.set(null);
-    blueOrbImageProperty.set(null);
-    greenOrbImageProperty.set(null);
-    redOrbImageProperty.set(null);
-
-    Task<Void> restartTask =
-        new Task<Void>() {
-          @Override
-          protected Void call() throws Exception {
-            // Remove current scenes from the hashmap
-            SceneManager.clearHashMap();
-
-            // Re-initialize game scenes and reset game states
-            App.initializeGame();
-
-            return null;
-          }
-        };
-
-    // On succeeded, set the scene to the start scene
-    restartTask.setOnSucceeded(
-        (event) -> {
-          // Cancel timer and make new timer object
-          timer.cancel();
-          timer = new Timer(true);
-
-          // Remove background images from both setting and game finished scenes
-          restartImages();
-
-          App.setScene(AppScene.OPTIONS);
-        });
-
-    // Run the task in a new thread
-    Thread restartThread = new Thread(restartTask);
-    restartThread.start();
-  }
-
-  // Removes and disables the background images from the settings and game finished scenes when
-  // restarting
-  private static void restartImages() {
-    // get the settings controller
-    App.getSettingsController().disableRestartImages();
-    App.getGameFinishedController().disableRestartingImages();
   }
 }
