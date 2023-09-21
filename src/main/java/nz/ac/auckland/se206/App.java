@@ -8,7 +8,9 @@ import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import nz.ac.auckland.se206.controllers.ChatController;
 import nz.ac.auckland.se206.controllers.ForestRoomController;
+import nz.ac.auckland.se206.controllers.GameFinishedController;
 import nz.ac.auckland.se206.controllers.LavaRoomController;
+import nz.ac.auckland.se206.controllers.SettingsController;
 
 /**
  * This is the entry point of the JavaFX application, while you can change this class, it should
@@ -22,6 +24,8 @@ public class App extends Application {
   private static LavaRoomController lavaRoomController;
   private static ForestRoomController forestRoomController;
   private static ChatController chatController;
+  private static GameFinishedController gameFinishedController;
+  private static SettingsController settingsController;
   private static Stage currentStage;
 
   public static void main(final String[] args) {
@@ -86,6 +90,14 @@ public class App extends Application {
     return chatController;
   }
 
+  public static GameFinishedController getGameFinishedController() {
+    return gameFinishedController;
+  }
+
+  public static SettingsController getSettingsController() {
+    return settingsController;
+  }
+
   /**
    * This method is invoked when the application starts. It loads and shows the "Start" scene.
    *
@@ -101,10 +113,17 @@ public class App extends Application {
     // Add scenes to hashmap - These will not be cleared:
     SceneManager.addScene(AppScene.START, loadLoader("start").load());
     SceneManager.addScene(AppScene.TUTORIAL, loadLoader("tutorial").load());
-    SceneManager.addScene(AppScene.SETTINGS, loadLoader("settings").load());
-    SceneManager.addScene(AppScene.GAMEFINISHED, loadLoader("gamefinished").load());
-    SceneManager.addScene(AppScene.OPTIONS, loadLoader("options").load());
     SceneManager.addScene(AppScene.HELP, loadLoader("help").load());
+
+    // Store reference to game finished controller:
+    FXMLLoader gameFinished = loadLoader("gamefinished");
+    SceneManager.addScene(AppScene.GAMEFINISHED, gameFinished.load());
+    gameFinishedController = gameFinished.getController();
+
+    // Store refernce to settings controller:
+    FXMLLoader settings = loadLoader("settings");
+    SceneManager.addScene(AppScene.SETTINGS, settings.load());
+    settingsController = settings.getController();
 
     // Store stage reference:
     currentStage = stage;
@@ -130,6 +149,7 @@ public class App extends Application {
     SceneManager.addScene(AppScene.TERMINAL, loadLoader("terminal").load());
     SceneManager.addScene(AppScene.TREES, loadLoader("treeChoppingMiniGame").load());
     SceneManager.addScene(AppScene.STORY, loadLoader("story").load());
+    SceneManager.addScene(AppScene.OPTIONS, loadLoader("options").load());
 
     // Store reference to chat controller
     FXMLLoader chat = loadLoader("chat");

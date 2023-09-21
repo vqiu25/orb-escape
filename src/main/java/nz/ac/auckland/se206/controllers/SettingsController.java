@@ -2,15 +2,14 @@ package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
-import org.controlsfx.control.Notifications;
 
 public class SettingsController extends ControllerMethods {
 
@@ -26,6 +25,10 @@ public class SettingsController extends ControllerMethods {
   @FXML private ImageView quitThreeButton;
   @FXML private Rectangle backButton;
   @FXML private Rectangle restartButton;
+
+  // Restart images:
+  @FXML private ImageView restartBackground;
+  @FXML private ImageView restartAnimation;
 
   public void initialize() throws ApiProxyException {
     // Bind the labels to the display values
@@ -62,12 +65,6 @@ public class SettingsController extends ControllerMethods {
     App.setScene(SceneManager.sceneStack.pop());
   }
 
-  private void showRestartNotification() {
-    Notifications notification =
-        NotificationBuilder.createNotification("Game Master: ", "Game restarting!", 10);
-    notification.show();
-  }
-
   @FXML
   private void restartHover(MouseEvent event) {
     restartTwoButton.setOpacity(1);
@@ -86,9 +83,11 @@ public class SettingsController extends ControllerMethods {
 
   @FXML
   private void restartReleased(MouseEvent event) throws IOException {
-    // TODO: SHOW IMAGE OVERLAY THAT BLOCKS ALL OTHER BUTTONS
-
-    showRestartNotification();
+    // Enable and show restarting images
+    restartBackground.setDisable(false);
+    restartAnimation.setDisable(false);
+    restartBackground.setOpacity(1);
+    restartAnimation.setOpacity(1);
 
     restartThreeButton.setOpacity(0);
     System.out.println("Restarting game...");
@@ -122,5 +121,16 @@ public class SettingsController extends ControllerMethods {
   private void quitReleased(MouseEvent event) {
     quitThreeButton.setOpacity(0);
     System.exit(0);
+  }
+
+  public Node getRestartBackground() {
+    return null;
+  }
+
+  public void disableRestartImages() {
+    restartBackground.setDisable(true);
+    restartAnimation.setDisable(true);
+    restartBackground.setOpacity(0);
+    restartAnimation.setOpacity(0);
   }
 }
