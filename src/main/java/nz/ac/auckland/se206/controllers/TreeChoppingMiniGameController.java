@@ -11,8 +11,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
+import org.controlsfx.control.Notifications;
 
 public class TreeChoppingMiniGameController extends ControllerMethods {
 
@@ -100,8 +102,11 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
       if (chopCount == orbDropAfter) {
         orbDrop();
 
-        // TODO: Make a notification to say an orb fell from the tree
-        System.out.println("An orb fell from the tree!");
+        // Notify the user that an orb fell from the tree:
+        Notifications message =
+            NotificationBuilder.createNotification(
+                "Game Master:", "Look! An orb fell from the tree!", 5);
+        message.show();
 
       } else if (chopCount == 10) {
         // Completed the mini game
@@ -112,8 +117,10 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
         // Make the planks appear in the inventory
         findPlanks();
 
-        // TODO: Make a notification to say you cut all the trees down
-        System.out.println("You completed the mini game!");
+        // Notify the user that they hae chopped all the trees down:
+        Notifications message =
+            NotificationBuilder.createNotification("Game Master:", "Mini game completed!", 5);
+        message.show();
 
         // Update the trees image in the mini game
         miniTrees.setOpacity(0);
@@ -123,8 +130,11 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
         App.getForestRoomController().chopTrees();
       }
     } else {
-      // TODO: Make a notification say that the tress have already been chopped
-      System.out.println("You've already chopped those trees enough");
+      // Notify the user that they have chopped enough trees:
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game master: ", "You've already chopped enough trees!", 5);
+      message.show();
     }
     blueButtonThree.setOpacity(0);
   }
