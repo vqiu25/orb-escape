@@ -31,9 +31,7 @@ public class GameFinishedController extends ControllerMethods {
 
   @FXML
   private void restartReleased(MouseEvent event) throws IOException {
-
-    // Disable restart button:
-    restartButton.setDisable(true);
+    // TODO ENABLE IMAGE OVERLAY
 
     restartThreeButton.setOpacity(0);
     System.out.println("Restarting game...");

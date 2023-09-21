@@ -87,10 +87,7 @@ public class SettingsController extends ControllerMethods {
 
   @FXML
   private void restartReleased(MouseEvent event) throws IOException {
-
-    // Disable back button and restart button:
-    backButton.setDisable(true);
-    restartButton.setDisable(true);
+    // TODO: SHOW IMAGE OVERLAY THAT BLOCKS ALL OTHER BUTTONS
 
     showRestartNotification();
 
