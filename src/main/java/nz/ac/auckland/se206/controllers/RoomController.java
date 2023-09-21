@@ -62,6 +62,7 @@ public class RoomController extends ControllerMethods {
   // Riddle items
   @FXML private Polygon cabinet;
   @FXML private Polygon carpet;
+  @FXML private Polygon cabinetOrb;
 
   // Game Master
   @FXML private ImageView gameMasterDefault;
@@ -85,6 +86,7 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView settingsThree;
 
   private int spamCount = 0;
+  private boolean isDrawerOpen = false;
 
   /** Initializes the room view, it is called when the room loads. */
   public void initialize() {
@@ -286,13 +288,50 @@ public class RoomController extends ControllerMethods {
     giveRiddleHelp();
 
     // If the item has already been clicked, dont let them click again.
-    if (GameState.itemClicked) {
+    if (isDrawerOpen) {
       return;
     }
 
     // if cabinet riddle is selected and solved solved:
     if (GameState.isCabinet && GameState.isRiddleResolved) {
+
+      isDrawerOpen = true;
+      cabinetOpenedWithOrb.setOpacity(1);
+      cabinetOpenedWithOrbOutline.setOpacity(1);
+      cabinetOpenedEmpty.setOpacity(1);
+      cabinetOrb.setDisable(false);
+    }
+  }
+
+  @FXML
+  private void cabinetHover(MouseEvent event) {
+    if (isDrawerOpen == true && GameState.isRoomOrbCollected) {
+      cabinetOpenedEmptyOutline.setOpacity(1);
+    } else if (isDrawerOpen == true && !GameState.isRoomOrbCollected) {
+      cabinetOpenedWithOrbOutline.setOpacity(1);
+    } else {
+      cabinetOutline.setOpacity(1);
+    }
+  }
+
+  @FXML
+  private void cabinetUnhover(MouseEvent event) {
+    cabinetOutline.setOpacity(0);
+    cabinetOpenedWithOrbOutline.setOpacity(0);
+    cabinetOpenedEmptyOutline.setOpacity(0);
+  }
+
+  @FXML
+  private void cabinetOrbClicked(MouseEvent event) {
+    if (GameState.itemClicked) {
+      return;
+    }
+
+    if (GameState.isCabinet && GameState.isRiddleResolved) {
       GameState.itemClicked = true;
+      cabinetOpenedWithOrb.setOpacity(0);
+      cabinetOpenedWithOrbOutline.setOpacity(0);
+      cabinetOrb.setDisable(true);
 
       // Show notification - alerting user that they have found an orb
       orbFoundNotification();
@@ -307,13 +346,13 @@ public class RoomController extends ControllerMethods {
   }
 
   @FXML
-  private void cabinetHover(MouseEvent event) {
-    cabinetOutline.setOpacity(1);
+  private void cabinetOrbHover(MouseEvent event) {
+    cabinetOrbSelected.setOpacity(1);
   }
 
   @FXML
-  private void cabinetUnhover(MouseEvent event) {
-    cabinetOutline.setOpacity(0);
+  private void cabinetOrbUnhover(MouseEvent event) {
+    cabinetOrbSelected.setOpacity(0);
   }
 
   /**
@@ -339,7 +378,40 @@ public class RoomController extends ControllerMethods {
 
     // if rug riddle is selected and solved
     if (GameState.isRug && GameState.isRiddleResolved) {
+      // Remove the rug
+      floorRug.setOpacity(0);
+      rugOutline.setOpacity(0);
+      carpet.setDisable(true);
+
+      // Reveal the blue orb
+      floorBlueOrbOutline.setDisable(false);
+      floorBlueOrb.setOpacity(1);
+    }
+  }
+
+  @FXML
+  private void carpetHover(MouseEvent event) {
+    rugOutline.setOpacity(1);
+  }
+
+  @FXML
+  private void carpetUnhover(MouseEvent event) {
+    rugOutline.setOpacity(0);
+  }
+
+  @FXML
+  private void rugOrbClicked(MouseEvent event) {
+    if (GameState.itemClicked) {
+      return;
+    }
+
+    if (GameState.isRug && GameState.isRiddleResolved) {
       GameState.itemClicked = true;
+
+      // Hide the orb once retrieved
+      floorBlueOrbOutline.setDisable(true);
+      floorBlueOrb.setOpacity(0);
+      floorBlueOrbOutline.setOpacity(0);
 
       // Show notification - alerting user that they have found an orb
       orbFoundNotification();
@@ -354,13 +426,13 @@ public class RoomController extends ControllerMethods {
   }
 
   @FXML
-  private void carpetHover(MouseEvent event) {
-    rugOutline.setOpacity(1);
+  private void rugOrbHover(MouseEvent event) {
+    floorBlueOrbOutline.setOpacity(1);
   }
 
   @FXML
-  private void carpetUnhover(MouseEvent event) {
-    rugOutline.setOpacity(0);
+  private void rugOrbUnhover(MouseEvent event) {
+    floorBlueOrbOutline.setOpacity(0);
   }
 
   // Window
