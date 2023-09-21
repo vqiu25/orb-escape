@@ -32,13 +32,11 @@ public class ControllerMethods {
   protected static ObjectProperty<Image> redOrbImageProperty = new SimpleObjectProperty<>(null);
 
   // Object properties for background image behind the chat
-  protected static ObjectProperty<javafx.scene.image.Image> backgroundImageProperty =
-      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> backgroundImageProperty = new SimpleObjectProperty<>(null);
 
   // Object properties for portal images
-  protected static ObjectProperty<javafx.scene.image.Image> portalImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> portalOutlineImageProperty =
+  protected static ObjectProperty<Image> portalImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> portalOutlineImageProperty =
       new SimpleObjectProperty<>(null);
 
   // Instance variables to be accessible to all controllers

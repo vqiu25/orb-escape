@@ -37,8 +37,10 @@ public class GptPromptEngineering {
         + context;
   }
 
-  // This string is used to generate hints for the user based on the current task displayed.
+  // This string is used to generate hints for the user
   public static String hintAvailablePrompt(String userInput, String currentTask) {
+    // Return a prompt to GPT to generate a hint for the user by passing in the current task and the
+    // user's input
     return "The user has hint's available. If the user is asking for a hint, give them a hint about"
         + " "
         + currentTask
