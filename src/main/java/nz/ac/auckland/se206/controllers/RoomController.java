@@ -101,11 +101,6 @@ public class RoomController extends ControllerMethods {
     portal.imageProperty().bind(ControllerMethods.portalImageProperty);
     portalOutline.imageProperty().bind(ControllerMethods.portalOutlineImageProperty);
     initialisePortal();
-
-    // // Initialize game master object:
-    // gameMaster = new GameMaster();
-    // gameMaster.chatCompletionRequest();
-    // gameMaster();
   }
 
   /** Opens the chat window with the game master. */

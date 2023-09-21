@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
@@ -7,11 +8,13 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 
 public class ControllerMethods {
@@ -44,8 +47,9 @@ public class ControllerMethods {
       new SimpleObjectProperty<>(null);
 
   // Instance variables to be accessible to all controllers
+  protected static Timer timer = new Timer(true);
+
   protected int count;
-  protected Timer timer = new Timer(true);
 
   // Inventory Items
   @FXML private ImageView fishingRodIcon = new ImageView();
@@ -401,5 +405,46 @@ public class ControllerMethods {
     portalImageProperty.set(new Image(getClass().getResourceAsStream("/images/glowyPortal.gif")));
     portalOutlineImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/glowyPortalOutline.gif")));
+  }
+
+  // Called when the restart button is pressed
+  public static void restartGame() throws IOException {
+
+    // Reset inventory items:
+    fishingRodIconImageProperty.set(null);
+    axeIconImageProperty.set(null);
+    fishIconImageProperty.set(null);
+    planksIconImageProperty.set(null);
+    blueOrbImageProperty.set(null);
+    greenOrbImageProperty.set(null);
+    redOrbImageProperty.set(null);
+
+    Task<Void> restartTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            // Remove current scenes from the hashmap
+            SceneManager.clearHashMap();
+
+            // Re-initialize game scenes and reset game states
+            App.initializeGame();
+
+            return null;
+          }
+        };
+
+    // On succeeded, set the scene to the start scene
+    restartTask.setOnSucceeded(
+        (event) -> {
+          // Cancel timer and make new timer object
+          timer.cancel();
+          timer = new Timer(true);
+
+          App.setScene(AppScene.OPTIONS);
+        });
+
+    // Run the task in a new thread
+    Thread restartThread = new Thread(restartTask);
+    restartThread.start();
   }
 }
