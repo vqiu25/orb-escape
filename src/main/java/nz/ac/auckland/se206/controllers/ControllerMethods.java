@@ -402,6 +402,15 @@ public class ControllerMethods {
   // Called when the restart button is pressed
   public static void restartGame() throws IOException {
 
+    // Reset inventory items:
+    fishingRodIconImageProperty.set(null);
+    axeIconImageProperty.set(null);
+    fishIconImageProperty.set(null);
+    planksIconImageProperty.set(null);
+    blueOrbImageProperty.set(null);
+    greenOrbImageProperty.set(null);
+    redOrbImageProperty.set(null);
+
     Task<Void> restartTask =
         new Task<Void>() {
           @Override
