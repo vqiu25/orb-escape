@@ -304,17 +304,25 @@ public class ForestRoomController extends ControllerMethods {
   private void treesClick(MouseEvent event) {
     if (GameState.isForestTreeChopping) {
       if (!GameState.isRiddleFound) {
+        // Prompt user to find the riddle first before interacting with the trees
         findRiddle();
+
         return;
       } else if (!GameState.isRiddleResolved) {
+        // Prompt user to solve the riddle first before interacting with the trees
         solveRiddle();
+
         return;
       } else if (!GameState.isRoomOrbCollected) {
+        // Prompt user to find the orb first before interacting with the trees
         findRoomOrb();
+
         return;
       } else if (GameState.isAxeTaken) {
+        // If the axe has been taken, take user to tree chopping game:
         App.setScene(AppScene.TREES);
       } else {
+        // Axe not taken but riddle solved and orb collected
         Notifications message =
             NotificationBuilder.createNotification(
                 "Game Master: ", "Try finding something to cut down the trees!", 5);
