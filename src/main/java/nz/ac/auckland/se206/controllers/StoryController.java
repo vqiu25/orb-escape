@@ -34,7 +34,7 @@ public class StoryController extends ControllerMethods {
 
     // Initialize text to be passed into text to speech:
     story =
-        "Greetings, traveler. As an AI intelligence, I must inform you that you find yourself"
+        "Greetings, traveler. As an AI, I must inform you that you find yourself"
             + " trapped in a simulated reality.\n\n"
             + "Explore diverse worlds, solve puzzles, and ignite the portal to reclaim your"
             + " freedom.";
