@@ -149,15 +149,25 @@ public class ChatController extends ControllerMethods {
     }
   }
 
+  // Function that take a request and executes it, appending the output to a certain text area:
   public ChatMessage gptHelper(ChatCompletionRequest request, TextArea textArea) {
     try {
+      // Execute the request and get the result
       ChatCompletionResult chatCompletionResult = request.execute();
+
+      // Get the first choice from the result
       Choice result = chatCompletionResult.getChoices().iterator().next();
+
+      // Add the result to the request
       request.addMessage(result.getChatMessage());
+
+      // Append the result to the text area
       appendChatMessage(result.getChatMessage(), textArea);
+
       return result.getChatMessage();
     } catch (ApiProxyException e) {
       e.printStackTrace();
+
       return null;
     }
   }

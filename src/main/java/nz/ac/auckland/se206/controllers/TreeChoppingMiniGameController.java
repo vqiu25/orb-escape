@@ -152,14 +152,23 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
 
   private void orbDrop() {
     isOrbFallen = true;
+
+    // Create orb drop animation object
     TranslateTransition orbTransition = new TranslateTransition();
+
+    // Enable orb image to be visable
     greenOrbOnTree.setOpacity(1);
+
+    // Set orb drop animation properties
     orbTransition.setNode(greenOrbOnTree);
     orbTransition.setDuration(Duration.millis(1000));
     orbTransition.setByY(125);
     orbTransition.play();
 
+    // Create orb outline drop animation object
     TranslateTransition orbOutlineTransition = new TranslateTransition();
+
+    // Set orb outline drop animation properties
     orbOutlineTransition.setNode(greenOrbOnTreeOutline);
     orbOutlineTransition.setDuration(Duration.millis(1000));
     orbOutlineTransition.setByY(125);
@@ -169,12 +178,16 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
   // Green Orb Logic
   @FXML
   private void greenOrbHover(MouseEvent event) {
-    if (isOrbFallen && !isOrbCollected) greenOrbOnTreeOutline.setOpacity(1);
+    if (isOrbFallen && !isOrbCollected) {
+      greenOrbOnTreeOutline.setOpacity(1);
+    }
   }
 
   @FXML
   private void greenOrbUnhover(MouseEvent event) {
-    if (isOrbFallen && !isOrbCollected) greenOrbOnTreeOutline.setOpacity(0);
+    if (isOrbFallen && !isOrbCollected) {
+      greenOrbOnTreeOutline.setOpacity(0);
+    }
   }
 
   @FXML
@@ -190,8 +203,11 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
   }
 
   private void treeHitAnimation() {
+
+    // Create a timeline object - controls animations over a series of frames
     Timeline timeline = new Timeline();
 
+    // Frame 1 - Set the node to be animated
     KeyFrame keyFrameOne =
         new KeyFrame(
             Duration.millis(35),
@@ -200,6 +216,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
               miniTrees.setOpacity(0);
             });
 
+    // Frame 2 - Set the node to be animated
     KeyFrame keyFrameTwo =
         new KeyFrame(
             Duration.millis(70),
@@ -208,6 +225,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
               treeHitOne.setOpacity(0);
             });
 
+    // Frame 3 - Set the node to be animated
     KeyFrame keyFrameThree =
         new KeyFrame(
             Duration.millis(105),
@@ -216,6 +234,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
               treeHitTwo.setOpacity(0);
             });
 
+    // Frame 4 - Set the node to be animated
     KeyFrame keyFrameFour =
         new KeyFrame(
             Duration.millis(140),
@@ -224,6 +243,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
               treeHitThree.setOpacity(0);
             });
 
+    // Frame 5 - Set the node to be animated
     KeyFrame keyFrameFive =
         new KeyFrame(
             Duration.millis(175),

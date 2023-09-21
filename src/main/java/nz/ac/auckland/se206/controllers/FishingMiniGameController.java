@@ -159,11 +159,18 @@ public class FishingMiniGameController extends ControllerMethods {
 
   // Animation for the fishing line
   private void moveFishingLine() {
+    // Create a new transition object
     TranslateTransition rodTransition = new TranslateTransition();
+
+    // Set the node to be animated
     rodTransition.setNode(rodLine);
+
+    // Configure the animation
     rodTransition.setDuration(Duration.millis(2500));
     rodTransition.setCycleCount(2);
     rodTransition.setByY(155);
+
+    // Reverse the animation
     rodTransition.setAutoReverse(true);
     rodTransition.setOnFinished(
         event -> {
@@ -174,8 +181,13 @@ public class FishingMiniGameController extends ControllerMethods {
 
   // Animation for the rod hitbox
   private void moveFishingHitbox() {
+    // Create a new transition object
     TranslateTransition rodTransition = new TranslateTransition();
+
+    // Set the node to be animated
     rodTransition.setNode(rodHitbox);
+
+    // Animation configuration
     rodTransition.setDuration(Duration.millis(2500));
     rodTransition.setCycleCount(2);
     rodTransition.setByY(155);
@@ -185,8 +197,13 @@ public class FishingMiniGameController extends ControllerMethods {
 
   // Animation for fish bite
   private void moveFishBite() {
+    // Create a new transition object
     TranslateTransition hitBoxTransition = new TranslateTransition();
+
+    // Set the node to be animated
     hitBoxTransition.setNode(fishBite);
+
+    // Animation configuration
     hitBoxTransition.setDuration(Duration.millis(2500));
     hitBoxTransition.setCycleCount(2);
     hitBoxTransition.setByY(155);

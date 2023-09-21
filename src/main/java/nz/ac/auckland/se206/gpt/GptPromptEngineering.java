@@ -31,13 +31,13 @@ public class GptPromptEngineering {
         + " is not in the game, tell them that isn't in the game.";
   }
 
-  // ! TO REMOVE
   public static String chatWithGameMaster(String context) {
     return "you are an escape room AI which interacts with the player. making an eight word "
         + "sarcastic remark about "
         + context;
   }
 
+  // This string is used to generate hints for the user based on the current task displayed.
   public static String hintAvailablePrompt(String userInput, String currentTask) {
     return "The user has hint's available. If the user is asking for a hint, give them a hint about"
         + " "
