@@ -116,6 +116,16 @@
             <Image url="@../images/mapOutline.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="portal" fitHeight="150.0" fitWidth="200.0" layoutX="564.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/glowyPortal.gif" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="portalOutline" fitHeight="167.0" fitWidth="68.0" layoutX="559.0" layoutY="245.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/glowyPortalOutline.gif" />
+         </image>
+      </ImageView>
       <ImageView fx:id="darkOverlay" fitHeight="485.0" fitWidth="549.0" layoutX="132.75" layoutY="55.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/darkOverlay.png" />
@@ -129,16 +139,6 @@
       <ImageView fx:id="codeOutline" fitHeight="62.0" fitWidth="76.0" layoutX="186.0" layoutY="162.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/codeOutline.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="portal" fitHeight="150.0" fitWidth="200.0" layoutX="564.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/glowyPortal.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="portalOutline" fitHeight="167.0" fitWidth="68.0" layoutX="559.0" layoutY="245.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/glowyPortalOutline.gif" />
          </image>
       </ImageView>
       <ImageView fx:id="glowParticleTwo" fitHeight="25.0" fitWidth="18.0" layoutX="213.0" layoutY="173.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
