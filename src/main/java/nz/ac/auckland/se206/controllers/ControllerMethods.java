@@ -45,8 +45,9 @@ public class ControllerMethods {
       new SimpleObjectProperty<>(null);
 
   // Instance variables to be accessible to all controllers
+  protected static Timer timer = new Timer(true);
+
   protected int count;
-  protected Timer timer = new Timer(true);
 
   // Inventory Items
   @FXML private ImageView fishingRodIcon = new ImageView();
@@ -418,6 +419,10 @@ public class ControllerMethods {
     // On succeeded, set the scene to the start scene
     restartTask.setOnSucceeded(
         (event) -> {
+          // Cancel timer and make new timer object
+          timer.cancel();
+          timer = new Timer(true);
+
           App.setScene(AppScene.OPTIONS);
         });
 
