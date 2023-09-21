@@ -28,12 +28,18 @@ public class StoryController extends ControllerMethods {
 
   public void initialize() throws ApiProxyException {
     isPlaying = false;
+
+    // Create text to speech object:
     textToSpeech = new TextToSpeech();
+
+    // Initialize text to be passed into text to speech:
     story =
         "Greetings, traveler. As an AI intelligence, I must inform you that you find yourself"
             + " trapped in a simulated reality.\n\n"
             + "Explore diverse worlds, solve puzzles, and ignite the portal to reclaim your"
             + " freedom.";
+
+    // Set the text to be displayed on the text area:
     openingText.appendText(story);
   }
 

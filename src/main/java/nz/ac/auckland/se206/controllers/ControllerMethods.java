@@ -15,14 +15,6 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 
 public class ControllerMethods {
-  // Inventory Items
-  @FXML private ImageView fishingRodIcon = new ImageView();
-  @FXML private ImageView axeIcon = new ImageView();
-  @FXML private ImageView fishIcon = new ImageView();
-  @FXML private ImageView planksIcon = new ImageView();
-  @FXML private ImageView blueOrb = new ImageView();
-  @FXML private ImageView greenOrb = new ImageView();
-  @FXML private ImageView redOrb = new ImageView();
 
   // String properties for the timer, task and hints
   protected static StringProperty displayTime = new SimpleStringProperty(GameState.timerString);
@@ -30,20 +22,14 @@ public class ControllerMethods {
   protected static StringProperty displayHints = new SimpleStringProperty(GameState.hintString);
 
   // Object properties for all the images in the inventory
-  protected static ObjectProperty<javafx.scene.image.Image> fishingRodIconImageProperty =
+  protected static ObjectProperty<Image> fishingRodIconImageProperty =
       new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> axeIconImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> fishIconImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> planksIconImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> blueOrbImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> greenOrbImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> redOrbImageProperty =
-      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> axeIconImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> fishIconImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> planksIconImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> blueOrbImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> greenOrbImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> redOrbImageProperty = new SimpleObjectProperty<>(null);
 
   // Object properties for background image behind the chat
   protected static ObjectProperty<javafx.scene.image.Image> backgroundImageProperty =
@@ -58,6 +44,15 @@ public class ControllerMethods {
   // Instance variables to be accessible to all controllers
   protected int count;
   protected Timer timer = new Timer(true);
+
+  // Inventory Items
+  @FXML private ImageView fishingRodIcon = new ImageView();
+  @FXML private ImageView axeIcon = new ImageView();
+  @FXML private ImageView fishIcon = new ImageView();
+  @FXML private ImageView planksIcon = new ImageView();
+  @FXML private ImageView blueOrb = new ImageView();
+  @FXML private ImageView greenOrb = new ImageView();
+  @FXML private ImageView redOrb = new ImageView();
 
   /** Starts the count down timer for game. */
   protected void startTimer() {
