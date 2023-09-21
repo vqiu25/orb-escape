@@ -9,12 +9,12 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GameFinishedController">
    <children>
-      <Label alignment="CENTER" layoutX="158.0" layoutY="83.0" text="Congratulations!" textAlignment="CENTER" underline="true">
+      <Label fx:id="lblTitle" alignment="CENTER" layoutY="83.0" prefWidth="800.0" text="Congratulations!" textAlignment="CENTER" underline="true">
          <font>
             <Font name="System Bold" size="70.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="345.0" layoutY="178.0" text="You Escaped" textAlignment="CENTER">
+      <Label fx:id="lblSubtitle" alignment="CENTER" layoutY="178.0" prefWidth="800.0" text="You Escaped" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

@@ -21,6 +21,10 @@ public class ControllerMethods {
   protected static StringProperty displayTask = new SimpleStringProperty(GameState.taskString);
   protected static StringProperty displayHints = new SimpleStringProperty(GameState.hintString);
 
+  // String properties for the game finished scene
+  protected static StringProperty titleMessage = new SimpleStringProperty();
+  protected static StringProperty subtitleMessage = new SimpleStringProperty();
+
   // Object properties for all the images in the inventory
   protected static ObjectProperty<Image> fishingRodIconImageProperty =
       new SimpleObjectProperty<>(null);
@@ -94,7 +98,8 @@ public class ControllerMethods {
 
   /** Changes scene to game over scene. */
   protected void gameOver() {
-    App.setScene(AppScene.GAMEOVER);
+    setMessages("Game Over!", "You Lost");
+    App.setScene(AppScene.GAMEFINISHED);
   }
 
   /** Updates the task label based on current game state */
@@ -180,6 +185,11 @@ public class ControllerMethods {
     } else if (GameState.isHardSelected) {
       displayHints.setValue("Hints: None");
     }
+  }
+
+  protected void setMessages(String message, String subMessage) {
+    titleMessage.setValue(message);
+    subtitleMessage.setValue(subMessage);
   }
 
   protected void bindInventory() {

@@ -1,14 +1,24 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class GameFinishedController extends ControllerMethods {
+  @FXML private Label lblTitle;
+  @FXML private Label lblSubtitle;
+
   @FXML private ImageView restartTwoButton;
   @FXML private ImageView restartThreeButton;
   @FXML private ImageView quitTwoButton;
   @FXML private ImageView quitThreeButton;
+
+  public void initialize() {
+    // Bind the labels to the message values
+    lblTitle.textProperty().bind(ControllerMethods.titleMessage);
+    lblSubtitle.textProperty().bind(ControllerMethods.subtitleMessage);
+  }
 
   @FXML
   private void restartHover(MouseEvent event) {

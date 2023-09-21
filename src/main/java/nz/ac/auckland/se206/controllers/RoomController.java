@@ -501,6 +501,7 @@ public class RoomController extends ControllerMethods {
   private void portalClick(MouseEvent event) {
     if (GameState.isPortalOpen) {
       GameState.isRoomEscaped = true;
+      setMessages("Congratulations!", "You Escaped");
       App.setScene(AppScene.GAMEFINISHED);
     }
   }
