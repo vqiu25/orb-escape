@@ -35,9 +35,9 @@
             <Image url="@../images/tutorialLayout.png" />
          </image>
       </ImageView>
-      <Text layoutX="338.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solve puzzles and find the elusive orbs" textAlignment="CENTER" wrappingWidth="235.94140625">
+      <Text layoutX="344.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solve puzzles and find the elusive orbs" textAlignment="CENTER" wrappingWidth="235.94140625">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
       <Label alignment="CENTER" layoutX="337.0" layoutY="146.0" text="Tutorial" textAlignment="CENTER" underline="true">
@@ -45,14 +45,14 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <Text layoutX="353.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click on me to ask for hints and respond to riddles" textAlignment="CENTER" wrappingWidth="207.40240478515625">
+      <Text layoutX="359.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click on me to ask for hints and respond to riddles" textAlignment="CENTER" wrappingWidth="207.40240478515625">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="351.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return the orbs to the terminal to reactive the portal and escape!" textAlignment="CENTER" wrappingWidth="213.72601318359375">
+      <Text layoutX="353.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return the orbs to the terminal to reactivate the portal and escape!" textAlignment="CENTER" wrappingWidth="213.72601318359375">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
       <ImageView fx:id="backOneButton" fitHeight="55.0" fitWidth="137.0" layoutX="656.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
