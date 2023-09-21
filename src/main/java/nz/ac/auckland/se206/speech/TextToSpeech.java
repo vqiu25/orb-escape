@@ -105,10 +105,6 @@ public class TextToSpeech {
    * avoid using this method and run the speak method without terminating.
    */
   public void terminate() {
-    try {
-      synthesizer.deallocate();
-    } catch (final EngineException e) {
-      throw new TextToSpeechException(e.getMessage());
-    }
+    synthesizer.cancel();
   }
 }
