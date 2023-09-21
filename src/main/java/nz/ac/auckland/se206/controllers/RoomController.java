@@ -46,6 +46,14 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView portalBaseOutline;
   @FXML private ImageView portal;
   @FXML private ImageView portalOutline;
+  @FXML private ImageView cabinetOpenedEmpty;
+  @FXML private ImageView cabinetOpenedEmptyOutline;
+  @FXML private ImageView cabinetOpenedWithOrb;
+  @FXML private ImageView cabinetOpenedWithOrbOutline;
+  @FXML private ImageView cabinetOrbSelected;
+  @FXML private ImageView floorBlueOrb;
+  @FXML private ImageView floorBlueOrbOutline;
+  @FXML private ImageView floorRug;
 
   // Book Items:
   @FXML private ImageView book;
