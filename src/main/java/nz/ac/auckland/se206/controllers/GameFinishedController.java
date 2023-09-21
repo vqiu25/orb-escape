@@ -15,6 +15,10 @@ public class GameFinishedController extends ControllerMethods {
   @FXML private ImageView quitTwoButton;
   @FXML private ImageView quitThreeButton;
 
+  // Restart images:
+  @FXML private ImageView restartingBackground;
+  @FXML private ImageView restartingAnimation;
+
   public void initialize() {
     // Bind the labels to the message values
     lblTitle.textProperty().bind(ControllerMethods.titleMessage);
@@ -38,7 +42,11 @@ public class GameFinishedController extends ControllerMethods {
 
   @FXML
   private void restartReleased(MouseEvent event) throws IOException {
-    // TODO ENABLE IMAGE OVERLAY
+    // Enable restarting images:
+    restartingBackground.setDisable(false);
+    restartingAnimation.setDisable(false);
+    restartingBackground.setOpacity(1);
+    restartingAnimation.setOpacity(1);
 
     restartThreeButton.setOpacity(0);
     System.out.println("Restarting game...");
@@ -67,5 +75,12 @@ public class GameFinishedController extends ControllerMethods {
   private void quitReleased(MouseEvent event) {
     quitThreeButton.setOpacity(0);
     System.exit(0);
+  }
+
+  public void disableRestartingImages() {
+    restartingBackground.setDisable(true);
+    restartingAnimation.setDisable(true);
+    restartingBackground.setOpacity(0);
+    restartingAnimation.setOpacity(0);
   }
 }

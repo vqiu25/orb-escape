@@ -92,5 +92,15 @@
       <Rectangle fx:id="backButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="656.0" layoutY="26.0" onMouseEntered="#backHover" onMouseExited="#backUnhover" onMousePressed="#backPressed" onMouseReleased="#backReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="343.0" layoutY="377.0" onMouseEntered="#quitHover" onMouseExited="#quitUnhover" onMousePressed="#quitPressed" onMouseReleased="#quitReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
       <Rectangle fx:id="restartButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="343.0" layoutY="287.0" onMouseEntered="#restartHover" onMouseExited="#restartUnhover" onMousePressed="#restartPressed" onMouseReleased="#restartReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
+      <ImageView fx:id="restartBackground" disable="true" fitHeight="625.0" fitWidth="800.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/restartBackgroundImage.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="restartAnimation" disable="true" fitHeight="72.0" fitWidth="407.0" layoutX="191.0" layoutY="278.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/restartAnimation.gif" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

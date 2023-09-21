@@ -440,11 +440,22 @@ public class ControllerMethods {
           timer.cancel();
           timer = new Timer(true);
 
+          // Remove background images from both setting and game finished scenes
+          restartImages();
+
           App.setScene(AppScene.OPTIONS);
         });
 
     // Run the task in a new thread
     Thread restartThread = new Thread(restartTask);
     restartThread.start();
+  }
+
+  // Removes and disables the background images from the settings and game finished scenes when
+  // restarting
+  private static void restartImages() {
+    // get the settings controller
+    App.getSettingsController().disableRestartImages();
+    App.getGameFinishedController().disableRestartingImages();
   }
 }

@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -26,6 +27,10 @@ public class SettingsController extends ControllerMethods {
   @FXML private ImageView quitThreeButton;
   @FXML private Rectangle backButton;
   @FXML private Rectangle restartButton;
+
+  // Restart images:
+  @FXML private ImageView restartBackground;
+  @FXML private ImageView restartAnimation;
 
   public void initialize() throws ApiProxyException {
     // Bind the labels to the display values
@@ -86,7 +91,11 @@ public class SettingsController extends ControllerMethods {
 
   @FXML
   private void restartReleased(MouseEvent event) throws IOException {
-    // TODO: SHOW IMAGE OVERLAY THAT BLOCKS ALL OTHER BUTTONS
+    // Enable and show restarting images
+    restartBackground.setDisable(false);
+    restartAnimation.setDisable(false);
+    restartBackground.setOpacity(1);
+    restartAnimation.setOpacity(1);
 
     showRestartNotification();
 
@@ -122,5 +131,16 @@ public class SettingsController extends ControllerMethods {
   private void quitReleased(MouseEvent event) {
     quitThreeButton.setOpacity(0);
     System.exit(0);
+  }
+
+  public Node getRestartBackground() {
+    return null;
+  }
+
+  public void disableRestartImages() {
+    restartBackground.setDisable(true);
+    restartAnimation.setDisable(true);
+    restartBackground.setOpacity(0);
+    restartAnimation.setOpacity(0);
   }
 }
