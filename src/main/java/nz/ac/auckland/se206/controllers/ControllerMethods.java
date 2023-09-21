@@ -15,14 +15,6 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 
 public class ControllerMethods {
-  // Inventory Items
-  @FXML private ImageView fishingRodIcon = new ImageView();
-  @FXML private ImageView axeIcon = new ImageView();
-  @FXML private ImageView fishIcon = new ImageView();
-  @FXML private ImageView planksIcon = new ImageView();
-  @FXML private ImageView blueOrb = new ImageView();
-  @FXML private ImageView greenOrb = new ImageView();
-  @FXML private ImageView redOrb = new ImageView();
 
   // String properties for the timer, task and hints
   protected static StringProperty displayTime = new SimpleStringProperty(GameState.timerString);
@@ -58,6 +50,15 @@ public class ControllerMethods {
   // Instance variables to be accessible to all controllers
   protected int count;
   protected Timer timer = new Timer(true);
+
+  // Inventory Items
+  @FXML private ImageView fishingRodIcon = new ImageView();
+  @FXML private ImageView axeIcon = new ImageView();
+  @FXML private ImageView fishIcon = new ImageView();
+  @FXML private ImageView planksIcon = new ImageView();
+  @FXML private ImageView blueOrb = new ImageView();
+  @FXML private ImageView greenOrb = new ImageView();
+  @FXML private ImageView redOrb = new ImageView();
 
   /** Starts the count down timer for game. */
   protected void startTimer() {
