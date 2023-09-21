@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -27,9 +28,12 @@ public class GameOverController extends ControllerMethods {
   }
 
   @FXML
-  private void restartReleased(MouseEvent event) {
+  private void restartReleased(MouseEvent event) throws IOException {
     restartThreeButton.setOpacity(0);
     System.out.println("Restarting game...");
+
+    // Restart game:
+    restartGame();
   }
 
   @FXML

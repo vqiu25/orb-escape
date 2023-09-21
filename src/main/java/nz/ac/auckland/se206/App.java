@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
-import java.util.Random;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -96,46 +95,17 @@ public class App extends Application {
   @Override
   public void start(final Stage stage) throws IOException {
 
-    // Set mini game states:
-    int randomInt = new Random().nextInt(10);
+    // Initialize scenes:
+    initializeGame();
 
-    if (randomInt > 4) {
-      GameState.isLavaBridge = true;
-      GameState.isForestTreeChopping = true;
-    } else {
-      GameState.isLavaDragon = true;
-      GameState.isForestFishing = true;
-    }
-
-    // Add scenes to hashmap.
+    // Add scenes to hashmap - These will not be cleared:
     SceneManager.addScene(AppScene.START, loadLoader("start").load());
     SceneManager.addScene(AppScene.TUTORIAL, loadLoader("tutorial").load());
     SceneManager.addScene(AppScene.SETTINGS, loadLoader("settings").load());
     SceneManager.addScene(AppScene.GAMEOVER, loadLoader("gameover").load());
     SceneManager.addScene(AppScene.GAMEFINISHED, loadLoader("gamefinished").load());
-    SceneManager.addScene(AppScene.STORY, loadLoader("story").load());
     SceneManager.addScene(AppScene.OPTIONS, loadLoader("options").load());
     SceneManager.addScene(AppScene.HELP, loadLoader("help").load());
-    SceneManager.addScene(AppScene.TERMINAL, loadLoader("terminal").load());
-    SceneManager.addScene(AppScene.FISHING, loadLoader("fishingMiniGame").load());
-    SceneManager.addScene(AppScene.TREES, loadLoader("treeChoppingMiniGame").load());
-    SceneManager.addScene(AppScene.BRIDGE_GAME, loadLoader("bridgeGame").load());
-    SceneManager.addScene(AppScene.CASTLE, loadLoader("castleRoom").load());
-    SceneManager.addScene(AppScene.ROOM, loadLoader("room").load());
-
-    // Store reference to chat controller
-    FXMLLoader chat = loadLoader("chat");
-    SceneManager.addScene(AppScene.CHAT, chat.load());
-    chatController = chat.getController();
-
-    // Store references to the lava room controller:
-    FXMLLoader forestRoom = loadLoader("forestRoom");
-    SceneManager.addScene(AppScene.FOREST, forestRoom.load());
-    forestRoomController = forestRoom.getController();
-
-    FXMLLoader lavaRoom = loadLoader("lavaRoom");
-    SceneManager.addScene(AppScene.LAVA, lavaRoom.load());
-    lavaRoomController = lavaRoom.getController();
 
     // Store stage reference:
     currentStage = stage;
@@ -147,5 +117,34 @@ public class App extends Application {
     stage.show();
 
     stage.setOnCloseRequest(e -> System.exit(0));
+  }
+
+  // Called to initialize scenes before the game starts:
+  public static void initializeGame() throws IOException {
+    // Set intial game states:
+    GameState.resetGameState();
+
+    SceneManager.addScene(AppScene.BRIDGE_GAME, loadLoader("bridgeGame").load());
+    SceneManager.addScene(AppScene.CASTLE, loadLoader("castleRoom").load());
+    SceneManager.addScene(AppScene.FISHING, loadLoader("fishingMiniGame").load());
+    SceneManager.addScene(AppScene.ROOM, loadLoader("room").load());
+    SceneManager.addScene(AppScene.TERMINAL, loadLoader("terminal").load());
+    SceneManager.addScene(AppScene.TREES, loadLoader("treeChoppingMiniGame").load());
+    SceneManager.addScene(AppScene.STORY, loadLoader("story").load());
+
+    // Store reference to chat controller
+    FXMLLoader chat = loadLoader("chat");
+    SceneManager.addScene(AppScene.CHAT, chat.load());
+    chatController = chat.getController();
+
+    // Store references to the forest room controller:
+    FXMLLoader forestRoom = loadLoader("forestRoom");
+    SceneManager.addScene(AppScene.FOREST, forestRoom.load());
+    forestRoomController = forestRoom.getController();
+
+    // Store reference to the lava room controller:
+    FXMLLoader lavaRoom = loadLoader("lavaRoom");
+    SceneManager.addScene(AppScene.LAVA, lavaRoom.load());
+    lavaRoomController = lavaRoom.getController();
   }
 }

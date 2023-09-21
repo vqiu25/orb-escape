@@ -1,12 +1,15 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
+import org.controlsfx.control.Notifications;
 
 public class SettingsController extends ControllerMethods {
 
@@ -20,6 +23,8 @@ public class SettingsController extends ControllerMethods {
   @FXML private ImageView restartThreeButton;
   @FXML private ImageView quitTwoButton;
   @FXML private ImageView quitThreeButton;
+
+  private boolean isRestarting = false;
 
   public void initialize() throws ApiProxyException {
     // Bind the labels to the display values
@@ -53,8 +58,18 @@ public class SettingsController extends ControllerMethods {
   private void backReleased(MouseEvent event) {
     backThreeButton.setOpacity(0);
 
-    // Return to previous scene by popping stack:
-    App.setScene(SceneManager.sceneStack.pop());
+    if (isRestarting) {
+      showRestartNotification();
+    } else {
+      // Return to previous scene by popping stack:
+      App.setScene(SceneManager.sceneStack.pop());
+    }
+  }
+
+  private void showRestartNotification() {
+    Notifications notification =
+        NotificationBuilder.createNotification("Game Master: ", "Game restarting!", 10);
+    notification.show();
   }
 
   @FXML
@@ -74,9 +89,17 @@ public class SettingsController extends ControllerMethods {
   }
 
   @FXML
-  private void restartReleased(MouseEvent event) {
+  private void restartReleased(MouseEvent event) throws IOException {
+    // Set flag to true:
+    isRestarting = true;
+
+    showRestartNotification();
+
     restartThreeButton.setOpacity(0);
     System.out.println("Restarting game...");
+
+    // Restart game:
+    restartGame();
   }
 
   // Quit Button

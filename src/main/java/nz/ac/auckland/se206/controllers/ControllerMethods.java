@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
@@ -7,11 +8,13 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 
 public class ControllerMethods {
@@ -393,5 +396,29 @@ public class ControllerMethods {
     portalImageProperty.set(new Image(getClass().getResourceAsStream("/images/glowyPortal.gif")));
     portalOutlineImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/glowyPortalOutline.gif")));
+  }
+
+  // Called when the restart button is pressed
+  public static void restartGame() throws IOException {
+    Task<Void> restartTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            // Remove current scenes from the hashmap
+            SceneManager.clearHashMap();
+
+            // Re-initialize game scenes and reset game states
+            App.initializeGame();
+
+            // Switch to options scene
+            App.setScene(AppScene.OPTIONS);
+
+            return null;
+          }
+        };
+
+    // Run the task in a new thread
+    Thread restartThread = new Thread(restartTask);
+    restartThread.start();
   }
 }
