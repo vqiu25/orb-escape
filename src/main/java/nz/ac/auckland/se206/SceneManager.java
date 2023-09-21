@@ -20,7 +20,6 @@ public class SceneManager {
     TUTORIAL,
     CHAT,
     SETTINGS,
-    GAMEOVER,
     GAMEFINISHED,
     HELP,
     STORY

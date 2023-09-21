@@ -102,7 +102,6 @@ public class App extends Application {
     SceneManager.addScene(AppScene.START, loadLoader("start").load());
     SceneManager.addScene(AppScene.TUTORIAL, loadLoader("tutorial").load());
     SceneManager.addScene(AppScene.SETTINGS, loadLoader("settings").load());
-    SceneManager.addScene(AppScene.GAMEOVER, loadLoader("gameover").load());
     SceneManager.addScene(AppScene.GAMEFINISHED, loadLoader("gamefinished").load());
     SceneManager.addScene(AppScene.OPTIONS, loadLoader("options").load());
     SceneManager.addScene(AppScene.HELP, loadLoader("help").load());

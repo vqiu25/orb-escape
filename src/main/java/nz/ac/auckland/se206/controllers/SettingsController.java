@@ -18,8 +18,8 @@ public class SettingsController extends ControllerMethods {
   @FXML private Label lblTask;
   @FXML private Label lblHints;
 
-  @FXML private ImageView backTwoButton;
-  @FXML private ImageView backThreeButton;
+  @FXML private ImageView backButtonTwo;
+  @FXML private ImageView backButtonThree;
   @FXML private ImageView restartTwoButton;
   @FXML private ImageView restartThreeButton;
   @FXML private ImageView quitTwoButton;
@@ -37,17 +37,17 @@ public class SettingsController extends ControllerMethods {
   // Back Button
   @FXML
   private void backHover(MouseEvent event) {
-    backTwoButton.setOpacity(1);
+    backButtonTwo.setOpacity(1);
   }
 
   @FXML
   private void backUnhover(MouseEvent event) {
-    backTwoButton.setOpacity(0);
+    backButtonTwo.setOpacity(0);
   }
 
   @FXML
   private void backPressed(MouseEvent event) {
-    backThreeButton.setOpacity(1);
+    backButtonThree.setOpacity(1);
   }
 
   /**
@@ -57,8 +57,7 @@ public class SettingsController extends ControllerMethods {
    */
   @FXML
   private void backReleased(MouseEvent event) {
-    backThreeButton.setOpacity(0);
-
+    backButtonThree.setOpacity(0);
     // Return to previous scene by popping stack:
     App.setScene(SceneManager.sceneStack.pop());
   }
