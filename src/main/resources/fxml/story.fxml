@@ -31,7 +31,7 @@
       </ImageView>
       <TextArea fx:id="openingText" editable="false" layoutX="335.0" layoutY="127.0" prefHeight="244.0" prefWidth="349.0" style="-fx-faint-focus-color: transparent; -fx-focus-color: #abb5be;" wrapText="true">
          <font>
-            <Font size="22.0" />
+            <Font size="20.0" />
          </font>
       </TextArea>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="655.0" layoutY="26.0" onMouseEntered="#backHover" onMouseExited="#backUnhover" onMousePressed="#backPressed" onMouseReleased="#backReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
