@@ -92,7 +92,7 @@ public class SettingsController extends ControllerMethods {
     restartThreeButton.setOpacity(0);
     System.out.println("Restarting game...");
 
-    // Restart game:
+    // Restart game by resetting game states and re-initialzing scenes
     restartGame();
   }
 
