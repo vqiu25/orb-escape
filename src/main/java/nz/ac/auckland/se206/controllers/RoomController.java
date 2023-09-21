@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
@@ -63,6 +64,7 @@ public class RoomController extends ControllerMethods {
   @FXML private Polygon cabinet;
   @FXML private Polygon carpet;
   @FXML private Polygon cabinetOrb;
+  @FXML private Rectangle orbRectangleRug;
 
   // Game Master
   @FXML private ImageView gameMasterDefault;
@@ -87,6 +89,7 @@ public class RoomController extends ControllerMethods {
 
   private int spamCount = 0;
   private boolean isDrawerOpen = false;
+  private boolean isRugPresent = true;
 
   /** Initializes the room view, it is called when the room loads. */
   public void initialize() {
@@ -379,12 +382,14 @@ public class RoomController extends ControllerMethods {
     // if rug riddle is selected and solved
     if (GameState.isRug && GameState.isRiddleResolved) {
       // Remove the rug
+      isRugPresent = false;
       floorRug.setOpacity(0);
       rugOutline.setOpacity(0);
       carpet.setDisable(true);
 
       // Reveal the blue orb
       floorBlueOrbOutline.setDisable(false);
+      orbRectangleRug.setDisable(false);
       floorBlueOrb.setOpacity(1);
     }
   }
@@ -410,6 +415,7 @@ public class RoomController extends ControllerMethods {
 
       // Hide the orb once retrieved
       floorBlueOrbOutline.setDisable(true);
+      orbRectangleRug.setDisable(true);
       floorBlueOrb.setOpacity(0);
       floorBlueOrbOutline.setOpacity(0);
 
@@ -648,17 +654,7 @@ public class RoomController extends ControllerMethods {
 
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
-    // Logic for which background GPT should have
-    if (GameState.isMapOnWall) {
-      setMainMapOpacity();
-    } else if (!GameState.isMapOnWall) {
-      setMainMapRemovedOpacity();
-    }
-
-    if (!GameState.isLightOn) {
-      setMainDarkOpacity();
-    }
-
+    backrgoundHelper();
     // Store current scene in scene stack
     SceneManager.sceneStack.push(AppScene.ROOM);
     App.setScene(AppScene.CHAT);
@@ -703,15 +699,7 @@ public class RoomController extends ControllerMethods {
     chatController.setRiddleBookOpacity();
 
     // Logic for which background GPT should have
-    if (GameState.isMapOnWall) {
-      setMainMapOpacity();
-    } else if (!GameState.isMapOnWall) {
-      setMainMapRemovedOpacity();
-    }
-
-    if (!GameState.isLightOn) {
-      setMainDarkOpacity();
-    }
+    backrgoundHelper();
 
     // Store current scene in scene stack
     SceneManager.sceneStack.push(AppScene.ROOM);
@@ -744,5 +732,40 @@ public class RoomController extends ControllerMethods {
         NotificationBuilder.createNotification(
             "Game Master:", "Congratulation! You've found an orb!", 6);
     orbMessage.show();
+  }
+
+  private void backrgoundHelper() {
+    // Logic for which background GPT should have
+    if (GameState.isMapOnWall && GameState.isLightOn) {
+      setMainMapOpacity();
+    } else if (GameState.isMapOnWall && !GameState.isLightOn) {
+      setMainDarkOpacity();
+    } else if (!GameState.isMapOnWall && GameState.isLightOn) {
+      setMainMapRemovedOpacity();
+    } else if (!GameState.isMapOnWall && !GameState.isLightOn) {
+      setMainDarkMapRemovedOpacity();
+    }
+
+    // Handles if the cabinet should be open or not
+    if (GameState.isMapOnWall && GameState.isLightOn && isDrawerOpen) {
+      setMainCabinetMapOpacity();
+    } else if (GameState.isMapOnWall && !GameState.isLightOn && isDrawerOpen) {
+      setMainDarkCabinetMapOpacity();
+    } else if (!GameState.isMapOnWall && GameState.isLightOn && isDrawerOpen) {
+      setMainCabinetMapRemovedOpacity();
+    } else if (!GameState.isMapOnWall && !GameState.isLightOn && isDrawerOpen) {
+      setMainDarkCabinetMapRemovedOpacity();
+    }
+
+    // Handles if the rug should be visible or not
+    if (GameState.isMapOnWall && GameState.isLightOn && !isRugPresent) {
+      setMainRugMapOpacity();
+    } else if (GameState.isMapOnWall && !GameState.isLightOn && !isRugPresent) {
+      setMainDarkRugMapOpacity();
+    } else if (!GameState.isMapOnWall && GameState.isLightOn && !isRugPresent) {
+      setMainRugMapRemovedOpacity();
+    } else if (!GameState.isMapOnWall && !GameState.isLightOn && !isRugPresent) {
+      setMainDarkRugMapRemovedOpacity();
+    }
   }
 }
