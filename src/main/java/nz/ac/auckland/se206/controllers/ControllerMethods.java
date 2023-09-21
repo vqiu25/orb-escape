@@ -407,7 +407,53 @@ public class ControllerMethods {
   }
 
   protected void setMainDarkOpacity() {
-    backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/mainDark.png")));
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/mainDarkMap.png")));
+  }
+
+  protected void setMainDarkMapRemovedOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/mainDarkMapRemoved.png")));
+  }
+
+  protected void setMainCabinetMapOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/mainCabinetOpenMap.png")));
+  }
+
+  protected void setMainCabinetMapRemovedOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/mainCabinetOpenMapRemoved.png")));
+  }
+
+  protected void setMainDarkCabinetMapOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/mainCabinetOpenDarkMap.png")));
+  }
+
+  protected void setMainDarkCabinetMapRemovedOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/mainCabinetDarkMapRemoved.png")));
+  }
+
+  protected void setMainRugMapOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/mainRugMap.png")));
+  }
+
+  protected void setMainRugMapRemovedOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/mainRugMapRemoved.png")));
+  }
+
+  protected void setMainDarkRugMapOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/mainDarkRugMap.png")));
+  }
+
+  protected void setMainDarkRugMapRemovedOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/mainDarkRugMapRemoved.png")));
   }
 
   protected void setLavaDragonOpacity() {
