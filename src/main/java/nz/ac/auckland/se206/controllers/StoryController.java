@@ -64,10 +64,8 @@ public class StoryController extends ControllerMethods {
     audioThree.setOpacity(0);
     // If audio is playing, don't start another thread
     if (isPlaying) {
-      System.out.println("here");
       return;
     } else {
-      System.out.println("there");
       // If audio is not playing, start it
       isPlaying = true; // Update the state
 
