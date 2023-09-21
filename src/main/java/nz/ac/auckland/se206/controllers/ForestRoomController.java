@@ -205,7 +205,12 @@ public class ForestRoomController extends ControllerMethods {
 
   // Rock
   @FXML
-  private void rockClick(MouseEvent event) {}
+  private void rockClick(MouseEvent event) {
+    // Notification to the user
+    Notifications message =
+        NotificationBuilder.createNotification("Game Master: ", "Nothing under there...", 5);
+    message.show();
+  }
 
   @FXML
   private void rockHover(MouseEvent event) {
@@ -271,6 +276,12 @@ public class ForestRoomController extends ControllerMethods {
       } else if (GameState.isFishingRodTaken) {
         App.setScene(AppScene.FISHING);
       }
+    } else {
+      // If it is the tree chopping game.
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master: ", "Hah! Good luck trying to swim away.", 5);
+      message.show();
     }
   }
 
@@ -304,10 +315,17 @@ public class ForestRoomController extends ControllerMethods {
       } else if (GameState.isAxeTaken) {
         App.setScene(AppScene.TREES);
       } else {
-        // TODO: Make a notification to tell the user they need something to cut down the trees
+        Notifications message =
+            NotificationBuilder.createNotification(
+                "Game Master: ", "Try finding something to cut down the trees!", 5);
+        message.show();
       }
     } else {
       // Do something else if they are in the other version of the game
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master: ", "Leaf me alone, I'm trying to escape", 5);
+      message.show();
     }
   }
 
@@ -394,7 +412,20 @@ public class ForestRoomController extends ControllerMethods {
 
   // Axe Removed
   @FXML
-  private void emptyLogClick(MouseEvent event) {}
+  private void emptyLogClick(MouseEvent event) {
+    // if it isnt the tree chopping game:
+    if (!GameState.isForestTreeChopping) {
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master: ", "I am the Lorax and I speak for the trees!", 5);
+      message.show();
+    } else {
+      // If it is the tree chopping game
+      Notifications message =
+          NotificationBuilder.createNotification("Game Master: ", "Axe already taken!", 5);
+      message.show();
+    }
+  }
 
   @FXML
   private void emptyLogHover(MouseEvent event) {
