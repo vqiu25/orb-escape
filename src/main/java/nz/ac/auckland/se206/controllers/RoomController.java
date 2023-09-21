@@ -388,6 +388,8 @@ public class RoomController extends ControllerMethods {
       glowParticleOne.setOpacity(1);
       glowParticleTwo.setOpacity(1);
       glowParticleThree.setOpacity(1);
+      GameState.isCodeFound = true;
+      updateTask();
     }
   }
 
