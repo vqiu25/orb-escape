@@ -25,7 +25,7 @@ public class SettingsController extends ControllerMethods {
   @FXML private ImageView quitTwoButton;
   @FXML private ImageView quitThreeButton;
   @FXML private Rectangle backButton;
-  @FXML private Rectangle backButtonDisabled;
+  @FXML private Rectangle restartButton;
 
   public void initialize() throws ApiProxyException {
     // Bind the labels to the display values
@@ -88,8 +88,9 @@ public class SettingsController extends ControllerMethods {
   @FXML
   private void restartReleased(MouseEvent event) throws IOException {
 
-    // Disable back button:
+    // Disable back button and restart button:
     backButton.setDisable(true);
+    restartButton.setDisable(true);
 
     showRestartNotification();
 

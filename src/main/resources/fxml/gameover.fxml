@@ -54,7 +54,7 @@
             <Image url="@../images/quitThree.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="343.0" layoutY="287.0" onMouseEntered="#restartHover" onMouseExited="#restartUnhover" onMousePressed="#restartPressed" onMouseReleased="#restartReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
+      <Rectangle fx:id="restartButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="343.0" layoutY="287.0" onMouseEntered="#restartHover" onMouseExited="#restartUnhover" onMousePressed="#restartPressed" onMouseReleased="#restartReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="343.0" layoutY="377.0" onMouseEntered="#quitHover" onMouseExited="#quitUnhover" onMousePressed="#quitPressed" onMouseReleased="#quitReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
    </children>
 </Pane>

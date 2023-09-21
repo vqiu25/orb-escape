@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
 
 public class GameOverController extends ControllerMethods {
 
@@ -11,6 +12,8 @@ public class GameOverController extends ControllerMethods {
   @FXML private ImageView restartThreeButton;
   @FXML private ImageView quitTwoButton;
   @FXML private ImageView quitThreeButton;
+
+  @FXML private Rectangle restartButton;
 
   @FXML
   private void restartHover(MouseEvent event) {
@@ -29,6 +32,10 @@ public class GameOverController extends ControllerMethods {
 
   @FXML
   private void restartReleased(MouseEvent event) throws IOException {
+
+    // Disable restart button
+    restartButton.setDisable(true);
+
     restartThreeButton.setOpacity(0);
     System.out.println("Restarting game...");
 
