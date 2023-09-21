@@ -22,20 +22,14 @@ public class ControllerMethods {
   protected static StringProperty displayHints = new SimpleStringProperty(GameState.hintString);
 
   // Object properties for all the images in the inventory
-  protected static ObjectProperty<javafx.scene.image.Image> fishingRodIconImageProperty =
+  protected static ObjectProperty<Image> fishingRodIconImageProperty =
       new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> axeIconImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> fishIconImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> planksIconImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> blueOrbImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> greenOrbImageProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<javafx.scene.image.Image> redOrbImageProperty =
-      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> axeIconImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> fishIconImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> planksIconImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> blueOrbImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> greenOrbImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> redOrbImageProperty = new SimpleObjectProperty<>(null);
 
   // Object properties for background image behind the chat
   protected static ObjectProperty<javafx.scene.image.Image> backgroundImageProperty =
