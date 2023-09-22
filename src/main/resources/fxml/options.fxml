@@ -9,17 +9,17 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" style="-fx-background-color: #e9ecef;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.OptionScreenController">
    <children>
-      <Label alignment="CENTER" layoutX="302.0" layoutY="56.0" text="Options" textAlignment="CENTER" underline="true">
+      <Label alignment="CENTER" layoutY="56.0" prefHeight="73.0" prefWidth="800.0" text="Options" textAlignment="CENTER" underline="true">
          <font>
             <Font name="System Bold" size="60.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="326.0" layoutY="144.0" text="Difficulty" textAlignment="CENTER" underline="true">
+      <Label alignment="CENTER" layoutY="144.0" prefHeight="50.0" prefWidth="800.0" text="Difficulty" textAlignment="CENTER" underline="true">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="358.0" layoutY="354.0" text="Time" textAlignment="CENTER" underline="true">
+      <Label alignment="CENTER" layoutY="354.0" prefHeight="50.0" prefWidth="800.0" text="Time" textAlignment="CENTER" underline="true">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>

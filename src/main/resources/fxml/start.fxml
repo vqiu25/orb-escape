@@ -9,17 +9,17 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" style="-fx-background-color: #e9ecef;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.StartScreenController">
    <children>
-      <Label alignment="CENTER" layoutX="312.0" layoutY="83.0" text="Name" textAlignment="CENTER" underline="true">
+      <Label alignment="CENTER" layoutY="83.0" prefHeight="86.0" prefWidth="800.0" text="Name" textAlignment="CENTER" underline="true">
          <font>
             <Font name="System Bold" size="70.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="279.0" layoutY="178.0" text="Unleash your inner detective!" textAlignment="CENTER">
+      <Label alignment="CENTER" layoutY="178.0" prefHeight="26.0" prefWidth="800.0" text="Unleash your inner detective!" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="283.0" fitWidth="234.0" layoutX="283.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="269.0" fitWidth="336.0" layoutX="283.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/startPane.png" />
          </image>
