@@ -1,3 +1,5 @@
+## Licenses
+
 BSD 3-Clause License
 
 Copyright (c) 2013, ControlsFX
@@ -27,3 +29,22 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+## Images
+### Pixel Room Generator
+
+* **Usage**: A generated room was used as reference in the creation of one of the rooms utilised in this application.
+* **Image Source**: https://lovebirdsnest.itch.io/
+* **Copyright**: Free as long as credit is provided.
+
+### Pixel Art GUI Elements
+
+* **Usage**: Buttons and UI elements were referenced and utilised in this application.
+* **Image Source**: https://mounirtohami.itch.io/pixel-art-gui-elements
+* **Copyright**: Free for any purpose
+
+### Dragon Asset Pack
+
+* **Usage**: A dragon sprite was modified for the use in this application.
+* **Image Source**: https://deepdivegamestudio.itch.io/dragon-asset-pack
+* **Copyright**: Can be utilised in commercial and non-commercial video games and personal projects.
