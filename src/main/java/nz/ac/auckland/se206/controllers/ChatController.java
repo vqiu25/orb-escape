@@ -120,12 +120,16 @@ public class ChatController extends ControllerMethods {
   private void appendChatMessage(ChatMessage msg, TextArea textArea) {
     String prefix;
     if (textArea == riddleTextArea) {
+      // If setting the riddle, don't add a prefix
       prefix = "";
     } else if (msg.getRole().equals("user")) {
+      // If the message is from the user, set prefix to "You said: "
       prefix = "You said: ";
     } else {
+      // If the messag is from the game master, set prefix to "Game Master: "
       prefix = "Game Master: ";
     }
+    // Append the message to the text area
     textArea.appendText(prefix + msg.getContent() + "\n\n");
   }
 
