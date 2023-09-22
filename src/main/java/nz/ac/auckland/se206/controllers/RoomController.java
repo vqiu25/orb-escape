@@ -284,7 +284,7 @@ public class RoomController extends ControllerMethods {
 
     // If it is NOT the cabinet riddle
     if (!GameState.isCabinet) {
-      nothingNotification();
+      showNothingNotification();
 
       return;
     }
@@ -313,9 +313,11 @@ public class RoomController extends ControllerMethods {
 
   @FXML
   private void cabinetHover(MouseEvent event) {
+    // If the drawer is open and the room orb has been collected
     if (isDrawerOpen == true && GameState.isRoomOrbCollected) {
       cabinetOpenedEmptyOutline.setOpacity(1);
     } else if (isDrawerOpen == true && !GameState.isRoomOrbCollected) {
+      // If the drawer is open and the room orb has NOT been collected
       cabinetOpenedWithOrbOutline.setOpacity(1);
     } else {
       cabinetOutline.setOpacity(1);
@@ -373,7 +375,7 @@ public class RoomController extends ControllerMethods {
 
     // If it is NOT the carpet riddle
     if (!GameState.isRug) {
-      nothingNotification();
+      showNothingNotification();
 
       return;
     }
@@ -592,11 +594,15 @@ public class RoomController extends ControllerMethods {
   // Portal
   @FXML
   private void portalClick(MouseEvent event) {
+    // If the portal is open, allow the user to escape
     if (GameState.isPortalOpen) {
       GameState.isRoomEscaped = true;
       setMessages("Congratulations!", "You Escaped");
+
+      // Switch scenes to game finished
       App.setScene(AppScene.GAMEFINISHED);
     } else {
+      // If the portal is not open, prompt the user to find the orbs
       Notifications message =
           NotificationBuilder.createNotification(
               "Game Master: ", "Try finding orbs to open the portal!", 5);
@@ -784,7 +790,7 @@ public class RoomController extends ControllerMethods {
     }
   }
 
-  private void nothingNotification() {
+  private void showNothingNotification() {
     Notifications message =
         NotificationBuilder.createNotification("Game Master: ", "Nothing there!", 5);
     message.show();
