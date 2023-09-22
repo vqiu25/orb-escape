@@ -57,7 +57,7 @@ public class ChatController extends ControllerMethods {
   @FXML private ImageView redOrb;
 
   // Game states:
-  private boolean isRiddleInitialized = true;
+  private boolean isRiddleInitialized = false;
 
   private ChatCompletionRequest riddleChatCompletionRequest;
   private ChatCompletionRequest chatCompletionRequest;
@@ -118,7 +118,15 @@ public class ChatController extends ControllerMethods {
    * @param textArea the text area to append the message to
    */
   private void appendChatMessage(ChatMessage msg, TextArea textArea) {
-    textArea.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
+    String prefix;
+    if (textArea == riddleTextArea) {
+      prefix = "";
+    } else if (msg.getRole().equals("user")) {
+      prefix = "You said: ";
+    } else {
+      prefix = "Game Master: ";
+    }
+    textArea.appendText(prefix + msg.getContent() + "\n\n");
   }
 
   /**
@@ -131,9 +139,9 @@ public class ChatController extends ControllerMethods {
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
 
     // ONLY called when game initializes to set up the riddle book:
-    if (isRiddleInitialized) {
+    if (!isRiddleInitialized) {
       riddleChatCompletionRequest.addMessage(msg);
-      isRiddleInitialized = false;
+      isRiddleInitialized = true;
 
       return gptHelper(riddleChatCompletionRequest, riddleTextArea);
     }
