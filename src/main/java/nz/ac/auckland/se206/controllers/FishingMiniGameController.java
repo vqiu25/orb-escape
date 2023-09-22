@@ -304,6 +304,7 @@ public class FishingMiniGameController extends ControllerMethods {
   }
 
   private void showDisabledButtonNotification() {
+    // Prompt for user when they are fishing and attempt to click on game master/return
     Notifications message =
         NotificationBuilder.createNotification(
             "Game Master: ", "Currently fishing! Please wait!", 5);
