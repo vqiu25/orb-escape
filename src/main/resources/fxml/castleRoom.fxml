@@ -193,17 +193,17 @@
             <Image url="@../images/codePlatformSmall.png" />
          </image>
       </ImageView>
-      <Label fx:id="lockOneNumber" alignment="CENTER" layoutX="442.0" layoutY="245.0" prefWidth="56.0" text="0" textFill="WHITE">
+      <Label fx:id="lockOneNumber" alignment="CENTER" layoutX="442.0" layoutY="249.0" prefWidth="56.0" text="0" textFill="WHITE">
          <font>
             <Font size="35.0" />
          </font>
       </Label>
-      <Label fx:id="lockTwoNumber" alignment="CENTER" layoutX="516.0" layoutY="245.0" prefWidth="56.0" text="0" textFill="WHITE">
+      <Label fx:id="lockTwoNumber" alignment="CENTER" layoutX="516.0" layoutY="249.0" prefWidth="56.0" text="0" textFill="WHITE">
          <font>
             <Font size="35.0" />
          </font>
       </Label>
-      <Label fx:id="lockThreeNumber" alignment="CENTER" layoutX="589.0" layoutY="245.0" prefWidth="56.0" text="0" textFill="WHITE">
+      <Label fx:id="lockThreeNumber" alignment="CENTER" layoutX="589.0" layoutY="249.0" prefWidth="56.0" text="0" textFill="WHITE">
          <font>
             <Font size="35.0" />
          </font>
