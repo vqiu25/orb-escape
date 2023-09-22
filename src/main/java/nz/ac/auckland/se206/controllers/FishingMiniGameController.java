@@ -14,8 +14,10 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
+import org.controlsfx.control.Notifications;
 
 public class FishingMiniGameController extends ControllerMethods {
 
@@ -261,14 +263,14 @@ public class FishingMiniGameController extends ControllerMethods {
 
   @FXML
   private void backReleased(MouseEvent event) {
-    // TODO: Perhaps implement some kind of notification that lets the player the button has been
-    // disabled?
     if (!isRunning && GameState.isFishCaught && isFishDelay) {
       App.setScene(AppScene.FOREST);
     } else if (!isRunning && !GameState.isFishCaught) {
       App.setScene(AppScene.FOREST);
     }
     backButtonThree.setOpacity(0);
+
+    showDisabledButtonNotification();
   }
 
   // Bottom Right Game Master Button
@@ -286,8 +288,6 @@ public class FishingMiniGameController extends ControllerMethods {
 
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
-    // TODO: Perhaps implement some kind of notification that lets the player the button has been
-    // disabled?
     if (!isRunning && GameState.isFishCaught && isFishDelay
         || !isRunning && !GameState.isFishCaught) {
       setFishingMiniOpacity();
@@ -296,5 +296,14 @@ public class FishingMiniGameController extends ControllerMethods {
       SceneManager.sceneStack.push(AppScene.FISHING);
       App.setScene(AppScene.CHAT);
     }
+
+    showDisabledButtonNotification();
+  }
+
+  private void showDisabledButtonNotification() {
+    Notifications message =
+        NotificationBuilder.createNotification(
+            "Game Master: ", "Currently fishing! Please wait!", 5);
+    message.show();
   }
 }
