@@ -14,8 +14,10 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
+import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
+import org.controlsfx.control.Notifications;
 
 public class FishingMiniGameController extends ControllerMethods {
 
@@ -261,9 +263,11 @@ public class FishingMiniGameController extends ControllerMethods {
 
   @FXML
   private void backReleased(MouseEvent event) {
-    // TODO: Perhaps implement some kind of notification that lets the player the button has been
-    // disabled?
-    if (!isRunning && GameState.isFishCaught && isFishDelay) {
+    if (isRunning) {
+      // If the user is currently fishing, inform user they cannot go back
+      showDisabledButtonNotification();
+    } else if (!isRunning && GameState.isFishCaught && isFishDelay) {
+      // Return to forest scene
       App.setScene(AppScene.FOREST);
     } else if (!isRunning && !GameState.isFishCaught) {
       App.setScene(AppScene.FOREST);
@@ -286,8 +290,6 @@ public class FishingMiniGameController extends ControllerMethods {
 
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
-    // TODO: Perhaps implement some kind of notification that lets the player the button has been
-    // disabled?
     if (!isRunning && GameState.isFishCaught && isFishDelay
         || !isRunning && !GameState.isFishCaught) {
       setFishingMiniOpacity();
@@ -295,6 +297,17 @@ public class FishingMiniGameController extends ControllerMethods {
       // store current scene in scene stack
       SceneManager.sceneStack.push(AppScene.FISHING);
       App.setScene(AppScene.CHAT);
+    } else if (isRunning) {
+      // If the user is currently fishing, inform user they cannot go back
+      showDisabledButtonNotification();
     }
+  }
+
+  private void showDisabledButtonNotification() {
+    // Prompt for user when they are fishing and attempt to click on game master/return
+    Notifications message =
+        NotificationBuilder.createNotification(
+            "Game Master: ", "Currently fishing! Please wait!", 5);
+    message.show();
   }
 }
