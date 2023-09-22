@@ -90,7 +90,6 @@ public class SettingsController extends ControllerMethods {
     restartAnimation.setOpacity(1);
 
     restartThreeButton.setOpacity(0);
-    System.out.println("Restarting game...");
 
     // Restart game by resetting game states and re-initialzing scenes
     restartGame();
