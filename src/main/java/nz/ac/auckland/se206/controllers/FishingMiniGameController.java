@@ -264,8 +264,10 @@ public class FishingMiniGameController extends ControllerMethods {
   @FXML
   private void backReleased(MouseEvent event) {
     if (isRunning) {
+      // If the user is currently fishing, inform user they cannot go back
       showDisabledButtonNotification();
     } else if (!isRunning && GameState.isFishCaught && isFishDelay) {
+      // Return to forest scene
       App.setScene(AppScene.FOREST);
     } else if (!isRunning && !GameState.isFishCaught) {
       App.setScene(AppScene.FOREST);
@@ -296,6 +298,7 @@ public class FishingMiniGameController extends ControllerMethods {
       SceneManager.sceneStack.push(AppScene.FISHING);
       App.setScene(AppScene.CHAT);
     } else if (isRunning) {
+      // If the user is currently fishing, inform user they cannot go back
       showDisabledButtonNotification();
     }
   }
