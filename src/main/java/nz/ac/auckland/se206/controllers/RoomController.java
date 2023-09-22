@@ -596,6 +596,11 @@ public class RoomController extends ControllerMethods {
       GameState.isRoomEscaped = true;
       setMessages("Congratulations!", "You Escaped");
       App.setScene(AppScene.GAMEFINISHED);
+    } else {
+      Notifications message =
+          NotificationBuilder.createNotification(
+              "Game Master: ", "Try finding orbs to open the portal!", 5);
+      message.show();
     }
   }
 
