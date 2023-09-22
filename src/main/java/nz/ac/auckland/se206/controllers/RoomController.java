@@ -284,6 +284,8 @@ public class RoomController extends ControllerMethods {
 
     // If it is NOT the cabinet riddle
     if (!GameState.isCabinet) {
+      nothingNotification();
+
       return;
     }
 
@@ -303,6 +305,9 @@ public class RoomController extends ControllerMethods {
       cabinetOpenedWithOrbOutline.setOpacity(1);
       cabinetOpenedEmpty.setOpacity(1);
       cabinetOrb.setDisable(false);
+    } else {
+      // Notify the user that this item may be of interest
+      interestingNotification();
     }
   }
 
@@ -368,6 +373,8 @@ public class RoomController extends ControllerMethods {
 
     // If it is NOT the carpet riddle
     if (!GameState.isRug) {
+      nothingNotification();
+
       return;
     }
 
@@ -391,6 +398,9 @@ public class RoomController extends ControllerMethods {
       floorBlueOrbOutline.setDisable(false);
       orbRectangleRug.setDisable(false);
       floorBlueOrb.setOpacity(1);
+    } else {
+      // Notify the user that this item may be of interest
+      interestingNotification();
     }
   }
 
@@ -767,5 +777,18 @@ public class RoomController extends ControllerMethods {
     } else if (!GameState.isMapOnWall && !GameState.isLightOn && !isRugPresent) {
       setMainDarkRugMapRemovedOpacity();
     }
+  }
+
+  private void nothingNotification() {
+    Notifications message =
+        NotificationBuilder.createNotification("Game Master: ", "Nothing there!", 5);
+    message.show();
+  }
+
+  private void interestingNotification() {
+    Notifications message =
+        NotificationBuilder.createNotification(
+            "Game Master: ", "This looks interesting.. not sure why.", 5);
+    message.show();
   }
 }
