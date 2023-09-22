@@ -9,7 +9,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" style="-fx-background-color: #e9ecef;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.StartScreenController">
    <children>
-      <Label alignment="CENTER" layoutY="83.0" prefHeight="86.0" prefWidth="800.0" text="Name" textAlignment="CENTER" underline="true">
+      <Label alignment="CENTER" layoutY="83.0" prefHeight="86.0" prefWidth="800.0" text="OrbEscape" textAlignment="CENTER" underline="true">
          <font>
             <Font name="System Bold" size="70.0" />
          </font>
