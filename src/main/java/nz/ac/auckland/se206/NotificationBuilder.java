@@ -15,6 +15,8 @@ public class NotificationBuilder {
         Notifications.create()
             .title(title)
             .text(message)
+            .threshold(
+                2, Notifications.create().title("Notifications Collapsed. Wait for a cooldown!"))
             .position(Pos.TOP_CENTER)
             .hideAfter(Duration.seconds(duration))
             .owner(App.getStage());

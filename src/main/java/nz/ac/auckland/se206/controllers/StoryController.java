@@ -60,7 +60,6 @@ public class StoryController extends ControllerMethods {
 
   @FXML
   private void audioReleased(MouseEvent event) {
-    System.out.println("playing audio");
     audioThree.setOpacity(0);
     // If audio is playing, don't start another thread
     if (isPlaying) {
