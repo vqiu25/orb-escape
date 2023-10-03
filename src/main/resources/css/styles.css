@@ -1,0 +1,10 @@
+@font-face {
+  src: url("../fonts/Adapa.ttf");
+}
+
+.label,
+.button,
+.text-field,
+.text-area {
+  -fx-font-family: 'Adapa';
+}
