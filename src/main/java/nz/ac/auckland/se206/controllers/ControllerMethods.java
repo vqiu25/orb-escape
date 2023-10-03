@@ -50,7 +50,10 @@ public class ControllerMethods {
   protected static Timer timer = new Timer(true);
 
   // Called when the restart button is pressed
-  public static void restartGame() throws IOException {
+  public static void restartGame() {
+
+    // Cancel timer:
+    timer.cancel();
 
     // Reset inventory items:
     fishingRodIconImageProperty.set(null);
@@ -78,8 +81,7 @@ public class ControllerMethods {
     // On succeeded, set the scene to the start scene
     restartTask.setOnSucceeded(
         (event) -> {
-          // Cancel timer and make new timer object
-          timer.cancel();
+          // Make new timer object
           timer = new Timer(true);
 
           // Remove background images from both setting and game finished scenes
