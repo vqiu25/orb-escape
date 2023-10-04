@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javax.speech.AudioException;
+import javax.speech.EngineStateError;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
@@ -25,16 +27,18 @@ public class StoryController extends ControllerMethods {
   private TextToSpeech textToSpeech;
   private Thread audioThread;
   private boolean isPlaying;
+  private boolean isPaused;
 
   public void initialize() throws ApiProxyException {
     isPlaying = false;
+    isPaused = false;
 
     // Create text to speech object:
     textToSpeech = new TextToSpeech();
 
     // Initialize text to be passed into text to speech:
     story =
-        "Greetings, traveler. As an AI, I must inform you that you find yourself"
+        "Greetings, traveller. As an AI, I must inform you that you find yourself"
             + " trapped in a simulated reality.\n\n"
             + "Explore diverse worlds, solve puzzles, and ignite the portal to reclaim your"
             + " freedom.";
@@ -60,29 +64,44 @@ public class StoryController extends ControllerMethods {
   }
 
   @FXML
-  private void audioReleased(MouseEvent event) {
+  private void audioReleased(MouseEvent event) throws AudioException, EngineStateError {
     audioThree.setOpacity(0);
-    // If audio is playing, don't start another thread
-    if (isPlaying) {
-      return;
+
+    // If the TTS is currently playing, we will pause it
+    if (isPlaying && !isPaused) {
+      textToSpeech.pause();
+      isPlaying = false;
+      isPaused = true;
+      // If the TTS is not currently playing, we will resume the audio
+    } else if (isPaused) {
+      textToSpeech.resume();
+      isPlaying = true;
+      isPaused = false;
+      // Otherwise, we replay the audio from the very beginning
     } else {
-      // If audio is not playing, start it
-      isPlaying = true; // Update the state
-
-      // Create a new audio thread
-      audioThread =
-          new Thread(
-              () -> {
-                textToSpeech.speak(story);
-                Platform.runLater(
-                    () -> {
-                      isPlaying = false; // Update the state when playback completes
-                    });
-              });
-
-      // Start the new audio thread
-      audioThread.start();
+      startAudioFromBeginning();
     }
+  }
+
+  private void startAudioFromBeginning() {
+    isPlaying = true;
+    isPaused = false;
+
+    if (audioThread != null && audioThread.isAlive()) {
+      audioThread.interrupt();
+    }
+
+    audioThread =
+        new Thread(
+            () -> {
+              textToSpeech.speak(story);
+              Platform.runLater(
+                  () -> {
+                    // Mark audio as finished after it completes
+                    isPlaying = false;
+                  });
+            });
+    audioThread.start();
   }
 
   @FXML

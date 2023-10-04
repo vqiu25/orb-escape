@@ -3,6 +3,7 @@ package nz.ac.auckland.se206.speech;
 import javax.speech.AudioException;
 import javax.speech.Central;
 import javax.speech.EngineException;
+import javax.speech.EngineStateError;
 import javax.speech.synthesis.Synthesizer;
 import javax.speech.synthesis.SynthesizerModeDesc;
 
@@ -106,5 +107,20 @@ public class TextToSpeech {
    */
   public void terminate() {
     synthesizer.cancel();
+  }
+
+  /** Pause text to speech */
+  public void pause() {
+    synthesizer.pause();
+  }
+
+  /**
+   * Resume text to speech
+   *
+   * @throws EngineStateError
+   * @throws AudioException
+   */
+  public void resume() throws AudioException, EngineStateError {
+    synthesizer.resume();
   }
 }
