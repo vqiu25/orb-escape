@@ -24,5 +24,5 @@
 }
 
 .popover>.content>* {
-  -fx-font-size: 17px;
+  -fx-font-size: 17px !important;
 }
