@@ -22,6 +22,9 @@ public class StoryController extends ControllerMethods {
   @FXML private ImageView audioOne;
   @FXML private ImageView audioTwo;
   @FXML private ImageView audioThree;
+  @FXML private ImageView pauseOne;
+  @FXML private ImageView pauseTwo;
+  @FXML private ImageView pauseThree;
 
   private String story;
   private TextToSpeech textToSpeech;
@@ -32,6 +35,7 @@ public class StoryController extends ControllerMethods {
   public void initialize() throws ApiProxyException {
     isPlaying = false;
     isPaused = false;
+    audioOne.setOpacity(1);
 
     // Create text to speech object:
     textToSpeech = new TextToSpeech();
@@ -50,23 +54,31 @@ public class StoryController extends ControllerMethods {
 
   @FXML
   private void audioHover(MouseEvent event) {
-    audioTwo.setOpacity(1);
+    resetAllOpacities();
+    if (isPlaying) {
+      pauseTwo.setOpacity(1);
+    } else {
+      audioTwo.setOpacity(1);
+    }
   }
 
   @FXML
   private void audioUnhover(MouseEvent event) {
-    audioTwo.setOpacity(0);
+    updateAudioButtonVisibility();
   }
 
   @FXML
   private void audioPressed(MouseEvent event) {
-    audioThree.setOpacity(1);
+    resetAllOpacities();
+    if (isPlaying) {
+      pauseThree.setOpacity(1);
+    } else {
+      audioThree.setOpacity(1);
+    }
   }
 
   @FXML
   private void audioReleased(MouseEvent event) throws AudioException, EngineStateError {
-    audioThree.setOpacity(0);
-
     // If the TTS is currently playing, we will pause it
     if (isPlaying && !isPaused) {
       textToSpeech.pause();
@@ -81,6 +93,7 @@ public class StoryController extends ControllerMethods {
     } else {
       startAudioFromBeginning();
     }
+    updateAudioButtonVisibility();
   }
 
   private void startAudioFromBeginning() {
@@ -99,6 +112,7 @@ public class StoryController extends ControllerMethods {
                   () -> {
                     // Mark audio as finished after it completes
                     isPlaying = false;
+                    updateAudioButtonVisibility();
                   });
             });
     audioThread.start();
@@ -130,6 +144,24 @@ public class StoryController extends ControllerMethods {
     if (audioThread != null && audioThread.isAlive()) {
       textToSpeech.terminate();
       audioThread.interrupt();
+    }
+  }
+
+  private void resetAllOpacities() {
+    pauseOne.setOpacity(0);
+    pauseTwo.setOpacity(0);
+    pauseThree.setOpacity(0);
+    audioOne.setOpacity(0);
+    audioTwo.setOpacity(0);
+    audioThree.setOpacity(0);
+  }
+
+  private void updateAudioButtonVisibility() {
+    resetAllOpacities();
+    if (isPlaying) {
+      pauseOne.setOpacity(1);
+    } else {
+      audioOne.setOpacity(1);
     }
   }
 }
