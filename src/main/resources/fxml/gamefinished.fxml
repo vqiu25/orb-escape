@@ -7,16 +7,16 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GameFinishedController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GameFinishedController">
    <children>
       <Label fx:id="lblTitle" alignment="CENTER" layoutY="83.0" prefWidth="800.0" text="Congratulations!" textAlignment="CENTER" underline="true">
          <font>
-            <Font name="System Bold" size="70.0" />
+            <Font name="System Bold" size="80.0" />
          </font>
       </Label>
       <Label fx:id="lblSubtitle" alignment="CENTER" layoutY="178.0" prefWidth="800.0" text="You Escaped" textAlignment="CENTER">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Label>
       <ImageView fitHeight="283.0" fitWidth="234.0" layoutX="283.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">

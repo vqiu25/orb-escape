@@ -1,9 +1,11 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+import java.io.InputStream;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import nz.ac.auckland.se206.controllers.ChatController;
@@ -106,7 +108,8 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-
+    InputStream fontStream = App.class.getResourceAsStream("/fonts/Adapa.ttf");
+    Font.loadFont(fontStream, 16);
     initializeGame();
 
     // Add scenes to hashmap - These will not be cleared:
@@ -129,6 +132,7 @@ public class App extends Application {
 
     // Fetch start scene from hashmap and set scene:
     currentScene = new Scene(loadLoader("start").load(), 800, 625);
+    currentScene.getStylesheets().add(getClass().getResource("/css/styles.css").toExternalForm());
     stage.setScene(currentScene);
     stage.setResizable(false);
     stage.show();

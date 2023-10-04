@@ -8,16 +8,16 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" style="-fx-background-color: #e9ecef;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SettingsController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" style="-fx-background-color: #e9ecef;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.SettingsController">
    <children>
       <Label alignment="CENTER" layoutY="82.0" prefHeight="86.0" prefWidth="800.0" text="Menu" textAlignment="CENTER" underline="true">
          <font>
-            <Font name="System Bold" size="70.0" />
+            <Font name="Adapa" size="80.0" />
          </font>
       </Label>
       <Label alignment="CENTER" layoutY="178.0" prefHeight="26.0" prefWidth="800.0" text="Go back to start screen or quit" textAlignment="CENTER">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Adapa" size="30.0" />
          </font>
       </Label>
       <ImageView fitHeight="283.0" fitWidth="234.0" layoutX="283.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
@@ -55,21 +55,21 @@
             <Image url="@../images/quitThree.png" />
          </image>
       </ImageView>
-      <VBox layoutX="15.0" layoutY="15.0" prefHeight="100.0" prefWidth="250.0">
+      <VBox layoutX="15.0" layoutY="15.0" prefHeight="100.0" prefWidth="277.0">
          <children>
             <Label fx:id="lblTimer" text="Time Left: ">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="Adapa" size="29.0" />
                </font>
             </Label>
-            <Label fx:id="lblTask" text="Task: ">
+            <Label fx:id="lblTask" prefHeight="20.0" prefWidth="278.0" text="Task:">
                <font>
-                  <Font size="16.0" />
+                  <Font name="Adapa" size="20.0" />
                </font>
             </Label>
             <Label fx:id="lblHints" text="Hints:">
                <font>
-                  <Font size="16.0" />
+                  <Font name="Adapa" size="20.0" />
                </font>
             </Label>
          </children>

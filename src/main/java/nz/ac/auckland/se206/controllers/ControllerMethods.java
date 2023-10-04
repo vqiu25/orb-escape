@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
@@ -187,7 +186,7 @@ public class ControllerMethods {
     } else if ((GameState.isFishingRodTaken && !GameState.isForestGameCompleted)
         || (GameState.isAxeTaken && !GameState.isForestGameCompleted)) {
       // If the fishing rod or axe has been taken but the forrest game has not been completed
-      GameState.taskString = "Task: Try using the item you found";
+      GameState.taskString = "Task: Use the found item";
 
     } else if (GameState.isForestTreeChopping
         && GameState.isForestGameCompleted
@@ -197,7 +196,7 @@ public class ControllerMethods {
 
     } else if (GameState.isLavaDragon && !GameState.isLavaGameCompleted) {
       // If the lava game has not been completed - dragon has not been distracted
-      GameState.taskString = "Task: Distract the dragon with food";
+      GameState.taskString = "Task: Distract dragon with food";
 
     } else if (GameState.isLavaBridge && !GameState.isLavaGameCompleted) {
       // If the lava game has not been completed - bridge has not been built
@@ -224,7 +223,7 @@ public class ControllerMethods {
         && GameState.isCastleOrbCollected
         && !GameState.isOrbsPlaced) {
       // If the orbs have not been placed in the terminal
-      GameState.taskString = "Task: Place the orbs in the terminal";
+      GameState.taskString = "Task: Place orbs in the terminal";
 
     } else if (GameState.isPortalOpen && !GameState.isRoomEscaped) {
       // If the portal has not been entered

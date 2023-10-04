@@ -41,6 +41,7 @@ public class StoryController extends ControllerMethods {
 
     // Set the text to be displayed on the text area:
     openingText.appendText(story);
+    openingText.getStyleClass().add("story-text");
   }
 
   @FXML
