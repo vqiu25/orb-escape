@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -35,20 +36,24 @@
             <Font name="Adapa" size="50.0" />
          </font>
       </Label>
-      <Label layoutX="349.0" layoutY="229.0" prefHeight="55.0" prefWidth="229.0" text="Solve puzzles and find the elusive orbs" textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font name="Adapa" size="25.0" />
-         </font>
-      </Label>
-      <Label layoutX="361.0" layoutY="298.0" prefHeight="94.0" prefWidth="212.0" text="Click on me to ask for hints and respond to riddles" textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font name="Adapa" size="25.0" />
-         </font>
-      </Label>
-      <Label layoutX="357.0" layoutY="393.0" prefHeight="107.0" prefWidth="229.0" text="Return orbs to the terminal to active the portal and escape!" textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font name="Adapa" size="25.0" />
-         </font>
-      </Label>
+      <VBox layoutX="356.0" layoutY="217.0" prefHeight="282.0" prefWidth="218.0">
+         <children>
+            <Label prefHeight="80.0" prefWidth="218.0" text="Solve puzzles and find the elusive orbs" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Adapa" size="25.0" />
+               </font>
+            </Label>
+            <Label prefHeight="117.0" prefWidth="212.0" text="Click on me to ask for hints and respond to riddles" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Adapa" size="25.0" />
+               </font>
+            </Label>
+            <Label prefHeight="107.0" prefWidth="218.0" text="Return orbs to the terminal to active the portal and escape!" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Adapa" size="25.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
    </children>
 </Pane>
