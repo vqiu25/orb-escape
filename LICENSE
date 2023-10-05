@@ -41,10 +41,17 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 * **Usage**: Buttons and UI elements were referenced and utilised in this application.
 * **Image Source**: https://mounirtohami.itch.io/pixel-art-gui-elements
-* **Copyright**: Free for any purpose
+* **Copyright**: Free for any purpose.
 
 ### Dragon Asset Pack
 
 * **Usage**: A dragon sprite was modified for the use in this application.
 * **Image Source**: https://deepdivegamestudio.itch.io/dragon-asset-pack
 * **Copyright**: Can be utilised in commercial and non-commercial video games and personal projects.
+
+## Font
+### Adapa Font
+
+* **Usage**: The default font in this application is the Adapa font, which has been used in the UI.
+* **Font Source**: https://heraldod.itch.io/adapa
+* **Copyright**: CC BY 4.0.
