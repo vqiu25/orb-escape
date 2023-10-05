@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
 public class HelpController extends ControllerMethods {
@@ -45,6 +45,6 @@ public class HelpController extends ControllerMethods {
     backThreeButton.setOpacity(0);
 
     // Return to previous scene by popping stack:
-    App.setScene(SceneManager.sceneStack.pop());
+    App.setScene(GameState.lastScene);
   }
 }

@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import java.util.Random;
+import nz.ac.auckland.se206.SceneManager.AppScene;
 
 /** Represents the state of the game. */
 public class GameState {
@@ -90,6 +91,9 @@ public class GameState {
   public static String timerString;
 
   public static String taskString;
+
+  // Last game scene:
+  public static AppScene lastScene;
 
   // Set game states to original state:
   public static void resetGameState() {
@@ -187,5 +191,8 @@ public class GameState {
     timerString = "Time Left: 4:00";
 
     taskString = "Task: Search for a riddle";
+
+    // Last game scene:
+    lastScene = null;
   }
 }

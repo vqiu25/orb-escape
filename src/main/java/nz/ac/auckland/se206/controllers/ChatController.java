@@ -13,7 +13,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
-import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.gpt.ChatMessage;
 import nz.ac.auckland.se206.gpt.GptPromptEngineering;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
@@ -336,7 +335,7 @@ public class ChatController extends ControllerMethods {
     }
 
     // Return to previous scene by popping stack:
-    App.setScene(SceneManager.sceneStack.pop());
+    App.setScene(GameState.lastScene);
   }
 
   // Send Button
@@ -403,6 +402,8 @@ public class ChatController extends ControllerMethods {
 
   public void setRiddleBookOpacity() {
     riddleTextChatArea.setDisable(false);
+    riddleBook.setDisable(false);
+    riddleTextArea.setDisable(false);
     riddleBook.setOpacity(0.9);
     riddleTextArea.setOpacity(0.9);
     riddleTextChatArea.setOpacity(0.9);
@@ -411,6 +412,8 @@ public class ChatController extends ControllerMethods {
 
   public void disableRiddleBookOpacity() {
     riddleTextChatArea.setDisable(true);
+    riddleBook.setDisable(true);
+    riddleTextArea.setDisable(true);
     riddleBook.setOpacity(0);
     riddleTextArea.setOpacity(0);
     riddleTextChatArea.setOpacity(0);

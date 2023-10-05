@@ -12,7 +12,6 @@ import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
-import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
@@ -293,7 +292,9 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
       setForestMiniOpacity();
     }
     // Store the current scene in the scene stack:
-    SceneManager.sceneStack.push(AppScene.TREES);
+    GameState.lastScene = AppScene.TREES;
+
+    // Change the scene to the chat scene
     App.setScene(AppScene.CHAT);
   }
 }

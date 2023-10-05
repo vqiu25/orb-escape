@@ -8,7 +8,6 @@ import javafx.scene.shape.Polygon;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
-import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
@@ -457,7 +456,7 @@ public class LavaRoomController extends ControllerMethods {
     helpThree.setOpacity(0);
 
     // Store lava room scene in stack:
-    SceneManager.sceneStack.push(AppScene.LAVA);
+    GameState.lastScene = AppScene.LAVA;
 
     App.setScene(AppScene.HELP);
   }
@@ -487,7 +486,7 @@ public class LavaRoomController extends ControllerMethods {
     settingsThree.setOpacity(0);
 
     // Store lava room scene in stack:
-    SceneManager.sceneStack.push(AppScene.LAVA);
+    GameState.lastScene = AppScene.LAVA;
 
     App.setScene(AppScene.SETTINGS);
   }
@@ -514,7 +513,9 @@ public class LavaRoomController extends ControllerMethods {
     }
 
     // Store current scene in scene stack
-    SceneManager.sceneStack.push(AppScene.LAVA);
+    GameState.lastScene = AppScene.LAVA;
+
+    // Change scene
     App.setScene(AppScene.CHAT);
   }
 
