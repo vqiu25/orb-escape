@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Polygon;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
@@ -37,14 +38,17 @@ public class LavaRoomController extends ControllerMethods {
   // Normal bridge state
   @FXML private ImageView bridge;
   @FXML private ImageView bridgeOutline;
+  @FXML private Polygon bridgeOutlinePolygon;
 
   // Broken bridge state
   @FXML private ImageView brokenBridge;
   @FXML private ImageView brokenBridgeOutline;
+  @FXML private Polygon brokenBridgeOutlinePolygon;
 
   // Fixed broken bridge state
   @FXML private ImageView fixedBridge;
   @FXML private ImageView fixedBridgeOutline;
+  @FXML private Polygon fixedBridgeOutlinePolygon;
 
   // Help and Settings Icons
   @FXML private ImageView helpOne;
@@ -104,6 +108,7 @@ public class LavaRoomController extends ControllerMethods {
       bridge.setOpacity(0);
       bridge.setDisable(true);
       bridgeOutline.setDisable(true);
+      bridgeOutlinePolygon.setDisable(true);
 
       // Disable dragon components
       dragon.setOpacity(0);
@@ -117,6 +122,7 @@ public class LavaRoomController extends ControllerMethods {
       // (mini-game completed)
       fixedBridge.setDisable(true);
       fixedBridgeOutline.setDisable(true);
+      fixedBridgeOutlinePolygon.setDisable(true);
 
       // Show broken bridge
       brokenBridge.setOpacity(1);
@@ -126,28 +132,12 @@ public class LavaRoomController extends ControllerMethods {
 
       brokenBridge.setDisable(true);
       brokenBridgeOutline.setDisable(true);
+      brokenBridgeOutlinePolygon.setDisable(true);
 
       fixedBridge.setDisable(true);
       fixedBridgeOutline.setDisable(true);
+      fixedBridgeOutlinePolygon.setDisable(true);
     }
-  }
-
-  /** Opens chat with game master. */
-  @FXML
-  private void openChat() {
-    App.setScene(AppScene.CHAT);
-  }
-
-  /** Opens help menu. */
-  @FXML
-  private void openHelp() {
-    App.setScene(AppScene.HELP);
-  }
-
-  /** Opens settings menu. */
-  @FXML
-  private void openSettings() {
-    App.setScene(AppScene.SETTINGS);
   }
 
   /**
@@ -269,6 +259,7 @@ public class LavaRoomController extends ControllerMethods {
     fixedBridge.setDisable(false);
     fixedBridge.setOpacity(1);
     fixedBridgeOutline.setDisable(false);
+    fixedBridgeOutlinePolygon.setDisable(false);
   }
 
   // Methods for mini-game 2: Tame dragon

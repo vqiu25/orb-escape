@@ -5,10 +5,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" style="-fx-background-color: F9DFE0;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LavaRoomController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="800.0" style="-fx-background-color: F9DFE0;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.LavaRoomController">
    <children>
       <VBox layoutX="15.0" layoutY="15.0" prefHeight="100.0" prefWidth="277.0">
          <children>
@@ -69,31 +70,34 @@
             <Image url="@../images/door.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="bridgeOutline" fitHeight="139.0" fitWidth="244.0" layoutX="168.0" layoutY="279.0" onMouseClicked="#bridgeClicked" onMouseEntered="#bridgeHovered" onMouseExited="#bridgeUnhovered" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="bridgeOutline" fitHeight="139.0" fitWidth="244.0" layoutX="168.0" layoutY="279.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/bridgeOutline.png" />
          </image>
       </ImageView>
+      <Polygon fx:id="bridgeOutlinePolygon" fill="DODGERBLUE" layoutX="277.0" layoutY="424.0" onMouseClicked="#bridgeClicked" onMouseEntered="#bridgeHovered" onMouseExited="#bridgeUnhovered" opacity="0.0" points="70.78475952148438, -42.5643310546875, 84.0, -45.4111328125, 84.0, -73.4111328125, 130.0, -100.4111328125, 64.0, -137.4111328125, -104.32618713378906, -57.266326904296875, -104.32618713378906, -42.5643310546875, -37.78021240234375, -7.9393310546875, -9.14996337890625, -26.314727783203125, -4.120330810546875, -13.54718017578125, 21.41473388671875, -13.54718017578125, 21.41473388671875, -39.475250244140625, 54.023712158203125, -57.266326904296875, 54.023712158203125, -45.4111328125" stroke="BLACK" strokeType="INSIDE" />
       <ImageView fx:id="brokenBridge" fitHeight="133.0" fitWidth="232.0" layoutX="173.0" layoutY="285.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/brokenBridge.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="brokenBridgeOutline" fitHeight="139.0" fitWidth="244.0" layoutX="168.0" layoutY="279.0" onMouseClicked="#brokenBridgeClicked" onMouseEntered="#brokenBridgeHovered" onMouseExited="#brokenBridgeUnhovered" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="brokenBridgeOutline" fitHeight="139.0" fitWidth="244.0" layoutX="168.0" layoutY="279.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/brokenBridgeOutline.png" />
          </image>
       </ImageView>
+      <Polygon fx:id="brokenBridgeOutlinePolygon" fill="DODGERBLUE" layoutX="277.0" layoutY="424.0" onMouseClicked="#brokenBridgeClicked" onMouseEntered="#brokenBridgeHovered" onMouseExited="#brokenBridgeUnhovered" opacity="0.0" points="70.78475952148438, -42.5643310546875, 84.0, -45.4111328125, 84.0, -73.4111328125, 130.0, -100.4111328125, 64.0, -137.4111328125, -104.32618713378906, -57.266326904296875, -104.32618713378906, -42.5643310546875, -37.78021240234375, -7.9393310546875, -9.14996337890625, -26.314727783203125, -4.120330810546875, -13.54718017578125, 21.41473388671875, -13.54718017578125, 21.41473388671875, -39.475250244140625, 54.023712158203125, -57.266326904296875, 54.023712158203125, -45.4111328125" stroke="BLACK" strokeType="INSIDE" />
       <ImageView fx:id="fixedBridge" fitHeight="133.0" fitWidth="232.0" layoutX="173.0" layoutY="285.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/fixedBridge.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="fixedBridgeOutline" fitHeight="139.0" fitWidth="244.0" layoutX="168.0" layoutY="279.0" onMouseClicked="#fixedBridgeClicked" onMouseEntered="#fixedBridgeHovered" onMouseExited="#fixedBridgeUnhovered" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="fixedBridgeOutline" fitHeight="139.0" fitWidth="244.0" layoutX="168.0" layoutY="279.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/fixedBridgeOutline.png" />
          </image>
       </ImageView>
+      <Polygon fx:id="fixedBridgeOutlinePolygon" fill="DODGERBLUE" layoutX="277.0" layoutY="424.0" onMouseClicked="#fixedBridgeClicked" onMouseEntered="#fixedBridgeHovered" onMouseExited="#fixedBridgeUnhovered" opacity="0.0" points="70.78475952148438, -42.5643310546875, 84.0, -45.4111328125, 84.0, -73.4111328125, 130.0, -100.4111328125, 64.0, -137.4111328125, -104.32618713378906, -57.266326904296875, -104.32618713378906, -42.5643310546875, -37.78021240234375, -7.9393310546875, -9.14996337890625, -26.314727783203125, -4.120330810546875, -13.54718017578125, 21.41473388671875, -13.54718017578125, 21.41473388671875, -39.475250244140625, 54.023712158203125, -57.266326904296875, 54.023712158203125, -45.4111328125" stroke="BLACK" strokeType="INSIDE" />
       <ImageView fx:id="lavaParticleOne" fitHeight="16.0" fitWidth="35.0" layoutX="377.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/lavaParticle.gif" />
@@ -135,7 +139,6 @@
          </image>
       </ImageView>
       <Rectangle fx:id="rightRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="51.0" layoutX="724.0" layoutY="272.0" onMouseEntered="#rightButtonHovered" onMouseExited="#rightButtonUnhovered" onMousePressed="#rightButtonClicked" onMouseReleased="#rightButtonUnclick" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="53.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="47.0" layoutX="670.0" layoutY="549.0" onMouseClicked="#openChat" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="100.0" />
       <ImageView fx:id="helpOne" fitHeight="54.0" fitWidth="56.0" layoutX="652.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/infoOne.png" />
