@@ -719,6 +719,7 @@ public class RoomController extends ControllerMethods {
 
     // Enable riddleBook and riddleTextArea
     chatController.setRiddleBookOpacity();
+    chatController.requestFocus();
 
     // Logic for which background GPT should have
     backrgoundHelper();

@@ -369,10 +369,19 @@ public class ChatController extends ControllerMethods {
         e.printStackTrace();
       }
     }
+
+    // if the user presses escape, return to previous scene
+    if (event.getCode().toString().equals("ESCAPE")) {
+      try {
+        returnToRoom(null);
+      } catch (ApiProxyException | IOException e) {
+        e.printStackTrace();
+      }
+    }
   }
 
   // Request focus on input text
-  private void requestFocus() {
+  public void requestFocus() {
     Platform.runLater(() -> inputText.requestFocus());
   }
 
