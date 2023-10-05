@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javax.speech.AudioException;
+import javax.speech.EngineStateError;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
@@ -20,21 +22,27 @@ public class StoryController extends ControllerMethods {
   @FXML private ImageView audioOne;
   @FXML private ImageView audioTwo;
   @FXML private ImageView audioThree;
+  @FXML private ImageView pauseOne;
+  @FXML private ImageView pauseTwo;
+  @FXML private ImageView pauseThree;
 
   private String story;
   private TextToSpeech textToSpeech;
   private Thread audioThread;
   private boolean isPlaying;
+  private boolean isPaused;
 
   public void initialize() throws ApiProxyException {
     isPlaying = false;
+    isPaused = false;
+    audioOne.setOpacity(1);
 
     // Create text to speech object:
     textToSpeech = new TextToSpeech();
 
     // Initialize text to be passed into text to speech:
     story =
-        "Greetings, traveler. As an AI, I must inform you that you find yourself"
+        "Greetings, traveller. As an AI, I must inform you that you find yourself"
             + " trapped in a simulated reality.\n\n"
             + "Explore diverse worlds, solve puzzles, and ignite the portal to reclaim your"
             + " freedom.";
@@ -46,43 +54,68 @@ public class StoryController extends ControllerMethods {
 
   @FXML
   private void audioHover(MouseEvent event) {
-    audioTwo.setOpacity(1);
+    resetAllOpacities();
+    if (isPlaying) {
+      pauseTwo.setOpacity(1);
+    } else {
+      audioTwo.setOpacity(1);
+    }
   }
 
   @FXML
   private void audioUnhover(MouseEvent event) {
-    audioTwo.setOpacity(0);
+    updateAudioButtonVisibility();
   }
 
   @FXML
   private void audioPressed(MouseEvent event) {
-    audioThree.setOpacity(1);
+    resetAllOpacities();
+    if (isPlaying) {
+      pauseThree.setOpacity(1);
+    } else {
+      audioThree.setOpacity(1);
+    }
   }
 
   @FXML
-  private void audioReleased(MouseEvent event) {
-    audioThree.setOpacity(0);
-    // If audio is playing, don't start another thread
-    if (isPlaying) {
-      return;
+  private void audioReleased(MouseEvent event) throws AudioException, EngineStateError {
+    // If the TTS is currently playing, we will pause it
+    if (isPlaying && !isPaused) {
+      textToSpeech.pause();
+      isPlaying = false;
+      isPaused = true;
+      // If the TTS is not currently playing, we will resume the audio
+    } else if (isPaused) {
+      textToSpeech.resume();
+      isPlaying = true;
+      isPaused = false;
+      // Otherwise, we replay the audio from the very beginning
     } else {
-      // If audio is not playing, start it
-      isPlaying = true; // Update the state
-
-      // Create a new audio thread
-      audioThread =
-          new Thread(
-              () -> {
-                textToSpeech.speak(story);
-                Platform.runLater(
-                    () -> {
-                      isPlaying = false; // Update the state when playback completes
-                    });
-              });
-
-      // Start the new audio thread
-      audioThread.start();
+      startAudioFromBeginning();
     }
+    updateAudioButtonVisibility();
+  }
+
+  private void startAudioFromBeginning() {
+    isPlaying = true;
+    isPaused = false;
+
+    if (audioThread != null && audioThread.isAlive()) {
+      audioThread.interrupt();
+    }
+
+    audioThread =
+        new Thread(
+            () -> {
+              textToSpeech.speak(story);
+              Platform.runLater(
+                  () -> {
+                    // Mark audio as finished after it completes
+                    isPlaying = false;
+                    updateAudioButtonVisibility();
+                  });
+            });
+    audioThread.start();
   }
 
   @FXML
@@ -111,6 +144,24 @@ public class StoryController extends ControllerMethods {
     if (audioThread != null && audioThread.isAlive()) {
       textToSpeech.terminate();
       audioThread.interrupt();
+    }
+  }
+
+  private void resetAllOpacities() {
+    pauseOne.setOpacity(0);
+    pauseTwo.setOpacity(0);
+    pauseThree.setOpacity(0);
+    audioOne.setOpacity(0);
+    audioTwo.setOpacity(0);
+    audioThree.setOpacity(0);
+  }
+
+  private void updateAudioButtonVisibility() {
+    resetAllOpacities();
+    if (isPlaying) {
+      pauseOne.setOpacity(1);
+    } else {
+      audioOne.setOpacity(1);
     }
   }
 }

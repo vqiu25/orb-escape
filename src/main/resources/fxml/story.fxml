@@ -35,6 +35,21 @@
          </font>
       </TextArea>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="55.0" layoutX="655.0" layoutY="26.0" onMouseEntered="#backHover" onMouseExited="#backUnhover" onMousePressed="#backPressed" onMouseReleased="#backReleased" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="116.0" />
+      <ImageView fx:id="pauseOne" fitHeight="55.0" fitWidth="137.0" layoutX="452.0" layoutY="411.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/pauseOne.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="pauseTwo" fitHeight="55.0" fitWidth="137.0" layoutX="452.0" layoutY="411.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/pauseTwo.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="pauseThree" fitHeight="55.0" fitWidth="137.0" layoutX="452.0" layoutY="411.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/pauseThree.png" />
+         </image>
+      </ImageView>
       <ImageView fx:id="audioOne" fitHeight="55.0" fitWidth="137.0" layoutX="452.0" layoutY="411.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/audioOne.png" />
