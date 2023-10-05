@@ -221,6 +221,14 @@ public class LavaRoomController extends ControllerMethods {
   @FXML
   private void brokenBridgeClicked(MouseEvent event) {
     if (GameState.isForestGameCompleted) {
+
+      // If the orb in the forest room has not been collected, prompt the player to collect it
+      if (!GameState.isForestOrbCollected) {
+        findForestOrb();
+
+        return;
+      }
+
       App.setScene(AppScene.BRIDGE_GAME);
     } else {
       // Forrest game NOT COMPLETED, prompt user to get wood.
@@ -517,5 +525,12 @@ public class LavaRoomController extends ControllerMethods {
     // Store current scene in scene stack
     SceneManager.sceneStack.push(AppScene.LAVA);
     App.setScene(AppScene.CHAT);
+  }
+
+  private void findForestOrb() {
+    Notifications message =
+        NotificationBuilder.createNotification(
+            "Game Master", "Try collecting the green orb first!", 5);
+    message.show();
   }
 }
