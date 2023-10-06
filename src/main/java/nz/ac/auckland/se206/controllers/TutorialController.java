@@ -29,9 +29,7 @@ public class TutorialController extends ControllerMethods {
     // Pass message to AI and fetch response:
     ChatMessage msg =
         new ChatMessage(
-            "user",
-            GptPromptEngineering.chatWithGameMaster(
-                "being stuck in this room and you need help escaping"));
+            "user", GptPromptEngineering.chatWithGameMaster("the player being stuck in the room"));
     chatMessage = gameMaster.runGameMaster(msg);
   }
 
