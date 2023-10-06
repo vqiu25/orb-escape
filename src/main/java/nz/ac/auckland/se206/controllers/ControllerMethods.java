@@ -11,6 +11,8 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
@@ -22,6 +24,10 @@ public class ControllerMethods {
   protected static StringProperty displayTime = new SimpleStringProperty(GameState.timerString);
   protected static StringProperty displayTask = new SimpleStringProperty(GameState.taskString);
   protected static StringProperty displayHints = new SimpleStringProperty(GameState.hintString);
+
+  // Text fill property for the timer label
+  protected static ObjectProperty<Paint> timerTextFill =
+      new SimpleObjectProperty<Paint>(Color.BLACK);
 
   // String properties for the game finished scene
   protected static StringProperty titleMessage = new SimpleStringProperty();
@@ -62,6 +68,9 @@ public class ControllerMethods {
     blueOrbImageProperty.set(null);
     greenOrbImageProperty.set(null);
     redOrbImageProperty.set(null);
+
+    // Reset timer label text fill
+    timerTextFill.set(Color.BLACK);
 
     Task<Void> restartTask =
         new Task<Void>() {
@@ -130,11 +139,14 @@ public class ControllerMethods {
             } else {
               // Decrement the count and update the timer.
               count--;
+              GameState.timeTaken++;
 
               // If the timer reaches 0, cancel the timer and switch scene to game over.
               if (count == 0) {
                 timer.cancel();
                 gameOver();
+              } else if (count == 60) {
+                timerTextFill.set(Color.RED);
               }
               updateTimer();
             }
@@ -156,7 +168,7 @@ public class ControllerMethods {
 
   /** Changes scene to game over scene. */
   protected void gameOver() {
-    setMessages("Game Over!", "You Lost");
+    setMessages("Game Over!", "You ran out of time!");
     App.setScene(AppScene.GAMEFINISHED);
   }
 

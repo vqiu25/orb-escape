@@ -92,7 +92,8 @@ public class RoomController extends ControllerMethods {
 
   /** Initializes the room view, it is called when the room loads. */
   public void initialize() {
-    // Bind the labels to the display values
+    // Bind the labels to the display values and styles
+    lblTimer.textFillProperty().bind(ControllerMethods.timerTextFill);
     lblTimer.textProperty().bind(ControllerMethods.displayTime);
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
@@ -596,7 +597,24 @@ public class RoomController extends ControllerMethods {
     // If the portal is open, allow the user to escape
     if (GameState.isPortalOpen) {
       GameState.isRoomEscaped = true;
-      setMessages("Congratulations!", "You Escaped");
+      int minutes = GameState.timeTaken / 60;
+      int seconds = GameState.timeTaken % 60;
+      String minutesPlural = minutes == 1 ? "" : "s";
+      String secondsPlural = seconds == 1 ? "!" : "s!";
+      if (minutes == 0) {
+        setMessages("Congratulations!", "You escaped in " + seconds + " second" + secondsPlural);
+      } else {
+        setMessages(
+            "Congratulations!",
+            "You escaped in "
+                + minutes
+                + " minute"
+                + minutesPlural
+                + " and "
+                + seconds
+                + " second"
+                + secondsPlural);
+      }
 
       // Switch scenes to game finished
       App.setScene(AppScene.GAMEFINISHED);

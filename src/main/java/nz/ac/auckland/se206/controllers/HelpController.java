@@ -20,10 +20,15 @@ public class HelpController extends ControllerMethods {
 
   public void initialize() throws ApiProxyException {
 
+    // Bind the labels to the display values and styles
+    lblTimer.textFillProperty().bind(ControllerMethods.timerTextFill);
+
+
     // Update tutorial text
     taskText.setText("If in doubt, refer to the task list\nat the top left!");
 
     // Bind the labels to the display values
+
     lblTimer.textProperty().bind(ControllerMethods.displayTime);
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
