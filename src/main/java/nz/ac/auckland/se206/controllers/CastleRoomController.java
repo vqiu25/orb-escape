@@ -86,7 +86,8 @@ public class CastleRoomController extends ControllerMethods {
   private int lockThreeValue = 0;
 
   public void initialize() {
-    // Bind the labels to the display values
+    // Bind the labels to the display values and styles
+    lblTimer.textFillProperty().bind(ControllerMethods.timerTextFill);
     lblTimer.textProperty().bind(ControllerMethods.displayTime);
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
@@ -152,8 +153,7 @@ public class CastleRoomController extends ControllerMethods {
 
     if (GameState.isChestUnlocked) {
       Notifications message =
-          NotificationBuilder.createNotification(
-              "Game Master: ", "Oi! Stop messing with the lock!", 5);
+          NotificationBuilder.createNotification("CLOUD: ", "Oi! Stop messing with the lock!", 5);
       message.show();
       return;
     }
@@ -169,8 +169,7 @@ public class CastleRoomController extends ControllerMethods {
 
       // Notify the user that the answer is correct:
       Notifications message =
-          NotificationBuilder.createNotification(
-              "Game Master:", "Ooooooh, I wonder whats inside!", 5);
+          NotificationBuilder.createNotification("CLOUD: ", "Ooooooh, I wonder whats inside!", 5);
       message.show();
 
       // Show the chest with the orb inside:
@@ -178,8 +177,7 @@ public class CastleRoomController extends ControllerMethods {
 
     } else {
       // Notify the user that the answer is incorrect:
-      Notifications message =
-          NotificationBuilder.createNotification("Game Master:", "Try again!", 5);
+      Notifications message = NotificationBuilder.createNotification("CLOUD: ", "Try again!", 5);
       message.show();
     }
   }

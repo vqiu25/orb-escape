@@ -31,7 +31,8 @@ public class SettingsController extends ControllerMethods {
   @FXML private ImageView restartAnimation;
 
   public void initialize() throws ApiProxyException {
-    // Bind the labels to the display values
+    // Bind the labels to the display values and styles
+    lblTimer.textFillProperty().bind(ControllerMethods.timerTextFill);
     lblTimer.textProperty().bind(ControllerMethods.displayTime);
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);

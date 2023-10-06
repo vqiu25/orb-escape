@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
@@ -20,8 +21,13 @@ public class TutorialController extends ControllerMethods {
   @FXML private ImageView startOneButton;
   @FXML private ImageView startTwoButton;
   @FXML private ImageView startThreeButton;
+  @FXML private Label taskText;
 
   public void initialize() throws ApiProxyException {
+
+    // Update tutorial text
+    taskText.setText("If in doubt, refer to the task list\nat the top left!");
+
     // Initialize game master object:
     gameMaster = new GameMaster();
     gameMaster.chatCompletionRequest();
@@ -29,9 +35,7 @@ public class TutorialController extends ControllerMethods {
     // Pass message to AI and fetch response:
     ChatMessage msg =
         new ChatMessage(
-            "user",
-            GptPromptEngineering.chatWithGameMaster(
-                "being stuck in this room and you need help escaping"));
+            "user", GptPromptEngineering.chatWithGameMaster("the player being stuck in the room"));
     chatMessage = gameMaster.runGameMaster(msg);
   }
 
@@ -49,7 +53,7 @@ public class TutorialController extends ControllerMethods {
 
     // Fetch message from AI and show:
     Notifications message =
-        NotificationBuilder.createNotification("Game Master:", chatMessage.getContent(), 7);
+        NotificationBuilder.createNotification("CLOUD: ", chatMessage.getContent(), 5);
     message.show();
     App.setScene(AppScene.ROOM);
   }

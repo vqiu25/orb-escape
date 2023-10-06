@@ -11,6 +11,8 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
@@ -22,6 +24,10 @@ public class ControllerMethods {
   protected static StringProperty displayTime = new SimpleStringProperty(GameState.timerString);
   protected static StringProperty displayTask = new SimpleStringProperty(GameState.taskString);
   protected static StringProperty displayHints = new SimpleStringProperty(GameState.hintString);
+
+  // Text fill property for the timer label
+  protected static ObjectProperty<Paint> timerTextFill =
+      new SimpleObjectProperty<Paint>(Color.BLACK);
 
   // String properties for the game finished scene
   protected static StringProperty titleMessage = new SimpleStringProperty();
@@ -39,6 +45,13 @@ public class ControllerMethods {
 
   // Object properties for background image behind the chat
   protected static ObjectProperty<Image> backgroundImageProperty = new SimpleObjectProperty<>(null);
+
+  // Object properties for trees images
+  protected static ObjectProperty<Image> treesImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> treesOutlineImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> miniTreesImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> treeHitImageProperty = new SimpleObjectProperty<>(null);
 
   // Object properties for portal images
   protected static ObjectProperty<Image> portalImageProperty = new SimpleObjectProperty<>(null);
@@ -62,6 +75,9 @@ public class ControllerMethods {
     blueOrbImageProperty.set(null);
     greenOrbImageProperty.set(null);
     redOrbImageProperty.set(null);
+
+    // Reset timer label text fill
+    timerTextFill.set(Color.BLACK);
 
     Task<Void> restartTask =
         new Task<Void>() {
@@ -130,11 +146,14 @@ public class ControllerMethods {
             } else {
               // Decrement the count and update the timer.
               count--;
+              GameState.timeTaken++;
 
               // If the timer reaches 0, cancel the timer and switch scene to game over.
               if (count == 0) {
                 timer.cancel();
                 gameOver();
+              } else if (count == 60) {
+                timerTextFill.set(Color.RED);
               }
               updateTimer();
             }
@@ -156,7 +175,7 @@ public class ControllerMethods {
 
   /** Changes scene to game over scene. */
   protected void gameOver() {
-    setMessages("Game Over!", "You Lost");
+    setMessages("Game Over!", "You ran out of time!");
     App.setScene(AppScene.GAMEFINISHED);
   }
 
@@ -181,7 +200,7 @@ public class ControllerMethods {
     } else if ((GameState.isForestFishing && !GameState.isFishingRodTaken)
         || (GameState.isForestTreeChopping && !GameState.isAxeTaken)) {
       // If the fishing rod or axe has not been taken
-      GameState.taskString = "Task: Search for other items";
+      GameState.taskString = "Task: Try exploring other rooms";
 
     } else if ((GameState.isFishingRodTaken && !GameState.isForestGameCompleted)
         || (GameState.isAxeTaken && !GameState.isForestGameCompleted)) {
@@ -505,5 +524,23 @@ public class ControllerMethods {
     portalImageProperty.set(new Image(getClass().getResourceAsStream("/images/glowyPortal.gif")));
     portalOutlineImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/glowyPortalOutline.gif")));
+  }
+
+  protected void initialiseGreenTrees() {
+    treesImageProperty.set(new Image(getClass().getResourceAsStream("/images/trees.png")));
+    treesOutlineImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/treesOutline.png")));
+    miniTreesImageProperty.set(new Image(getClass().getResourceAsStream("/images/miniTrees.png")));
+    treeHitImageProperty.set(new Image(getClass().getResourceAsStream("/images/treeHitOne.png")));
+  }
+
+  protected void initialisePinkTrees() {
+    treesImageProperty.set(new Image(getClass().getResourceAsStream("/images/treesPink.png")));
+    treesOutlineImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/treesPinkOutline.png")));
+    miniTreesImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/miniTreesPink.png")));
+    treeHitImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/treeHitOnePink.png")));
   }
 }

@@ -55,7 +55,8 @@ public class FishingMiniGameController extends ControllerMethods {
   private boolean isFishDelay = false;
 
   public void initialize() {
-    // Bind the labels to the display values
+    // Bind the labels to the display values and styles
+    lblTimer.textFillProperty().bind(ControllerMethods.timerTextFill);
     lblTimer.textProperty().bind(ControllerMethods.displayTime);
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
@@ -307,8 +308,7 @@ public class FishingMiniGameController extends ControllerMethods {
   private void showDisabledButtonNotification() {
     // Prompt for user when they are fishing and attempt to click on game master/return
     Notifications message =
-        NotificationBuilder.createNotification(
-            "Game Master: ", "Currently fishing! Please wait!", 5);
+        NotificationBuilder.createNotification("CLOUD: ", "Currently fishing! Please wait!", 5);
     message.show();
   }
 }

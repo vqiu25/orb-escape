@@ -63,7 +63,8 @@ public class BridgeGameController extends ControllerMethods {
   @FXML private ImageView redOrb;
 
   public void initialize() {
-    // Bind the labels to the display values
+    // Bind the labels to the display values and styles
+    lblTimer.textFillProperty().bind(ControllerMethods.timerTextFill);
     lblTimer.textProperty().bind(ControllerMethods.displayTime);
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
@@ -146,11 +147,10 @@ public class BridgeGameController extends ControllerMethods {
       // Notify user that the bridge has been fixed:
       Notifications message =
           NotificationBuilder.createNotification(
-              "Game Master:", "You have fixed the bridge. You may now cross!", 5);
+              "CLOUD: ", "You have fixed the bridge. You may now cross!", 5);
       message.show();
     } else {
-      Notifications message =
-          NotificationBuilder.createNotification("Game Master:", "Try again!", 5);
+      Notifications message = NotificationBuilder.createNotification("CLOUD: ", "Try again!", 5);
       message.show();
     }
   }

@@ -89,6 +89,7 @@ public class GameState {
   // Timer (Default)
   public static int timerCount;
   public static String timerString;
+  public static int timeTaken;
 
   public static String taskString;
 
@@ -189,6 +190,7 @@ public class GameState {
     // Timer (Default)
     timerCount = 240;
     timerString = "Time Left: 4:00";
+    timeTaken = 0;
 
     taskString = "Task: Search for a riddle";
 

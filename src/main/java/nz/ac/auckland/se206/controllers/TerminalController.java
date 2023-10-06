@@ -59,7 +59,8 @@ public class TerminalController extends ControllerMethods {
   @FXML private ImageView gameMasterChat;
 
   public void initialize() {
-    // Bind the labels to the display values
+    // Bind the labels to the display values and styles
+    lblTimer.textFillProperty().bind(ControllerMethods.timerTextFill);
     lblTimer.textProperty().bind(ControllerMethods.displayTime);
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
@@ -114,12 +115,11 @@ public class TerminalController extends ControllerMethods {
       // Notify user they may escape:
       Notifications message =
           NotificationBuilder.createNotification(
-              "Game Master: ", "At last I am free!! The portal has now been fixed.", 5);
+              "CLOUD: ", "At last I am free!! The portal has now been fixed.", 5);
       message.show();
     } else {
       Notifications message =
-          NotificationBuilder.createNotification(
-              "Game Master: ", "Not quite right... Try again!", 5);
+          NotificationBuilder.createNotification("CLOUD: ", "Not quite right... Try again!", 5);
       message.show();
     }
   }
