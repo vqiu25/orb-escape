@@ -8,7 +8,6 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
-import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
@@ -386,7 +385,7 @@ public class CastleRoomController extends ControllerMethods {
     setChestMiniOpacity();
 
     // Store the current scene in the scene stack:
-    SceneManager.sceneStack.push(AppScene.CASTLE);
+    GameState.lastScene = AppScene.CASTLE;
 
     App.setScene(AppScene.CHAT);
   }

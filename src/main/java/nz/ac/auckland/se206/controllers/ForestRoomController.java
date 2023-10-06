@@ -8,7 +8,6 @@ import javafx.scene.shape.Polygon;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
-import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
@@ -127,7 +126,7 @@ public class ForestRoomController extends ControllerMethods {
     helpThree.setOpacity(0);
 
     // Store forrest room scene in stack:
-    SceneManager.sceneStack.push(AppScene.FOREST);
+    GameState.lastScene = AppScene.FOREST;
 
     App.setScene(AppScene.HELP);
   }
@@ -157,7 +156,7 @@ public class ForestRoomController extends ControllerMethods {
     settingsThree.setOpacity(0);
 
     // Store forrest room scene in stack:
-    SceneManager.sceneStack.push(AppScene.FOREST);
+    GameState.lastScene = AppScene.FOREST;
 
     App.setScene(AppScene.SETTINGS);
   }
@@ -475,7 +474,7 @@ public class ForestRoomController extends ControllerMethods {
     }
 
     // Store forrest room scene in stack:
-    SceneManager.sceneStack.push(AppScene.FOREST);
+    GameState.lastScene = AppScene.FOREST;
 
     App.setScene(AppScene.CHAT);
   }

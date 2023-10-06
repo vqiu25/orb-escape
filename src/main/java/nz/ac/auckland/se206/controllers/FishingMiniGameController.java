@@ -15,7 +15,6 @@ import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
-import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
@@ -295,7 +294,9 @@ public class FishingMiniGameController extends ControllerMethods {
       setFishingMiniOpacity();
 
       // store current scene in scene stack
-      SceneManager.sceneStack.push(AppScene.FISHING);
+      GameState.lastScene = AppScene.FISHING;
+
+      // Change the scene
       App.setScene(AppScene.CHAT);
     } else if (isRunning) {
       // If the user is currently fishing, inform user they cannot go back

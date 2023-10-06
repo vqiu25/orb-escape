@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206;
 
 import java.util.HashMap;
-import java.util.Stack;
 import javafx.scene.Parent;
 
 public class SceneManager {
@@ -27,9 +26,6 @@ public class SceneManager {
 
   // Hashmap which stores the states of scenes
   public static HashMap<AppScene, Parent> sceneMap = new HashMap<AppScene, Parent>();
-
-  // Stack data structure for storing previously accessed scenes
-  public static Stack<AppScene> sceneStack = new Stack<AppScene>();
 
   /**
    * Adds the inputted scene to the hashmap.

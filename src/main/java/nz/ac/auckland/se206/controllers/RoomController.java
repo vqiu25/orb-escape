@@ -9,7 +9,6 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.NotificationBuilder;
-import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
@@ -147,7 +146,7 @@ public class RoomController extends ControllerMethods {
     helpThree.setOpacity(0);
 
     // Store scene to stack
-    SceneManager.sceneStack.push(AppScene.ROOM);
+    GameState.lastScene = AppScene.ROOM;
 
     App.setScene(AppScene.HELP);
   }
@@ -177,7 +176,7 @@ public class RoomController extends ControllerMethods {
     settingsThree.setOpacity(0);
 
     // Store scene to stack
-    SceneManager.sceneStack.push(AppScene.ROOM);
+    GameState.lastScene = AppScene.ROOM;
 
     App.setScene(AppScene.SETTINGS);
   }
@@ -677,7 +676,9 @@ public class RoomController extends ControllerMethods {
   private void gameMasterOnClick(MouseEvent event) {
     backrgoundHelper();
     // Store current scene in scene stack
-    SceneManager.sceneStack.push(AppScene.ROOM);
+    GameState.lastScene = AppScene.ROOM;
+
+    // Switch scenes
     App.setScene(AppScene.CHAT);
   }
 
@@ -718,12 +719,13 @@ public class RoomController extends ControllerMethods {
 
     // Enable riddleBook and riddleTextArea
     chatController.setRiddleBookOpacity();
+    chatController.requestFocus();
 
     // Logic for which background GPT should have
     backrgoundHelper();
 
     // Store current scene in scene stack
-    SceneManager.sceneStack.push(AppScene.ROOM);
+    GameState.lastScene = AppScene.ROOM;
 
     // Switch scenes
     App.setScene(AppScene.CHAT);
