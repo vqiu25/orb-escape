@@ -102,11 +102,11 @@ public class ChatController extends ControllerMethods {
     }
 
     riddleChatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.4).setMaxTokens(100);
+        new ChatCompletionRequest().setN(1).setTemperature(0.5).setTopP(0.8).setMaxTokens(45);
     runGpt(new ChatMessage("assistant", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess)));
 
     chatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.4).setMaxTokens(100);
+        new ChatCompletionRequest().setN(1).setTemperature(0.5).setTopP(0.8).setMaxTokens(80);
     runGpt(new ChatMessage("assistant", GptPromptEngineering.getGameMaster()));
   }
 
@@ -229,10 +229,14 @@ public class ChatController extends ControllerMethods {
       // Get game context for hints:
       if (!GameState.isRiddleFound) {
         hint = "looking for a book.";
-      } else if (!GameState.isRiddleResolved) {
-        hint = "";
-      } else if (!GameState.isRoomOrbCollected) {
-        hint = "the location to the orb being the answer to the riddle";
+      } else if (!GameState.isRiddleResolved && GameState.isRug) {
+        hint = "solving a riddle with the answer rug";
+      } else if (!GameState.isRiddleResolved && GameState.isCabinet) {
+        hint = "solving a riddle with the answer cabinet";
+      } else if (!GameState.isRoomOrbCollected && GameState.isRug) {
+        hint = "the orb being found under the rug";
+      } else if (!GameState.isRoomOrbCollected && GameState.isCabinet) {
+        hint = "the orb being found in the cabinet";
       } else if (GameState.isForestTreeChopping && !GameState.isForestGameCompleted) {
         hint = "the green orb being stuck on the tree";
       } else if (GameState.isForestFishing && !GameState.isForestGameCompleted) {
