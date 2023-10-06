@@ -74,6 +74,10 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
 
     // Bind the inventory images to their image properties
     bindInventory();
+
+    // Bind the trees image to its image property
+    miniTrees.imageProperty().bind(ControllerMethods.miniTreesImageProperty);
+    treeHitOne.imageProperty().bind(ControllerMethods.treeHitImageProperty);
   }
 
   @FXML
