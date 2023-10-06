@@ -16,8 +16,13 @@ public class HelpController extends ControllerMethods {
 
   @FXML private ImageView backTwoButton;
   @FXML private ImageView backThreeButton;
+  @FXML private Label taskText;
 
   public void initialize() throws ApiProxyException {
+
+    // Update tutorial text
+    taskText.setText("If in doubt, refer to the task list\nat the top left!");
+
     // Bind the labels to the display values
     lblTimer.textProperty().bind(ControllerMethods.displayTime);
     lblTask.textProperty().bind(ControllerMethods.displayTask);
