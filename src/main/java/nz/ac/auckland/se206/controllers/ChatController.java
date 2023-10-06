@@ -371,6 +371,16 @@ public class ChatController extends ControllerMethods {
     }
 
     // if the user presses escape, return to previous scene
+    checkIfEscapePressed(event);
+  }
+
+  @FXML
+  private void escapeKeyPressed(KeyEvent event) {
+    checkIfEscapePressed(event);
+  }
+
+  private void checkIfEscapePressed(KeyEvent event) {
+    // if the user presses escape, return to previous scene
     if (event.getCode().toString().equals("ESCAPE")) {
       try {
         returnToRoom(null);
