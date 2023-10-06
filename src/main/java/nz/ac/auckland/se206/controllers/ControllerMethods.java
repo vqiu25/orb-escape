@@ -181,7 +181,7 @@ public class ControllerMethods {
     } else if ((GameState.isForestFishing && !GameState.isFishingRodTaken)
         || (GameState.isForestTreeChopping && !GameState.isAxeTaken)) {
       // If the fishing rod or axe has not been taken
-      GameState.taskString = "Task: Search for other items";
+      GameState.taskString = "Task: Try exploring other rooms";
 
     } else if ((GameState.isFishingRodTaken && !GameState.isForestGameCompleted)
         || (GameState.isAxeTaken && !GameState.isForestGameCompleted)) {

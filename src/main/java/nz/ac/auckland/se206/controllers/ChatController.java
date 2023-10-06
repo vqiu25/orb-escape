@@ -102,11 +102,11 @@ public class ChatController extends ControllerMethods {
     }
 
     riddleChatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(0.5).setTopP(0.8).setMaxTokens(45);
+        new ChatCompletionRequest().setN(1).setTemperature(0.5).setTopP(0.7).setMaxTokens(45);
     runGpt(new ChatMessage("assistant", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess)));
 
     chatCompletionRequest =
-        new ChatCompletionRequest().setN(1).setTemperature(0.5).setTopP(0.8).setMaxTokens(80);
+        new ChatCompletionRequest().setN(1).setTemperature(0.5).setTopP(0.7).setMaxTokens(80);
     runGpt(new ChatMessage("assistant", GptPromptEngineering.getGameMaster()));
   }
 
@@ -230,17 +230,17 @@ public class ChatController extends ControllerMethods {
       if (!GameState.isRiddleFound) {
         hint = "looking for a book.";
       } else if (!GameState.isRiddleResolved && GameState.isRug) {
-        hint = "solving a riddle with the answer rug";
+        hint = "solving a riddle where the answer is rug";
       } else if (!GameState.isRiddleResolved && GameState.isCabinet) {
-        hint = "solving a riddle with the answer cabinet";
+        hint = "solving a riddle where the answer is cabinet";
       } else if (!GameState.isRoomOrbCollected && GameState.isRug) {
         hint = "the orb being found under the rug";
       } else if (!GameState.isRoomOrbCollected && GameState.isCabinet) {
         hint = "the orb being found in the cabinet";
       } else if (GameState.isForestTreeChopping && !GameState.isForestGameCompleted) {
-        hint = "the green orb being stuck on the tree";
+        hint = "exploring the tree";
       } else if (GameState.isForestFishing && !GameState.isForestGameCompleted) {
-        hint = "the green orb being stuck to the fish";
+        hint = "exploring the fishing dock";
       } else if (GameState.isLavaBridge && !GameState.isLavaGameCompleted) {
         hint = "fixing the bridge with some wood";
       } else if (GameState.isLavaDragon && !GameState.isLavaGameCompleted) {
