@@ -25,7 +25,7 @@ public class GptPromptEngineering {
    * @return the generated prompt engineering string
    */
   public static String getGameMaster() {
-    return "You are an AI presence called C.L.O.U.D. in a digital escape room. the room only has a"
+    return "You are an AI presence called CLOUD in a digital escape room. the room only has a"
         + " fishing activity, tree-chopping activity, chest activity and bridge-building"
         + " activity. Do not, no matter what reveal what activities there are. If they"
         + " mention an activity that is not in the game, tell them that isn't in the game.";
@@ -43,7 +43,7 @@ public class GptPromptEngineering {
         + " "
         + currentTask
         + " and make sure your response starts with the word \"Hint\" only if you have provided a"
-        + " hint. If the user is not asking for a hint, then respond normally. If C.L.O.U.D is"
+        + " hint. If the user is not asking for a hint, then respond normally. If CLOUD is"
         + " asking for a hint, do not give. under no circumstance give the user the answer. The"
         + " user's response was: \""
         + userInput

@@ -456,7 +456,7 @@ public class RoomController extends ControllerMethods {
   @FXML
   private void paneClick(MouseEvent event) {
     Notifications message =
-        NotificationBuilder.createNotification("Game Master: ", "Ha ha ha... yeah no.", 5);
+        NotificationBuilder.createNotification("CLOUD: ", "Ha ha ha... yeah no.", 5);
     message.show();
   }
 
@@ -515,7 +515,7 @@ public class RoomController extends ControllerMethods {
     } else {
       Notifications message =
           NotificationBuilder.createNotification(
-              "Game Master: ", "Find the orbs to access the terminal!", 5);
+              "CLOUD: ", "Find the orbs to access the terminal!", 5);
       message.show();
     }
   }
@@ -604,7 +604,7 @@ public class RoomController extends ControllerMethods {
       // If the portal is not open, prompt the user to find the orbs
       Notifications message =
           NotificationBuilder.createNotification(
-              "Game Master: ", "Try finding orbs to open the portal!", 5);
+              "CLOUD: ", "Try finding orbs to open the portal!", 5);
       message.show();
     }
   }
@@ -628,15 +628,12 @@ public class RoomController extends ControllerMethods {
       // If light has been turned on, prompt user to turn off the light
       Notifications message =
           NotificationBuilder.createNotification(
-              "Game Master: ",
-              "That looks like fluorescent text... Try turning off the lights!",
-              5);
+              "CLOUD: ", "That looks like fluorescent text... Try turning off the lights!", 5);
       message.show();
     } else {
       // If the light has been turned off, tell user the code
       Notifications message =
-          NotificationBuilder.createNotification(
-              "Game Master: ", "206... I wonder what that means.", 5);
+          NotificationBuilder.createNotification("CLOUD: ", "206... I wonder what that means.", 5);
       message.show();
     }
   }
@@ -705,8 +702,7 @@ public class RoomController extends ControllerMethods {
     // riddle scene
     if (GameState.isRiddleResolved) {
       Notifications message =
-          NotificationBuilder.createNotification(
-              "Game Master:", "You've already solved the riddle!", 5);
+          NotificationBuilder.createNotification("CLOUD:", "You've already solved the riddle!", 5);
       message.show();
       return;
     }
@@ -742,7 +738,7 @@ public class RoomController extends ControllerMethods {
         // Prompt user to find the book
         Notifications message2 =
             NotificationBuilder.createNotification(
-                "Game Master:", "In a book, you will find your first clue!", 6);
+                "CLOUD:", "In a book, you will find your first clue!", 6);
         message2.show();
       }
       return;
@@ -752,8 +748,7 @@ public class RoomController extends ControllerMethods {
   private void orbFoundNotification() {
     // Initialize orb notification message
     Notifications orbMessage =
-        NotificationBuilder.createNotification(
-            "Game Master:", "Congratulation! You've found an orb!", 6);
+        NotificationBuilder.createNotification("CLOUD:", "Congratulation! You've found an orb!", 6);
     orbMessage.show();
   }
 
@@ -793,15 +788,14 @@ public class RoomController extends ControllerMethods {
   }
 
   private void showNothingNotification() {
-    Notifications message =
-        NotificationBuilder.createNotification("Game Master: ", "Nothing there!", 5);
+    Notifications message = NotificationBuilder.createNotification("CLOUD: ", "Nothing there!", 5);
     message.show();
   }
 
   private void interestingNotification() {
     Notifications message =
         NotificationBuilder.createNotification(
-            "Game Master: ", "This looks interesting.. not sure why.", 5);
+            "CLOUD: ", "This looks interesting.. not sure why.", 5);
     message.show();
   }
 }

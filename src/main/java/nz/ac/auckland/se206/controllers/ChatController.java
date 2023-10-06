@@ -123,10 +123,10 @@ public class ChatController extends ControllerMethods {
       prefix = "";
     } else if (msg.getRole().equals("user")) {
       // If the message is from the user, set prefix to "You said: "
-      prefix = "You said: ";
+      prefix = "You Said: ";
     } else {
-      // If the messag is from the game master, set prefix to "Game Master: "
-      prefix = "Game Master: ";
+      // If the message is from the game master, set prefix to "CLOUD: "
+      prefix = "CLOUD: ";
     }
     // Append the message to the text area
     textArea.appendText(prefix + msg.getContent() + "\n\n");

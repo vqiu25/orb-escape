@@ -47,7 +47,7 @@ public class TutorialController extends ControllerMethods {
 
     // Fetch message from AI and show:
     Notifications message =
-        NotificationBuilder.createNotification("Game Master:", chatMessage.getContent(), 7);
+        NotificationBuilder.createNotification("CLOUD:", chatMessage.getContent(), 5);
     message.show();
     App.setScene(AppScene.ROOM);
   }
