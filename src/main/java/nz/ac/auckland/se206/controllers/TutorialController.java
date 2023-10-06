@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
@@ -20,8 +21,13 @@ public class TutorialController extends ControllerMethods {
   @FXML private ImageView startOneButton;
   @FXML private ImageView startTwoButton;
   @FXML private ImageView startThreeButton;
+  @FXML private Label taskText;
 
   public void initialize() throws ApiProxyException {
+
+    // Update tutorial text
+    taskText.setText("If in doubt, refer to the task list\nat the top left!");
+
     // Initialize game master object:
     gameMaster = new GameMaster();
     gameMaster.chatCompletionRequest();
