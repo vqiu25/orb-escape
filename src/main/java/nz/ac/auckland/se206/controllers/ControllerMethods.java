@@ -46,6 +46,13 @@ public class ControllerMethods {
   // Object properties for background image behind the chat
   protected static ObjectProperty<Image> backgroundImageProperty = new SimpleObjectProperty<>(null);
 
+  // Object properties for trees images
+  protected static ObjectProperty<Image> treesImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> treesOutlineImageProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> miniTreesImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> treeHitImageProperty = new SimpleObjectProperty<>(null);
+
   // Object properties for portal images
   protected static ObjectProperty<Image> portalImageProperty = new SimpleObjectProperty<>(null);
   protected static ObjectProperty<Image> portalOutlineImageProperty =
@@ -517,5 +524,23 @@ public class ControllerMethods {
     portalImageProperty.set(new Image(getClass().getResourceAsStream("/images/glowyPortal.gif")));
     portalOutlineImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/glowyPortalOutline.gif")));
+  }
+
+  protected void initialiseGreenTrees() {
+    treesImageProperty.set(new Image(getClass().getResourceAsStream("/images/trees.png")));
+    treesOutlineImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/treesOutline.png")));
+    miniTreesImageProperty.set(new Image(getClass().getResourceAsStream("/images/miniTrees.png")));
+    treeHitImageProperty.set(new Image(getClass().getResourceAsStream("/images/treeHitOne.png")));
+  }
+
+  protected void initialisePinkTrees() {
+    treesImageProperty.set(new Image(getClass().getResourceAsStream("/images/treesPink.png")));
+    treesOutlineImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/treesPinkOutline.png")));
+    miniTreesImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/miniTreesPink.png")));
+    treeHitImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/treeHitOnePink.png")));
   }
 }

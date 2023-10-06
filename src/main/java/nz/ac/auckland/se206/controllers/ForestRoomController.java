@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.util.Random;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -77,6 +78,17 @@ public class ForestRoomController extends ControllerMethods {
 
     // Bind the inventory images to their image properties
     bindInventory();
+
+    // Bind the trees image to its image property
+    trees.imageProperty().bind(ControllerMethods.treesImageProperty);
+    treesOutline.imageProperty().bind(ControllerMethods.treesOutlineImageProperty);
+
+    int randomInt = new Random().nextInt(10);
+    if (randomInt > 4) {
+      initialiseGreenTrees();
+    } else {
+      initialisePinkTrees();
+    }
 
     // Based on minigame selected, either show dragon scenario or broken bridge scenario:
     if (GameState.isForestTreeChopping) {
