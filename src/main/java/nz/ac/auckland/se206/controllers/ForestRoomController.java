@@ -482,21 +482,22 @@ public class ForestRoomController extends ControllerMethods {
   public void findRiddle() {
     // Initialize orb notification message
     Notifications orbMessage =
-        NotificationBuilder.createNotification("CLOUD:", "See if you can find a riddle first!", 6);
+        NotificationBuilder.createNotification("CLOUD: ", "See if you can find a riddle first!", 6);
     orbMessage.show();
   }
 
   public void solveRiddle() {
     // Initialize orb notification message
     Notifications orbMessage =
-        NotificationBuilder.createNotification("CLOUD:", "Hmm... Try solving the riddle first!", 6);
+        NotificationBuilder.createNotification(
+            "CLOUD: ", "Hmm... Try solving the riddle first!", 6);
     orbMessage.show();
   }
 
   public void findRoomOrb() {
     // Initialize orb notification message
     Notifications orbMessage =
-        NotificationBuilder.createNotification("CLOUD:", "Try searching for an orb first!", 6);
+        NotificationBuilder.createNotification("CLOUD: ", "Try searching for an orb first!", 6);
     orbMessage.show();
   }
 }

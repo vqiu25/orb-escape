@@ -168,7 +168,7 @@ public class CastleRoomController extends ControllerMethods {
 
       // Notify the user that the answer is correct:
       Notifications message =
-          NotificationBuilder.createNotification("CLOUD:", "Ooooooh, I wonder whats inside!", 5);
+          NotificationBuilder.createNotification("CLOUD: ", "Ooooooh, I wonder whats inside!", 5);
       message.show();
 
       // Show the chest with the orb inside:
@@ -176,7 +176,7 @@ public class CastleRoomController extends ControllerMethods {
 
     } else {
       // Notify the user that the answer is incorrect:
-      Notifications message = NotificationBuilder.createNotification("CLOUD:", "Try again!", 5);
+      Notifications message = NotificationBuilder.createNotification("CLOUD: ", "Try again!", 5);
       message.show();
     }
   }

@@ -702,7 +702,7 @@ public class RoomController extends ControllerMethods {
     // riddle scene
     if (GameState.isRiddleResolved) {
       Notifications message =
-          NotificationBuilder.createNotification("CLOUD:", "You've already solved the riddle!", 5);
+          NotificationBuilder.createNotification("CLOUD: ", "You've already solved the riddle!", 5);
       message.show();
       return;
     }
@@ -738,7 +738,7 @@ public class RoomController extends ControllerMethods {
         // Prompt user to find the book
         Notifications message2 =
             NotificationBuilder.createNotification(
-                "CLOUD:", "In a book, you will find your first clue!", 6);
+                "CLOUD: ", "In a book, you will find your first clue!", 6);
         message2.show();
       }
       return;
@@ -748,7 +748,8 @@ public class RoomController extends ControllerMethods {
   private void orbFoundNotification() {
     // Initialize orb notification message
     Notifications orbMessage =
-        NotificationBuilder.createNotification("CLOUD:", "Congratulation! You've found an orb!", 6);
+        NotificationBuilder.createNotification(
+            "CLOUD: ", "Congratulation! You've found an orb!", 6);
     orbMessage.show();
   }
 
