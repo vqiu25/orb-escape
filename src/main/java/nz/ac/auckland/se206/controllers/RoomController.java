@@ -596,7 +596,24 @@ public class RoomController extends ControllerMethods {
     // If the portal is open, allow the user to escape
     if (GameState.isPortalOpen) {
       GameState.isRoomEscaped = true;
-      setMessages("Congratulations!", "You Escaped");
+      int minutes = GameState.timeTaken / 60;
+      int seconds = GameState.timeTaken % 60;
+      String minutesPlural = minutes == 1 ? "" : "s";
+      String secondsPlural = seconds == 1 ? "!" : "s!";
+      if (minutes == 0) {
+        setMessages("Congratulations!", "You escaped in " + seconds + " second" + secondsPlural);
+      } else {
+        setMessages(
+            "Congratulations!",
+            "You escaped in "
+                + minutes
+                + " minute"
+                + minutesPlural
+                + " and "
+                + seconds
+                + " second"
+                + secondsPlural);
+      }
 
       // Switch scenes to game finished
       App.setScene(AppScene.GAMEFINISHED);

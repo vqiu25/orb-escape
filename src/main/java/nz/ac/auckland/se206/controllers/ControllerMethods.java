@@ -130,6 +130,7 @@ public class ControllerMethods {
             } else {
               // Decrement the count and update the timer.
               count--;
+              GameState.timeTaken++;
 
               // If the timer reaches 0, cancel the timer and switch scene to game over.
               if (count == 0) {
@@ -156,7 +157,7 @@ public class ControllerMethods {
 
   /** Changes scene to game over scene. */
   protected void gameOver() {
-    setMessages("Game Over!", "You Lost");
+    setMessages("Game Over!", "You ran out of time!");
     App.setScene(AppScene.GAMEFINISHED);
   }
 
