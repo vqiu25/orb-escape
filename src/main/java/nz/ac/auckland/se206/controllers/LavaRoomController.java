@@ -250,17 +250,14 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the fixed bridge is clicked, the user is told that they are able to enter the castle.
+   * When the fixed bridge is clicked, the user is returned to the bridge mini-game.
    *
    * @param event Mouse click event.
    */
   @FXML
   private void fixedBridgeClicked(MouseEvent event) {
-
-    Notifications message =
-        NotificationBuilder.createNotification(
-            "CLOUD: ", "Bridge fixed! You may now enter the castle.", 5);
-    message.show();
+    // Change scene to bridge mini-game:
+    App.setScene(AppScene.BRIDGE_GAME);
   }
 
   public void setFixedBridge() {
