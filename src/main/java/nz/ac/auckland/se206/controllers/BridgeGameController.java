@@ -146,7 +146,7 @@ public class BridgeGameController extends ControllerMethods {
       // Notify user that the bridge has been fixed:
       Notifications message =
           NotificationBuilder.createNotification(
-              "Game Master:", "Well done! You have fixed the bridge!", 5);
+              "Game Master:", "You have fixed the bridge. You may now cross!", 5);
       message.show();
     } else {
       Notifications message =
