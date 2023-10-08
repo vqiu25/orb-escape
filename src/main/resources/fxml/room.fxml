@@ -136,16 +136,6 @@
             <Image url="@../images/blueOrbTwoOutline.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="hiddenCode" fitHeight="25.0" fitWidth="77.0" layoutX="201.0" layoutY="180.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/unknownCode.gif" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="hiddenCodeOutline" fitHeight="33.0" fitWidth="57.0" layoutX="197.0" layoutY="176.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/unknownCodeOutline.gif" />
-         </image>
-      </ImageView>
       <ImageView fx:id="map" fitHeight="148.0" fitWidth="131.0" layoutX="160.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/map.png" />
@@ -166,19 +156,39 @@
             <Image url="@../images/glowyPortalOutline.gif" />
          </image>
       </ImageView>
+      <ImageView fx:id="codeBackground" fitHeight="120.0" fitWidth="130.0" layoutX="170.0" layoutY="130.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/codeBackground.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="codeBackgroundOutline" fitHeight="129.0" fitWidth="139.0" layoutX="165.5" layoutY="125.5" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/codeBackgroundOutline.png" />
+         </image>
+      </ImageView>
       <ImageView fx:id="darkOverlay" fitHeight="485.0" fitWidth="549.0" layoutX="132.75" layoutY="55.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/darkOverlay.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="code" fitHeight="53.0" fitWidth="71.0" layoutX="190.0" layoutY="166.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="hiddenCode" fitHeight="32.0" fitWidth="59.0" layoutX="199.0" layoutY="175.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/code.png" />
+            <Image url="@../images/unknownCode.gif" />
          </image>
       </ImageView>
-      <ImageView fx:id="codeOutline" fitHeight="62.0" fitWidth="76.0" layoutX="186.0" layoutY="162.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="firstDigit" fitHeight="40.0" fitWidth="30.0" layoutX="184.0" layoutY="187.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/codeOutline.png" />
+            <Image url="@../images/digit2.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="secondDigit" fitHeight="40.0" fitWidth="30.0" layoutX="210.0" layoutY="173.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/digit0.PNG" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="thirdDigit" fitHeight="40.0" fitWidth="30.0" layoutX="239.0" layoutY="157.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/digit6.PNG" />
          </image>
       </ImageView>
       <ImageView fx:id="glowParticleTwo" fitHeight="25.0" fitWidth="18.0" layoutX="213.0" layoutY="173.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
@@ -186,7 +196,7 @@
             <Image url="@../images/glowParticle.gif" />
          </image>
       </ImageView>
-      <ImageView fx:id="glowParticleThree" fitHeight="25.0" fitWidth="18.0" layoutX="244.0" layoutY="184.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="glowParticleThree" fitHeight="25.0" fitWidth="18.0" layoutX="244.0" layoutY="182.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/glowParticle.gif" />
          </image>
@@ -271,7 +281,7 @@
       <Polygon fx:id="terminal" fill="DODGERBLUE" layoutX="501.0" layoutY="361.0" onMouseClicked="#terminalClick" onMouseEntered="#terminalHover" onMouseExited="#terminalUnhover" opacity="0.0" points="58.4478759765625, 7.13726806640625, 3.286224365234375, -25.959686279296875, -25.29754638671875, -4.897979736328125, -6.24169921875, 11.6505126953125, -6.24169921875, 36.723968505859375, 14.31854248046875, 43.243072509765625" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="lightSwitch" fill="DODGERBLUE" layoutX="457.0" layoutY="191.0" onMouseClicked="#switchClick" onMouseEntered="#switchHover" onMouseExited="#switchUnhover" opacity="0.0" points="29.73480224609375, 38.73173522949219, 29.73480224609375, 4.6318206787109375, -0.353363037109375, 10.147979736328125, -0.353363037109375, 47.75819396972656, 8.673095703125, 51.26847839355469, 25.2215576171875, 51.26847839355469" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="portalAndBase" fill="DODGERBLUE" layoutX="613.0" layoutY="390.0" onMouseClicked="#portalClick" onMouseEntered="#portalHover" onMouseExited="#portalUnhover" opacity="0.0" points="8.321044921875, -96.59103393554688, -9.36566162109375, -129.1346435546875, -41.9093017578125, -129.1346435546875, -53.936279296875, 30.753448486328125, -24.2225341796875, 49.147674560546875, 8.321044921875, 37.828155517578125" stroke="BLACK" strokeType="INSIDE" />
-      <Polygon fx:id="codedText" disable="true" fill="DODGERBLUE" layoutX="236.0" layoutY="166.0" onMouseClicked="#codeClick" onMouseEntered="#codeHover" onMouseExited="#codeUnhover" opacity="0.0" points="-4.4946136474609375, 41.267822265625, 22.38922119140625, 29.778167724609375, 13.899581909179688, 3.771942138671875, -20.058944702148438, 13.506378173828125, -39.86808776855469, 29.778167724609375, -34.20832824707031, 55.95454406738281" stroke="BLACK" strokeType="INSIDE" />
+      <Polygon fx:id="codedText" disable="true" fill="DODGERBLUE" layoutX="236.0" layoutY="166.0" onMouseClicked="#codeClick" onMouseEntered="#codeHover" onMouseExited="#codeUnhover" opacity="0.0" points="44.0, 32.92219543457031, 44.0, -36.4111328125, 4.6666717529296875, -17.744461059570312, -30.0, 0.2555389404296875, -64.66667175292969, 18.255538940429688, -64.66667175292969, 87.5888671875" stroke="BLACK" strokeType="INSIDE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="25.0" layoutX="229.0" layoutY="292.0" onMouseClicked="#bookPressed" onMouseEntered="#bookHovered" onMouseExited="#bookUnhovered" opacity="0.0" rotate="-147.7" stroke="BLACK" strokeType="INSIDE" width="38.0" />
       <ImageView fx:id="helpOne" fitHeight="54.0" fitWidth="56.0" layoutX="652.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
          <image>

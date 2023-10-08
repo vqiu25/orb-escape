@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Polygon;
@@ -36,9 +37,11 @@ public class RoomController extends ControllerMethods {
   @FXML private ImageView switchOffOutline;
   @FXML private ImageView darkOverlay;
   @FXML private ImageView hiddenCode;
-  @FXML private ImageView hiddenCodeOutline;
-  @FXML private ImageView code;
-  @FXML private ImageView codeOutline;
+  @FXML private ImageView codeBackground;
+  @FXML private ImageView codeBackgroundOutline;
+  @FXML private ImageView firstDigit;
+  @FXML private ImageView secondDigit;
+  @FXML private ImageView thirdDigit;
   @FXML private ImageView glowParticleOne;
   @FXML private ImageView glowParticleTwo;
   @FXML private ImageView glowParticleThree;
@@ -114,6 +117,9 @@ public class RoomController extends ControllerMethods {
     portal.imageProperty().bind(ControllerMethods.portalImageProperty);
     portalOutline.imageProperty().bind(ControllerMethods.portalOutlineImageProperty);
     initialisePortal();
+
+    // Set the digit images behind the map
+    setCodeImages();
   }
 
   /** Opens the chat window with the game master. */
@@ -480,9 +486,14 @@ public class RoomController extends ControllerMethods {
     codedText.setDisable(false);
     // Update Code
     if (GameState.isLightOn) {
+      codeBackground.setOpacity(1);
       hiddenCode.setOpacity(1);
     } else {
-      code.setOpacity(1);
+      codeBackground.setOpacity(1);
+      hiddenCode.setOpacity(0);
+      firstDigit.setOpacity(1);
+      secondDigit.setOpacity(1);
+      thirdDigit.setOpacity(1);
       glowParticleOne.setOpacity(1);
       glowParticleTwo.setOpacity(1);
       glowParticleThree.setOpacity(1);
@@ -544,8 +555,11 @@ public class RoomController extends ControllerMethods {
       darkOverlay.setOpacity(1);
       // Update Code
       if (!GameState.isMapOnWall) {
+        codeBackground.setOpacity(1);
         hiddenCode.setOpacity(0);
-        code.setOpacity(1);
+        firstDigit.setOpacity(1);
+        secondDigit.setOpacity(1);
+        thirdDigit.setOpacity(1);
         glowParticleOne.setOpacity(1);
         glowParticleTwo.setOpacity(1);
         glowParticleThree.setOpacity(1);
@@ -563,8 +577,12 @@ public class RoomController extends ControllerMethods {
       // Update Overlay
       darkOverlay.setOpacity(0);
       // Update Code
-      hiddenCode.setOpacity(1);
-      code.setOpacity(0);
+      if (!GameState.isMapOnWall) {
+        hiddenCode.setOpacity(1);
+      }
+      firstDigit.setOpacity(0);
+      secondDigit.setOpacity(0);
+      thirdDigit.setOpacity(0);
       glowParticleOne.setOpacity(0);
       glowParticleTwo.setOpacity(0);
       glowParticleThree.setOpacity(0);
@@ -651,27 +669,27 @@ public class RoomController extends ControllerMethods {
     } else {
       // If the light has been turned off, tell user the code
       Notifications message =
-          NotificationBuilder.createNotification("CLOUD: ", "206... I wonder what that means.", 5);
+
+          NotificationBuilder.createNotification(
+              "CLOUD: ",
+              "Hmm "
+                  + GameState.firstDigit
+                  + GameState.secondDigit
+                  + GameState.thirdDigit
+                  + "... I wonder what that means.",
+              5);
       message.show();
     }
   }
 
   @FXML
   private void codeHover(MouseEvent event) {
-    if (!GameState.isMapOnWall && !GameState.isLightOn) {
-      codeOutline.setOpacity(1);
-    } else {
-      hiddenCodeOutline.setOpacity(1);
-    }
+    codeBackgroundOutline.setOpacity(1);
   }
 
   @FXML
   private void codeUnhover(MouseEvent event) {
-    if (!GameState.isMapOnWall && !GameState.isLightOn) {
-      codeOutline.setOpacity(0);
-    } else {
-      hiddenCodeOutline.setOpacity(0);
-    }
+    codeBackgroundOutline.setOpacity(0);
   }
 
   // Bottom Right Game Master Button
@@ -816,5 +834,15 @@ public class RoomController extends ControllerMethods {
         NotificationBuilder.createNotification(
             "CLOUD: ", "This looks interesting.. not sure why.", 5);
     message.show();
+  }
+
+  private void setCodeImages() {
+    firstDigit.setImage(
+        new Image(getClass().getResourceAsStream("/images/digit" + GameState.firstDigit + ".png")));
+    secondDigit.setImage(
+        new Image(
+            getClass().getResourceAsStream("/images/digit" + GameState.secondDigit + ".png")));
+    thirdDigit.setImage(
+        new Image(getClass().getResourceAsStream("/images/digit" + GameState.thirdDigit + ".png")));
   }
 }

@@ -96,6 +96,11 @@ public class GameState {
   // Last game scene:
   public static AppScene lastScene;
 
+  // Code digits:
+  public static int firstDigit;
+  public static int secondDigit;
+  public static int thirdDigit;
+
   // Set game states to original state:
   public static void resetGameState() {
 
@@ -196,5 +201,10 @@ public class GameState {
 
     // Last game scene:
     lastScene = null;
+
+    // Code digits:
+    firstDigit = new Random().nextInt(10);
+    secondDigit = new Random().nextInt(10);
+    thirdDigit = new Random().nextInt(10);
   }
 }
