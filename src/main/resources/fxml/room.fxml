@@ -171,22 +171,22 @@
             <Image url="@../images/darkOverlay.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="hiddenCode" fitHeight="25.0" fitWidth="77.0" layoutX="205.0" layoutY="178.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="hiddenCode" fitHeight="32.0" fitWidth="59.0" layoutX="199.0" layoutY="175.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/unknownCode.gif" />
          </image>
       </ImageView>
-      <ImageView fx:id="firstDigit" fitHeight="45.0" fitWidth="41.0" layoutX="185.0" layoutY="183.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="firstDigit" fitHeight="40.0" fitWidth="30.0" layoutX="184.0" layoutY="187.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/digit2.PNG" />
          </image>
       </ImageView>
-      <ImageView fx:id="secondDigit" fitHeight="45.0" fitWidth="41.0" layoutX="210.0" layoutY="170.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="secondDigit" fitHeight="40.0" fitWidth="30.0" layoutX="210.0" layoutY="173.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/digit0.PNG" />
          </image>
       </ImageView>
-      <ImageView fx:id="thirdDigit" fitHeight="45.0" fitWidth="41.0" layoutX="238.0" layoutY="157.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="thirdDigit" fitHeight="40.0" fitWidth="30.0" layoutX="239.0" layoutY="157.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/digit6.PNG" />
          </image>
@@ -196,7 +196,7 @@
             <Image url="@../images/glowParticle.gif" />
          </image>
       </ImageView>
-      <ImageView fx:id="glowParticleThree" fitHeight="25.0" fitWidth="18.0" layoutX="244.0" layoutY="184.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="glowParticleThree" fitHeight="25.0" fitWidth="18.0" layoutX="244.0" layoutY="182.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/glowParticle.gif" />
          </image>

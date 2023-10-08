@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.util.Random;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -119,9 +118,7 @@ public class RoomController extends ControllerMethods {
     portalOutline.imageProperty().bind(ControllerMethods.portalOutlineImageProperty);
     initialisePortal();
 
-    GameState.firstDigit = new Random().nextInt(10);
-    GameState.secondDigit = new Random().nextInt(10);
-    GameState.thirdDigit = new Random().nextInt(10);
+    // Set the digit images behind the map
     setCodeImages();
   }
 
