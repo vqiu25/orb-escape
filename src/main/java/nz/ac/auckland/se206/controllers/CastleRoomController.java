@@ -159,7 +159,9 @@ public class CastleRoomController extends ControllerMethods {
       return;
     }
 
-    if (lockOneValue == 2 && lockTwoValue == 0 && lockThreeValue == 6) {
+    if (lockOneValue == GameState.firstDigit
+        && lockTwoValue == GameState.secondDigit
+        && lockThreeValue == GameState.thirdDigit) {
 
       // Enable chest rectangle
       chestRectangle.setDisable(false);
