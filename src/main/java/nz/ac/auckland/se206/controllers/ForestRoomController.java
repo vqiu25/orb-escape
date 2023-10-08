@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.util.Random;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -77,6 +78,17 @@ public class ForestRoomController extends ControllerMethods {
 
     // Bind the inventory images to their image properties
     bindInventory();
+
+    // Bind the trees image to its image property
+    trees.imageProperty().bind(ControllerMethods.treesImageProperty);
+    treesOutline.imageProperty().bind(ControllerMethods.treesOutlineImageProperty);
+
+    int randomInt = new Random().nextInt(10);
+    if (randomInt > 4) {
+      initialiseGreenTrees();
+    } else {
+      initialisePinkTrees();
+    }
 
     // Based on minigame selected, either show dragon scenario or broken bridge scenario:
     if (GameState.isForestTreeChopping) {
@@ -208,7 +220,7 @@ public class ForestRoomController extends ControllerMethods {
   private void rockClick(MouseEvent event) {
     // Notification to the user
     Notifications message =
-        NotificationBuilder.createNotification("Game Master: ", "Nothing under there...", 5);
+        NotificationBuilder.createNotification("CLOUD: ", "Nothing under there...", 5);
     message.show();
   }
 
@@ -280,7 +292,7 @@ public class ForestRoomController extends ControllerMethods {
       // If it is the tree chopping game.
       Notifications message =
           NotificationBuilder.createNotification(
-              "Game Master: ", "Hah! Good luck trying to swim away.", 5);
+              "CLOUD: ", "Hah! Good luck trying to swim away.", 5);
       message.show();
     }
   }
@@ -325,14 +337,14 @@ public class ForestRoomController extends ControllerMethods {
         // Axe not taken but riddle solved and orb collected
         Notifications message =
             NotificationBuilder.createNotification(
-                "Game Master: ", "Try finding something to cut down the trees!", 5);
+                "CLOUD: ", "Try finding something to cut down the trees!", 5);
         message.show();
       }
     } else {
       // Do something else if they are in the other version of the game
       Notifications message =
           NotificationBuilder.createNotification(
-              "Game Master: ", "Leaf me alone, I'm trying to escape", 5);
+              "CLOUD: ", "Leaf me alone, I'm trying to escape", 5);
       message.show();
     }
   }
@@ -425,12 +437,12 @@ public class ForestRoomController extends ControllerMethods {
     if (!GameState.isForestTreeChopping) {
       Notifications message =
           NotificationBuilder.createNotification(
-              "Game Master: ", "I am the Lorax and I speak for the trees!", 5);
+              "The Lorax: ", "I am the Lorax and I speak for the trees!", 5);
       message.show();
     } else {
       // If it is the tree chopping game
       Notifications message =
-          NotificationBuilder.createNotification("Game Master: ", "Axe already taken!", 5);
+          NotificationBuilder.createNotification("CLOUD: ", "Axe already taken!", 5);
       message.show();
     }
   }
@@ -483,8 +495,7 @@ public class ForestRoomController extends ControllerMethods {
   public void findRiddle() {
     // Initialize orb notification message
     Notifications orbMessage =
-        NotificationBuilder.createNotification(
-            "Game Master:", "See if you can find a riddle first!", 6);
+        NotificationBuilder.createNotification("CLOUD: ", "See if you can find a riddle first!", 6);
     orbMessage.show();
   }
 
@@ -492,15 +503,14 @@ public class ForestRoomController extends ControllerMethods {
     // Initialize orb notification message
     Notifications orbMessage =
         NotificationBuilder.createNotification(
-            "Game Master:", "Hmm... Try solving the riddle first!", 6);
+            "CLOUD: ", "Hmm... Try solving the riddle first!", 6);
     orbMessage.show();
   }
 
   public void findRoomOrb() {
     // Initialize orb notification message
     Notifications orbMessage =
-        NotificationBuilder.createNotification(
-            "Game Master:", "Try searching for an orb first!", 6);
+        NotificationBuilder.createNotification("CLOUD: ", "Try searching for an orb first!", 6);
     orbMessage.show();
   }
 }
