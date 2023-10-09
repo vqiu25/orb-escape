@@ -1,5 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
+import java.util.Random;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -18,70 +20,40 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionRequest;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 
-import java.io.IOException;
-import java.util.Random;
-
-/**
- * Controller class for the chat view.
- */
+/** Controller class for the chat view. */
 public class ChatController extends ControllerMethods {
-  @FXML
-  private Label lblTimer;
-  @FXML
-  private Label lblTask;
-  @FXML
-  private Label lblHints;
+  @FXML private Label lblTimer;
+  @FXML private Label lblTask;
+  @FXML private Label lblHints;
 
-  @FXML
-  private TextArea chatTextArea;
-  @FXML
-  private TextField inputText;
-  @FXML
-  private ImageView gameMasterClose;
-  @FXML
-  private ImageView gameMasterCloseHover;
-  @FXML
-  private ImageView blueRectangle;
-  @FXML
-  private ImageView pongAnimation;
-  @FXML
-  private ImageView hourGlassAnimation;
-  @FXML
-  private ImageView pacManAnimation;
-  @FXML
-  private ImageView barAnimation;
-  @FXML
-  private ImageView sendButtonHover;
-  @FXML
-  private ImageView sendButtonPressed;
+  @FXML private TextArea chatTextArea;
+  @FXML private TextField inputText;
+  @FXML private ImageView gameMasterClose;
+  @FXML private ImageView gameMasterCloseHover;
+  @FXML private ImageView blueRectangle;
+  @FXML private ImageView pongAnimation;
+  @FXML private ImageView hourGlassAnimation;
+  @FXML private ImageView pacManAnimation;
+  @FXML private ImageView barAnimation;
+  @FXML private ImageView sendButtonHover;
+  @FXML private ImageView sendButtonPressed;
 
   // Book items:
-  @FXML
-  private ImageView riddleBook;
-  @FXML
-  private TextArea riddleTextArea;
-  @FXML
-  private TextArea riddleTextChatArea;
+  @FXML private ImageView riddleBook;
+  @FXML private TextArea riddleTextArea;
+  @FXML private TextArea riddleTextChatArea;
 
   // Background
-  @FXML
-  private ImageView background;
+  @FXML private ImageView background;
 
   // Inventory Items
-  @FXML
-  private ImageView fishingRodIcon;
-  @FXML
-  private ImageView axeIcon;
-  @FXML
-  private ImageView fishIcon;
-  @FXML
-  private ImageView planksIcon;
-  @FXML
-  private ImageView blueOrb;
-  @FXML
-  private ImageView greenOrb;
-  @FXML
-  private ImageView redOrb;
+  @FXML private ImageView fishingRodIcon;
+  @FXML private ImageView axeIcon;
+  @FXML private ImageView fishIcon;
+  @FXML private ImageView planksIcon;
+  @FXML private ImageView blueOrb;
+  @FXML private ImageView greenOrb;
+  @FXML private ImageView redOrb;
 
   // Game states:
   private boolean isRiddleInitialized = false;
@@ -131,18 +103,18 @@ public class ChatController extends ControllerMethods {
     }
 
     riddleChatCompletionRequest =
-            new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.4).setMaxTokens(45);
+        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.4).setMaxTokens(45);
     runGpt(new ChatMessage("assistant", GptPromptEngineering.getRiddleWithGivenWord(wordToGuess)));
 
     chatCompletionRequest =
-            new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.4).setMaxTokens(80);
+        new ChatCompletionRequest().setN(1).setTemperature(0.2).setTopP(0.4).setMaxTokens(80);
     runGpt(new ChatMessage("assistant", GptPromptEngineering.getGameMaster()));
   }
 
   /**
    * Appends a chat message to the chat text area.
    *
-   * @param msg      the chat message to append
+   * @param msg the chat message to append
    * @param textArea the text area to append the message to
    */
   private void appendChatMessage(ChatMessage msg, TextArea textArea) {
@@ -161,7 +133,8 @@ public class ChatController extends ControllerMethods {
       // If the message is from CLOUD and is a hint, append custom statement to text area
       if (msg.getContent().startsWith("Hint")) {
         // Remove the "Hint: " prefix and append custom statement
-        String modifiedString = msg.getContent().replace("Hint: ", "Sure! Here is a hint for you.\n");
+        String modifiedString =
+            msg.getContent().replace("Hint: ", "Sure! Here is a hint for you.\n");
 
         // Append the message to the text area
         textArea.appendText(prefix + modifiedString + "\n\n");
@@ -229,7 +202,7 @@ public class ChatController extends ControllerMethods {
    *
    * @param event the action event triggered by the send button
    * @throws ApiProxyException if there is an error communicating with the API proxy
-   * @throws IOException       if there is an I/O error
+   * @throws IOException if there is an I/O error
    */
   private void onSendMessage() throws ApiProxyException, IOException {
     // Get the user's message
@@ -300,49 +273,49 @@ public class ChatController extends ControllerMethods {
 
     // Create a new thread to run the GPT model based on what the user inputted:
     Task<Void> gameMasterTask =
-            new Task<Void>() {
-              @Override
-              protected Void call() throws Exception {
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
 
-                ChatMessage lastMsg = runGpt(msg);
+            ChatMessage lastMsg = runGpt(msg);
 
-                Platform.runLater(
-                        () -> {
-                          // Check if the user has guessed the riddle:
-                          if (lastMsg.getRole().equals("assistant")
-                                  && lastMsg.getContent().startsWith("Correct")) {
-                            GameState.isRiddleResolved = true;
-                            updateTask();
-                          }
+            Platform.runLater(
+                () -> {
+                  // Check if the user has guessed the riddle:
+                  if (lastMsg.getRole().equals("assistant")
+                      && lastMsg.getContent().startsWith("Correct")) {
+                    GameState.isRiddleResolved = true;
+                    updateTask();
+                  }
 
-                          // Check if the user has asked for a hint:
-                          if (lastMsg.getRole().equals("assistant")
-                                  && lastMsg.getContent().startsWith("Hint")
-                                  && GameState.hintCount > 0) {
-                            // Update hint
-                            GameState.hintCount--;
-                            updateHintsRemaining();
-                          }
-                        });
+                  // Check if the user has asked for a hint:
+                  if (lastMsg.getRole().equals("assistant")
+                      && lastMsg.getContent().startsWith("Hint")
+                      && GameState.hintCount > 0) {
+                    // Update hint
+                    GameState.hintCount--;
+                    updateHintsRemaining();
+                  }
+                });
 
-                return null;
-              }
-            };
+            return null;
+          }
+        };
 
     // Unbind:
     gameMasterTask.setOnSucceeded(
-            e -> {
-              sendButtonPressed.setDisable(false);
-              hideAllAnimations();
-              sendButtonPressed.setOpacity(0);
-            });
+        e -> {
+          sendButtonPressed.setDisable(false);
+          hideAllAnimations();
+          sendButtonPressed.setOpacity(0);
+        });
 
     gameMasterTask.setOnFailed(
-            e -> {
-              sendButtonPressed.setDisable(false);
-              hideAllAnimations();
-              sendButtonPressed.setOpacity(0);
-            });
+        e -> {
+          sendButtonPressed.setDisable(false);
+          hideAllAnimations();
+          sendButtonPressed.setOpacity(0);
+        });
 
     // Start the thread
     Thread gameMasterThread = new Thread(gameMasterTask);
@@ -366,7 +339,7 @@ public class ChatController extends ControllerMethods {
    *
    * @param event the action event triggered by the go back button
    * @throws ApiProxyException if there is an error communicating with the API proxy
-   * @throws IOException       if there is an I/O error
+   * @throws IOException if there is an I/O error
    */
   @FXML
   private void returnToRoom(MouseEvent event) throws ApiProxyException, IOException {
