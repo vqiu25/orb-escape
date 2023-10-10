@@ -119,6 +119,7 @@ public class ChatController extends ControllerMethods {
    */
   private void appendChatMessage(ChatMessage msg, TextArea textArea) {
     String prefix;
+
     if (textArea == riddleTextArea) {
       // If setting the riddle, don't add a prefix
       prefix = "";
@@ -128,6 +129,18 @@ public class ChatController extends ControllerMethods {
     } else {
       // If the message is from the game master, set prefix to "CLOUD: "
       prefix = "CLOUD: ";
+
+      // If the message is from CLOUD and is a hint, append custom statement to text area
+      if (msg.getContent().startsWith("Hint")) {
+        // Remove the "Hint: " prefix and append custom statement
+        String modifiedString =
+            msg.getContent().replace("Hint: ", "Sure! Here is a hint for you.\n");
+
+        // Append the message to the text area
+        textArea.appendText(prefix + modifiedString + "\n\n");
+
+        return;
+      }
     }
     // Append the message to the text area
     textArea.appendText(prefix + msg.getContent() + "\n\n");
