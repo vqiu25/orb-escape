@@ -310,6 +310,10 @@ public class ForestRoomController extends ControllerMethods {
       dockWithoutRod.setDisable(false);
       fishingMini.setDisable(true);
       findFishingRod();
+
+      // Show a notification that the fishing rod has been taken
+      Notifications message = NotificationBuilder.createNotification("You found a fishing rod!");
+      message.show();
     }
   }
 
@@ -520,6 +524,10 @@ public class ForestRoomController extends ControllerMethods {
       // Remove the axe from inventory
       findAxe();
 
+      // Show a notification that the axe has been taken
+      Notifications message = NotificationBuilder.createNotification("You found an axe!");
+      message.show();
+
       // Remove axe image from the scene
       axe.setOpacity(0);
       axeOutline.setOpacity(0);
@@ -573,7 +581,8 @@ public class ForestRoomController extends ControllerMethods {
       message.show();
     } else {
       // If it is the tree chopping game
-      Notifications message = NotificationBuilder.createNotification("Axe already taken!");
+      Notifications message =
+          NotificationBuilder.createNotification("The axe has already been taken!");
       message.show();
     }
   }

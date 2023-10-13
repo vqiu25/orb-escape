@@ -335,8 +335,7 @@ public class LavaRoomController extends ControllerMethods {
 
     } else {
       // if the user has not collected the fish, prompt the user to collect the fish
-      Notifications message =
-          NotificationBuilder.createNotification("ROARRR! YOU SHALL NOT PASS!");
+      Notifications message = NotificationBuilder.createNotification("ROARRR! YOU SHALL NOT PASS!");
       message.show();
     }
   }
