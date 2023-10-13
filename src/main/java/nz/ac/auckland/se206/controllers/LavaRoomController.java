@@ -11,6 +11,10 @@ import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
+/**
+ * This class handles the logic for the lava room where users are able to feed the dragon or play
+ * the bridge mini-game.
+ */
 public class LavaRoomController extends ControllerMethods {
 
   @FXML private Label lblTimer;
@@ -67,8 +71,12 @@ public class LavaRoomController extends ControllerMethods {
   @FXML private ImageView redOrb;
 
   // Random booleans
-  private boolean isblueDragon;
+  private boolean isBlueDragon;
 
+  /**
+   * This method is called when the scene is first loaded. Timer labels, hints and items in the game
+   * are initialized.
+   */
   public void initialize() {
     // Bind the labels to the display values and styles
     lblTimer.textFillProperty().bind(ControllerMethods.timerTextFill);
@@ -76,7 +84,7 @@ public class LavaRoomController extends ControllerMethods {
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
 
-    // Initialise the inventory items
+    // Initialize the inventory items
     fishingRodIcon = getFishingRodIcon();
     axeIcon = getAxeIcon();
     fishIcon = getFishIcon();
@@ -93,16 +101,16 @@ public class LavaRoomController extends ControllerMethods {
     if (random == 0) {
       blueDragon.setOpacity(1);
       dragon.setOpacity(0);
-      isblueDragon = true;
+      isBlueDragon = true;
     } else {
       dragon.setOpacity(1);
       blueDragon.setOpacity(0);
-      isblueDragon = false;
+      isBlueDragon = false;
     }
 
-    // Based on minigame selected, either show dragon scenario or broken bridge scenario:
+    // Based on mini-game selected, either show dragon scenario or broken bridge scenario:
     if (GameState.isLavaBridge && GameState.isForestTreeChopping) {
-      // Minigame 1: Bridge is Broken - Disable dragon components and fixed bridge components
+      // Mini-game 1: Bridge is Broken - Disable dragon components and fixed bridge components
 
       // Disable bridge components
       bridge.setOpacity(0);
@@ -128,7 +136,7 @@ public class LavaRoomController extends ControllerMethods {
       brokenBridge.setOpacity(1);
 
     } else {
-      // Minigame 2: Dragon is blocking the bridge - Disable broken bridge components
+      // Mini-game 2: Dragon is blocking the bridge - Disable broken bridge components
 
       brokenBridge.setDisable(true);
       brokenBridgeOutline.setDisable(true);
@@ -141,9 +149,10 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the right arrow is no longer hovered over.
+   * This method is called when the right arrow is un-hovered, restoring the button to its original
+   * state.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void rightButtonUnhovered(MouseEvent event) {
@@ -151,9 +160,9 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the right arrow is hovered over.
+   * This method is called when the right arrow is hovered over, placing a shadow over the button.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void rightButtonHovered(MouseEvent event) {
@@ -161,9 +170,10 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the right arrow is pressed.
+   * This method is called when the right arrow is clicked, causing the image of the button to
+   * "sink" indicating that it has been pressed.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void rightButtonClicked(MouseEvent event) {
@@ -171,9 +181,9 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the right arrow is no longer pressed.
+   * This method is called when the right arrow is released, changing the scene to the room scene.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void rightButtonUnclick(MouseEvent event) {
@@ -181,11 +191,11 @@ public class LavaRoomController extends ControllerMethods {
     App.setScene(AppScene.ROOM);
   }
 
-  // Methods for minigame 1: fix bridge
+  // Methods for mini-game 1: fix bridge
   /**
-   * When the broken bridge is hovered over, an outline is shown.
+   * This method is called when the broken bridge is hovered over, causing an outline to be shown.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void brokenBridgeHovered(MouseEvent event) {
@@ -193,9 +203,9 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the broken bridge is unhovered, the outline is removed.
+   * This method is called when the broken bridge is un-hovered, removing the outline.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void brokenBridgeUnhovered(MouseEvent event) {
@@ -203,10 +213,10 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the broken bridge is clicked, if the user has completed the forrest mini game, they are
-   * prompted to fix the bridge, else, they are prompted to get wood.
+   * This method is called when the broken bridge is clicked, if the user has completed the forrest
+   * mini game, they are prompted to fix the bridge, else, they are prompted to get wood.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void brokenBridgeClicked(MouseEvent event) {
@@ -230,9 +240,9 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the fixed bridge is hovered over, an outline is shown.
+   * This method is called when the fixed bridge is hovered over, causing an outline to be shown.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void fixedBridgeHovered(MouseEvent event) {
@@ -240,9 +250,9 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the fixed bridge is unhovered, the outline is removed.
+   * This method is called when the fixed bridge is un-hovered, causing the outline to be removed.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void fixedBridgeUnhovered(MouseEvent event) {
@@ -250,9 +260,10 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the fixed bridge is clicked, the user is returned to the bridge mini-game.
+   * This method is called when the fixed bridge is clicked. The user is returned to the bridge
+   * mini-game.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void fixedBridgeClicked(MouseEvent event) {
@@ -260,6 +271,7 @@ public class LavaRoomController extends ControllerMethods {
     App.setScene(AppScene.BRIDGE_GAME);
   }
 
+  /** This helper function is called to update the state of the bridge once it has been fixed. */
   public void setFixedBridge() {
     fixedBridge.setDisable(false);
     fixedBridge.setOpacity(1);
@@ -269,13 +281,13 @@ public class LavaRoomController extends ControllerMethods {
 
   // Methods for mini-game 2: Tame dragon
   /**
-   * When the dragon is hovered over, an outline is shown.
+   * This method is called when the dragon is hovered over, causing an outline to be shown.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void dragonHovered(MouseEvent event) {
-    if (isblueDragon) {
+    if (isBlueDragon) {
       blueDragonOutline.setOpacity(1);
     } else {
       dragonOutline.setOpacity(1);
@@ -283,9 +295,9 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the dragon is unhovered, the outline is removed.
+   * This method is called when the dragon is un-hovered, causing the outline to be removed.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void dragonUnhovered(MouseEvent event) {
@@ -294,11 +306,9 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the dragon is clicked, if the user has completed the forrest mini game, they are prompted
-   * to feed the dragon, else they are told they need to feed the dragon so that it allows them to
-   * cross.
+   * This method is called when the dragon is clicked.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void dragonClicked(MouseEvent event) {
@@ -314,7 +324,7 @@ public class LavaRoomController extends ControllerMethods {
       removeFish();
       updateTask();
 
-      // disable dragon and dragonoutline
+      // disable dragon and dragon outline
       dragon.setDisable(true);
       dragonOutline.setDisable(true);
       dragon.setOpacity(0);
@@ -332,9 +342,9 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the bridge is hovered over, an outline is shown.
+   * This method is called when the bridge is hovered over, causing an outline to be shown shown.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void bridgeHovered(MouseEvent event) {
@@ -342,9 +352,9 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the bridge is unhovered, the outline is removed.
+   * This method is called when the bridge is un-hovered, causing the outline to be removed.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void bridgeUnhovered(MouseEvent event) {
@@ -352,10 +362,9 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the bridge is clicked, if the user has fed the dragon (lava game completed), they are told
-   * that they are able to enter the castle, else they are told they need to feed the dragon.
+   * This method is called when the player clicks on the bridge.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void bridgeClicked(MouseEvent event) {
@@ -376,9 +385,9 @@ public class LavaRoomController extends ControllerMethods {
 
   // Door methods:
   /**
-   * When the door is hovered over, an outline is shown.
+   * This method is called when the door is hovered over, causing an outline to be shown.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void doorHovered(MouseEvent event) {
@@ -386,9 +395,9 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the door is unhovered, the outline is removed.
+   * This method is called when the door is un-hovered, causing the outline to be removed.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void doorUnhovered(MouseEvent event) {
@@ -396,10 +405,9 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * When the door is clicked, if the user has completed the lava mini game they enter the castle,
-   * else they are told that they are unable to cross.
+   * This method is called when the door to the castle has been clicked.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void doorClicked(MouseEvent event) {
@@ -428,16 +436,33 @@ public class LavaRoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the help button is hovered over, placing a shadow over the button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onHelpHover(MouseEvent event) {
     helpTwo.setOpacity(1);
   }
 
+  /**
+   * This method is called when the help button is un-hovered, restoring the button to its original
+   * state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onHelpUnhover(MouseEvent event) {
     helpTwo.setOpacity(0);
   }
 
+  /**
+   * This method is called when the help button is pressed, causing the image of the button to
+   * "sink" indicating that it has been pressed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onHelpPressed(MouseEvent event) {
     helpThree.setOpacity(1);
@@ -446,7 +471,7 @@ public class LavaRoomController extends ControllerMethods {
   /**
    * Opens the help window GUI.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void onHelpReleased(MouseEvent event) {
@@ -458,16 +483,34 @@ public class LavaRoomController extends ControllerMethods {
     App.setScene(AppScene.HELP);
   }
 
+  /**
+   * This method is called when the settings button is hovered over, placing a shadow over the
+   * button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onSettingsHover(MouseEvent event) {
     settingsTwo.setOpacity(1);
   }
 
+  /**
+   * This method is called when the settings button is un-hovered, restoring the button to its
+   * original state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onSettingsUnhover(MouseEvent event) {
     settingsTwo.setOpacity(0);
   }
 
+  /**
+   * This method is called when the settings button is pressed, causing the image of the button to
+   * "sink" indicating that it has been pressed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onSettingsPressed(MouseEvent event) {
     settingsThree.setOpacity(1);
@@ -476,7 +519,7 @@ public class LavaRoomController extends ControllerMethods {
   /**
    * Opens the settings scene.
    *
-   * @param event
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void onSettingsReleased(MouseEvent event) {
@@ -489,18 +532,36 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   // Bottom Right Game Master Button
+  /**
+   * This method is called when the game master button is hovered over, causing a "chat" icon to
+   * appear.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnHover(MouseEvent event) {
     gameMasterDefault.setOpacity(0);
     gameMasterChat.setOpacity(1);
   }
 
+  /**
+   * This method is called when the game master button is un-hovered, causing the "chat" icon to
+   * disappear.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnUnhover(MouseEvent event) {
     gameMasterDefault.setOpacity(1);
     gameMasterChat.setOpacity(0);
   }
 
+  /**
+   * This method is called when the game master button is clicked, changing the current scene to be
+   * the chat scene.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
     if (GameState.isLavaDragon) {
@@ -516,6 +577,10 @@ public class LavaRoomController extends ControllerMethods {
     App.setScene(AppScene.CHAT);
   }
 
+  /**
+   * Helper function which generates a notification, prompting the user to collect the orb from the
+   * forest room first.
+   */
   private void findForestOrb() {
     Notifications message =
         NotificationBuilder.createNotification("CLOUD: ", "Try collecting the green orb first!", 5);

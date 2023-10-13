@@ -18,6 +18,7 @@ import nz.ac.auckland.se206.GameState;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 
+/** This class contains logic that is shared between various controllers. */
 public class ControllerMethods {
 
   // String properties for the timer, task and hints
@@ -61,7 +62,10 @@ public class ControllerMethods {
   // Instance variables to be accessible to all controllers
   protected static Timer timer = new Timer(true);
 
-  // Called when the restart button is pressed
+  /**
+   * This method is called when the restart button is pressed. It clears the hashmap of stored
+   * scenes and resets all game states.
+   */
   public static void restartGame() {
 
     // Cancel timer:
@@ -110,8 +114,10 @@ public class ControllerMethods {
     restartThread.start();
   }
 
-  // Removes and disables the background images from the settings and game finished scenes when
-  // restarting
+  /**
+   * Removes and disables the background images from the settings and game finished scenes when
+   * restarting.
+   */
   private static void restartImages() {
     // get the settings controller
     App.getSettingsController().disableRestartImages();
@@ -179,7 +185,7 @@ public class ControllerMethods {
     App.setScene(AppScene.GAMEFINISHED);
   }
 
-  /** Updates the task label based on current game state */
+  /** Updates the task label based on current game state. */
   protected void updateTask() {
     if (!GameState.isRiddleFound) {
       // If the riddle has not been found by clicking on the book
@@ -256,7 +262,10 @@ public class ControllerMethods {
     displayTask.setValue(GameState.taskString);
   }
 
-  /** Updates the hints remaining */
+  /**
+   * Updates the hints available/remaining depending on the difficulty of the game as selected by
+   * the player.
+   */
   protected void updateHintsRemaining() {
     if (GameState.isEasySelected) {
       displayHints.setValue("Hints: Infinite");
@@ -267,11 +276,18 @@ public class ControllerMethods {
     }
   }
 
+  /**
+   * Sets the messages to be displayed on the game finished scene.
+   *
+   * @param message The title message.
+   * @param subMessage The subtitle message.
+   */
   protected void setMessages(String message, String subMessage) {
     titleMessage.setValue(message);
     subtitleMessage.setValue(subMessage);
   }
 
+  /** Binds inventory images to their image properties. */
   protected void bindInventory() {
     // Bind the inventory images to their image properties
     fishingRodIcon.imageProperty().bind(fishingRodIconImageProperty);
@@ -283,6 +299,7 @@ public class ControllerMethods {
     redOrb.imageProperty().bind(redOrbImageProperty);
   }
 
+  /** Binds inventory images to their image properties without the orbs. */
   protected void bindInventoryWithoutOrbs() {
     // Bind the inventory images to their image properties
     fishingRodIcon.imageProperty().bind(fishingRodIconImageProperty);
@@ -291,30 +308,65 @@ public class ControllerMethods {
     planksIcon.imageProperty().bind(planksIconImageProperty);
   }
 
+  /**
+   * Retrieves the fishing rod image.
+   *
+   * @return The fishing rod image.
+   */
   protected ImageView getFishingRodIcon() {
     return fishingRodIcon;
   }
 
+  /**
+   * Retrieves the axe image.
+   *
+   * @return The axe image.
+   */
   protected ImageView getAxeIcon() {
     return axeIcon;
   }
 
+  /**
+   * Retrieves the fish image.
+   *
+   * @return The fish image.
+   */
   protected ImageView getFishIcon() {
     return fishIcon;
   }
 
+  /**
+   * Retrieves the planks image.
+   *
+   * @return The planks image.
+   */
   protected ImageView getPlanksIcon() {
     return planksIcon;
   }
 
+  /**
+   * Retrieves the blue orb image.
+   *
+   * @return The blue orb image.
+   */
   protected ImageView getBlueOrb() {
     return blueOrb;
   }
 
+  /**
+   * Retrieves the green orb image.
+   *
+   * @return The green orb image.
+   */
   protected ImageView getGreenOrb() {
     return greenOrb;
   }
 
+  /**
+   * Retrieves the red orb image.
+   *
+   * @return The red orb image.
+   */
   protected ImageView getRedOrb() {
     return redOrb;
   }
@@ -406,129 +458,163 @@ public class ControllerMethods {
     redOrbImageProperty.set(null);
   }
 
-  /** Methods for settimg opacities of backgrouds behind chat overlay */
+  /** Enables axe image depending on game state. */
   protected void setForestAxeOpacity() {
     backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/forestAxe.png")));
   }
 
+  /** Enables fishing rod image depending on game state. */
   protected void setForestRodOpacity() {
     backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/forestRod.png")));
   }
 
+  /** Enables forest tress removed image depending on game state. */
   protected void setForestTreesRemovedOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/forestTreesRemoved.png")));
   }
 
+  /** Enables main room image when map has not been removed. */
   protected void setMainMapOpacity() {
     backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/mainMap.png")));
   }
 
+  /** Enables main room image when map has been removed from the wall. */
   protected void setMainMapRemovedOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/mainMapRemoved.png")));
   }
 
+  /** Enables main room image for the map when the lights have been turned off. */
   protected void setMainDarkOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/mainDarkMap.png")));
   }
 
+  /** Enables main room image for the map has been removed when the lights have been turned off. */
   protected void setMainDarkMapRemovedOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/mainDarkMapRemoved.png")));
   }
 
+  /** Enables main room image for when the cabinet has been opened. */
   protected void setMainCabinetMapOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/mainCabinetOpenMap.png")));
   }
 
+  /** Enables main room image for when the cabinet has been opened and the map has been removed. */
   protected void setMainCabinetMapRemovedOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/mainCabinetOpenMapRemoved.png")));
   }
 
+  /**
+   * Enables main room image for when the cabinet has been opened and the lights have been turned
+   * off.
+   */
   protected void setMainDarkCabinetMapOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/mainCabinetOpenDarkMap.png")));
   }
 
+  /**
+   * Enables main room image for when the cabinet has been opened, map has been removed and the
+   * lights have been turned off.
+   */
   protected void setMainDarkCabinetMapRemovedOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/mainCabinetDarkMapRemoved.png")));
   }
 
+  /** Enables the room image for when the rug has been removed. */
   protected void setMainRugMapOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/mainRugMap.png")));
   }
 
+  /** Enables the room image for when the rug and the map has been removed. */
   protected void setMainRugMapRemovedOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/mainRugMapRemoved.png")));
   }
 
+  /** Enables the room image for the rug has been removed and the lights have been turned off. */
   protected void setMainDarkRugMapOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/mainDarkRugMap.png")));
   }
 
+  /**
+   * Enables the room image for the the rug and the map has been removed and the lights have been
+   * turned off.
+   */
   protected void setMainDarkRugMapRemovedOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/mainDarkRugMapRemoved.png")));
   }
 
+  /** Enables the lava room image for when the dragon is present. */
   protected void setLavaDragonOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/lavaDragon.png")));
   }
 
+  /** Enables the lava room image for when the dragon has been removed. */
   protected void setLavaNoDragonOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/lavaNoDragon.png")));
   }
 
+  /** Enables forest mini game image for when trees have not been chopped. */
   protected void setForestMiniOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/forestMini.png")));
   }
 
+  /** Enables forest mini game image for when the trees have been chopped. */
   protected void setForestMiniTreesRemovedOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/forestMiniTreesRemoved.png")));
   }
 
+  /** Enables fishing mini game image. */
   protected void setFishingMiniOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/fishingMini.png")));
   }
 
+  /** Enables castle room image for when the chest is locked. */
   protected void setChestMiniOpacity() {
     backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/chestMini.png")));
   }
 
+  /** Enables terminal mini-game image. */
   protected void setOrbMiniOpacity() {
     backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/orbMini.png")));
   }
 
+  /** Enables bridge mini-game initial state image. */
   protected void setBridgeMiniOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/bridgeMini.png")));
   }
 
+  /** Sets the image for the portal when hovered over. */
   protected void initialisePortal() {
     portalImageProperty.set(new Image(getClass().getResourceAsStream("/images/portalFrame.gif")));
     portalOutlineImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/portalFrameOutline.gif")));
   }
 
+  /** Sets the images for the portal to be glowing. */
   protected void openPortal() {
     portalImageProperty.set(new Image(getClass().getResourceAsStream("/images/glowyPortal.gif")));
     portalOutlineImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/glowyPortalOutline.gif")));
   }
 
+  /** Sets the images for the trees to be green. */
   protected void initialiseGreenTrees() {
     treesImageProperty.set(new Image(getClass().getResourceAsStream("/images/trees.png")));
     treesOutlineImageProperty.set(
@@ -537,6 +623,7 @@ public class ControllerMethods {
     treeHitImageProperty.set(new Image(getClass().getResourceAsStream("/images/treeHitOne.png")));
   }
 
+  /** Sets the images for the trees to be pink. */
   protected void initialisePinkTrees() {
     treesImageProperty.set(new Image(getClass().getResourceAsStream("/images/treesPink.png")));
     treesOutlineImageProperty.set(

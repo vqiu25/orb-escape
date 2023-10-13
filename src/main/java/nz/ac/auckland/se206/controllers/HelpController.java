@@ -6,8 +6,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
-import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 
+/** This class handles the logic for the help screen. */
 public class HelpController extends ControllerMethods {
 
   @FXML private Label lblTimer;
@@ -18,11 +18,11 @@ public class HelpController extends ControllerMethods {
   @FXML private ImageView backThreeButton;
   @FXML private Label taskText;
 
-  public void initialize() throws ApiProxyException {
+  /** This method is called when the scene is first loaded. */
+  public void initialize() {
 
     // Bind the labels to the display values and styles
     lblTimer.textFillProperty().bind(ControllerMethods.timerTextFill);
-
 
     // Update tutorial text
     taskText.setText("If in doubt, refer to the task list\nat the top left!");
@@ -34,22 +34,44 @@ public class HelpController extends ControllerMethods {
     lblHints.textProperty().bind(ControllerMethods.displayHints);
   }
 
+  /**
+   * This method is called when the back button is hovered over, placing a shadow over the button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backHover(MouseEvent event) {
     backTwoButton.setOpacity(1);
   }
 
+  /**
+   * This method is called when the back button is un-hovered, restoring the button to its original
+   * state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backUnhover(MouseEvent event) {
     backTwoButton.setOpacity(0);
   }
 
+  /**
+   * This method is called when the back button is pressed, causing the image of the button to
+   * "sink" indicating that it has been pressed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backPressed(MouseEvent event) {
     backThreeButton.setOpacity(1);
   }
 
-  /** Switches the scene from the help GUI to start GUI and restart timer */
+  /**
+   * This method is called when the back button is pressed, returning the user back to the previous
+   * scene.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backReleased(MouseEvent event) {
     backThreeButton.setOpacity(0);

@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
+/** This class handles the logic required to create a notification. */
 public class NotificationBuilder {
 
   // Creates a notification with the given title, message and duration

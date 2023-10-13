@@ -30,6 +30,11 @@ public class App extends Application {
   private static SettingsController settingsController;
   private static Stage currentStage;
 
+  /**
+   * The main method that launches the JavaFX application.
+   *
+   * @param args The command line arguments.
+   */
   public static void main(final String[] args) {
     launch();
   }
@@ -48,8 +53,8 @@ public class App extends Application {
    * "src/main/resources/fxml".
    *
    * @param fxml The name of FXML files to load without the .fxml extension.
-   * @returnv The node associated to the input file.
-   * @throws IOException
+   * @return The node associated to the input file.
+   * @throws IOException If the file is not found.
    */
   private static FXMLLoader loadLoader(String fxml) throws IOException {
     FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml"));
@@ -92,10 +97,20 @@ public class App extends Application {
     return chatController;
   }
 
+  /**
+   * Returns the game finished controller.
+   *
+   * @return Reference to the game finished controller.
+   */
   public static GameFinishedController getGameFinishedController() {
     return gameFinishedController;
   }
 
+  /**
+   * Returns the settings controller.
+   *
+   * @return Reference to the settings controller.
+   */
   public static SettingsController getSettingsController() {
     return settingsController;
   }
@@ -140,9 +155,14 @@ public class App extends Application {
     stage.setOnCloseRequest(e -> System.exit(0));
   }
 
-  // Called to initialize scenes before the game starts:
+  /**
+   * This method is invoked when the application starts - re-initializing the game states and
+   * scenes.
+   *
+   * @throws IOException If any of the FXML files are not found.
+   */
   public static void initializeGame() throws IOException {
-    // Set intial game states:
+    // Set initial game states:
     GameState.resetGameState();
 
     SceneManager.addScene(AppScene.BRIDGE_GAME, loadLoader("bridgeGame").load());

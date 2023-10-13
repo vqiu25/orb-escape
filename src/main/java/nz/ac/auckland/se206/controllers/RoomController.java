@@ -13,7 +13,10 @@ import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
-/** Controller class for the room view. */
+/**
+ * This class handles the logic for the main central room in which they are able to access the
+ * forest room and lava room.
+ */
 public class RoomController extends ControllerMethods {
 
   @FXML private Label lblTimer;
@@ -101,7 +104,7 @@ public class RoomController extends ControllerMethods {
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
 
-    // Initialise the inventory items
+    // Initialize the inventory items
     fishingRodIcon = getFishingRodIcon();
     axeIcon = getAxeIcon();
     fishIcon = getFishIcon();
@@ -122,22 +125,33 @@ public class RoomController extends ControllerMethods {
     setCodeImages();
   }
 
-  /** Opens the chat window with the game master. */
-  @FXML
-  private void openChat(MouseEvent event) {
-    App.setScene(AppScene.CHAT);
-  }
-
+  /**
+   * This method is called when the help button is hovered over, placing a shadow over the button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onHelpHover(MouseEvent event) {
     helpTwo.setOpacity(1);
   }
 
+  /**
+   * This method is called when the help button is un-hovered, restoring the button to its original
+   * state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onHelpUnhover(MouseEvent event) {
     helpTwo.setOpacity(0);
   }
 
+  /**
+   * This method is called when the help button is pressed, causing the image of the button to
+   * "sink" indicating that it has been pressed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onHelpPressed(MouseEvent event) {
     helpThree.setOpacity(1);
@@ -146,7 +160,7 @@ public class RoomController extends ControllerMethods {
   /**
    * Opens the help window GUI.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void onHelpReleased(MouseEvent event) {
@@ -158,16 +172,34 @@ public class RoomController extends ControllerMethods {
     App.setScene(AppScene.HELP);
   }
 
+  /**
+   * This method is called when the settings button is hovered over, placing a shadow over the
+   * button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onSettingsHover(MouseEvent event) {
     settingsTwo.setOpacity(1);
   }
 
+  /**
+   * This method is called when the settings button is un-hovered, restoring the button to its
+   * original state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onSettingsUnhover(MouseEvent event) {
     settingsTwo.setOpacity(0);
   }
 
+  /**
+   * This method is called when the settings button is pressed, causing the image of the button to
+   * "sink" indicating that it has been pressed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onSettingsPressed(MouseEvent event) {
     settingsThree.setOpacity(1);
@@ -176,7 +208,7 @@ public class RoomController extends ControllerMethods {
   /**
    * Opens the settings scene.
    *
-   * @param event
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void onSettingsReleased(MouseEvent event) {
@@ -298,7 +330,7 @@ public class RoomController extends ControllerMethods {
     // if the riddle has NOT been solved and the user is stuck, give help
     giveRiddleHelp();
 
-    // If the item has already been clicked, dont let them click again.
+    // If the item has already been clicked, do not let them click again.
     if (isDrawerOpen) {
       return;
     }
@@ -317,6 +349,11 @@ public class RoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when when the cabinet is hovered over, displaying an outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void cabinetHover(MouseEvent event) {
     // If the drawer is open and the room orb has been collected
@@ -330,6 +367,12 @@ public class RoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when when the cabinet is no longer hovered over, removing the outline
+   * from it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void cabinetUnhover(MouseEvent event) {
     cabinetOutline.setOpacity(0);
@@ -337,6 +380,11 @@ public class RoomController extends ControllerMethods {
     cabinetOpenedEmptyOutline.setOpacity(0);
   }
 
+  /**
+   * This method is called when the cabinet is opened and the orb is clicked.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void cabinetOrbClicked(MouseEvent event) {
     if (GameState.itemClicked) {
@@ -361,11 +409,21 @@ public class RoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user hovers over the cabinet, displaying an outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void cabinetOrbHover(MouseEvent event) {
     cabinetOrbSelected.setOpacity(1);
   }
 
+  /**
+   * This method is called when the user un-hovers over the cabinet, removing the outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void cabinetOrbUnhover(MouseEvent event) {
     cabinetOrbSelected.setOpacity(0);
@@ -412,16 +470,33 @@ public class RoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when when the rug is hovered over, displaying an outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void carpetHover(MouseEvent event) {
     rugOutline.setOpacity(1);
   }
 
+  /**
+   * This method is called when when the rug is no longer hovered over, removing the outline from
+   * it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void carpetUnhover(MouseEvent event) {
     rugOutline.setOpacity(0);
   }
 
+  /**
+   * This method is called when the rug is removed and the orb is clicked, adding the orb to the
+   * user's inventory.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void rugOrbClicked(MouseEvent event) {
     if (GameState.itemClicked) {
@@ -449,17 +524,32 @@ public class RoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user hovers over the rug, displaying an outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void rugOrbHover(MouseEvent event) {
     floorBlueOrbOutline.setOpacity(1);
   }
 
+  /**
+   * This method is called when the user un-hovers over the rug, removing the outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void rugOrbUnhover(MouseEvent event) {
     floorBlueOrbOutline.setOpacity(0);
   }
 
   // Window
+  /**
+   * This method is called when the user clicks on the window.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void paneClick(MouseEvent event) {
     Notifications message =
@@ -467,17 +557,33 @@ public class RoomController extends ControllerMethods {
     message.show();
   }
 
+  /**
+   * This method is called when the user hovers over the window, displaying an outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void paneHover(MouseEvent event) {
     windowOutline.setOpacity(1);
   }
 
+  /**
+   * This method is called when the user un-hovers over the window, removing the outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void paneUnhover(MouseEvent event) {
     windowOutline.setOpacity(0);
   }
 
   // Map
+  /**
+   * This method is called when the user clicks on the map - removing the map from the wall and
+   * revealing
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void mapClick(MouseEvent event) {
     map.setOpacity(0);
@@ -502,6 +608,11 @@ public class RoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user hovers over the map, displaying an outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void mapHover(MouseEvent event) {
     if (GameState.isMapOnWall) {
@@ -509,6 +620,11 @@ public class RoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user un-hovers over the map, removing the outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void mapUnhover(MouseEvent event) {
     if (GameState.isMapOnWall) {
@@ -517,6 +633,11 @@ public class RoomController extends ControllerMethods {
   }
 
   // Terminal
+  /**
+   * This method is called when the user clicks on the terminal.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void terminalClick(MouseEvent event) {
     // If the orbs have NOT been found, prompt user to find the orbs:
@@ -532,17 +653,34 @@ public class RoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user hovers over the terminal, displaying an outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void terminalHover(MouseEvent event) {
     terminalOutline.setOpacity(1);
   }
 
+  /**
+   * This method is called when the user un-hovers over the terminal, removing the outline around
+   * it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void terminalUnhover(MouseEvent event) {
     terminalOutline.setOpacity(0);
   }
 
   // Light Switch
+  /**
+   * This method is called when the user clicks on the light switch. If the map has been removed,
+   * this will reveal the code to the chest to the user.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void switchClick(MouseEvent event) {
     if (GameState.isLightOn) {
@@ -591,6 +729,12 @@ public class RoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user hovers over the light switch, displaying an outline around
+   * it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void switchHover(MouseEvent event) {
     if (GameState.isLightOn) {
@@ -600,6 +744,12 @@ public class RoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user un-hovers over the light switch, removing the outline
+   * around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void switchUnhover(MouseEvent event) {
     if (GameState.isLightOn) {
@@ -610,6 +760,12 @@ public class RoomController extends ControllerMethods {
   }
 
   // Portal
+  /**
+   * This method is called when the user clicks on the portal. If the orbs have been placed in the
+   * terminal, the user is directed to a game finished screen.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void portalClick(MouseEvent event) {
     // If the portal is open, allow the user to escape
@@ -645,12 +801,22 @@ public class RoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user hovers over the portal, displaying an outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void portalHover(MouseEvent event) {
     portalBaseOutline.setOpacity(1);
     portalOutline.setOpacity(1);
   }
 
+  /**
+   * This method is called when the user un-hovers over the portal, removing the outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void portalUnhover(MouseEvent event) {
     portalBaseOutline.setOpacity(0);
@@ -658,6 +824,12 @@ public class RoomController extends ControllerMethods {
   }
 
   // Code
+  /**
+   * This method is called when the user clicks on the code. If the light is on, the user is
+   * prompted to turn off the lights. Else, the code is revealed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void codeClick(MouseEvent event) {
     if (GameState.isLightOn) {
@@ -669,7 +841,6 @@ public class RoomController extends ControllerMethods {
     } else {
       // If the light has been turned off, tell user the code
       Notifications message =
-
           NotificationBuilder.createNotification(
               "CLOUD: ",
               "Hmm "
@@ -682,32 +853,60 @@ public class RoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user hovers over the code, displaying an outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void codeHover(MouseEvent event) {
     codeBackgroundOutline.setOpacity(1);
   }
 
+  /**
+   * This method is called when the user un-hovers over the code, removing the outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void codeUnhover(MouseEvent event) {
     codeBackgroundOutline.setOpacity(0);
   }
 
   // Bottom Right Game Master Button
+  /**
+   * This method is called when the game master button is hovered over, causing a "chat" icon to
+   * appear.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnHover(MouseEvent event) {
     gameMasterDefault.setOpacity(0);
     gameMasterChat.setOpacity(1);
   }
 
+  /**
+   * This method is called when the game master button is un-hovered, causing the "chat" icon to
+   * disappear.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnUnhover(MouseEvent event) {
     gameMasterDefault.setOpacity(1);
     gameMasterChat.setOpacity(0);
   }
 
+  /**
+   * This method is called when the game master button is clicked, changing the current scene to be
+   * the chat scene.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
-    backrgoundHelper();
+    backgroundHelper();
     // Store current scene in scene stack
     GameState.lastScene = AppScene.ROOM;
 
@@ -716,18 +915,28 @@ public class RoomController extends ControllerMethods {
   }
 
   // Book methods:
+  /** This method is called when the user hovers over the book, displaying an outline around it. */
   @FXML
   private void bookHovered() {
     book.setOpacity(0);
     bookOutline.setOpacity(1);
   }
 
+  /**
+   * This method is called when the user un-hovers over the book, removing the outline around it.
+   */
   @FXML
   private void bookUnhovered() {
     book.setOpacity(1);
     bookOutline.setOpacity(0);
   }
 
+  /**
+   * This method is called when the user clicks on the book, changing the current scene to be the
+   * riddle scene.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void bookPressed(MouseEvent event) {
     // Update game state
@@ -754,7 +963,7 @@ public class RoomController extends ControllerMethods {
     chatController.requestFocus();
 
     // Logic for which background GPT should have
-    backrgoundHelper();
+    backgroundHelper();
 
     // Store current scene in scene stack
     GameState.lastScene = AppScene.ROOM;
@@ -763,6 +972,9 @@ public class RoomController extends ControllerMethods {
     App.setScene(AppScene.CHAT);
   }
 
+  /**
+   * This helper method provides the user with a notification if they are unable to locate the book.
+   */
   private void giveRiddleHelp() {
     // If the riddle has not been resolved, give help to the user
     if (!GameState.isRiddleResolved) {
@@ -781,6 +993,9 @@ public class RoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This helper method is called when the user has found the blue orb, displaying a notification.
+   */
   private void orbFoundNotification() {
     // Initialize orb notification message
     Notifications orbMessage =
@@ -789,7 +1004,8 @@ public class RoomController extends ControllerMethods {
     orbMessage.show();
   }
 
-  private void backrgoundHelper() {
+  /** This helper function handles the changing of the background depending on the game state. */
+  private void backgroundHelper() {
     // Logic for which background GPT should have
     if (GameState.isMapOnWall && GameState.isLightOn) {
       setMainMapOpacity();
@@ -824,11 +1040,16 @@ public class RoomController extends ControllerMethods {
     }
   }
 
+  /** This helper method displays a notification to the user when an irrelevant item is clicked. */
   private void showNothingNotification() {
     Notifications message = NotificationBuilder.createNotification("CLOUD: ", "Nothing there!", 5);
     message.show();
   }
 
+  /**
+   * This helper method displays a notification to the user when the click on the rug or cabinet -
+   * depending on the riddle selected/
+   */
   private void interestingNotification() {
     Notifications message =
         NotificationBuilder.createNotification(
@@ -836,6 +1057,10 @@ public class RoomController extends ControllerMethods {
     message.show();
   }
 
+  /**
+   * This helper function initializes and sets the code displayed on the wall which is used to
+   * unlock the chest
+   */
   private void setCodeImages() {
     firstDigit.setImage(
         new Image(getClass().getResourceAsStream("/images/digit" + GameState.firstDigit + ".png")));

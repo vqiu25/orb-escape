@@ -20,7 +20,10 @@ import nz.ac.auckland.se206.gpt.openai.ChatCompletionRequest;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult;
 import nz.ac.auckland.se206.gpt.openai.ChatCompletionResult.Choice;
 
-/** Controller class for the chat view. */
+/**
+ * This class handles the logic regarding the chat scene in which the user is able to communicate
+ * with the game master.
+ */
 public class ChatController extends ControllerMethods {
   @FXML private Label lblTimer;
   @FXML private Label lblTask;
@@ -62,9 +65,10 @@ public class ChatController extends ControllerMethods {
   private ChatCompletionRequest chatCompletionRequest;
 
   /**
-   * Initializes the chat view, loading the riddle.
+   * This method is called when the scene is first loaded. Timer labels, hints and items in the game
+   * are initialized as well as the generation of the riddle.
    *
-   * @throws ApiProxyException if there is an error communicating with the API proxy
+   * @throws ApiProxyException If there is an error communicating with the API proxy
    */
   @FXML
   public void initialize() throws ApiProxyException {
@@ -74,7 +78,7 @@ public class ChatController extends ControllerMethods {
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
 
-    // Initialise the inventory items
+    // Initialize the inventory items
     fishingRodIcon = getFishingRodIcon();
     axeIcon = getAxeIcon();
     fishIcon = getFishIcon();
@@ -112,10 +116,10 @@ public class ChatController extends ControllerMethods {
   }
 
   /**
-   * Appends a chat message to the chat text area.
+   * This method appends a chat message to the chat text area.
    *
-   * @param msg the chat message to append
-   * @param textArea the text area to append the message to
+   * @param msg The chat message to append.
+   * @param textArea The text area to append the message to.
    */
   private void appendChatMessage(ChatMessage msg, TextArea textArea) {
     String prefix;
@@ -149,9 +153,9 @@ public class ChatController extends ControllerMethods {
   /**
    * Runs the GPT model with a given chat message.
    *
-   * @param msg the chat message to process
-   * @return the response chat message
-   * @throws ApiProxyException if there is an error communicating with the API proxy
+   * @param msg The chat message for GPT to process.
+   * @return GPT's response to the passed in chat message.
+   * @throws ApiProxyException If there is an error communicating with the API proxy
    */
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
 
@@ -174,7 +178,13 @@ public class ChatController extends ControllerMethods {
     }
   }
 
-  // Function that take a request and executes it, appending the output to a certain text area:
+  /**
+   * A helper function that takes a chat request, executes it and appends it to the chat area.
+   *
+   * @param request The chat request to execute.
+   * @param textArea The text area to append the result to.
+   * @return The result of the chat request.
+   */
   public ChatMessage gptHelper(ChatCompletionRequest request, TextArea textArea) {
     try {
       // Execute the request and get the result
@@ -198,11 +208,11 @@ public class ChatController extends ControllerMethods {
   }
 
   /**
-   * Sends the user's message inputted into the text to the GPT model.
+   * This method takes the user's input message and appends the relevant information the user's
+   * message based on the stage of the game and passes it to the GPT model.
    *
-   * @param event the action event triggered by the send button
-   * @throws ApiProxyException if there is an error communicating with the API proxy
-   * @throws IOException if there is an I/O error
+   * @throws ApiProxyException If there is an error communicating with the API proxy.
+   * @throws IOException If there is an I/O error.
    */
   private void onSendMessage() throws ApiProxyException, IOException {
     // Get the user's message
@@ -226,7 +236,7 @@ public class ChatController extends ControllerMethods {
 
     // Animate GPT loading screen:
     blueRectangle.setOpacity(1);
-    selectRandomAniamtion();
+    selectRandomAnimation();
 
     // If the user has entered a message:
     inputText.clear();
@@ -323,22 +333,33 @@ public class ChatController extends ControllerMethods {
   }
 
   // Game Master Animations
+  /**
+   * This method is called when the game master is hovered over, causing a "chat" icon to appear.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterCloseOnHover(MouseEvent event) {
     gameMasterCloseHover.setOpacity(1);
     requestFocus();
   }
 
+  /**
+   * This method is called when the game master is un-hovered over, causing the "chat" icon to
+   * disappear.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterCloseOnUnhover(MouseEvent event) {
     gameMasterCloseHover.setOpacity(0);
   }
 
   /**
-   * Navigates back to the previous view.
+   * Returns the user to previous scene where the chat was opened.
    *
-   * @param event the action event triggered by the go back button
-   * @throws ApiProxyException if there is an error communicating with the API proxy
+   * @param event The mouse event that triggered this method.
+   * @throws ApiProxyException If there is an error communicating with the API proxy
    * @throws IOException if there is an I/O error
    */
   @FXML
@@ -357,26 +378,57 @@ public class ChatController extends ControllerMethods {
   }
 
   // Send Button
+  /**
+   * This method is called when the send button is hovered over, placing a shadow over the button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void sendButtonOnHover(MouseEvent event) {
     sendButtonHover.setOpacity(1);
   }
 
+  /**
+   * This method is called when the send button is un-hovered over, restoring the button to its
+   * original state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void sendButtonOnUnhover(MouseEvent event) {
     sendButtonHover.setOpacity(0);
   }
 
+  /**
+   * This method is called when the send button is pressed, causing the image of button to be
+   * "sink", indicating that it has been pressed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void sendButtonPressed(MouseEvent event) {
     sendButtonPressed.setOpacity(1);
   }
 
+  /**
+   * This method is called when the send button is released, taking the user's input and passing it
+   * to the GPT model.
+   *
+   * @param event The mouse event that triggered this method.
+   * @throws ApiProxyException If there is an error communicating with the API proxy.
+   * @throws IOException if there is an I/O error.
+   */
   @FXML
   private void sendButtonReleased(MouseEvent event) throws ApiProxyException, IOException {
     onSendMessage();
   }
 
+  /**
+   * This method handles the cases where the user wishes to send a message by pressing enter or
+   * exiting the chat window by pressing escape.
+   *
+   * @param event The key event that triggered this method.
+   */
   @FXML
   private void keyPressed(KeyEvent event) {
     // if user presses enter, run onSendMessage()
@@ -392,6 +444,11 @@ public class ChatController extends ControllerMethods {
     checkIfEscapePressed(event);
   }
 
+  /**
+   * This method handles the case where the user presses escape to exit the chat window.
+   *
+   * @param event The key event that triggered this method.
+   */
   @FXML
   private void escapeKeyPressed(KeyEvent event) {
     checkIfEscapePressed(event);
@@ -408,13 +465,13 @@ public class ChatController extends ControllerMethods {
     }
   }
 
-  // Request focus on input text
+  /** This method requests focus on the input text field. */
   public void requestFocus() {
     Platform.runLater(() -> inputText.requestFocus());
   }
 
-  // Select an animation for the loading screen
-  private void selectRandomAniamtion() {
+  /** This method selects a random animation for the loading screen. */
+  private void selectRandomAnimation() {
     Random random = new Random();
     int randomInt = random.nextInt(4); // Picks a random number between 0 and 4
 
@@ -429,6 +486,7 @@ public class ChatController extends ControllerMethods {
     }
   }
 
+  /** This method hides all animations on the loading screen. */
   private void hideAllAnimations() {
     blueRectangle.setOpacity(0);
     pongAnimation.setOpacity(0);
@@ -437,20 +495,28 @@ public class ChatController extends ControllerMethods {
     barAnimation.setOpacity(0);
   }
 
+  /** This method sets the opacity of the riddle book components to reveal it to the user. */
   public void setRiddleBookOpacity() {
+    // Enable riddle book components:
     riddleTextChatArea.setDisable(false);
     riddleBook.setDisable(false);
     riddleTextArea.setDisable(false);
+
+    // Increase the opacity of riddle components in the chat window - revealing it to the user:
     riddleBook.setOpacity(0.9);
     riddleTextArea.setOpacity(0.9);
     riddleTextChatArea.setOpacity(0.9);
     chatTextArea.setOpacity(0);
   }
 
+  /** This method sets the opacity of the riddle book components to hide it from the user. */
   public void disableRiddleBookOpacity() {
+    // Disable riddle book components:
     riddleTextChatArea.setDisable(true);
     riddleBook.setDisable(true);
     riddleTextArea.setDisable(true);
+
+    // Decrease the opacity of riddle components in the chat window - hiding it from the user:
     riddleBook.setOpacity(0);
     riddleTextArea.setOpacity(0);
     riddleTextChatArea.setOpacity(0);

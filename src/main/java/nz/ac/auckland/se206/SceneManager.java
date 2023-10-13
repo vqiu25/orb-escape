@@ -3,6 +3,10 @@ package nz.ac.auckland.se206;
 import java.util.HashMap;
 import javafx.scene.Parent;
 
+/**
+ * This class handles the logic required to manage the scenes in the game - storing the states to be
+ * accessed later.
+ */
 public class SceneManager {
 
   public enum AppScene {
@@ -47,6 +51,9 @@ public class SceneManager {
     return sceneMap.get(scene);
   }
 
+  /**
+   * Removes all scenes from the hashmap that are required to be reset during restarting the game.
+   */
   public static void clearHashMap() {
     // Remove all scenes from the hash map BUT game finished, game over, help, settings, start,
     // story, tutorial, options

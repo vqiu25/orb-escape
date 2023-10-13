@@ -3,7 +3,6 @@ package nz.ac.auckland.se206.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameState;
@@ -11,6 +10,10 @@ import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
+/**
+ * This class handles the logic regarding the castle room scene in which the player is required to
+ * unlock a chest to obtain the red orb.
+ */
 public class CastleRoomController extends ControllerMethods {
 
   @FXML private Label lblTimer;
@@ -85,6 +88,10 @@ public class CastleRoomController extends ControllerMethods {
   @FXML private Label lockThreeNumber;
   private int lockThreeValue = 0;
 
+  /**
+   * This method is called when the scene is first loaded. Timer labels, hints and items in the game
+   * are initialized.
+   */
   public void initialize() {
     // Bind the labels to the display values and styles
     lblTimer.textFillProperty().bind(ControllerMethods.timerTextFill);
@@ -92,7 +99,7 @@ public class CastleRoomController extends ControllerMethods {
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
 
-    // Initialise the inventory items
+    // Initialize the inventory items
     fishingRodIcon = getFishingRodIcon();
     axeIcon = getAxeIcon();
     fishIcon = getFishIcon();
@@ -109,46 +116,76 @@ public class CastleRoomController extends ControllerMethods {
   }
 
   // Methods for back button animations:
+  /**
+   * This method is called when the back button is hovered over, placing a shadow over the button.
+   */
   @FXML
-  private void backHover(MouseEvent event) {
+  private void backHover() {
     backButtonHovered.setOpacity(1);
   }
 
+  /**
+   * This method is called when the back button is un-hovered, restoring the button to its original
+   * state.
+   */
   @FXML
-  private void backUnhover(MouseEvent event) {
+  private void backUnhover() {
     backButtonHovered.setOpacity(0);
   }
 
+  /**
+   * This method is called when the back button is pressed, causing the image of the button to
+   * "sink", indicating that it has been pressed.
+   */
   @FXML
-  private void backPressed(MouseEvent event) {
+  private void backPressed() {
     backButtonPressed.setOpacity(1);
   }
 
+  /**
+   * This method is called when the back button is released, changing the current scene to the lava
+   * room.
+   */
   @FXML
-  private void backReleased(MouseEvent event) {
+  private void backReleased() {
     backButtonPressed.setOpacity(0);
 
     App.setScene(AppScene.LAVA);
   }
 
   // Methods for check button animations:
+  /**
+   * This method is called when the check button is hovered over, placing a shadow over the button.
+   */
   @FXML
-  private void checkHover(MouseEvent event) {
+  private void checkHover() {
     checkButtonHovered.setOpacity(1);
   }
 
+  /**
+   * This method is called when the check button is un-hovered, restoring the button to its original
+   * state.
+   */
   @FXML
-  private void checkUnhover(MouseEvent event) {
+  private void checkUnhover() {
     checkButtonHovered.setOpacity(0);
   }
 
+  /**
+   * This method is called when the check button is pressed, causing the image of the button to
+   * "sink", indicating that it has been pressed.
+   */
   @FXML
-  private void checkPressed(MouseEvent event) {
+  private void checkPressed() {
     checkButtonPressed.setOpacity(1);
   }
 
+  /**
+   * This method is called when the check button is released, checking if the code the user has
+   * inputted is correct. If the code is correct, reveal to the user a red orb
+   */
   @FXML
-  private void checkReleased(MouseEvent event) {
+  private void checkReleased() {
     checkButtonPressed.setOpacity(0);
 
     if (GameState.isChestUnlocked) {
@@ -186,23 +223,39 @@ public class CastleRoomController extends ControllerMethods {
 
   // Methods for pad lock animations:
   // Lock 1:
+  /**
+   * This method is called when the first lock increment button is hovered over, placing a shadow
+   * over the button.
+   */
   @FXML
-  private void lockOneIncrementHover(MouseEvent event) {
+  private void lockOneIncrementHover() {
     lockOneIncrementHovered.setOpacity(1);
   }
 
+  /**
+   * This method is called when the first lock increment button is un-hovered, restoring the button
+   * to its original state.
+   */
   @FXML
-  private void lockOneIncrementUnhover(MouseEvent event) {
+  private void lockOneIncrementUnhover() {
     lockOneIncrementHovered.setOpacity(0);
   }
 
+  /**
+   * This method is called when the first lock increment button is pressed, causing the image of the
+   * button to "sink", indicating that it has been pressed.
+   */
   @FXML
-  private void lockOneIncrementPressed(MouseEvent event) {
+  private void lockOneIncrementPressed() {
     lockOneIncrementPressed.setOpacity(1);
   }
 
+  /**
+   * This method is called when the first lock increment button is released, incrementing the value
+   * of the first lock.
+   */
   @FXML
-  private void lockOneIncrementReleased(MouseEvent event) {
+  private void lockOneIncrementReleased() {
     lockOneIncrementPressed.setOpacity(0);
 
     if (lockOneValue == 9) {
@@ -212,23 +265,39 @@ public class CastleRoomController extends ControllerMethods {
     lockOneNumber.setText(String.valueOf(++lockOneValue));
   }
 
+  /**
+   * This method is called when the first lock decrement button is hovered over, placing a shadow
+   * over the button.
+   */
   @FXML
-  private void lockOneDecrementHover(MouseEvent event) {
+  private void lockOneDecrementHover() {
     lockOneDecrementHovered.setOpacity(1);
   }
 
+  /**
+   * This method is called when the first lock decrement button is un-hovered, restoring the button
+   * to its original state.
+   */
   @FXML
-  private void lockOneDecrementUnhover(MouseEvent event) {
+  private void lockOneDecrementUnhover() {
     lockOneDecrementHovered.setOpacity(0);
   }
 
+  /**
+   * This method is called when the first lock decrement button is pressed, causing the image of the
+   * button to "sink", indicating that it has been pressed.
+   */
   @FXML
-  private void lockOneDecrementPressed(MouseEvent event) {
+  private void lockOneDecrementPressed() {
     lockOneDecrementPressed.setOpacity(1);
   }
 
+  /**
+   * This method is called when the first lock decrement button is released, decrementing the value
+   * of the first lock.
+   */
   @FXML
-  private void lockOneDecrementReleased(MouseEvent event) {
+  private void lockOneDecrementReleased() {
     lockOneDecrementPressed.setOpacity(0);
 
     if (lockOneValue == 0) {
@@ -239,23 +308,39 @@ public class CastleRoomController extends ControllerMethods {
   }
 
   // Lock 2:
+  /**
+   * This method is called when the second lock increment button is hovered over, placing a shadow
+   * over the button.
+   */
   @FXML
-  private void lockTwoIncrementHover(MouseEvent event) {
+  private void lockTwoIncrementHover() {
     lockTwoIncrementHovered.setOpacity(1);
   }
 
+  /**
+   * This method is called when the second lock increment button is un-hovered, restoring the button
+   * to its original state.
+   */
   @FXML
-  private void lockTwoIncrementUnhover(MouseEvent event) {
+  private void lockTwoIncrementUnhover() {
     lockTwoIncrementHovered.setOpacity(0);
   }
 
+  /**
+   * This method is called when the second lock increment button is pressed, causing the image of
+   * the button to "sink", indicating that it has been pressed.
+   */
   @FXML
-  private void lockTwoIncrementPressed(MouseEvent event) {
+  private void lockTwoIncrementPressed() {
     lockTwoIncrementPressed.setOpacity(1);
   }
 
+  /**
+   * This method is called when the second lock increment button is released, incrementing the value
+   * of the second lock.
+   */
   @FXML
-  private void lockTwoIncrementReleased(MouseEvent event) {
+  private void lockTwoIncrementReleased() {
     lockTwoIncrementPressed.setOpacity(0);
 
     if (lockTwoValue == 9) {
@@ -265,23 +350,39 @@ public class CastleRoomController extends ControllerMethods {
     lockTwoNumber.setText(String.valueOf(++lockTwoValue));
   }
 
+  /**
+   * This method is called when the second lock decrement button is hovered over, placing a shadow
+   * over the button.
+   */
   @FXML
-  private void lockTwoDecrementHover(MouseEvent event) {
+  private void lockTwoDecrementHover() {
     lockTwoDecrementHovered.setOpacity(1);
   }
 
+  /**
+   * This method is called when the second lock decrement button is un-hovered, restoring the button
+   * to its original state.
+   */
   @FXML
-  private void lockTwoDecrementUnhover(MouseEvent event) {
+  private void lockTwoDecrementUnhover() {
     lockTwoDecrementHovered.setOpacity(0);
   }
 
+  /**
+   * This method is called when the second lock decrement button is pressed, causing the image of
+   * the button to "sink", indicating that it has been pressed.
+   */
   @FXML
-  private void lockTwoDecrementPressed(MouseEvent event) {
+  private void lockTwoDecrementPressed() {
     lockTwoDecrementPressed.setOpacity(1);
   }
 
+  /**
+   * This method is called when the second lock decrement button is released, decrementing the value
+   * of the second lock.
+   */
   @FXML
-  private void lockTwoDecrementReleased(MouseEvent event) {
+  private void lockTwoDecrementReleased() {
     lockTwoDecrementPressed.setOpacity(0);
 
     if (lockTwoValue == 0) {
@@ -292,23 +393,39 @@ public class CastleRoomController extends ControllerMethods {
   }
 
   // Lock 3:
+  /**
+   * This method is called when the third lock increment button is hovered over, placing a shadow
+   * over the button.
+   */
   @FXML
-  private void lockThreeIncrementHover(MouseEvent event) {
+  private void lockThreeIncrementHover() {
     lockThreeIncrementHovered.setOpacity(1);
   }
 
+  /**
+   * This method is called when the third lock increment button is un-hovered, restoring the button
+   * to its original state.
+   */
   @FXML
-  private void lockThreeIncrementUnhover(MouseEvent event) {
+  private void lockThreeIncrementUnhover() {
     lockThreeIncrementHovered.setOpacity(0);
   }
 
+  /**
+   * This method is called when the third lock increment button is pressed, causing the image of the
+   * button to "sink", indicating that it has been pressed.
+   */
   @FXML
-  private void lockThreeIncrementPressed(MouseEvent event) {
+  private void lockThreeIncrementPressed() {
     lockThreeIncrementPressed.setOpacity(1);
   }
 
+  /**
+   * This method is called when the third lock increment button is released, incrementing the value
+   * of the third lock.
+   */
   @FXML
-  private void lockThreeIncrementReleased(MouseEvent event) {
+  private void lockThreeIncrementReleased() {
     lockThreeIncrementPressed.setOpacity(0);
 
     if (lockThreeValue == 9) {
@@ -318,23 +435,39 @@ public class CastleRoomController extends ControllerMethods {
     lockThreeNumber.setText(String.valueOf(++lockThreeValue));
   }
 
+  /**
+   * This method is called when the third lock decrement button is hovered over, placing a shadow
+   * over the button.
+   */
   @FXML
-  private void lockThreeDecrementHover(MouseEvent event) {
+  private void lockThreeDecrementHover() {
     lockThreeDecrementHovered.setOpacity(1);
   }
 
+  /**
+   * This method is called when the third lock decrement button is un-hovered, restoring the button
+   * to its original state.
+   */
   @FXML
-  private void lockThreeDecrementUnhover(MouseEvent event) {
+  private void lockThreeDecrementUnhover() {
     lockThreeDecrementHovered.setOpacity(0);
   }
 
+  /**
+   * This method is called when the third lock decrement button is pressed, causing the image of the
+   * button to "sink", indicating that it has been pressed.
+   */
   @FXML
-  private void lockThreeDecrementPressed(MouseEvent event) {
+  private void lockThreeDecrementPressed() {
     lockThreeDecrementPressed.setOpacity(1);
   }
 
+  /**
+   * This method is called when the third lock decrement button is released, decrementing the value
+   * of the third lock.
+   */
   @FXML
-  private void lockThreeDecrementReleased(MouseEvent event) {
+  private void lockThreeDecrementReleased() {
     lockThreeDecrementPressed.setOpacity(0);
 
     if (lockThreeValue == 0) {
@@ -345,18 +478,24 @@ public class CastleRoomController extends ControllerMethods {
   }
 
   // Methods for chest animations:
+  /** This method is called when the orb is hovered over, showing an outline around the orb. */
   @FXML
-  private void orbHovered(MouseEvent event) {
+  private void orbHovered() {
     chestOpenedOrbOutline.setOpacity(1);
   }
 
+  /** This method is called when the orb is un-hovered, removing the outline around the orb. */
   @FXML
-  private void orbUnhovered(MouseEvent event) {
+  private void orbUnhovered() {
     chestOpenedOrbOutline.setOpacity(0);
   }
 
+  /**
+   * This method is called when the orb is pressed, removing the orb from the chest and placing it
+   * in the inventory.
+   */
   @FXML
-  private void orbPressed(MouseEvent event) {
+  private void orbPressed() {
     chestEmpty.setOpacity(1);
 
     // Update orb state:
@@ -368,20 +507,32 @@ public class CastleRoomController extends ControllerMethods {
   }
 
   // Bottom Right Game Master Button
+  /**
+   * This method is called when the game master button is hovered over, causing a "chat" icon to
+   * appear.
+   */
   @FXML
-  private void gameMasterOnHover(MouseEvent event) {
+  private void gameMasterOnHover() {
     gameMasterDefault.setOpacity(0);
     gameMasterChat.setOpacity(1);
   }
 
+  /**
+   * This method is called when the game master button is un-hovered, causing the "chat" icon to
+   * disappear.
+   */
   @FXML
-  private void gameMasterOnUnhover(MouseEvent event) {
+  private void gameMasterOnUnhover() {
     gameMasterDefault.setOpacity(1);
     gameMasterChat.setOpacity(0);
   }
 
+  /**
+   * This method is called when the game master button is pressed, changing the current scene to the
+   * chat scene.
+   */
   @FXML
-  private void gameMasterOnClick(MouseEvent event) {
+  private void gameMasterOnClick() {
     setChestMiniOpacity();
 
     // Store the current scene in the scene stack:

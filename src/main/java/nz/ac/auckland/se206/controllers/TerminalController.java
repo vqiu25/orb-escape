@@ -12,6 +12,7 @@ import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
+/** This class handles the logic for the portal terminal scene. */
 public class TerminalController extends ControllerMethods {
 
   @FXML private Label lblTimer;
@@ -58,6 +59,7 @@ public class TerminalController extends ControllerMethods {
   @FXML private ImageView gameMasterDefault;
   @FXML private ImageView gameMasterChat;
 
+  /** This method is called when the scene is first loaded, binding the labels and items. */
   public void initialize() {
     // Bind the labels to the display values and styles
     lblTimer.textFillProperty().bind(ControllerMethods.timerTextFill);
@@ -65,7 +67,7 @@ public class TerminalController extends ControllerMethods {
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
 
-    // Initialise the inventory items
+    // Initialize the inventory items
     fishingRodIcon = getFishingRodIcon();
     axeIcon = getAxeIcon();
     fishIcon = getFishIcon();
@@ -74,28 +76,52 @@ public class TerminalController extends ControllerMethods {
     // Bind the inventory images to their image properties
     bindInventoryWithoutOrbs();
 
-    // Initialise the drag and drop helper:
+    // Initialize the drag and drop helper:
     blueOrbImage = new DragImage(blueOrbOutline, blueOrb, blueOrbFixed, blueOrbPlaced);
     greenOrbImage = new DragImage(greenOrbOutline, greenOrb, greenOrbFixed, greenOrbPlaced);
     redOrbImage = new DragImage(redOrbOutline, redOrb, redOrbFixed, redOrbPlaced);
   }
 
   // Red Button
+  /**
+   * This method is called when the red button is hovered over, placing a shadow over the button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void redButtonHover(MouseEvent event) {
     redTwoButton.setOpacity(1);
   }
 
+  /**
+   * This method is called when the red button is un-hovered, restoring the button to its original
+   * state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void redButtonUnhover(MouseEvent event) {
     redTwoButton.setOpacity(0);
   }
 
+  /**
+   * This method is called when the red button is pressed, causing the image of the button to
+   * "sink", indicating that it has been pressed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void redButtonPressed(MouseEvent event) {
     redThreeButton.setOpacity(1);
   }
 
+  /**
+   * This method is called when the red button is released in which the orbs are checked to see if
+   * they are in the correct position. If the orbs have been placed correctly, the portal is opened
+   * and the user is able to escape.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void redButtonReleased(MouseEvent event) {
     redThreeButton.setOpacity(0);
@@ -125,21 +151,43 @@ public class TerminalController extends ControllerMethods {
   }
 
   // Back Button
+  /**
+   * This method is called when the back button is hovered over, placing a shadow over the button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backHover(MouseEvent event) {
     backButtonTwo.setOpacity(1);
   }
 
+  /**
+   * This method is called when the back button is un-hovered, restoring the button to its original
+   * state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backUnhover(MouseEvent event) {
     backButtonTwo.setOpacity(0);
   }
 
+  /**
+   * This method is called when the back button is pressed, causing the image of the button to
+   * "sink", indicating that it has been pressed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backPressed(MouseEvent event) {
     backButtonThree.setOpacity(1);
   }
 
+  /**
+   * This method is called when the back button is released, returning the user back to the room.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backReleased(MouseEvent event) {
     backButtonThree.setOpacity(0);
@@ -147,16 +195,19 @@ public class TerminalController extends ControllerMethods {
   }
 
   // Blue Orb Logic:
+  /** This method is called when the blue orb is hovered over, displaying an outline around it. */
   @FXML
   private void blueHovered() {
     blueOrb.setOpacity(0);
   }
 
+  /** This method is called when the blue orb is un-hovered, removing the outline around it. */
   @FXML
   private void blueUnhovered() {
     blueOrb.setOpacity(1);
   }
 
+  /** This method is called when the blue orb is dragged. */
   @FXML
   private void blueDragged(MouseEvent event) {
     blueOrb.setOpacity(0);
@@ -164,22 +215,30 @@ public class TerminalController extends ControllerMethods {
     blueOrbImage.drag(event);
   }
 
+  /** This method is called when the blue orb is released. */
   @FXML
   private void blueReleased() {
     blueOrbImage.released();
   }
 
   // Green Orb Logic:
+  /** This method is called when the green orb is hovered over, displaying an outline around it. */
   @FXML
   private void greenHovered() {
     greenOrb.setOpacity(0);
   }
 
+  /** This method is called when the green orb is un-hovered, removing the outline around it. */
   @FXML
   private void greenUnhovered() {
     greenOrb.setOpacity(1);
   }
 
+  /**
+   * This method is called when the green orb is dragged.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void greenDragged(MouseEvent event) {
     greenOrb.setOpacity(0);
@@ -187,22 +246,30 @@ public class TerminalController extends ControllerMethods {
     greenOrbImage.drag(event);
   }
 
+  /** This method is called when the green orb is released. */
   @FXML
   private void greenReleased() {
     greenOrbImage.released();
   }
 
   // Red Orb Logic:
+  /** This method is called when the red orb is hovered over, displaying an outline around it. */
   @FXML
   private void redHovered() {
     redOrb.setOpacity(0);
   }
 
+  /** This method is called when the red orb is un-hovered, removing the outline around it. */
   @FXML
   private void redUnhovered() {
     redOrb.setOpacity(1);
   }
 
+  /**
+   * This method is called when the red orb is dragged.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void redDragged(MouseEvent event) {
     redOrb.setOpacity(0);
@@ -210,24 +277,43 @@ public class TerminalController extends ControllerMethods {
     redOrbImage.drag(event);
   }
 
+  /** This method is called when the red orb is released. */
   @FXML
   private void redReleased() {
     redOrbImage.released();
   }
 
   // Bottom Right Game Master Button
+  /**
+   * This method is called when the game master button is hovered over, causing a "chat" icon to
+   * appear.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnHover(MouseEvent event) {
     gameMasterDefault.setOpacity(0);
     gameMasterChat.setOpacity(1);
   }
 
+  /**
+   * This method is called when the game master button is un-hovered, causing the "chat" icon to
+   * disappear.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnUnhover(MouseEvent event) {
     gameMasterDefault.setOpacity(1);
     gameMasterChat.setOpacity(0);
   }
 
+  /**
+   * This method is called when the game master button is clicked, changing the current scene to be
+   * the chat scene.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
     setOrbMiniOpacity();

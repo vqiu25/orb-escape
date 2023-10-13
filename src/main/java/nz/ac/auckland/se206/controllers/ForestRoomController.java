@@ -12,6 +12,10 @@ import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
+/**
+ * This class handles the logic for the forest room where players are able to play the fishing
+ * mini-game or the tree chopping mini-game.
+ */
 public class ForestRoomController extends ControllerMethods {
   @FXML private ImageView leftArrow;
   @FXML private ImageView leftArrowHover;
@@ -60,6 +64,10 @@ public class ForestRoomController extends ControllerMethods {
   @FXML private ImageView settingsTwo;
   @FXML private ImageView settingsThree;
 
+  /**
+   * This method is called when the scene is first loaded. Timer labels, hints and items in the game
+   * are initialized.
+   */
   public void initialize() {
     // Bind the labels to the display values and styles
     lblTimer.textFillProperty().bind(ControllerMethods.timerTextFill);
@@ -67,7 +75,7 @@ public class ForestRoomController extends ControllerMethods {
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
 
-    // Initialise the inventory items
+    // Initialize the inventory items
     fishingRodIcon = getFishingRodIcon();
     axeIcon = getAxeIcon();
     fishIcon = getFishIcon();
@@ -90,9 +98,9 @@ public class ForestRoomController extends ControllerMethods {
       initialisePinkTrees();
     }
 
-    // Based on minigame selected, either show dragon scenario or broken bridge scenario:
+    // Based on mini-game selected, either show dragon scenario or broken bridge scenario:
     if (GameState.isForestTreeChopping) {
-      // Minigame 1: Trees need to be chopped - Disable and hide fishing rod components
+      // Mini-game 1: Trees need to be chopped - Disable and hide fishing rod components
 
       // Disable fishing rod polygon and enable empty dock polygon
       fishingMini.setDisable(true);
@@ -102,7 +110,7 @@ public class ForestRoomController extends ControllerMethods {
       fishingRod.setOpacity(0);
       dock.setOpacity(1);
     } else {
-      // Minigame 2: Fish needs to be caught - Disable and hide tree chopping components
+      // Mini-game 2: Fish needs to be caught - Disable and hide tree chopping components
 
       // Disable axe polygon and enable empty log polygon
       axeGrab.setDisable(true);
@@ -114,16 +122,33 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the help button is hovered over, placing a shadow over the button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onHelpHover(MouseEvent event) {
     helpTwo.setOpacity(1);
   }
 
+  /**
+   * This method is called when the help button is un-hovered, restoring the button to its original
+   * state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onHelpUnhover(MouseEvent event) {
     helpTwo.setOpacity(0);
   }
 
+  /**
+   * This method is called when the help button is pressed, causing the image of the button to
+   * "sink", indicating that it has been pressed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onHelpPressed(MouseEvent event) {
     helpThree.setOpacity(1);
@@ -132,7 +157,7 @@ public class ForestRoomController extends ControllerMethods {
   /**
    * Opens the help window GUI.
    *
-   * @param event Mouse click event.
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void onHelpReleased(MouseEvent event) {
@@ -144,25 +169,43 @@ public class ForestRoomController extends ControllerMethods {
     App.setScene(AppScene.HELP);
   }
 
+  /**
+   * This method is called when the settings button is hovered over, placing a shadow over the
+   * button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onSettingsHover(MouseEvent event) {
     settingsTwo.setOpacity(1);
   }
 
+  /**
+   * This method is called when the settings button is un-hovered, restoring the button to its
+   * original state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onSettingsUnhover(MouseEvent event) {
     settingsTwo.setOpacity(0);
   }
 
+  /**
+   * This method is called when the settings button is pressed, causing the image of the button to
+   * "sink" indicating that it has been pressed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void onSettingsPressed(MouseEvent event) {
     settingsThree.setOpacity(1);
   }
 
   /**
-   * Opens the settings scene.
+   * Opens the settings menu scene.
    *
-   * @param event
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void onSettingsReleased(MouseEvent event) {
@@ -175,7 +218,7 @@ public class ForestRoomController extends ControllerMethods {
   }
 
   /**
-   * When the left arrow is hovered over.
+   * When the left arrow is no longer hovered over.
    *
    * @param event Mouse click event.
    */
@@ -185,7 +228,7 @@ public class ForestRoomController extends ControllerMethods {
   }
 
   /**
-   * When the left arrow is no longer hovered over.
+   * When the left arrow is hovered over.
    *
    * @param event Mouse click event.
    */
@@ -216,6 +259,11 @@ public class ForestRoomController extends ControllerMethods {
   }
 
   // Rock
+  /**
+   * This method is called when the user clicks on the rock, displaying a notification to the user.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void rockClick(MouseEvent event) {
     // Notification to the user
@@ -224,17 +272,33 @@ public class ForestRoomController extends ControllerMethods {
     message.show();
   }
 
+  /**
+   * This method is called when the user hovers over the rock, displaying an outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void rockHover(MouseEvent event) {
     rockOutline.setOpacity(1);
   }
 
+  /**
+   * This method is called when the user un-hovers over the rock, removing the outline around the
+   * rock.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void rockUnhover(MouseEvent event) {
     rockOutline.setOpacity(0);
   }
 
-  // Fishing Rod
+  /**
+   * This method is called when the user clicks on the fishing rod. Fishing rod disappears from the
+   * dock and is added to the inventory.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void fishingClick(MouseEvent event) {
     // Add the fishing rod to inventory
@@ -250,6 +314,12 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user hovers over the fishing rod, displaying an outline around
+   * it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void fishingHover(MouseEvent event) {
     if (GameState.isForestFishing) {
@@ -257,6 +327,12 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user un-hovers over the fishing rod, removing the outline around
+   * it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void fishingUnhover(MouseEvent event) {
     if (GameState.isForestFishing) {
@@ -264,7 +340,11 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
-  // Dock without fishing rod
+  /**
+   * This method is called when the user clicks on the dock.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void dockClick(MouseEvent event) {
 
@@ -297,6 +377,11 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user hovers over the dock, displaying an outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void dockHover(MouseEvent event) {
     if (!GameState.isForestFishing || GameState.isFishingRodTaken) {
@@ -304,6 +389,11 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user un-hovers over the dock, removing the outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void dockUnhover(MouseEvent event) {
     if (!GameState.isForestFishing || GameState.isFishingRodTaken) {
@@ -311,7 +401,11 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
-  // Trees
+  /**
+   * This method is called when the user clicks on the trees.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void treesClick(MouseEvent event) {
     if (GameState.isForestTreeChopping) {
@@ -349,6 +443,11 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user hovers over the trees, displaying an outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void treesHover(MouseEvent event) {
     if (!GameState.isChopped) {
@@ -356,6 +455,11 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user un-hovers over the trees, removing the outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void treesUnhover(MouseEvent event) {
     if (!GameState.isChopped) {
@@ -363,7 +467,7 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
-  // Method to swap from the normal trees to the chopped trees
+  /** This method is called to swap the trees image to the chopped trees image. */
   public void chopTrees() {
     trees.setOpacity(0);
     treesOutline.setOpacity(0);
@@ -372,7 +476,7 @@ public class ForestRoomController extends ControllerMethods {
     treesRemoved.setOpacity(1);
   }
 
-  // Trees Removed
+  /** This method is called when the user clicks on the chopped trees. */
   @FXML
   private void choppedClick(MouseEvent event) {
     if (GameState.isForestTreeChopping && GameState.isChopped) {
@@ -380,6 +484,12 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user hovers over the chopped trees, displaying an outline around
+   * it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void choppedHover(MouseEvent event) {
     if (GameState.isChopped) {
@@ -387,6 +497,12 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user un-hovers over the chopped trees, removing the outline
+   * around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void choppedUnhover(MouseEvent event) {
     if (GameState.isChopped) {
@@ -395,6 +511,12 @@ public class ForestRoomController extends ControllerMethods {
   }
 
   // Axe logic
+  /**
+   * This method is called when the user clicks on the axe. The axe is removed from the scene and is
+   * added to the inventory.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void axeClick(MouseEvent event) {
     // If the axe has not been taken:
@@ -416,6 +538,11 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user hovers over the axe, displaying an outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void axeHover(MouseEvent event) {
     if (!GameState.isAxeTaken) {
@@ -423,6 +550,11 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user un-hovers over the axe, removing the outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void axeUnhover(MouseEvent event) {
     if (!GameState.isAxeTaken) {
@@ -431,6 +563,11 @@ public class ForestRoomController extends ControllerMethods {
   }
 
   // Axe Removed
+  /**
+   * This method is called when the user clicks on the tree stump.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void emptyLogClick(MouseEvent event) {
     // if it isnt the tree chopping game:
@@ -447,6 +584,12 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user hovers over the tree stump, displaying an outline around
+   * it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void emptyLogHover(MouseEvent event) {
     if (GameState.isAxeTaken || !GameState.isForestTreeChopping) {
@@ -454,6 +597,12 @@ public class ForestRoomController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the user un-hovers over the tree stump, removing the outline around
+   * it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void emptyLogUnhover(MouseEvent event) {
     if (GameState.isAxeTaken || !GameState.isForestTreeChopping) {
@@ -462,18 +611,36 @@ public class ForestRoomController extends ControllerMethods {
   }
 
   // Bottom Right Game Master Button
+  /**
+   * This method is called when the game master button is hovered over, causing a "chat" icon to
+   * appear.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnHover(MouseEvent event) {
     gameMasterDefault.setOpacity(0);
     gameMasterChat.setOpacity(1);
   }
 
+  /**
+   * This method is called when the game master button is un-hovered, causing the "chat" icon to
+   * disappear.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnUnhover(MouseEvent event) {
     gameMasterDefault.setOpacity(1);
     gameMasterChat.setOpacity(0);
   }
 
+  /**
+   * This method is called when the game master button is clicked, changing the current scene to be
+   * the chat scene.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
 
@@ -492,6 +659,10 @@ public class ForestRoomController extends ControllerMethods {
     App.setScene(AppScene.CHAT);
   }
 
+  /**
+   * Helper method which displays a notification to the player, prompting them to find the riddle
+   * first.
+   */
   public void findRiddle() {
     // Initialize orb notification message
     Notifications orbMessage =
@@ -499,6 +670,10 @@ public class ForestRoomController extends ControllerMethods {
     orbMessage.show();
   }
 
+  /**
+   * Helper method which displays a notification to the player, prompting them to solve the riddle
+   * first.
+   */
   public void solveRiddle() {
     // Initialize orb notification message
     Notifications orbMessage =
@@ -507,6 +682,10 @@ public class ForestRoomController extends ControllerMethods {
     orbMessage.show();
   }
 
+  /**
+   * Helper method which displays a notification to the player, prompting them to find the orb
+   * first.
+   */
   public void findRoomOrb() {
     // Initialize orb notification message
     Notifications orbMessage =

@@ -12,6 +12,7 @@ import nz.ac.auckland.se206.SceneManager.AppScene;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
+/** This class handles the logic for the story screen. */
 public class StoryController extends ControllerMethods {
 
   // Buttons are now next instead of back
@@ -32,6 +33,12 @@ public class StoryController extends ControllerMethods {
   private boolean isPlaying;
   private boolean isPaused;
 
+  /**
+   * This method is called when the scene is first loaded. Here, the text to speech object is
+   * initialized.
+   *
+   * @throws ApiProxyException If the API key is invalid.
+   */
   public void initialize() throws ApiProxyException {
     isPlaying = false;
     isPaused = false;
@@ -52,6 +59,11 @@ public class StoryController extends ControllerMethods {
     openingText.getStyleClass().add("story-text");
   }
 
+  /**
+   * This method is called when the audio button is hovered over, placing a shadow over the button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void audioHover(MouseEvent event) {
     resetAllOpacities();
@@ -62,11 +74,23 @@ public class StoryController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the audio button is un-hovered, restoring the button to its original
+   * state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void audioUnhover(MouseEvent event) {
     updateAudioButtonVisibility();
   }
 
+  /**
+   * This method is called when the audio button is pressed, causing the image of the button to
+   * "sink", indicating that it has been pressed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void audioPressed(MouseEvent event) {
     resetAllOpacities();
@@ -77,6 +101,13 @@ public class StoryController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the audio button is released, starting the text to speech audio.
+   *
+   * @param event The mouse event that triggered this method.
+   * @throws AudioException If the audio cannot be played.
+   * @throws EngineStateError If the audio engine is in an invalid state.
+   */
   @FXML
   private void audioReleased(MouseEvent event) throws AudioException, EngineStateError {
     // If the TTS is currently playing, we will pause it
@@ -96,6 +127,7 @@ public class StoryController extends ControllerMethods {
     updateAudioButtonVisibility();
   }
 
+  /** This method starts the audio from the beginning. */
   private void startAudioFromBeginning() {
     isPlaying = true;
     isPaused = false;
@@ -118,21 +150,44 @@ public class StoryController extends ControllerMethods {
     audioThread.start();
   }
 
+  /**
+   * This method is called when the back button is hovered over, placing a shadow over the button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backHover(MouseEvent event) {
     backTwoButton.setOpacity(1);
   }
 
+  /**
+   * This method is called when the back button is un-hovered, restoring the button to its original
+   * state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backUnhover(MouseEvent event) {
     backTwoButton.setOpacity(0);
   }
 
+  /**
+   * This method is called when the back button is pressed, causing the image of the button to
+   * "sink", indicating that it has been pressed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backPressed(MouseEvent event) {
     backThreeButton.setOpacity(1);
   }
 
+  /**
+   * This method is called when the back button is released, progressing the user to the tutorial
+   * screen.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backReleased(MouseEvent event) {
     stopAudioThread();
@@ -140,6 +195,7 @@ public class StoryController extends ControllerMethods {
     App.setScene(AppScene.TUTORIAL);
   }
 
+  /** This helper function is called to stop the audio thread - pausing the text to speech. */
   private void stopAudioThread() {
     if (audioThread != null && audioThread.isAlive()) {
       textToSpeech.terminate();
@@ -147,6 +203,7 @@ public class StoryController extends ControllerMethods {
     }
   }
 
+  /** This helper function is called to reset the opacity of all audio buttons. */
   private void resetAllOpacities() {
     pauseOne.setOpacity(0);
     pauseTwo.setOpacity(0);
@@ -156,6 +213,10 @@ public class StoryController extends ControllerMethods {
     audioThree.setOpacity(0);
   }
 
+  /**
+   * This helper function is called to update the visibility of the audio buttons, depending on the
+   * state of the text to speech.
+   */
   private void updateAudioButtonVisibility() {
     resetAllOpacities();
     if (isPlaying) {
