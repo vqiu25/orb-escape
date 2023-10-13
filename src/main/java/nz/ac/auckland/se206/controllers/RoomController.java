@@ -1048,7 +1048,7 @@ public class RoomController extends ControllerMethods {
 
   /**
    * This helper method displays a notification to the user when the click on the rug or cabinet -
-   * depending on the riddle selected/
+   * depending on the riddle selected.
    */
   private void interestingNotification() {
     Notifications message =
@@ -1059,14 +1059,17 @@ public class RoomController extends ControllerMethods {
 
   /**
    * This helper function initializes and sets the code displayed on the wall which is used to
-   * unlock the chest
+   * unlock the chest.
    */
   private void setCodeImages() {
+    // Set the code images for the first digit.
     firstDigit.setImage(
         new Image(getClass().getResourceAsStream("/images/digit" + GameState.firstDigit + ".png")));
+    // Set the code images for the second digit.
     secondDigit.setImage(
         new Image(
             getClass().getResourceAsStream("/images/digit" + GameState.secondDigit + ".png")));
+    // Set the code images for the third digit.
     thirdDigit.setImage(
         new Image(getClass().getResourceAsStream("/images/digit" + GameState.thirdDigit + ".png")));
   }

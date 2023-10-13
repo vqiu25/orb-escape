@@ -616,18 +616,22 @@ public class ControllerMethods {
 
   /** Sets the images for the trees to be green. */
   protected void initialiseGreenTrees() {
+    // Handles the tree in the forest room.
     treesImageProperty.set(new Image(getClass().getResourceAsStream("/images/trees.png")));
     treesOutlineImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/treesOutline.png")));
+    // Handles the trees in the minigame.
     miniTreesImageProperty.set(new Image(getClass().getResourceAsStream("/images/miniTrees.png")));
     treeHitImageProperty.set(new Image(getClass().getResourceAsStream("/images/treeHitOne.png")));
   }
 
   /** Sets the images for the trees to be pink. */
   protected void initialisePinkTrees() {
+    // Handles the tree in the forest room.
     treesImageProperty.set(new Image(getClass().getResourceAsStream("/images/treesPink.png")));
     treesOutlineImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/treesPinkOutline.png")));
+    // Handles the trees in the minigame.
     miniTreesImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/miniTreesPink.png")));
     treeHitImageProperty.set(
