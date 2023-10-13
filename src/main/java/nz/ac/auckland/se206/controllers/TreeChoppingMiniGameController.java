@@ -15,6 +15,10 @@ import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
+/**
+ * This class handles the logic for the tree chopping mini game where the user is tasked to collect
+ * wooden planks.
+ */
 public class TreeChoppingMiniGameController extends ControllerMethods {
 
   @FXML private Label lblTimer;
@@ -56,6 +60,10 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
   private boolean isOrbFallen = false;
   private boolean isOrbCollected = false;
 
+  /**
+   * This method is called when the scene is first loaded. Timer labels, hints and items in the game
+   * are initialized.
+   */
   public void initialize() {
     // Bind the labels to the display values and styles
     lblTimer.textFillProperty().bind(ControllerMethods.timerTextFill);
@@ -63,7 +71,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
 
-    // Initialise the inventory items
+    // Initialize the inventory items
     fishingRodIcon = getFishingRodIcon();
     axeIcon = getAxeIcon();
     fishIcon = getFishIcon();
@@ -80,21 +88,45 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
     treeHitOne.imageProperty().bind(ControllerMethods.treeHitImageProperty);
   }
 
+  /**
+   * This method is called when the blue chop button is hovered over, placing a shadow over the
+   * button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void blueHover(MouseEvent event) {
     blueButtonTwo.setOpacity(1);
   }
 
+  /**
+   * This method is called when the blue chop button is un-hovered, restoring the button to its
+   * original state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void blueUnhover(MouseEvent event) {
     blueButtonTwo.setOpacity(0);
   }
 
+  /**
+   * This method is called when the blue chop button is pressed, causing the image of the button to
+   * "sink", indicating that it has been pressed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void bluePressed(MouseEvent event) {
     blueButtonThree.setOpacity(1);
   }
 
+  /**
+   * This method is called when the blue chop button is released, progressing the mini game. When
+   * the mini game is completed, the planks appear in the inventory.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void blueReleased(MouseEvent event) {
 
@@ -143,27 +175,51 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
     blueButtonThree.setOpacity(0);
   }
 
+  /**
+   * This method is called when the back button is hovered over, placing a shadow over the button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backHover(MouseEvent event) {
     backButtonTwo.setOpacity(1);
   }
 
+  /**
+   * This method is called when the back button is un-hovered, restoring the button to its original
+   * state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backUnhover(MouseEvent event) {
     backButtonTwo.setOpacity(0);
   }
 
+  /**
+   * This method is called when the back button is pressed, causing the image of the button to
+   * "sink", indicating that it has been pressed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backPressed(MouseEvent event) {
     backButtonThree.setOpacity(1);
   }
 
+  /**
+   * This method is called when the back button is released, returning the user back to the forest
+   * room.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backReleased(MouseEvent event) {
     backButtonThree.setOpacity(0);
     App.setScene(AppScene.FOREST);
   }
 
+  /** This helper function controls the animations for the orb dropped. */
   private void orbDrop() {
     isOrbFallen = true;
 
@@ -190,6 +246,11 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
   }
 
   // Green Orb Logic
+  /**
+   * This method is called when the green orb is hovered over, displaying an outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void greenOrbHover(MouseEvent event) {
     if (isOrbFallen && !isOrbCollected) {
@@ -197,6 +258,11 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the green orb is un-hovered, removing the outline around it.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void greenOrbUnhover(MouseEvent event) {
     if (isOrbFallen && !isOrbCollected) {
@@ -204,6 +270,11 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
     }
   }
 
+  /**
+   * This method is called when the green orb is clicked, adding the orb to the inventory.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void greenOrbClick(MouseEvent event) {
     // Make the green orb appear in the inventory
@@ -216,6 +287,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
     updateTask();
   }
 
+  /** This helper function is called when the trees are chopped - playing an animation. */
   private void treeHitAnimation() {
 
     // Create a timeline object - controls animations over a series of frames
@@ -277,18 +349,36 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
   }
 
   // Bottom Right Game Master Button
+  /**
+   * This method is called when the game master button is hovered over, causing a "chat" icon to
+   * appear.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnHover(MouseEvent event) {
     gameMasterDefault.setOpacity(0);
     gameMasterChat.setOpacity(1);
   }
 
+  /**
+   * This method is called when the game master button is un-hovered, causing the "chat" icon to
+   * disappear.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnUnhover(MouseEvent event) {
     gameMasterDefault.setOpacity(1);
     gameMasterChat.setOpacity(0);
   }
 
+  /**
+   * This method is called when the game master button is clicked, changing the current scene to be
+   * the chat scene.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
     if (GameState.isChopped) {

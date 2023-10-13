@@ -10,6 +10,7 @@ import nz.ac.auckland.se206.PopOverBuilder;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.PopOver;
 
+/** This class handles the logic for the option screen. */
 public class OptionScreenController extends ControllerMethods {
   @FXML private ImageView easyOneButton;
   @FXML private ImageView easyTwoButton;
@@ -29,7 +30,7 @@ public class OptionScreenController extends ControllerMethods {
   @FXML private ImageView longOneButton;
   @FXML private ImageView longTwoButton;
   @FXML private ImageView longThreeButton;
-  @FXML private ImageView backOneButtn;
+  @FXML private ImageView backOneButton;
   @FXML private ImageView backTwoButton;
   @FXML private ImageView backThreeButton;
   @FXML private Rectangle easyButtonBox;
@@ -45,18 +46,36 @@ public class OptionScreenController extends ControllerMethods {
 
   /* Difficulty */
   // Easy
+  /**
+   * This method is called when the easy button is hovered over, placing a shadow over the button
+   * and the number of hints available to the user.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void easyHover(MouseEvent event) {
     easyTwoButton.setOpacity(1);
     easyPopOver.show(easyButtonBox);
   }
 
+  /**
+   * This method is called when the easy button is un-hovered, restoring the button to its original
+   * state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void easyUnhover(MouseEvent event) {
     easyTwoButton.setOpacity(0);
     easyPopOver.hide();
   }
 
+  /**
+   * This method is called when the easy button is clicked - selecting the number of hints available
+   * to the user.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void easyClicked(MouseEvent event) {
     if (GameState.isEasySelected) {
@@ -73,18 +92,35 @@ public class OptionScreenController extends ControllerMethods {
   }
 
   // Medium
+  /**
+   * This method is called when the medium button is hovered over, placing a shadow over the button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void mediumHover(MouseEvent event) {
     mediumTwoButton.setOpacity(1);
     mediumPopOver.show(mediumButtonBox);
   }
 
+  /**
+   * This method is called when the medium button is un-hovered, restoring the button to its
+   * original state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void mediumUnhover(MouseEvent event) {
     mediumTwoButton.setOpacity(0);
     mediumPopOver.hide();
   }
 
+  /**
+   * This method is called when the medium button is clicked - selecting the number of hints
+   * available to the user.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void mediumClicked(MouseEvent event) {
     if (GameState.isMediumSelected) {
@@ -101,18 +137,35 @@ public class OptionScreenController extends ControllerMethods {
   }
 
   // Hard
+  /**
+   * This method is called when the hard button is hovered over, placing a shadow over the button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void hardHover(MouseEvent event) {
     hardTwoButton.setOpacity(1);
     hardPopOver.show(hardButtonBox);
   }
 
+  /**
+   * This method is called when the hard button is un-hovered, restoring the button to its original
+   * state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void hardUnhover(MouseEvent event) {
     hardTwoButton.setOpacity(0);
     hardPopOver.hide();
   }
 
+  /**
+   * This method is called when the hard button is clicked - selecting the number of hints available
+   * to the user.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void hardClicked(MouseEvent event) {
     if (GameState.isHardSelected) {
@@ -130,16 +183,34 @@ public class OptionScreenController extends ControllerMethods {
 
   /* Time */
   // Short Time
+  /**
+   * This method is called when the short time button is hovered over, placing a shadow over the
+   * button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void shortTimeHover(MouseEvent event) {
     shortTwoButton.setOpacity(1);
   }
 
+  /**
+   * This method is called when the short time button is un-hovered, restoring the button to its
+   * original state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void shortTimeUnhover(MouseEvent event) {
     shortTwoButton.setOpacity(0);
   }
 
+  /**
+   * This method is called when the short time button is clicked - selecting the amount of time the
+   * user has to complete the game.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void shortTimeClicked(MouseEvent event) {
     if (GameState.isShortTimeSelected) {
@@ -156,16 +227,34 @@ public class OptionScreenController extends ControllerMethods {
   }
 
   // Medium Time
+  /**
+   * This method is called when the medium time button is hovered over, placing a shadow over the
+   * button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void mediumTimeHover(MouseEvent event) {
     mediumTimeTwoButton.setOpacity(1);
   }
 
+  /**
+   * This method is called when the medium time button is un-hovered, restoring the button to its
+   * original state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void mediumTimeUnhover(MouseEvent event) {
     mediumTimeTwoButton.setOpacity(0);
   }
 
+  /**
+   * This method is called when the medium time button is clicked - selecting the amount of time the
+   * user has to complete the game.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void mediumTimeClicked(MouseEvent event) {
     if (GameState.isMediumTimeSelected) {
@@ -182,16 +271,34 @@ public class OptionScreenController extends ControllerMethods {
   }
 
   // Long Time
+  /**
+   * This method is called when the long time button is hovered over, placing a shadow over the
+   * button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void longTimeHover(MouseEvent event) {
     longTwoButton.setOpacity(1);
   }
 
+  /**
+   * This method is called when the long time button is un-hovered, restoring the button to its
+   * original state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void longTimeUnhover(MouseEvent event) {
     longTwoButton.setOpacity(0);
   }
 
+  /**
+   * This method is called when the long time button is clicked - selecting the amount of time the
+   * user has to complete the game.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void longTimeClicked(MouseEvent event) {
     if (GameState.isLongTimeSelected) {
@@ -207,27 +314,53 @@ public class OptionScreenController extends ControllerMethods {
     longThreeButton.setOpacity(1);
   }
 
+  /**
+   * This method is called when the back button is hovered over, placing a shadow over the button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backHover(MouseEvent event) {
     backTwoButton.setOpacity(1);
   }
 
+  /**
+   * This method is called when the back button is un-hovered, restoring the button to its original
+   * state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backUnhover(MouseEvent event) {
     backTwoButton.setOpacity(0);
   }
 
+  /**
+   * This method is called when the back button is clicked - returning the user to the story screen.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backPressed(MouseEvent event) {
     backThreeButton.setOpacity(1);
   }
 
+  /**
+   * This method is called when the back button is released, progressing the user to the story
+   * screen.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void backReleased(MouseEvent event) {
     backThreeButton.setOpacity(0);
     App.setScene(AppScene.STORY);
   }
 
+  /**
+   * This helper method is called when the player selects a difficulty button, unselecting all other
+   * difficulty buttons.
+   */
   private void unselectDifficultyButtons() {
     GameState.isEasySelected = false;
     GameState.isMediumSelected = false;
@@ -239,6 +372,10 @@ public class OptionScreenController extends ControllerMethods {
     hardThreeButton.setOpacity(0);
   }
 
+  /**
+   * This helper method is called when the player selects a time button, unselecting all other time
+   * buttons.
+   */
   private void unselectTimeButtons() {
     GameState.isShortTimeSelected = false;
     GameState.isMediumTimeSelected = false;

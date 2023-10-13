@@ -14,6 +14,7 @@ import nz.ac.auckland.se206.gpt.GptPromptEngineering;
 import nz.ac.auckland.se206.gpt.openai.ApiProxyException;
 import org.controlsfx.control.Notifications;
 
+/** This class handles the logic for the tutorial screen. */
 public class TutorialController extends ControllerMethods {
 
   private ChatMessage chatMessage;
@@ -23,6 +24,11 @@ public class TutorialController extends ControllerMethods {
   @FXML private ImageView startThreeButton;
   @FXML private Label taskText;
 
+  /**
+   * This method is called when the scene is first loaded.
+   *
+   * @throws ApiProxyException If the API key is invalid.
+   */
   public void initialize() throws ApiProxyException {
 
     // Update tutorial text
@@ -58,21 +64,44 @@ public class TutorialController extends ControllerMethods {
     App.setScene(AppScene.ROOM);
   }
 
+  /**
+   * This method is called when the start button is hovered over, placing a shadow over the button.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void startHover(MouseEvent event) {
     startTwoButton.setOpacity(1);
   }
 
+  /**
+   * This method is called when the start button is un-hovered, restoring the button to its original
+   * state.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void startUnhover(MouseEvent event) {
     startTwoButton.setOpacity(0);
   }
 
+  /**
+   * This method is called when the start button is pressed, causing the image of the button to
+   * "sink", indicating that it has been pressed.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void startPressed(MouseEvent event) {
     startThreeButton.setOpacity(1);
   }
 
+  /**
+   * This method is called when the start button is released, progressing the escape room.
+   *
+   * @param event The mouse event that triggered this method.
+   * @throws IOException If I/O error occurs.
+   */
   @FXML
   private void startReleased(MouseEvent event) throws IOException {
     startThreeButton.setOpacity(0);

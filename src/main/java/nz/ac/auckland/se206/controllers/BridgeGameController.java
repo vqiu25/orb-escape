@@ -12,6 +12,10 @@ import nz.ac.auckland.se206.NotificationBuilder;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 import org.controlsfx.control.Notifications;
 
+/**
+ * This class handles the logic regarding the bridge mini-game in the lava room where players are
+ * required to fix the bridge.
+ */
 public class BridgeGameController extends ControllerMethods {
 
   @FXML private Label lblTimer;
@@ -62,6 +66,10 @@ public class BridgeGameController extends ControllerMethods {
   @FXML private ImageView greenOrb;
   @FXML private ImageView redOrb;
 
+  /**
+   * This method is called when the scene is first loaded. Timer labels, hints and items in the game
+   * are initialized.
+   */
   public void initialize() {
     // Bind the labels to the display values and styles
     lblTimer.textFillProperty().bind(ControllerMethods.timerTextFill);
@@ -69,7 +77,7 @@ public class BridgeGameController extends ControllerMethods {
     lblTask.textProperty().bind(ControllerMethods.displayTask);
     lblHints.textProperty().bind(ControllerMethods.displayHints);
 
-    // Initialise the inventory items
+    // Initialize the inventory items
     fishingRodIcon = getFishingRodIcon();
     axeIcon = getAxeIcon();
     fishIcon = getFishIcon();
@@ -87,21 +95,36 @@ public class BridgeGameController extends ControllerMethods {
   }
 
   // Back button logic:
+  /**
+   * This method is called when the back button is hovered over, placing a shadow over the button.
+   */
   @FXML
   private void backHovered() {
     backButtonHovered.setOpacity(1);
   }
 
+  /**
+   * This method is called when the back button is un-hovered, restoring the button to its original
+   * state.
+   */
   @FXML
   private void backUnhovered() {
     backButtonHovered.setOpacity(0);
   }
 
+  /**
+   * This method is called when the back button is pressed, causing the image of the button to
+   * "sink", indicating that it has been pressed.
+   */
   @FXML
   private void backPressed() {
     backButtonPressed.setOpacity(1);
   }
 
+  /**
+   * This method is called when the back button is released, changing the current scene to the lava
+   * room.
+   */
   @FXML
   private void backReleased() {
     backButtonPressed.setOpacity(0);
@@ -111,21 +134,37 @@ public class BridgeGameController extends ControllerMethods {
   }
 
   // Check button logic:
+  /**
+   * This method is called when the check button is hovered over, placing a shadow over the button.
+   */
   @FXML
   private void checkHovered() {
     checkButtonHovered.setOpacity(1);
   }
 
+  /**
+   * This method is called when the check button is un-hovered, restoring the button to its original
+   * state.
+   */
   @FXML
   private void checkUnhovered() {
     checkButtonHovered.setOpacity(0);
   }
 
+  /**
+   * This method is called when the check button is pressed, causing the image of the button to
+   * "sink" indicating that it has been pressed.
+   */
   @FXML
   private void checkPressed() {
     checkButtonPressed.setOpacity(1);
   }
 
+  /**
+   * This method is called when the check button is released, checking if the planks have been
+   * placed in the correct position. If the planks have been placed correctly, game states are
+   * updated accordingly - allowing the user to progress.
+   */
   @FXML
   private void checkReleased() {
     checkButtonPressed.setOpacity(0);
@@ -156,16 +195,30 @@ public class BridgeGameController extends ControllerMethods {
   }
 
   // Small Plank Logic:
+  /**
+   * This method is called when the small plank is hovered over, causing an outline to appear around
+   * the plank.
+   */
   @FXML
   private void smallHovered() {
     smallPlank.setOpacity(0);
   }
 
+  /**
+   * This method is called when the small plank is un-hovered, removing the outline around the
+   * plank.
+   */
   @FXML
   private void smallUnhovered() {
     smallPlank.setOpacity(1);
   }
 
+  /**
+   * This method is called when the small plank is dragged, causing the plank to follow the mouse
+   * cursor.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void smallDragged(MouseEvent event) {
     // Disable non outlined image
@@ -174,22 +227,37 @@ public class BridgeGameController extends ControllerMethods {
     imageSmall.drag(event);
   }
 
+  /**
+   * This method is called when the small plank is released, causing the plank to either snap back
+   * to its original position or snap to the correct position.
+   */
   @FXML
   void smallReleased() {
     imageSmall.released();
   }
 
   // Medium Plank Logic:
+  /** This method is called when the medium plank is hovered over, causing an outline to appear. */
   @FXML
   private void mediumHovered() {
     mediumPlank.setOpacity(0);
   }
 
+  /**
+   * This method is called when the medium plank is un-hovered, removing the outline around the
+   * plank.
+   */
   @FXML
   private void mediumUnhovered() {
     mediumPlank.setOpacity(1);
   }
 
+  /**
+   * This method is called when the medium plank is dragged, causing the plank to follow the mouse
+   * cursor.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void mediumDragged(MouseEvent event) {
     // Disable non outlined image
@@ -198,22 +266,37 @@ public class BridgeGameController extends ControllerMethods {
     imageMedium.drag(event);
   }
 
+  /**
+   * This method is called when the medium plank is released, causing the plank to either snap back
+   * to its original position or snap to the correct position.
+   */
   @FXML
   void mediumReleased() {
     imageMedium.released();
   }
 
   // Large Plank Logic:
+  /** This method is called when the large plank is hovered over, causing an outline to appear. */
   @FXML
   private void largeHovered() {
     largePlank.setOpacity(0);
   }
 
+  /**
+   * This method is called when the large plank is un-hovered, removing the outline around the
+   * plank.
+   */
   @FXML
   private void largeUnhovered() {
     largePlank.setOpacity(1);
   }
 
+  /**
+   * This method is called when the large plank is dragged, causing the plank to follow the mouse
+   * cursor.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void largeDragged(MouseEvent event) {
     // Disable non outlined image
@@ -222,24 +305,46 @@ public class BridgeGameController extends ControllerMethods {
     imageLarge.drag(event);
   }
 
+  /**
+   * This method is called when the large plank is released, causing the plank to either snap back
+   * to its original position or snap to the correct position.
+   */
   @FXML
   void largeReleased() {
     imageLarge.released();
   }
 
   // Bottom Right Game Master Button
+  /**
+   * This method is called when the game master button is hovered over, causing a "chat" icon to
+   * appear.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnHover(MouseEvent event) {
     gameMasterDefault.setOpacity(0);
     gameMasterChat.setOpacity(1);
   }
 
+  /**
+   * This method is called when the game master button is un-hovered, causing the "chat" icon to
+   * disappear.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnUnhover(MouseEvent event) {
     gameMasterDefault.setOpacity(1);
     gameMasterChat.setOpacity(0);
   }
 
+  /**
+   * This method is called when the game master button is clicked, changing the current scene to be
+   * the chat scene.
+   *
+   * @param event The mouse event that triggered this method.
+   */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
     setBridgeMiniOpacity();
