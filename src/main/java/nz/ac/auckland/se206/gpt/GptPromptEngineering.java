@@ -40,7 +40,7 @@ public class GptPromptEngineering {
    * @return The prompt engineering string.
    */
   public static String chatWithGameMaster(String context) {
-    return "making an eight word sarcastic remark about " + context;
+    return "Make a five word sarcastic remark about " + context;
   }
 
   /**
