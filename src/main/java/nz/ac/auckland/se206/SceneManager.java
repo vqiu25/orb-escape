@@ -9,6 +9,7 @@ import javafx.scene.Parent;
  */
 public class SceneManager {
 
+  /** This enum represents the scenes in the game. */
   public enum AppScene {
     START,
     OPTIONS,

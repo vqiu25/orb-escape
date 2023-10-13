@@ -48,7 +48,7 @@ public class TutorialController extends ControllerMethods {
   /**
    * Switches the scene from the tutorial GUI to start GUI and starts timer.
    *
-   * @throws IOException
+   * @throws IOException If input or ouput error occurs.
    */
   private void onLaunchGame() throws IOException {
 

@@ -119,7 +119,7 @@ public class GameFinishedController extends ControllerMethods {
     quitThreeButton.setOpacity(1);
   }
 
-  /** Quits the game. */
+  /** Quits the game indefinitely, closing the present window. */
   @FXML
   private void quitReleased(MouseEvent event) {
     quitThreeButton.setOpacity(0);

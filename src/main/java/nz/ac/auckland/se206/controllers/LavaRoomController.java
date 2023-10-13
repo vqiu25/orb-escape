@@ -517,7 +517,7 @@ public class LavaRoomController extends ControllerMethods {
   }
 
   /**
-   * Opens the settings scene.
+   * Opens the settings scene, switching the current scene to the settings scene.
    *
    * @param event The mouse event that triggered this method.
    */
