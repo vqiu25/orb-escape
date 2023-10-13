@@ -3,7 +3,7 @@ package nz.ac.auckland.se206;
 import java.util.Random;
 import nz.ac.auckland.se206.SceneManager.AppScene;
 
-/** Represents the state of the game. */
+/** This class represents the state of the game. */
 public class GameState {
 
   // Indicates which riddle has been selected:
@@ -101,7 +101,7 @@ public class GameState {
   public static int secondDigit;
   public static int thirdDigit;
 
-  // Set game states to original state:
+  /** This method resets the game state to the default values. */
   public static void resetGameState() {
 
     // Set mini game states:

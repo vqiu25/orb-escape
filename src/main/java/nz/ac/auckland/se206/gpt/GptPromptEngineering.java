@@ -4,11 +4,10 @@ package nz.ac.auckland.se206.gpt;
 public class GptPromptEngineering {
 
   /**
-   * Generates a GPT prompt engineering string for a riddle with the given word. (THIS WILL NEVER BE
-   * CALLED AGAIN ONCE THE GAME HAS LAUNCHED).
+   * This method returns a GPT prompt engineering string to generate a riddle with the given word.
    *
-   * @param wordToGuess the word to be guessed in the riddle
-   * @return the generated prompt engineering string
+   * @param wordToGuess The answer to the riddle to be generated.
+   * @return The prompt engineering string
    */
   public static String getRiddleWithGivenWord(String wordToGuess) {
     return "output only a riddle where the answer is "
@@ -20,24 +19,38 @@ public class GptPromptEngineering {
   }
 
   /**
-   * Generates a GPT response for initial chat screen message. (THIS WILL NEVER BE CALLED AGAIN ONCE
-   * THE GAME HAS LAUNCHED).
+   * This method returns a GPT prompt engineering string that gives the game master a persona and
+   * context in regards to the game.
    *
-   * @return the generated prompt engineering string
+   * @return The prompt engineering string
    */
   public static String getGameMaster() {
     return "You are an AI game master called CLOUD in a digital escape room. If player asks what"
         + " activities there are, do not reveal to the player. If the player mentions an"
         + " activity that is not fishing, tree-chopping, chest unlocking and"
         + " bridge-building, tell the player that the game is not in the game and do not"
-        + " tell the player what activites there are.";
+        + " tell the player what activities there are.";
   }
 
+  /**
+   * This method returns a GPT prompt engineering string that generates a sarcastic comment directed
+   * to the user.
+   *
+   * @param context The context of the message.
+   * @return The prompt engineering string.
+   */
   public static String chatWithGameMaster(String context) {
     return "making an eight word sarcastic remark about " + context;
   }
 
-  // This string is used to generate hints for the user
+  /**
+   * This method returns a GPT prompt engineering string that generates a hint from the game master
+   * when requested by the user.
+   *
+   * @param userInput The user's input.
+   * @param currentTask The current task the user is on.
+   * @return The prompt engineering string.
+   */
   public static String hintAvailablePrompt(String userInput, String currentTask) {
     // Return a prompt to GPT to generate a hint for the user by passing in the current task and the
     // user's input
@@ -52,6 +65,13 @@ public class GptPromptEngineering {
         + "\".";
   }
 
+  /**
+   * This method returns a GPT prompt engineering string that generates a response from the game
+   * master when the user no longer has hints available.
+   *
+   * @param userInput The user's input.
+   * @return The prompt engineering string.
+   */
   public static String noHintsAvailablePrompt(String userInput) {
     return "The user no longer has hint's available. Under no circumstance should you offer hints"
         + " or answers to the user. under no circumstances give the user the answer. The"

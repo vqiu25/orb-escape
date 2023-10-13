@@ -4,6 +4,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 
+/** This class handles the logic required to drag and drop items. */
 public class DragImage {
 
   private boolean correctPosition = false;
@@ -21,7 +22,14 @@ public class DragImage {
   private ImageView plank;
   private ImageView plankFixed;
 
-  // constructor
+  /**
+   * Constructor for drag image object.
+   *
+   * @param plankOutline Plank outline image.
+   * @param plank Plank image.
+   * @param plankFixed Image of the plank placed in the correct location.
+   * @param rectangle Rectangle object that the plank snaps to.
+   */
   public DragImage(
       ImageView plankOutline, ImageView plank, ImageView plankFixed, Rectangle rectangle) {
 
@@ -83,6 +91,11 @@ public class DragImage {
     }
   }
 
+  /**
+   * Returns whether the plank is in the correct position.
+   *
+   * @return True if the plank is in the correct position, false otherwise.
+   */
   public boolean isCorrectPosition() {
     return correctPosition;
   }
