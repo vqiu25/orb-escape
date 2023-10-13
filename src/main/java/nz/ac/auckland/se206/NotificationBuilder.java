@@ -17,7 +17,7 @@ public class NotificationBuilder {
    * @param duration The duration of the notification.
    * @return The notification that was created.
    */
-  public static Notifications createNotification(String title, String message, int duration) {
+  public static Notifications createNotification(String message) {
 
     // Adds a robot image to the notifications
     ImageView robotIcon =

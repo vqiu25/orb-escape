@@ -141,7 +141,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
         // Notify the user that an orb fell from the tree:
         Notifications message =
             NotificationBuilder.createNotification(
-                "CLOUD: ", "Look! An orb fell from the tree!", 5);
+                "Look! An orb fell from the tree!");
         message.show();
 
       } else if (chopCount == 10) {
@@ -156,7 +156,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
         // Notify the user that they hae chopped all the trees down:
         Notifications message =
             NotificationBuilder.createNotification(
-                "CLOUD: ", "You've chopped down all the trees!", 5);
+                "You've chopped down all the trees!");
         message.show();
 
         // Update the trees image in the mini game
@@ -170,7 +170,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
       // Notify the user that they have chopped enough trees:
       Notifications message =
           NotificationBuilder.createNotification(
-              "CLOUD: ", "You've already chopped enough trees!", 5);
+              "You've already chopped enough trees!");
       message.show();
     }
     blueButtonThree.setOpacity(0);

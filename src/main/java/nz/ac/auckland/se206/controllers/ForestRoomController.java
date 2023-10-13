@@ -267,8 +267,7 @@ public class ForestRoomController extends ControllerMethods {
   @FXML
   private void rockClick(MouseEvent event) {
     // Notification to the user
-    Notifications message =
-        NotificationBuilder.createNotification("CLOUD: ", "Nothing under there...", 5);
+    Notifications message = NotificationBuilder.createNotification("Nothing under there...");
     message.show();
   }
 
@@ -371,8 +370,7 @@ public class ForestRoomController extends ControllerMethods {
     } else {
       // If it is the tree chopping game.
       Notifications message =
-          NotificationBuilder.createNotification(
-              "CLOUD: ", "Hah! Good luck trying to swim away.", 5);
+          NotificationBuilder.createNotification("Hah! Good luck trying to swim away.");
       message.show();
     }
   }
@@ -430,15 +428,13 @@ public class ForestRoomController extends ControllerMethods {
       } else {
         // Axe not taken but riddle solved and orb collected
         Notifications message =
-            NotificationBuilder.createNotification(
-                "CLOUD: ", "Try finding something to cut down the trees!", 5);
+            NotificationBuilder.createNotification("Try finding something to cut down the trees!");
         message.show();
       }
     } else {
       // Do something else if they are in the other version of the game
       Notifications message =
-          NotificationBuilder.createNotification(
-              "CLOUD: ", "Leaf me alone, I'm trying to escape", 5);
+          NotificationBuilder.createNotification("Leaf me alone, I'm trying to escape");
       message.show();
     }
   }
@@ -573,13 +569,11 @@ public class ForestRoomController extends ControllerMethods {
     // if it isnt the tree chopping game:
     if (!GameState.isForestTreeChopping) {
       Notifications message =
-          NotificationBuilder.createNotification(
-              "The Lorax: ", "I am the Lorax and I speak for the trees!", 5);
+          NotificationBuilder.createNotification("I am the Lorax and I speak for the\ntrees!");
       message.show();
     } else {
       // If it is the tree chopping game
-      Notifications message =
-          NotificationBuilder.createNotification("CLOUD: ", "Axe already taken!", 5);
+      Notifications message = NotificationBuilder.createNotification("Axe already taken!");
       message.show();
     }
   }
@@ -666,7 +660,7 @@ public class ForestRoomController extends ControllerMethods {
   public void findRiddle() {
     // Initialize orb notification message
     Notifications orbMessage =
-        NotificationBuilder.createNotification("CLOUD: ", "See if you can find a riddle first!", 6);
+        NotificationBuilder.createNotification("See if you can find a riddle first!");
     orbMessage.show();
   }
 
@@ -677,8 +671,7 @@ public class ForestRoomController extends ControllerMethods {
   public void solveRiddle() {
     // Initialize orb notification message
     Notifications orbMessage =
-        NotificationBuilder.createNotification(
-            "CLOUD: ", "Hmm... Try solving the riddle first!", 6);
+        NotificationBuilder.createNotification("Hmm... Try solving the riddle first!");
     orbMessage.show();
   }
 
@@ -689,7 +682,7 @@ public class ForestRoomController extends ControllerMethods {
   public void findRoomOrb() {
     // Initialize orb notification message
     Notifications orbMessage =
-        NotificationBuilder.createNotification("CLOUD: ", "Try searching for an orb first!", 6);
+        NotificationBuilder.createNotification("Try searching for an orb first!");
     orbMessage.show();
   }
 }

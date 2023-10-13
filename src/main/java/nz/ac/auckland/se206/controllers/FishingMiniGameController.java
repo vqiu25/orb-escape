@@ -166,8 +166,7 @@ public class FishingMiniGameController extends ControllerMethods {
   /** This method let's the user know they have a caught a fish. */
   private void fishCaughtNotification() {
     // Create a notiifcation indicating the fish has been caught
-    Notifications message =
-        NotificationBuilder.createNotification("CLOUD: ", "You've caught the fish!", 5);
+    Notifications message = NotificationBuilder.createNotification("You've caught the fish!");
     message.show();
   }
 
@@ -407,7 +406,7 @@ public class FishingMiniGameController extends ControllerMethods {
   private void showDisabledButtonNotification() {
     // Prompt for user when they are fishing and attempt to click on game master/return
     Notifications message =
-        NotificationBuilder.createNotification("CLOUD: ", "Currently fishing! Please wait!", 5);
+        NotificationBuilder.createNotification("Currently fishing! Please wait!");
     message.show();
   }
 }
