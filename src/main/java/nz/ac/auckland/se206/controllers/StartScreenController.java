@@ -40,7 +40,7 @@ public class StartScreenController extends ControllerMethods {
    * This method is called when the start button is pressed, causing the image of the button to
    * "sink", indicating that it has been pressed.
    *
-   * @param event
+   * @param event The mouse event that triggered this method.
    */
   @FXML
   private void startPressed(MouseEvent event) {

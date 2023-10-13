@@ -309,7 +309,7 @@ public class ControllerMethods {
   }
 
   /**
-   * Retrieves the fishing rod image.
+   * Retrieves the fishing rod image for it to be displayed in the inventory.
    *
    * @return The fishing rod image.
    */
@@ -318,7 +318,7 @@ public class ControllerMethods {
   }
 
   /**
-   * Retrieves the axe image.
+   * Retrieves the axe image for it to be displayed in the inventory.
    *
    * @return The axe image.
    */
@@ -327,7 +327,7 @@ public class ControllerMethods {
   }
 
   /**
-   * Retrieves the fish image.
+   * Retrieves the fish image for it to be displayed in the inventory.
    *
    * @return The fish image.
    */
@@ -336,7 +336,7 @@ public class ControllerMethods {
   }
 
   /**
-   * Retrieves the planks image.
+   * Retrieves the planks image for it to be displayed in the inventory.
    *
    * @return The planks image.
    */
@@ -345,7 +345,7 @@ public class ControllerMethods {
   }
 
   /**
-   * Retrieves the blue orb image.
+   * Retrieves the blue orb image for it to be displayed in the inventory.
    *
    * @return The blue orb image.
    */
@@ -354,7 +354,7 @@ public class ControllerMethods {
   }
 
   /**
-   * Retrieves the green orb image.
+   * Retrieves the green orb image for it to be displayed in the inventory.
    *
    * @return The green orb image.
    */
@@ -363,7 +363,7 @@ public class ControllerMethods {
   }
 
   /**
-   * Retrieves the red orb image.
+   * Retrieves the red orb image for it to be displayed in the inventory.
    *
    * @return The red orb image.
    */
@@ -371,7 +371,7 @@ public class ControllerMethods {
     return redOrb;
   }
 
-  /** Method for adding the fishing rod to inventory */
+  /** Method for adding the fishing rod to inventory. */
   protected void findFishingRod() {
     fishingRodIcon.setLayoutX(292);
     fishingRodIcon.setLayoutY(566);
@@ -381,7 +381,7 @@ public class ControllerMethods {
     fishingRodIconImageProperty.set(fishingRodImage);
   }
 
-  /** Method for adding the axe to inventory */
+  /** Method for adding the axe to inventory. */
   protected void findAxe() {
     axeIcon.setLayoutX(296);
     axeIcon.setLayoutY(566);
@@ -391,7 +391,7 @@ public class ControllerMethods {
     axeIconImageProperty.set(axeImage);
   }
 
-  /** Method for adding the fish to inventory */
+  /** Method for adding the fish to inventory. */
   protected void findFish() {
     fishIcon.setLayoutX(330);
     fishIcon.setLayoutY(566);
@@ -401,7 +401,7 @@ public class ControllerMethods {
     fishIconImageProperty.set(fishImage);
   }
 
-  /** Method for adding the fish to inventory */
+  /** Method for adding the fish to inventory. */
   protected void findPlanks() {
     planksIcon.setLayoutX(330);
     planksIcon.setLayoutY(566);
@@ -411,7 +411,7 @@ public class ControllerMethods {
     planksIconImageProperty.set(planksImage);
   }
 
-  /** Method for adding the blue orb to inventory */
+  /** Method for adding the blue orb to inventory. */
   protected void findBlueOrb() {
     blueOrb.setLayoutX(416.75);
     blueOrb.setLayoutY(570.75);
@@ -421,7 +421,7 @@ public class ControllerMethods {
     blueOrbImageProperty.set(blueOrbImage);
   }
 
-  /** Method for adding the green orb to inventory */
+  /** Method for adding the green orb to inventory. */
   protected void findGreenOrb() {
     greenOrb.setLayoutX(450.25);
     greenOrb.setLayoutY(570.75);
@@ -431,7 +431,7 @@ public class ControllerMethods {
     greenOrbImageProperty.set(greenOrbImage);
   }
 
-  /** Method for adding the red orb to inventory */
+  /** Method for adding the red orb to inventory. */
   protected void findRedOrb() {
     redOrb.setLayoutX(482.75);
     redOrb.setLayoutY(570.25);
@@ -441,17 +441,17 @@ public class ControllerMethods {
     redOrbImageProperty.set(redOrbImage);
   }
 
-  /** Method for removing the fish from the inventory */
+  /** Method for removing the fish from the inventory. */
   protected void removeFish() {
     fishIconImageProperty.set(null);
   }
 
-  /** Method for removing the planks from the inventory */
+  /** Method for removing the planks from the inventory. */
   protected void removePlanks() {
     planksIconImageProperty.set(null);
   }
 
-  /** Method for removing the orbs from the inventory */
+  /** Method for removing the orbs from the inventory. */
   protected void removeOrbs() {
     blueOrbImageProperty.set(null);
     greenOrbImageProperty.set(null);
@@ -589,7 +589,7 @@ public class ControllerMethods {
     backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/chestMini.png")));
   }
 
-  /** Enables terminal mini-game image. */
+  /** Enables and sets the opacitity of the orbs for the terminal mini-game image. */
   protected void setOrbMiniOpacity() {
     backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/orbMini.png")));
   }
@@ -616,18 +616,22 @@ public class ControllerMethods {
 
   /** Sets the images for the trees to be green. */
   protected void initialiseGreenTrees() {
+    // Handles the tree in the forest room.
     treesImageProperty.set(new Image(getClass().getResourceAsStream("/images/trees.png")));
     treesOutlineImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/treesOutline.png")));
+    // Handles the trees in the minigame.
     miniTreesImageProperty.set(new Image(getClass().getResourceAsStream("/images/miniTrees.png")));
     treeHitImageProperty.set(new Image(getClass().getResourceAsStream("/images/treeHitOne.png")));
   }
 
   /** Sets the images for the trees to be pink. */
   protected void initialisePinkTrees() {
+    // Handles the tree in the forest room.
     treesImageProperty.set(new Image(getClass().getResourceAsStream("/images/treesPink.png")));
     treesOutlineImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/treesPinkOutline.png")));
+    // Handles the trees in the minigame.
     miniTreesImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/miniTreesPink.png")));
     treeHitImageProperty.set(

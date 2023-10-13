@@ -168,8 +168,9 @@ public class GameState {
     // Indicates if the riddle has been found
     isRiddleFound = false;
 
-    /** Indicates whether the riddle has been resolved. */
-    isRiddleResolved = false; // this is set to true when the GPT thing sees correct
+    // Indicates whether the riddle has been resolved. This is set to true when the GPT thing sees
+    // correct.
+    isRiddleResolved = false;
 
     // check if item as told by the riddle has been clicked - this will allow the TV to be accessed
     itemClicked = false;

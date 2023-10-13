@@ -109,16 +109,16 @@ public class TextToSpeech {
     synthesizer.cancel();
   }
 
-  /** Pause text to speech */
+  /** Pauses the text to speech instead of terminating it, allowing the audio to resume later. */
   public void pause() {
     synthesizer.pause();
   }
 
   /**
-   * Resume text to speech
+   * Resumes the text to speech if the audio was priorly paused.
    *
-   * @throws EngineStateError
-   * @throws AudioException
+   * @throws EngineStateError if any audio-related issue occurs.
+   * @throws AudioException if the synthesizer is in an invalid state.
    */
   public void resume() throws AudioException, EngineStateError {
     synthesizer.resume();
