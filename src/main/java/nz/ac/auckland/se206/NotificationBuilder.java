@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import javafx.geometry.Pos;
+import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
@@ -18,16 +19,23 @@ public class NotificationBuilder {
    */
   public static Notifications createNotification(String title, String message, int duration) {
 
+    // Adds a robot image to the notifications
+    ImageView robotIcon =
+        new ImageView(Notifications.class.getResource("/images/robotIconTwo.png").toExternalForm());
+
+    robotIcon.setPreserveRatio(true);
+    robotIcon.setFitHeight(40);
+
     // Create notification with the passed in title, message and duration at the top center of the
     // screen
     Notifications notification =
         Notifications.create()
-            .title(title)
             .text(message)
             .threshold(
                 3, Notifications.create().title("Notifications Collapsed. Wait for a cooldown!"))
             .position(Pos.TOP_CENTER)
             .hideAfter(Duration.seconds(duration))
+            .graphic(robotIcon)
             .owner(App.getStage());
 
     return notification;
