@@ -25,6 +25,10 @@
   -fx-background-radius: 5px !important;
 }
 
+.notification-bar>.pane>.label {
+  -fx-text-alignment: center !important;
+}
+
 .popover>.content>* {
   -fx-font-size: 17px !important;
 }
