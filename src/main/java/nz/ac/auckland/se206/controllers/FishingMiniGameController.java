@@ -142,6 +142,7 @@ public class FishingMiniGameController extends ControllerMethods {
               findFish();
               findGreenOrb();
               updateTask();
+              fishCaughtNotification();
             });
         delay.play();
       } else {
@@ -153,12 +154,21 @@ public class FishingMiniGameController extends ControllerMethods {
               findFish();
               findGreenOrb();
               updateTask();
+              fishCaughtNotification();
             });
         delay.play();
       }
 
       isFishDelay = true;
     }
+  }
+
+  /** This method let's the user know they have a caught a fish. */
+  private void fishCaughtNotification() {
+    // Create a notiifcation indicating the fish has been caught
+    Notifications message =
+        NotificationBuilder.createNotification("CLOUD: ", "You've caught the fish!", 5);
+    message.show();
   }
 
   /**
