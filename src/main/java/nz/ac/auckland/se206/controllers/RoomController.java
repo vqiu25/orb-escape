@@ -836,7 +836,7 @@ public class RoomController extends ControllerMethods {
       // If light has been turned on, prompt user to turn off the light
       Notifications message =
           NotificationBuilder.createNotification(
-              "CLOUD: ", "That looks like fluorescent text... Try turning off the lights!", 5);
+              "CLOUD: ", "That looks like fluorescent text...\nTry turning off the lights!", 5);
       message.show();
     } else {
       // If the light has been turned off, tell user the code

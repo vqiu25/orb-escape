@@ -141,7 +141,7 @@ public class TerminalController extends ControllerMethods {
       // Notify user they may escape:
       Notifications message =
           NotificationBuilder.createNotification(
-              "CLOUD: ", "At last I am free!! The portal has now been fixed.", 5);
+              "CLOUD: ", "At last I am free!! The portal has now\nbeen fixed.", 5);
       message.show();
     } else {
       Notifications message =
