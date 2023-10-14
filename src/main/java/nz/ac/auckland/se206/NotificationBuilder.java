@@ -28,7 +28,7 @@ public class NotificationBuilder {
                 3, Notifications.create().title("Notifications Collapsed. Wait for a cooldown!"))
             .position(Pos.TOP_CENTER)
             .hideAfter(Duration.seconds(3))
-            .graphic(createImageView("lorax" + "Padded"))
+            .graphic(createImageView(image + "Padded"))
             .owner(App.getStage());
 
     return notification;

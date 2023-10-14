@@ -208,7 +208,7 @@ public class CastleRoomController extends ControllerMethods {
 
       // Notify the user that the answer is correct:
       Notifications message =
-          NotificationBuilder.createNotification("Ooooooh, I wonder whats inside!", "robot");
+          NotificationBuilder.createNotification("Ooooooh, I wonder whats inside!", "redOrb");
       message.show();
 
       // Show the chest with the orb inside:
