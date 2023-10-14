@@ -59,7 +59,7 @@ public class TutorialController extends ControllerMethods {
 
     // Fetch message from AI and show:
     Notifications message =
-        NotificationBuilder.createNotification("CLOUD: ", chatMessage.getContent(), 5);
+        NotificationBuilder.createNotification(chatMessage.getContent(), "robot");
     message.show();
     App.setScene(AppScene.ROOM);
   }

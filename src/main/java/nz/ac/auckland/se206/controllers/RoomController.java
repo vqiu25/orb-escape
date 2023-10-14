@@ -552,8 +552,7 @@ public class RoomController extends ControllerMethods {
    */
   @FXML
   private void paneClick(MouseEvent event) {
-    Notifications message =
-        NotificationBuilder.createNotification("CLOUD: ", "Ha ha ha... yeah no.", 5);
+    Notifications message = NotificationBuilder.createNotification("Ha ha ha... yeah no.", "robot");
     message.show();
   }
 
@@ -647,8 +646,7 @@ public class RoomController extends ControllerMethods {
       App.setScene(AppScene.TERMINAL);
     } else {
       Notifications message =
-          NotificationBuilder.createNotification(
-              "CLOUD: ", "Find the orbs to access the terminal!", 5);
+          NotificationBuilder.createNotification("Find the orbs to access the terminal!", "robot");
       message.show();
     }
   }
@@ -795,8 +793,7 @@ public class RoomController extends ControllerMethods {
     } else {
       // If the portal is not open, prompt the user to find the orbs
       Notifications message =
-          NotificationBuilder.createNotification(
-              "CLOUD: ", "Try finding orbs to open the portal!", 5);
+          NotificationBuilder.createNotification("Try finding orbs to open the portal!", "robot");
       message.show();
     }
   }
@@ -836,19 +833,18 @@ public class RoomController extends ControllerMethods {
       // If light has been turned on, prompt user to turn off the light
       Notifications message =
           NotificationBuilder.createNotification(
-              "CLOUD: ", "That looks like fluorescent text... Try turning off the lights!", 5);
+              "That looks like fluorescent text...\nTry turning off the lights!", "robot");
       message.show();
     } else {
       // If the light has been turned off, tell user the code
       Notifications message =
           NotificationBuilder.createNotification(
-              "CLOUD: ",
               "Hmm "
                   + GameState.firstDigit
                   + GameState.secondDigit
                   + GameState.thirdDigit
                   + "... I wonder what that means.",
-              5);
+              "robot");
       message.show();
     }
   }
@@ -947,7 +943,7 @@ public class RoomController extends ControllerMethods {
     // riddle scene
     if (GameState.isRiddleResolved) {
       Notifications message =
-          NotificationBuilder.createNotification("CLOUD: ", "You've already solved the riddle!", 5);
+          NotificationBuilder.createNotification("You've already solved the riddle!", "robot");
       message.show();
       return;
     }
@@ -986,7 +982,7 @@ public class RoomController extends ControllerMethods {
         // Prompt user to find the book
         Notifications message2 =
             NotificationBuilder.createNotification(
-                "CLOUD: ", "In a book, you will find your first clue!", 6);
+                "In a book, you will find your first clue!", "robot");
         message2.show();
       }
       return;
@@ -999,8 +995,7 @@ public class RoomController extends ControllerMethods {
   private void orbFoundNotification() {
     // Initialize orb notification message
     Notifications orbMessage =
-        NotificationBuilder.createNotification(
-            "CLOUD: ", "Congratulation! You've found an orb!", 6);
+        NotificationBuilder.createNotification("Congratulations! You've found an orb!", "blueOrb");
     orbMessage.show();
   }
 
@@ -1042,7 +1037,7 @@ public class RoomController extends ControllerMethods {
 
   /** This helper method displays a notification to the user when an irrelevant item is clicked. */
   private void showNothingNotification() {
-    Notifications message = NotificationBuilder.createNotification("CLOUD: ", "Nothing there!", 5);
+    Notifications message = NotificationBuilder.createNotification("Nothing there!", "robot");
     message.show();
   }
 
@@ -1052,8 +1047,7 @@ public class RoomController extends ControllerMethods {
    */
   private void interestingNotification() {
     Notifications message =
-        NotificationBuilder.createNotification(
-            "CLOUD: ", "This looks interesting.. not sure why.", 5);
+        NotificationBuilder.createNotification("This looks interesting.. not sure why.", "robot");
     message.show();
   }
 

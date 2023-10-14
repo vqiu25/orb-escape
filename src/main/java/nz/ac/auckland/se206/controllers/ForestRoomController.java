@@ -268,7 +268,7 @@ public class ForestRoomController extends ControllerMethods {
   private void rockClick(MouseEvent event) {
     // Notification to the user
     Notifications message =
-        NotificationBuilder.createNotification("CLOUD: ", "Nothing under there...", 5);
+        NotificationBuilder.createNotification("Nothing under there...", "robot");
     message.show();
   }
 
@@ -311,6 +311,11 @@ public class ForestRoomController extends ControllerMethods {
       dockWithoutRod.setDisable(false);
       fishingMini.setDisable(true);
       findFishingRod();
+
+      // Show a notification that the fishing rod has been taken
+      Notifications message =
+          NotificationBuilder.createNotification("You found a fishing rod!", "fishingRod");
+      message.show();
     }
   }
 
@@ -371,8 +376,7 @@ public class ForestRoomController extends ControllerMethods {
     } else {
       // If it is the tree chopping game.
       Notifications message =
-          NotificationBuilder.createNotification(
-              "CLOUD: ", "Hah! Good luck trying to swim away.", 5);
+          NotificationBuilder.createNotification("Hah! Good luck trying to swim away.", "robot");
       message.show();
     }
   }
@@ -431,14 +435,13 @@ public class ForestRoomController extends ControllerMethods {
         // Axe not taken but riddle solved and orb collected
         Notifications message =
             NotificationBuilder.createNotification(
-                "CLOUD: ", "Try finding something to cut down the trees!", 5);
+                "Try finding something to cut down the trees!", "robot");
         message.show();
       }
     } else {
       // Do something else if they are in the other version of the game
       Notifications message =
-          NotificationBuilder.createNotification(
-              "CLOUD: ", "Leaf me alone, I'm trying to escape", 5);
+          NotificationBuilder.createNotification("Leaf me alone, I'm trying to escape", "robot");
       message.show();
     }
   }
@@ -524,6 +527,10 @@ public class ForestRoomController extends ControllerMethods {
       // Remove the axe from inventory
       findAxe();
 
+      // Show a notification that the axe has been taken
+      Notifications message = NotificationBuilder.createNotification("You found an axe!", "axe");
+      message.show();
+
       // Remove axe image from the scene
       axe.setOpacity(0);
       axeOutline.setOpacity(0);
@@ -574,12 +581,12 @@ public class ForestRoomController extends ControllerMethods {
     if (!GameState.isForestTreeChopping) {
       Notifications message =
           NotificationBuilder.createNotification(
-              "The Lorax: ", "I am the Lorax and I speak for the trees!", 5);
+              "I am the Lorax and I speak for the\ntrees!", "lorax");
       message.show();
     } else {
       // If it is the tree chopping game
       Notifications message =
-          NotificationBuilder.createNotification("CLOUD: ", "Axe already taken!", 5);
+          NotificationBuilder.createNotification("The axe has already been taken!", "robot");
       message.show();
     }
   }
@@ -666,7 +673,7 @@ public class ForestRoomController extends ControllerMethods {
   public void findRiddle() {
     // Initialize orb notification message
     Notifications orbMessage =
-        NotificationBuilder.createNotification("CLOUD: ", "See if you can find a riddle first!", 6);
+        NotificationBuilder.createNotification("See if you can find a riddle first!", "robot");
     orbMessage.show();
   }
 
@@ -677,8 +684,7 @@ public class ForestRoomController extends ControllerMethods {
   public void solveRiddle() {
     // Initialize orb notification message
     Notifications orbMessage =
-        NotificationBuilder.createNotification(
-            "CLOUD: ", "Hmm... Try solving the riddle first!", 6);
+        NotificationBuilder.createNotification("Hmm... Try solving the riddle first!", "robot");
     orbMessage.show();
   }
 
@@ -689,7 +695,7 @@ public class ForestRoomController extends ControllerMethods {
   public void findRoomOrb() {
     // Initialize orb notification message
     Notifications orbMessage =
-        NotificationBuilder.createNotification("CLOUD: ", "Try searching for an orb first!", 6);
+        NotificationBuilder.createNotification("Try searching for an orb first!", "robot");
     orbMessage.show();
   }
 }

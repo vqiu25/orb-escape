@@ -186,10 +186,10 @@ public class BridgeGameController extends ControllerMethods {
       // Notify user that the bridge has been fixed:
       Notifications message =
           NotificationBuilder.createNotification(
-              "CLOUD: ", "You have fixed the bridge. You may now cross!", 5);
+              "You have fixed the bridge. You may now\ncross!", "robot");
       message.show();
     } else {
-      Notifications message = NotificationBuilder.createNotification("CLOUD: ", "Try again!", 5);
+      Notifications message = NotificationBuilder.createNotification("Try again!", "robot");
       message.show();
     }
   }
