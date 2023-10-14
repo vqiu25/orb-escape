@@ -17,7 +17,7 @@ public class NotificationBuilder {
    * @param duration The duration of the notification.
    * @return The notification that was created.
    */
-  public static Notifications createNotification(String message) {
+  public static Notifications createNotification(String message, String image) {
 
     // Create notification with the passed in title, message and duration at the top center of the
     // screen
@@ -28,7 +28,7 @@ public class NotificationBuilder {
                 3, Notifications.create().title("Notifications Collapsed. Wait for a cooldown!"))
             .position(Pos.TOP_CENTER)
             .hideAfter(Duration.seconds(3))
-            .graphic(createImageView("loraxPadded"))
+            .graphic(createImageView("lorax" + "Padded"))
             .owner(App.getStage());
 
     return notification;

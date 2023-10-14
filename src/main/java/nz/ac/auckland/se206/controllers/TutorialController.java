@@ -58,7 +58,8 @@ public class TutorialController extends ControllerMethods {
     updateHintsRemaining();
 
     // Fetch message from AI and show:
-    Notifications message = NotificationBuilder.createNotification(chatMessage.getContent());
+    Notifications message =
+        NotificationBuilder.createNotification(chatMessage.getContent(), "robot");
     message.show();
     App.setScene(AppScene.ROOM);
   }

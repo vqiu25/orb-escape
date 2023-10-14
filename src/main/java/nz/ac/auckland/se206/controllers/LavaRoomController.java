@@ -72,6 +72,7 @@ public class LavaRoomController extends ControllerMethods {
 
   // Random booleans
   private boolean isBlueDragon;
+  private String dragonImage;
 
   /**
    * This method is called when the scene is first loaded. Timer labels, hints and items in the game
@@ -234,7 +235,7 @@ public class LavaRoomController extends ControllerMethods {
       // Forrest game NOT COMPLETED, prompt user to get wood.
       Notifications message =
           NotificationBuilder.createNotification(
-              "The bridge is broken. Try fixing it with\nsome wood!");
+              "The bridge is broken. Try fixing it with\nsome wood!", "robot");
       message.show();
     }
   }
@@ -313,10 +314,17 @@ public class LavaRoomController extends ControllerMethods {
   @FXML
   private void dragonClicked(MouseEvent event) {
 
+    // Choose red or blue dragon for notification image
+    if (isBlueDragon) {
+      dragonImage = "blueDragon";
+    } else {
+      dragonImage = "redDragon";
+    }
+
     if (GameState.isForestGameCompleted) {
       // if user has collected the fish, prompt the user to feed the dragon
       Notifications message =
-          NotificationBuilder.createNotification("Mmmm, yummy! You may pass now!.");
+          NotificationBuilder.createNotification("Mmmm, yummy! You may pass now!.", dragonImage);
       message.show();
 
       // set lava game state to completed
@@ -335,7 +343,8 @@ public class LavaRoomController extends ControllerMethods {
 
     } else {
       // if the user has not collected the fish, prompt the user to collect the fish
-      Notifications message = NotificationBuilder.createNotification("ROARRR! YOU SHALL NOT PASS!");
+      Notifications message =
+          NotificationBuilder.createNotification("ROARRR! YOU SHALL NOT PASS!", dragonImage);
       message.show();
     }
   }
@@ -371,13 +380,13 @@ public class LavaRoomController extends ControllerMethods {
     if (GameState.isLavaGameCompleted) {
       // if lava game room is COMPLETEd (dragon tamed), prompt user to enter the castle
       Notifications message =
-          NotificationBuilder.createNotification("You may now enter the castle!");
+          NotificationBuilder.createNotification("You may now enter the castle!", "robot");
       message.show();
     } else {
       // if lava game room is NOT COMPLETED (dragon has not been tamed), prompt user to catch fish
       Notifications message =
           NotificationBuilder.createNotification(
-              "A hungry dragon is blocking your path.\nTry feeding it fish!");
+              "A hungry dragon is blocking your path.\nTry feeding it fish!", "robot");
       message.show();
     }
   }
@@ -422,14 +431,14 @@ public class LavaRoomController extends ControllerMethods {
         // if lava game room is minigame 1, prompt user to fix the bridge
         Notifications message =
             NotificationBuilder.createNotification(
-                "Door is inaccessible... The bridge is\nbroken!");
+                "Door is inaccessible... The bridge is\nbroken!", "robot");
         message.show();
 
       } else {
         // if lava game room is minigame 2, prompt user to feed the dragon
         Notifications message =
             NotificationBuilder.createNotification(
-                "A hungry dragon is blocking your path.\nTry feeding it fish!");
+                "A hungry dragon is blocking your path.\nTry feeding it fish!", "robot");
         message.show();
       }
     }
@@ -582,7 +591,7 @@ public class LavaRoomController extends ControllerMethods {
    */
   private void findForestOrb() {
     Notifications message =
-        NotificationBuilder.createNotification("Try collecting the green orb first!");
+        NotificationBuilder.createNotification("Try collecting the green orb first!", "robot");
     message.show();
   }
 }

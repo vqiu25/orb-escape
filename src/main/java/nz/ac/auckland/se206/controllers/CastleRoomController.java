@@ -190,7 +190,7 @@ public class CastleRoomController extends ControllerMethods {
 
     if (GameState.isChestUnlocked) {
       Notifications message =
-          NotificationBuilder.createNotification("Oi! Stop messing with the lock!");
+          NotificationBuilder.createNotification("Oi! Stop messing with the lock!", "robot");
       message.show();
       return;
     }
@@ -208,7 +208,7 @@ public class CastleRoomController extends ControllerMethods {
 
       // Notify the user that the answer is correct:
       Notifications message =
-          NotificationBuilder.createNotification("Ooooooh, I wonder whats inside!");
+          NotificationBuilder.createNotification("Ooooooh, I wonder whats inside!", "robot");
       message.show();
 
       // Show the chest with the orb inside:
@@ -216,7 +216,7 @@ public class CastleRoomController extends ControllerMethods {
 
     } else {
       // Notify the user that the answer is incorrect:
-      Notifications message = NotificationBuilder.createNotification("Try again!");
+      Notifications message = NotificationBuilder.createNotification("Try again!", "robot");
       message.show();
     }
   }

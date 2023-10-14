@@ -141,11 +141,11 @@ public class TerminalController extends ControllerMethods {
       // Notify user they may escape:
       Notifications message =
           NotificationBuilder.createNotification(
-              "At last I am free!! The portal has now\nbeen fixed.");
+              "At last I am free!! The portal has now\nbeen fixed.", "robot");
       message.show();
     } else {
       Notifications message =
-          NotificationBuilder.createNotification("Not quite right... Try again!");
+          NotificationBuilder.createNotification("Not quite right... Try again!", "robot");
       message.show();
     }
   }
