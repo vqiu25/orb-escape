@@ -552,8 +552,7 @@ public class RoomController extends ControllerMethods {
    */
   @FXML
   private void paneClick(MouseEvent event) {
-    Notifications message =
-        NotificationBuilder.createNotification("Ha ha ha... yeah no.", "robot");
+    Notifications message = NotificationBuilder.createNotification("Ha ha ha... yeah no.", "robot");
     message.show();
   }
 
@@ -647,8 +646,7 @@ public class RoomController extends ControllerMethods {
       App.setScene(AppScene.TERMINAL);
     } else {
       Notifications message =
-          NotificationBuilder.createNotification(
-              "Find the orbs to access the terminal!", "robot");
+          NotificationBuilder.createNotification("Find the orbs to access the terminal!", "robot");
       message.show();
     }
   }
@@ -795,8 +793,7 @@ public class RoomController extends ControllerMethods {
     } else {
       // If the portal is not open, prompt the user to find the orbs
       Notifications message =
-          NotificationBuilder.createNotification(
-              "Try finding orbs to open the portal!", "robot");
+          NotificationBuilder.createNotification("Try finding orbs to open the portal!", "robot");
       message.show();
     }
   }
@@ -846,7 +843,8 @@ public class RoomController extends ControllerMethods {
                   + GameState.firstDigit
                   + GameState.secondDigit
                   + GameState.thirdDigit
-                  + "... I wonder what that means.", "robot");
+                  + "... I wonder what that means.",
+              "robot");
       message.show();
     }
   }
@@ -997,8 +995,7 @@ public class RoomController extends ControllerMethods {
   private void orbFoundNotification() {
     // Initialize orb notification message
     Notifications orbMessage =
-        NotificationBuilder.createNotification(
-            "Congratulation! You've found an orb!", "blueOrb");
+        NotificationBuilder.createNotification("Congratulations! You've found an orb!", "blueOrb");
     orbMessage.show();
   }
 
@@ -1040,7 +1037,7 @@ public class RoomController extends ControllerMethods {
 
   /** This helper method displays a notification to the user when an irrelevant item is clicked. */
   private void showNothingNotification() {
-    Notifications message = NotificationBuilder.createNotification( "Nothing there!", "robot");
+    Notifications message = NotificationBuilder.createNotification("Nothing there!", "robot");
     message.show();
   }
 
@@ -1050,8 +1047,7 @@ public class RoomController extends ControllerMethods {
    */
   private void interestingNotification() {
     Notifications message =
-        NotificationBuilder.createNotification(
-            "This looks interesting.. not sure why.", "robot");
+        NotificationBuilder.createNotification("This looks interesting.. not sure why.", "robot");
     message.show();
   }
 
