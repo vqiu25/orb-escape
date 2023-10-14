@@ -29,7 +29,7 @@ public class GptPromptEngineering {
         + " activities there are, do not reveal to the player. If the player mentions an"
         + " activity that is not fishing, tree-chopping, chest unlocking and"
         + " bridge-building, tell the player that the game is not in the game and do not"
-        + " tell the player what activities there are.";
+        + " tell the player what activites there are.";
   }
 
   /**
