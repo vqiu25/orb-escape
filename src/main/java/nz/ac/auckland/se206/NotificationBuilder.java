@@ -12,9 +12,8 @@ public class NotificationBuilder {
    * This method creates a notification with the passed in title, message and duration at the top
    * center of the screen.
    *
-   * @param title The title of the notification.
    * @param message The message of the notification.
-   * @param duration The duration of the notification.
+   * @param image The image in the notification.
    * @return The notification that was created.
    */
   public static Notifications createNotification(String message, String image) {
