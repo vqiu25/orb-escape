@@ -468,6 +468,18 @@ public class ControllerMethods {
     backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/forestRod.png")));
   }
 
+  /** Enables pink trees and axe image depending on game state. */
+  protected void setPinkForestAxeOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/forestAxePink.png")));
+  }
+
+  /** Enables pink trees and fishing rod image depending on game state. */
+  protected void setPinkForestRodOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/forestRodPink.png")));
+  }
+
   /** Enables forest tress removed image depending on game state. */
   protected void setForestTreesRemovedOpacity() {
     backgroundImageProperty.set(
@@ -588,6 +600,12 @@ public class ControllerMethods {
   protected void setForestMiniOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/forestMini.png")));
+  }
+
+  /** Enables pink forest mini game image for when trees have not been chopped. */
+  protected void setPinkForestMiniOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/forestMiniPink.png")));
   }
 
   /** Enables forest mini game image for when the trees have been chopped. */

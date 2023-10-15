@@ -20,6 +20,7 @@ public class GameState {
   public static boolean isLavaDragon;
   public static boolean isDragonGone;
   public static boolean isForestFishing;
+  public static boolean isTreesPink;
 
   // Indicates if the minigame has been completed:
   public static boolean isLavaGameCompleted;

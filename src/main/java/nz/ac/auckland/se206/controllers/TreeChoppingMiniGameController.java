@@ -379,10 +379,12 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
    */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
-    if (GameState.isChopped) {
-      setForestMiniTreesRemovedOpacity();
-    } else {
+    if (!GameState.isChopped && !GameState.isTreesPink) {
       setForestMiniOpacity();
+    } else if (!GameState.isChopped && GameState.isTreesPink) {
+      setPinkForestMiniOpacity();
+    } else {
+      setForestMiniTreesRemovedOpacity();
     }
     // Store the current scene in the scene stack:
     GameState.lastScene = AppScene.TREES;

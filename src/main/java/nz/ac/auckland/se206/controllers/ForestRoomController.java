@@ -94,8 +94,10 @@ public class ForestRoomController extends ControllerMethods {
     int randomInt = new Random().nextInt(10);
     if (randomInt > 4) {
       initialiseGreenTrees();
+      GameState.isTreesPink = false;
     } else {
       initialisePinkTrees();
+      GameState.isTreesPink = true;
     }
 
     // Based on mini-game selected, either show dragon scenario or broken bridge scenario:
@@ -651,13 +653,30 @@ public class ForestRoomController extends ControllerMethods {
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
 
-    if (GameState.isForestTreeChopping) {
+    // When the axe is chosen
+    if (GameState.isForestTreeChopping && !GameState.isTreesPink) {
       setForestAxeOpacity();
-    } else {
-      setForestRodOpacity();
+    } else if (GameState.isForestTreeChopping && GameState.isTreesPink) {
+      setPinkForestAxeOpacity();
     }
+
+    // When the axe has been taken
+    if (GameState.isAxeTaken && !GameState.isTreesPink) {
+      setForestRodOpacity();
+    } else if (GameState.isAxeTaken && GameState.isTreesPink) {
+      setPinkForestRodOpacity();
+    }
+
+    // When the trees have been chopped
     if (GameState.isChopped) {
       setForestTreesRemovedOpacity();
+    }
+
+    // When the rod is chosen
+    if (!GameState.isForestTreeChopping && !GameState.isTreesPink) {
+      setForestRodOpacity();
+    } else if (!GameState.isForestTreeChopping && GameState.isTreesPink) {
+      setPinkForestRodOpacity();
     }
 
     // Store forrest room scene in stack:
