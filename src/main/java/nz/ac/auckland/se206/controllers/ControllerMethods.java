@@ -46,12 +46,9 @@ public class ControllerMethods {
 
   // Object properties for background image behind the chat
   protected static ObjectProperty<Image> backgroundImageProperty = new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<Image> backgroundPlankOneProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<Image> backgroundPlankTwoProperty =
-      new SimpleObjectProperty<>(null);
-  protected static ObjectProperty<Image> backgroundPlankThreeProperty =
-      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> layerOneProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> layerTwoProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> layerThreeProperty = new SimpleObjectProperty<>(null);
 
   // Object properties for trees images
   protected static ObjectProperty<Image> treesImageProperty = new SimpleObjectProperty<>(null);
@@ -465,28 +462,30 @@ public class ControllerMethods {
   }
 
   /** Method for disabling all other layer other than the main background for GPT */
-  protected void hideAllLayer() {
-    backgroundPlankOneProperty.set(null);
-    backgroundPlankTwoProperty.set(null);
-    backgroundPlankThreeProperty.set(null);
+  protected void hideAllLayers() {
+    layerOneProperty.set(null);
+    layerTwoProperty.set(null);
+    layerThreeProperty.set(null);
+  }
+
+  /** Method for adding the red orb behind GPT */
+  protected void redOrbInChestOpacity() {
+    layerOneProperty.set(new Image(getClass().getResourceAsStream("/images/redOrbInChest.png")));
   }
 
   /** Method for adding the bottom plank behind GPT */
   protected void bridgeMiniPlankOneOpacity() {
-    backgroundPlankOneProperty.set(
-        new Image(getClass().getResourceAsStream("/images/bottomPlank.png")));
+    layerOneProperty.set(new Image(getClass().getResourceAsStream("/images/bottomPlank.png")));
   }
 
   /** Method for adding the middle plank behind GPT */
   protected void bridgeMiniPlankTwoOpacity() {
-    backgroundPlankTwoProperty.set(
-        new Image(getClass().getResourceAsStream("/images/middlePlank.png")));
+    layerTwoProperty.set(new Image(getClass().getResourceAsStream("/images/middlePlank.png")));
   }
 
   /** Method for adding the top plank behind GPT */
   protected void bridgeMiniPlankThreeOpacity() {
-    backgroundPlankThreeProperty.set(
-        new Image(getClass().getResourceAsStream("/images/topPlank.png")));
+    layerThreeProperty.set(new Image(getClass().getResourceAsStream("/images/topPlank.png")));
   }
 
   /** Enables axe image depending on game state. */

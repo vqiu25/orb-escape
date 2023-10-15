@@ -51,6 +51,7 @@ public class ChatController extends ControllerMethods {
   @FXML private ImageView plankOne;
   @FXML private ImageView plankTwo;
   @FXML private ImageView plankThree;
+  @FXML private ImageView redOrbInChest;
 
   // Inventory Items
   @FXML private ImageView fishingRodIcon;
@@ -95,9 +96,10 @@ public class ChatController extends ControllerMethods {
 
     // Bind the background to its image properties
     background.imageProperty().bind(ControllerMethods.backgroundImageProperty);
-    plankOne.imageProperty().bind(ControllerMethods.backgroundPlankOneProperty);
-    plankTwo.imageProperty().bind(ControllerMethods.backgroundPlankTwoProperty);
-    plankThree.imageProperty().bind(ControllerMethods.backgroundPlankThreeProperty);
+    plankOne.imageProperty().bind(ControllerMethods.layerOneProperty);
+    plankTwo.imageProperty().bind(ControllerMethods.layerTwoProperty);
+    plankThree.imageProperty().bind(ControllerMethods.layerThreeProperty);
+    redOrbInChest.imageProperty().bind(ControllerMethods.layerOneProperty);
 
     // Randomly select either cabinet or rug as the word to guess:
     String wordToGuess;

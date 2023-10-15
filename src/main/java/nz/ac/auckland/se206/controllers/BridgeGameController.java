@@ -348,16 +348,19 @@ public class BridgeGameController extends ControllerMethods {
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
     setBridgeMiniOpacity();
-    hideAllLayer();
+    hideAllLayers();
 
+    // If the small plank is in the correct position update GPT background
     if (imageSmall.isCorrectPosition()) {
       bridgeMiniPlankOneOpacity();
     }
 
+    // If the medium plank is in the correct position update GPT background
     if (imageMedium.isCorrectPosition()) {
       bridgeMiniPlankThreeOpacity();
     }
 
+    // If the large plank is in the correct position update GPT background
     if (imageLarge.isCorrectPosition()) {
       bridgeMiniPlankTwoOpacity();
     }
