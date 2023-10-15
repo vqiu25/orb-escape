@@ -18,6 +18,7 @@ public class GameState {
   public static boolean isForestTreeChopping;
 
   public static boolean isLavaDragon;
+  public static boolean isDragonGone;
   public static boolean isForestFishing;
 
   // Indicates if the minigame has been completed:
@@ -112,11 +113,13 @@ public class GameState {
       isForestTreeChopping = true;
       isLavaDragon = false;
       isForestFishing = false;
+      isDragonGone = true;
     } else {
       isLavaBridge = false;
       isForestTreeChopping = false;
       isLavaDragon = true;
       isForestFishing = true;
+      isDragonGone = false;
     }
 
     // Indicates which riddle has been selected:
