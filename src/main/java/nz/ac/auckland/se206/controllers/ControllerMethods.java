@@ -464,7 +464,7 @@ public class ControllerMethods {
     redOrbImageProperty.set(null);
   }
 
-  /** Method for disabling all other layer other than the main background for GPT */
+  /** Method for disabling all other layer other than the main background for GPT. */
   protected void hideAllLayers() {
     layerOneProperty.set(null);
     layerTwoProperty.set(null);
@@ -474,55 +474,55 @@ public class ControllerMethods {
     layerSixProperty.set(null);
   }
 
-  /** Method for adding the bottom blue orb behind GPT in terminal */
+  /** Method for adding the bottom blue orb behind GPT in terminal. */
   protected void bottomBlueOrbOpacity() {
     layerOneProperty.set(new Image(getClass().getResourceAsStream("/images/bottomBlueOrb.png")));
   }
 
-  /** Method for adding the bottom green orb behind GPT in terminal */
+  /** Method for adding the bottom green orb behind GPT in terminal. */
   protected void bottomGreenOrbOpacity() {
     layerTwoProperty.set(new Image(getClass().getResourceAsStream("/images/bottomGreenOrb.png")));
   }
 
-  /** Method for adding the bottom red orb behind GPT in terminal */
+  /** Method for adding the bottom red orb behind GPT in terminal. */
   protected void bottomRedOrbOpacity() {
     layerThreeProperty.set(new Image(getClass().getResourceAsStream("/images/bottomRedOrb.png")));
   }
 
-  /** Method for adding the top blue orb behind GPT in terminal */
+  /** Method for adding the top blue orb behind GPT in terminal. */
   protected void topBlueOrbOpacity() {
     layerFourProperty.set(new Image(getClass().getResourceAsStream("/images/topBlueOrb.png")));
     layerOneProperty.set(null);
   }
 
-  /** Method for adding the top green orb behind GPT in terminal */
+  /** Method for adding the top green orb behind GPT in terminal. */
   protected void topGreenOrbOpacity() {
     layerFiveProperty.set(new Image(getClass().getResourceAsStream("/images/topGreenOrb.png")));
     layerTwoProperty.set(null);
   }
 
-  /** Method for adding the top red orb behind GPT in terminal */
+  /** Method for adding the top red orb behind GPT in terminal. */
   protected void topRedOrbOpacity() {
     layerSixProperty.set(new Image(getClass().getResourceAsStream("/images/topRedOrb.png")));
     layerThreeProperty.set(null);
   }
 
-  /** Method for adding the red orb behind GPT */
+  /** Method for adding the red orb behind GPT. */
   protected void redOrbInChestOpacity() {
     layerOneProperty.set(new Image(getClass().getResourceAsStream("/images/redOrbInChest.png")));
   }
 
-  /** Method for adding the bottom plank behind GPT */
+  /** Method for adding the bottom plank behind GPT. */
   protected void bridgeMiniPlankOneOpacity() {
     layerOneProperty.set(new Image(getClass().getResourceAsStream("/images/bottomPlank.png")));
   }
 
-  /** Method for adding the middle plank behind GPT */
+  /** Method for adding the middle plank behind GPT. */
   protected void bridgeMiniPlankTwoOpacity() {
     layerTwoProperty.set(new Image(getClass().getResourceAsStream("/images/middlePlank.png")));
   }
 
-  /** Method for adding the top plank behind GPT */
+  /** Method for adding the top plank behind GPT. */
   protected void bridgeMiniPlankThreeOpacity() {
     layerThreeProperty.set(new Image(getClass().getResourceAsStream("/images/topPlank.png")));
   }
@@ -647,7 +647,7 @@ public class ControllerMethods {
         new Image(getClass().getResourceAsStream("/images/lavaNoDragon.png")));
   }
 
-  /** Enables the wooden fixed bridge image when the bridge has been fixed */
+  /** Enables the wooden fixed bridge image when the bridge has been fixed. */
   protected void setFixedBridgeOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/lavaFixedBridge.png")));
@@ -659,7 +659,7 @@ public class ControllerMethods {
         new Image(getClass().getResourceAsStream("/images/lavaBlueDragon.png")));
   }
 
-  /** Enables the broken bridge image when the bridge has not been fixed */
+  /** Enables the broken bridge image when the bridge has not been fixed. */
   protected void setBrokenBridgeOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/lavaBrokenBridge.png")));
