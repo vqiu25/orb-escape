@@ -18,22 +18,32 @@
             <GaussianBlur />
          </effect>
       </ImageView>
-      <ImageView fx:id="plankOne" fitHeight="625.0" fitWidth="800.0" onMouseClicked="#returnToRoom" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="layerOne" fitHeight="625.0" fitWidth="800.0" onMouseClicked="#returnToRoom" pickOnBounds="true" preserveRatio="true">
          <effect>
             <GaussianBlur />
          </effect>
       </ImageView>
-      <ImageView fx:id="plankTwo" fitHeight="625.0" fitWidth="800.0" onMouseClicked="#returnToRoom" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="layerTwo" fitHeight="625.0" fitWidth="800.0" onMouseClicked="#returnToRoom" pickOnBounds="true" preserveRatio="true">
          <effect>
             <GaussianBlur />
          </effect>
       </ImageView>
-      <ImageView fx:id="plankThree" fitHeight="625.0" fitWidth="800.0" onMouseClicked="#returnToRoom" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="layerThree" fitHeight="625.0" fitWidth="800.0" onMouseClicked="#returnToRoom" pickOnBounds="true" preserveRatio="true">
          <effect>
             <GaussianBlur />
          </effect>
       </ImageView>
-      <ImageView fx:id="redOrbInChest" fitHeight="625.0" fitWidth="800.0" onMouseClicked="#returnToRoom" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="layerFour" fitHeight="625.0" fitWidth="800.0" onMouseClicked="#returnToRoom" pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <GaussianBlur />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="layerFive" fitHeight="625.0" fitWidth="800.0" onMouseClicked="#returnToRoom" pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <GaussianBlur />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="layerSix" fitHeight="625.0" fitWidth="800.0" onMouseClicked="#returnToRoom" pickOnBounds="true" preserveRatio="true">
          <effect>
             <GaussianBlur />
          </effect>

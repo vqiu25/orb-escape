@@ -49,6 +49,9 @@ public class ControllerMethods {
   protected static ObjectProperty<Image> layerOneProperty = new SimpleObjectProperty<>(null);
   protected static ObjectProperty<Image> layerTwoProperty = new SimpleObjectProperty<>(null);
   protected static ObjectProperty<Image> layerThreeProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> layerFourProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> layerFiveProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> layerSixProperty = new SimpleObjectProperty<>(null);
 
   // Object properties for trees images
   protected static ObjectProperty<Image> treesImageProperty = new SimpleObjectProperty<>(null);
@@ -465,6 +468,42 @@ public class ControllerMethods {
   protected void hideAllLayers() {
     layerOneProperty.set(null);
     layerTwoProperty.set(null);
+    layerThreeProperty.set(null);
+    layerFourProperty.set(null);
+    layerFiveProperty.set(null);
+    layerSixProperty.set(null);
+  }
+
+  /** Method for adding the bottom blue orb behind GPT in terminal */
+  protected void bottomBlueOrbOpacity() {
+    layerOneProperty.set(new Image(getClass().getResourceAsStream("/images/bottomBlueOrb.png")));
+  }
+
+  /** Method for adding the bottom green orb behind GPT in terminal */
+  protected void bottomGreenOrbOpacity() {
+    layerTwoProperty.set(new Image(getClass().getResourceAsStream("/images/bottomGreenOrb.png")));
+  }
+
+  /** Method for adding the bottom red orb behind GPT in terminal */
+  protected void bottomRedOrbOpacity() {
+    layerThreeProperty.set(new Image(getClass().getResourceAsStream("/images/bottomRedOrb.png")));
+  }
+
+  /** Method for adding the top blue orb behind GPT in terminal */
+  protected void topBlueOrbOpacity() {
+    layerFourProperty.set(new Image(getClass().getResourceAsStream("/images/topBlueOrb.png")));
+    layerOneProperty.set(null);
+  }
+
+  /** Method for adding the top green orb behind GPT in terminal */
+  protected void topGreenOrbOpacity() {
+    layerFiveProperty.set(new Image(getClass().getResourceAsStream("/images/topGreenOrb.png")));
+    layerTwoProperty.set(null);
+  }
+
+  /** Method for adding the top red orb behind GPT in terminal */
+  protected void topRedOrbOpacity() {
+    layerSixProperty.set(new Image(getClass().getResourceAsStream("/images/topRedOrb.png")));
     layerThreeProperty.set(null);
   }
 
