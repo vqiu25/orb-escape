@@ -72,6 +72,8 @@ public class LavaRoomController extends ControllerMethods {
 
   // Random booleans
   private boolean isBlueDragon;
+
+  // Notifications
   private String dragonImage;
 
   /**
@@ -313,7 +315,6 @@ public class LavaRoomController extends ControllerMethods {
    */
   @FXML
   private void dragonClicked(MouseEvent event) {
-
     // Choose red or blue dragon for notification image
     if (isBlueDragon) {
       dragonImage = "blueDragon";
@@ -322,6 +323,9 @@ public class LavaRoomController extends ControllerMethods {
     }
 
     if (GameState.isForestGameCompleted) {
+      // Update boolean
+      GameState.isDragonGone = true;
+
       // if user has collected the fish, prompt the user to feed the dragon
       Notifications message =
           NotificationBuilder.createNotification("Mmmm, yummy! You may pass now!.", dragonImage);
@@ -572,10 +576,30 @@ public class LavaRoomController extends ControllerMethods {
    */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
-    if (GameState.isLavaDragon) {
+    hideAllLayers();
+    // Red dragon conditional
+    if (GameState.isLavaDragon && !GameState.isDragonGone) {
       setLavaDragonOpacity();
-    } else {
+    } else if (GameState.isLavaDragon && GameState.isDragonGone) {
       setLavaNoDragonOpacity();
+    }
+
+    // Blue dragon conditional
+    if (isBlueDragon && !GameState.isDragonGone) {
+      setBlueLavaDragonOpacity();
+    } else if (isBlueDragon && GameState.isDragonGone) {
+      setLavaNoDragonOpacity();
+    }
+
+    // Broken or fixed bridge conditional
+    if (GameState.isLavaBridge
+        && GameState.isForestTreeChopping
+        && !GameState.isLavaGameCompleted) {
+      setBrokenBridgeOpacity();
+    } else if (GameState.isLavaBridge
+        && GameState.isForestTreeChopping
+        && GameState.isLavaGameCompleted) {
+      setFixedBridgeOpacity();
     }
 
     // Store current scene in scene stack

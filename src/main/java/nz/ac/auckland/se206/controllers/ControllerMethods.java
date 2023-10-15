@@ -46,6 +46,12 @@ public class ControllerMethods {
 
   // Object properties for background image behind the chat
   protected static ObjectProperty<Image> backgroundImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> layerOneProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> layerTwoProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> layerThreeProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> layerFourProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> layerFiveProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> layerSixProperty = new SimpleObjectProperty<>(null);
 
   // Object properties for trees images
   protected static ObjectProperty<Image> treesImageProperty = new SimpleObjectProperty<>(null);
@@ -458,6 +464,69 @@ public class ControllerMethods {
     redOrbImageProperty.set(null);
   }
 
+  /** Method for disabling all other layer other than the main background for GPT */
+  protected void hideAllLayers() {
+    layerOneProperty.set(null);
+    layerTwoProperty.set(null);
+    layerThreeProperty.set(null);
+    layerFourProperty.set(null);
+    layerFiveProperty.set(null);
+    layerSixProperty.set(null);
+  }
+
+  /** Method for adding the bottom blue orb behind GPT in terminal */
+  protected void bottomBlueOrbOpacity() {
+    layerOneProperty.set(new Image(getClass().getResourceAsStream("/images/bottomBlueOrb.png")));
+  }
+
+  /** Method for adding the bottom green orb behind GPT in terminal */
+  protected void bottomGreenOrbOpacity() {
+    layerTwoProperty.set(new Image(getClass().getResourceAsStream("/images/bottomGreenOrb.png")));
+  }
+
+  /** Method for adding the bottom red orb behind GPT in terminal */
+  protected void bottomRedOrbOpacity() {
+    layerThreeProperty.set(new Image(getClass().getResourceAsStream("/images/bottomRedOrb.png")));
+  }
+
+  /** Method for adding the top blue orb behind GPT in terminal */
+  protected void topBlueOrbOpacity() {
+    layerFourProperty.set(new Image(getClass().getResourceAsStream("/images/topBlueOrb.png")));
+    layerOneProperty.set(null);
+  }
+
+  /** Method for adding the top green orb behind GPT in terminal */
+  protected void topGreenOrbOpacity() {
+    layerFiveProperty.set(new Image(getClass().getResourceAsStream("/images/topGreenOrb.png")));
+    layerTwoProperty.set(null);
+  }
+
+  /** Method for adding the top red orb behind GPT in terminal */
+  protected void topRedOrbOpacity() {
+    layerSixProperty.set(new Image(getClass().getResourceAsStream("/images/topRedOrb.png")));
+    layerThreeProperty.set(null);
+  }
+
+  /** Method for adding the red orb behind GPT */
+  protected void redOrbInChestOpacity() {
+    layerOneProperty.set(new Image(getClass().getResourceAsStream("/images/redOrbInChest.png")));
+  }
+
+  /** Method for adding the bottom plank behind GPT */
+  protected void bridgeMiniPlankOneOpacity() {
+    layerOneProperty.set(new Image(getClass().getResourceAsStream("/images/bottomPlank.png")));
+  }
+
+  /** Method for adding the middle plank behind GPT */
+  protected void bridgeMiniPlankTwoOpacity() {
+    layerTwoProperty.set(new Image(getClass().getResourceAsStream("/images/middlePlank.png")));
+  }
+
+  /** Method for adding the top plank behind GPT */
+  protected void bridgeMiniPlankThreeOpacity() {
+    layerThreeProperty.set(new Image(getClass().getResourceAsStream("/images/topPlank.png")));
+  }
+
   /** Enables axe image depending on game state. */
   protected void setForestAxeOpacity() {
     backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/forestAxe.png")));
@@ -466,6 +535,18 @@ public class ControllerMethods {
   /** Enables fishing rod image depending on game state. */
   protected void setForestRodOpacity() {
     backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/forestRod.png")));
+  }
+
+  /** Enables pink trees and axe image depending on game state. */
+  protected void setPinkForestAxeOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/forestAxePink.png")));
+  }
+
+  /** Enables pink trees and fishing rod image depending on game state. */
+  protected void setPinkForestRodOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/forestRodPink.png")));
   }
 
   /** Enables forest tress removed image depending on game state. */
@@ -566,10 +647,34 @@ public class ControllerMethods {
         new Image(getClass().getResourceAsStream("/images/lavaNoDragon.png")));
   }
 
+  /** Enables the wooden fixed bridge image when the bridge has been fixed */
+  protected void setFixedBridgeOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/lavaFixedBridge.png")));
+  }
+
+  /** Enables the lava room image for when the blue dragon is present. */
+  protected void setBlueLavaDragonOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/lavaBlueDragon.png")));
+  }
+
+  /** Enables the broken bridge image when the bridge has not been fixed */
+  protected void setBrokenBridgeOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/lavaBrokenBridge.png")));
+  }
+
   /** Enables forest mini game image for when trees have not been chopped. */
   protected void setForestMiniOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/forestMini.png")));
+  }
+
+  /** Enables pink forest mini game image for when trees have not been chopped. */
+  protected void setPinkForestMiniOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/forestMiniPink.png")));
   }
 
   /** Enables forest mini game image for when the trees have been chopped. */
@@ -589,15 +694,33 @@ public class ControllerMethods {
     backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/chestMini.png")));
   }
 
+  /** Enables castle room image for when the chest is unlocked. */
+  protected void setOpenChestMiniOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/chestMiniOpened.png")));
+  }
+
   /** Enables and sets the opacitity of the orbs for the terminal mini-game image. */
   protected void setOrbMiniOpacity() {
     backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/orbMini.png")));
   }
 
-  /** Enables bridge mini-game initial state image. */
+  /** Enables and sets the opacitity of the orbs for the terminal mini-game image when completed. */
+  protected void setCompletedOrbMiniOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/orbMiniCompleted.png")));
+  }
+
+  /** Enables the normal bridge mini-game initial state image. */
   protected void setBridgeMiniOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/bridgeMini.png")));
+  }
+
+  /** Enables the fixed bridge mini-game state image. */
+  protected void setFixedBridgeMiniOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/bridgeMiniCompleted.png")));
   }
 
   /** Sets the image for the portal when hovered over. */

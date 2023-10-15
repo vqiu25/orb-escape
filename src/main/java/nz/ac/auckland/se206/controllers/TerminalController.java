@@ -316,7 +316,28 @@ public class TerminalController extends ControllerMethods {
    */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
+    // Initally show all orbs at the bottom
+    hideAllLayers();
     setOrbMiniOpacity();
+    bottomBlueOrbOpacity();
+    bottomGreenOrbOpacity();
+    bottomRedOrbOpacity();
+
+    // If an orb has been correctly placed, show it at the top
+    // Blue orb
+    if (blueOrbImage.isCorrectPosition()) {
+      topBlueOrbOpacity();
+    }
+
+    // Red orb
+    if (redOrbImage.isCorrectPosition()) {
+      topRedOrbOpacity();
+    }
+
+    // Green rob
+    if (greenOrbImage.isCorrectPosition()) {
+      topGreenOrbOpacity();
+    }
 
     // Store the current scene in the scene stack:
     GameState.lastScene = AppScene.TERMINAL;

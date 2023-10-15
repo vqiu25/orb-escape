@@ -48,7 +48,7 @@
                   <Font name="Adapa" size="25.0" />
                </font>
             </Label>
-            <Label prefHeight="107.0" prefWidth="218.0" text="Return orbs to the terminal to activate portal!" textAlignment="CENTER" wrapText="true">
+            <Label prefHeight="107.0" prefWidth="218.0" text="Return orbs to the terminal to activate the portal!" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Adapa" size="25.0" />
                </font>

@@ -385,6 +385,7 @@ public class FishingMiniGameController extends ControllerMethods {
    */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
+    hideAllLayers();
     if (!isRunning && GameState.isFishCaught && isFishDelay
         || !isRunning && !GameState.isFishCaught) {
       setFishingMiniOpacity();

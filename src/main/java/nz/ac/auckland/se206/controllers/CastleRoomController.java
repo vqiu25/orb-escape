@@ -533,7 +533,18 @@ public class CastleRoomController extends ControllerMethods {
    */
   @FXML
   private void gameMasterOnClick() {
-    setChestMiniOpacity();
+    hideAllLayers();
+    // Close chest
+    if (!GameState.isChestUnlocked) {
+      setChestMiniOpacity();
+      // Remove red orb from chest
+    } else if (GameState.isChestUnlocked && GameState.isCastleOrbCollected) {
+      setOpenChestMiniOpacity();
+      // Add red orb in chest
+    } else {
+      setOpenChestMiniOpacity();
+      redOrbInChestOpacity();
+    }
 
     // Store the current scene in the scene stack:
     GameState.lastScene = AppScene.CASTLE;
