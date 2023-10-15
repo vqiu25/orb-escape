@@ -533,7 +533,11 @@ public class CastleRoomController extends ControllerMethods {
    */
   @FXML
   private void gameMasterOnClick() {
-    setChestMiniOpacity();
+    if (!GameState.isChestUnlocked) {
+      setChestMiniOpacity();
+    } else {
+      setOpenChestMiniOpacity();
+    }
 
     // Store the current scene in the scene stack:
     GameState.lastScene = AppScene.CASTLE;

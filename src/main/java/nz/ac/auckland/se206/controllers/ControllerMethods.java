@@ -625,15 +625,33 @@ public class ControllerMethods {
     backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/chestMini.png")));
   }
 
+  /** Enables castle room image for when the chest is unlocked. */
+  protected void setOpenChestMiniOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/chestMiniOpened.png")));
+  }
+
   /** Enables and sets the opacitity of the orbs for the terminal mini-game image. */
   protected void setOrbMiniOpacity() {
     backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/orbMini.png")));
+  }
+
+  /** Enables and sets the opacitity of the orbs for the terminal mini-game image when completed. */
+  protected void setCompletedOrbMiniOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/orbMiniCompleted.png")));
   }
 
   /** Enables the normal bridge mini-game initial state image. */
   protected void setBridgeMiniOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/bridgeMini.png")));
+  }
+
+  /** Enables the fixed bridge mini-game state image. */
+  protected void setFixedBridgeMiniOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/bridgeMiniCompleted.png")));
   }
 
   /** Sets the image for the portal when hovered over. */

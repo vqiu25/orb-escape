@@ -347,7 +347,11 @@ public class BridgeGameController extends ControllerMethods {
    */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
-    setBridgeMiniOpacity();
+    if (GameState.isLavaGameCompleted) {
+      setFixedBridgeMiniOpacity();
+    } else {
+      setBridgeMiniOpacity();
+    }
 
     // Store current scene in scene stack
     GameState.lastScene = AppScene.BRIDGE_GAME;

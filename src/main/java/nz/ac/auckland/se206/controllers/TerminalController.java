@@ -316,7 +316,11 @@ public class TerminalController extends ControllerMethods {
    */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
-    setOrbMiniOpacity();
+    if (GameState.isOrbsPlaced) {
+      setCompletedOrbMiniOpacity();
+    } else {
+      setOrbMiniOpacity();
+    }
 
     // Store the current scene in the scene stack:
     GameState.lastScene = AppScene.TERMINAL;
