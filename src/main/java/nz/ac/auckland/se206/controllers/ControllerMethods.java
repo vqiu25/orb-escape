@@ -566,6 +566,24 @@ public class ControllerMethods {
         new Image(getClass().getResourceAsStream("/images/lavaNoDragon.png")));
   }
 
+  /** Enables the wooden fixed bridge image when the bridge has been fixed */
+  protected void setFixedBridgeOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/lavaFixedBridge.png")));
+  }
+
+  /** Enables the lava room image for when the blue dragon is present. */
+  protected void setBlueLavaDragonOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/lavaBlueDragon.png")));
+  }
+
+  /** Enables the broken bridge image when the bridge has not been fixed */
+  protected void setBrokenBridgeOpacity() {
+    backgroundImageProperty.set(
+        new Image(getClass().getResourceAsStream("/images/lavaBrokenBridge.png")));
+  }
+
   /** Enables forest mini game image for when trees have not been chopped. */
   protected void setForestMiniOpacity() {
     backgroundImageProperty.set(
@@ -594,7 +612,7 @@ public class ControllerMethods {
     backgroundImageProperty.set(new Image(getClass().getResourceAsStream("/images/orbMini.png")));
   }
 
-  /** Enables bridge mini-game initial state image. */
+  /** Enables the normal bridge mini-game initial state image. */
   protected void setBridgeMiniOpacity() {
     backgroundImageProperty.set(
         new Image(getClass().getResourceAsStream("/images/bridgeMini.png")));
