@@ -316,6 +316,7 @@ public class TerminalController extends ControllerMethods {
    */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
+    hideAllLayer();
     if (GameState.isOrbsPlaced) {
       setCompletedOrbMiniOpacity();
     } else {

@@ -576,6 +576,7 @@ public class LavaRoomController extends ControllerMethods {
    */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
+    hideAllLayer();
     // Red dragon conditional
     if (GameState.isLavaDragon && !GameState.isDragonGone) {
       setLavaDragonOpacity();

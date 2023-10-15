@@ -1001,6 +1001,7 @@ public class RoomController extends ControllerMethods {
 
   /** This helper function handles the changing of the background depending on the game state. */
   private void backgroundHelper() {
+    hideAllLayer();
     // Logic for which background GPT should have
     if (GameState.isMapOnWall && GameState.isLightOn) {
       setMainMapOpacity();

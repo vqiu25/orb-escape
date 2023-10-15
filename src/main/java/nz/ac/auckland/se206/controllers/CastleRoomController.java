@@ -533,6 +533,7 @@ public class CastleRoomController extends ControllerMethods {
    */
   @FXML
   private void gameMasterOnClick() {
+    hideAllLayer();
     if (!GameState.isChestUnlocked) {
       setChestMiniOpacity();
     } else {

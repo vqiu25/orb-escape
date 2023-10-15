@@ -379,6 +379,7 @@ public class TreeChoppingMiniGameController extends ControllerMethods {
    */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
+    hideAllLayer();
     if (!GameState.isChopped && !GameState.isTreesPink) {
       setForestMiniOpacity();
     } else if (!GameState.isChopped && GameState.isTreesPink) {

@@ -46,6 +46,12 @@ public class ControllerMethods {
 
   // Object properties for background image behind the chat
   protected static ObjectProperty<Image> backgroundImageProperty = new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> backgroundPlankOneProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> backgroundPlankTwoProperty =
+      new SimpleObjectProperty<>(null);
+  protected static ObjectProperty<Image> backgroundPlankThreeProperty =
+      new SimpleObjectProperty<>(null);
 
   // Object properties for trees images
   protected static ObjectProperty<Image> treesImageProperty = new SimpleObjectProperty<>(null);
@@ -456,6 +462,31 @@ public class ControllerMethods {
     blueOrbImageProperty.set(null);
     greenOrbImageProperty.set(null);
     redOrbImageProperty.set(null);
+  }
+
+  /** Method for disabling all other layer other than the main background for GPT */
+  protected void hideAllLayer() {
+    backgroundPlankOneProperty.set(null);
+    backgroundPlankTwoProperty.set(null);
+    backgroundPlankThreeProperty.set(null);
+  }
+
+  /** Method for adding the bottom plank behind GPT */
+  protected void bridgeMiniPlankOneOpacity() {
+    backgroundPlankOneProperty.set(
+        new Image(getClass().getResourceAsStream("/images/bottomPlank.png")));
+  }
+
+  /** Method for adding the middle plank behind GPT */
+  protected void bridgeMiniPlankTwoOpacity() {
+    backgroundPlankTwoProperty.set(
+        new Image(getClass().getResourceAsStream("/images/middlePlank.png")));
+  }
+
+  /** Method for adding the top plank behind GPT */
+  protected void bridgeMiniPlankThreeOpacity() {
+    backgroundPlankThreeProperty.set(
+        new Image(getClass().getResourceAsStream("/images/topPlank.png")));
   }
 
   /** Enables axe image depending on game state. */

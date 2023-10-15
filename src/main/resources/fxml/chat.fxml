@@ -17,6 +17,21 @@
          <effect>
             <GaussianBlur />
          </effect>
+      </ImageView>
+      <ImageView fx:id="plankOne" fitHeight="625.0" fitWidth="800.0" onMouseClicked="#returnToRoom" pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <GaussianBlur />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="plankTwo" fitHeight="625.0" fitWidth="800.0" onMouseClicked="#returnToRoom" pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <GaussianBlur />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="plankThree" fitHeight="625.0" fitWidth="800.0" onMouseClicked="#returnToRoom" pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <GaussianBlur />
+         </effect>
       </ImageView>            
        
       <ImageView fx:id="gameMasterClose" fitHeight="141.0" fitWidth="171.0" layoutX="606.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true">

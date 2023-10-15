@@ -347,10 +347,19 @@ public class BridgeGameController extends ControllerMethods {
    */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
-    if (GameState.isLavaGameCompleted) {
-      setFixedBridgeMiniOpacity();
-    } else {
-      setBridgeMiniOpacity();
+    setBridgeMiniOpacity();
+    hideAllLayer();
+
+    if (imageSmall.isCorrectPosition()) {
+      bridgeMiniPlankOneOpacity();
+    }
+
+    if (imageMedium.isCorrectPosition()) {
+      bridgeMiniPlankThreeOpacity();
+    }
+
+    if (imageLarge.isCorrectPosition()) {
+      bridgeMiniPlankTwoOpacity();
     }
 
     // Store current scene in scene stack

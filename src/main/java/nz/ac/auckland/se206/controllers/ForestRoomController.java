@@ -652,7 +652,7 @@ public class ForestRoomController extends ControllerMethods {
    */
   @FXML
   private void gameMasterOnClick(MouseEvent event) {
-
+    hideAllLayer();
     // When the axe is chosen
     if (GameState.isForestTreeChopping && !GameState.isTreesPink) {
       setForestAxeOpacity();
