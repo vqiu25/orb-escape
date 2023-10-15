@@ -181,7 +181,7 @@
             <Image url="@../images/axeIcon.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="planksIcon" fitHeight="30.0" fitWidth="30.0" layoutX="330.0" layoutY="566.0" pickOnBounds="true">
+      <ImageView fx:id="planksIcon" fitHeight="30.0" fitWidth="30.0" layoutX="334.0" layoutY="566.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/planksIcon.png" />
          </image>

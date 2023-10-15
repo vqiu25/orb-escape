@@ -403,7 +403,7 @@ public class ControllerMethods {
 
   /** Method for adding the fish to inventory. */
   protected void findPlanks() {
-    planksIcon.setLayoutX(330);
+    planksIcon.setLayoutX(334);
     planksIcon.setLayoutY(566);
     planksIcon.setFitHeight(30);
     planksIcon.setFitWidth(30);
