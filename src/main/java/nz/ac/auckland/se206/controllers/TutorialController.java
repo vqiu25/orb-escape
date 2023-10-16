@@ -1,10 +1,12 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameMaster;
 import nz.ac.auckland.se206.NotificationBuilder;
@@ -60,7 +62,15 @@ public class TutorialController extends ControllerMethods {
     // Fetch message from AI and show:
     Notifications message =
         NotificationBuilder.createNotification(chatMessage.getContent(), "robot");
-    message.show();
+
+    // Add a 0.5sec delay to the initial notification
+    PauseTransition delay = new PauseTransition(Duration.millis(350));
+    delay.setOnFinished(
+        event -> {
+          message.show();
+        });
+    delay.play();
+
     App.setScene(AppScene.ROOM);
   }
 
