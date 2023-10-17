@@ -328,7 +328,7 @@ public class LavaRoomController extends ControllerMethods {
 
       // if user has collected the fish, prompt the user to feed the dragon
       Notifications message =
-          NotificationBuilder.createNotification("Mmmm, yummy! You may pass now!.", dragonImage);
+          NotificationBuilder.createNotification("Mmmm, yummy! You may pass now!", dragonImage);
       message.show();
 
       // set lava game state to completed

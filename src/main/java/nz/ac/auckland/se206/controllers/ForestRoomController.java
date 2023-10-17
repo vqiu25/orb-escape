@@ -437,7 +437,7 @@ public class ForestRoomController extends ControllerMethods {
         // Axe not taken but riddle solved and orb collected
         Notifications message =
             NotificationBuilder.createNotification(
-                "Try finding something to cut down the trees!", "robot");
+                "Find something to cut down the trees!", "robot");
         message.show();
       }
     } else {
