@@ -327,9 +327,6 @@ public class RoomController extends ControllerMethods {
       return;
     }
 
-    // if the riddle has NOT been solved and the user is stuck, give help
-    giveRiddleHelp();
-
     // If the item has already been clicked, do not let them click again.
     if (isDrawerOpen) {
       return;
@@ -344,8 +341,8 @@ public class RoomController extends ControllerMethods {
       cabinetOpenedEmpty.setOpacity(1);
       cabinetOrb.setDisable(false);
     } else {
-      // Notify the user that this item may be of interest
-      interestingNotification();
+      // If the riddle has NOT been solved and the user is stuck, give help
+      giveRiddleHelp();
     }
   }
 
@@ -444,9 +441,6 @@ public class RoomController extends ControllerMethods {
       return;
     }
 
-    // if the riddle has NOT been solved give help
-    giveRiddleHelp();
-
     // If the item has already been clicked, dont let them click again.
     if (GameState.itemClicked) {
       return;
@@ -465,8 +459,8 @@ public class RoomController extends ControllerMethods {
       orbRectangleRug.setDisable(false);
       floorBlueOrb.setOpacity(1);
     } else {
-      // Notify the user that this item may be of interest
-      interestingNotification();
+      // If the riddle has NOT been solved and the user is stuck, give help
+      giveRiddleHelp();
     }
   }
 
@@ -977,13 +971,15 @@ public class RoomController extends ControllerMethods {
       spamCount++;
 
       // If the user has clicked on the cabinet or rug 5 times:
-      if (spamCount == 5) {
+      if (spamCount >= 3) {
 
         // Prompt user to find the book
         Notifications message2 =
             NotificationBuilder.createNotification(
                 "In a book, you will find your first clue!", "robot");
         message2.show();
+      } else {
+        interestingNotification();
       }
       return;
     }
