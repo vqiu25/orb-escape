@@ -1,5 +1,30 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/K_kBlAWd)
-# SOFTENG 206 - EscAIpe Room
+# OrbEscape
+
+## About
+Project for SOFTENG 206 (Software Engineering Design 1), a compulsory course for Part II Software Engineering students at the University of Auckland.
+
+OrbEscape is an escape room game designed to enhance critical thinking skills among younger demographics. It features:
+
+* Riddles that leverage the OpenAI API
+* An intelligent "Game Master" to assist users through the OpenAI API
+* A carefully crafted pixel art interface
+* Various difficulty levels with different time limits
+* Elements of randomness for replayability
+
+This project ultimately led to a first-in-course award in SOFTENG 206.
+
+## Video Demonstration
+
+## Acknowledgements
+This project would not have been possible without the hard work and dedication of our lecturers:
+* Nasser Giacaman, and
+* Valerio Teragni
+
+Furthermore, I would like to express my deepest gratitude towards my group members:
+* Liam Parker, and
+* William Chong
+
+for their passion and commitment to this project.
 
 ## To setup OpenAI's API
 
