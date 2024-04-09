@@ -16,7 +16,6 @@ OrbEscape is an escape room game designed to enhance critical thinking skills am
 This project ultimately led to a first-in-course award in SOFTENG 206.
 
 ## Video Demonstration
-![game-video](readme-assets/video-demo.mp4)
 
 ## Acknowledgements
 This project would not have been possible without the hard work and dedication of our lecturers:
