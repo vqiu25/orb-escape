@@ -1,6 +1,6 @@
 # OrbEscape
 <p align="center">
-  <img src="readme-assets/game_image.png" width="350">
+  <img src="readme-assets/game_image.png" width="500">
 </p>
 
 ## About
