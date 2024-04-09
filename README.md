@@ -1,6 +1,6 @@
 # OrbEscape
 <p align="center">
-  <img src="readme-assets/game_image.png" width="500">
+  <img src="readme-assets/game_image.png" width="600">
 </p>
 
 ## About
@@ -18,7 +18,7 @@ This project ultimately led to a first-in-course award in SOFTENG 206.
 
 ## Video Demonstration
 
-https://github.com/vqiu25/orb-escape/assets/109129209/503a9517-ad28-4f35-82e3-3e1b8612249f
+https://github.com/vqiu25/orb-escape/assets/109129209/6b9ddfbe-e9b2-4038-ae6a-568ddfa79f3a
 
 ## Acknowledgements
 This project would not have been possible without the hard work and dedication of our lecturers:
