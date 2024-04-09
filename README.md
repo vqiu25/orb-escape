@@ -1,6 +1,7 @@
 # OrbEscape
-
-![game-image](readme-assets/game_image.png)
+<div style="text-align: center;">
+  <img src="readme-assets/game_image.png" width="250">
+</div>
 
 ## About
 Project for SOFTENG 206 (Software Engineering Design 1), a compulsory course for Part II Software Engineering students at the University of Auckland.
